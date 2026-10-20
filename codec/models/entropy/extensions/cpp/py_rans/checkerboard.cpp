@@ -9,6 +9,7 @@
 #include <limits>
 #include <stdexcept>
 #include <string>
+#include <intrin.h>
 
 #if defined(__x86_64__) || defined(_M_X64)
 #include <immintrin.h>
@@ -22,6 +23,18 @@
     __attribute__((target("avx512f,avx512bw,avx512vl")))
 #else
 #define PULSE_AVX512_COMPRESS_TARGET
+#endif
+
+
+#if defined(_MSC_VER)
+static inline int __builtin_popcountll(unsigned long long x) {
+    return (int)__popcnt64(x);
+}
+static inline int __builtin_ctzll(unsigned long long x) {
+    unsigned long index;
+    _BitScanForward64(&index, x);
+    return (int)index;
+}
 #endif
 
 namespace {

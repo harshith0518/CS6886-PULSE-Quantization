@@ -1,0 +1,496 @@
+PULSE-MSE MODEL REPORT
+================================================================================
+
+PyTorch: 2.6.0+cu124
+CUDA available: True
+GPU: NVIDIA GeForce RTX 3050 Laptop GPU
+
+Total parameters: 14,179,432
+Trainable parameters: 14,179,432
+FP32 parameter size: 54.09 MB
+INT8 parameter size: 13.52 MB
+
+
+MODEL STRUCTURE
+================================================================================
+PULSE(
+  (encoder): Encoder(
+    (patch_embed): Conv2d(3, 512, kernel_size=(16, 16), stride=(16, 16))
+    (blocks): ModuleList(
+      (0-3): 4 x DCB(
+        (conv1): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1))
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+        (conv3): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1))
+        (dc_activation): GELU(approximate='none')
+        (conv4): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1))
+        (conv5): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1))
+        (ffn_activation): GELU(approximate='none')
+        (norm1): RMSNorm2d()
+        (norm2): RMSNorm2d()
+        (ca): Sequential(
+          (0): AdaptiveAvgPool2d(output_size=1)
+          (1): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1))
+          (2): Sigmoid()
+        )
+      )
+    )
+    (norm_out): RMSNorm2d()
+    (proj_out): Conv2d(512, 320, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (entropy_model): HyperTwoStepEM(
+    (hyper_enc): HyperEncoder(
+      (body): Sequential(
+        (0): DCB(
+          (adaptor): Conv2d(320, 96, kernel_size=(1, 1), stride=(1, 1))
+          (block): DCB(
+            (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+            (conv2): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96)
+            (conv3): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+            (dc_activation): GELU(approximate='none')
+            (conv4): Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1))
+            (conv5): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1))
+            (ffn_activation): GELU(approximate='none')
+            (norm1): RMSNorm2d()
+            (norm2): RMSNorm2d()
+            (ca): Sequential(
+              (0): AdaptiveAvgPool2d(output_size=1)
+              (1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+              (2): Sigmoid()
+            )
+          )
+        )
+        (1): HyperDownBlock(
+          (down): Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1))
+          (dcb): DCB(
+            (block): DCB(
+              (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+              (conv2): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96)
+              (conv3): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+              (dc_activation): GELU(approximate='none')
+              (conv4): Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1))
+              (conv5): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1))
+              (ffn_activation): GELU(approximate='none')
+              (norm1): RMSNorm2d()
+              (norm2): RMSNorm2d()
+              (ca): Sequential(
+                (0): AdaptiveAvgPool2d(output_size=1)
+                (1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+                (2): Sigmoid()
+              )
+            )
+          )
+        )
+        (2): HyperDownBlock(
+          (down): Conv2d(384, 96, kernel_size=(1, 1), stride=(1, 1))
+          (dcb): DCB(
+            (block): DCB(
+              (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+              (conv2): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96)
+              (conv3): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+              (dc_activation): GELU(approximate='none')
+              (conv4): Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1))
+              (conv5): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1))
+              (ffn_activation): GELU(approximate='none')
+              (norm1): RMSNorm2d()
+              (norm2): RMSNorm2d()
+              (ca): Sequential(
+                (0): AdaptiveAvgPool2d(output_size=1)
+                (1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+                (2): Sigmoid()
+              )
+            )
+          )
+        )
+      )
+    )
+    (hyper_dec): HyperDecoder(
+      (body): Sequential(
+        (0): HyperUpBlock(
+          (up): Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1))
+          (dcb): DCB(
+            (block): DCB(
+              (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (conv2): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96)
+              (conv3): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (dc_activation): HardGELU()
+              (conv4): Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (conv5): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (ffn_activation): HardGELU()
+              (norm1): Identity()
+              (norm2): Identity()
+              (ca): Sequential(
+                (0): AdaptiveAvgPool2d(output_size=1)
+                (1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+                (2): Sigmoid()
+              )
+            )
+          )
+        )
+        (1): HyperUpBlock(
+          (up): Conv2d(96, 384, kernel_size=(1, 1), stride=(1, 1))
+          (dcb): DCB(
+            (block): DCB(
+              (conv1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (conv2): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96)
+              (conv3): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (dc_activation): HardGELU()
+              (conv4): Conv2d(96, 192, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (conv5): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), groups=4)
+              (ffn_activation): HardGELU()
+              (norm1): Identity()
+              (norm2): Identity()
+              (ca): Sequential(
+                (0): AdaptiveAvgPool2d(output_size=1)
+                (1): Conv2d(96, 96, kernel_size=(1, 1), stride=(1, 1))
+                (2): Sigmoid()
+              )
+            )
+          )
+        )
+        (2): Conv2d(96, 320, kernel_size=(1, 1), stride=(1, 1))
+      )
+    )
+    (em_step1): EMStep1(
+      (in_proj): Conv2d(320, 128, kernel_size=(1, 1), stride=(1, 1))
+      (dcb): DCB(
+        (block): DCB(
+          (conv1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128)
+          (conv3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (dc_activation): HardGELU()
+          (conv4): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (conv5): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (ffn_activation): HardGELU()
+          (norm1): Identity()
+          (norm2): Identity()
+          (ca): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+            (2): Sigmoid()
+          )
+        )
+      )
+      (out_proj): Conv2d(128, 640, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (em_step2): EMStep2(
+      (in_proj): Conv2d(960, 128, kernel_size=(1, 1), stride=(1, 1))
+      (dcb): DCB(
+        (block): DCB(
+          (conv1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128)
+          (conv3): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (dc_activation): HardGELU()
+          (conv4): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (conv5): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), groups=4)
+          (ffn_activation): HardGELU()
+          (norm1): Identity()
+          (norm2): Identity()
+          (ca): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1))
+            (2): Sigmoid()
+          )
+        )
+      )
+      (out_proj): Conv2d(128, 320, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (scale_dec): ScaleDecoder(
+      (proj): Conv2d(96, 5120, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (entropy_bottleneck): BitEstimator()
+    (gaussian_conditional): GaussianEncoder()
+    (rate): TargetRateModule()
+  )
+  (decoder): Decoder(
+    (up0): Sequential(
+      (0): Conv2d(320, 144, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (blocks): ModuleList(
+      (0-1): 2 x DCB(
+        (conv1): Conv2d(144, 144, kernel_size=(1, 1), stride=(1, 1))
+        (conv2): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144)
+        (conv3): Conv2d(144, 144, kernel_size=(1, 1), stride=(1, 1))
+        (dc_activation): HardGELU()
+        (conv4): Conv2d(144, 272, kernel_size=(1, 1), stride=(1, 1))
+        (conv5): Conv2d(272, 144, kernel_size=(1, 1), stride=(1, 1))
+        (ffn_activation): HardGELU()
+        (norm1): Identity()
+        (norm2): Identity()
+        (ca): Sequential(
+          (0): AdaptiveAvgPool2d(output_size=1)
+          (1): Conv2d(144, 144, kernel_size=(1, 1), stride=(1, 1))
+          (2): Sigmoid()
+        )
+      )
+    )
+    (renderer): AdaLNRenderer(
+      (latent_upsample): Sequential(
+        (0): Conv2d(320, 768, kernel_size=(1, 1), stride=(1, 1))
+        (1): PixelShuffle(upscale_factor=4)
+      )
+      (input_proj): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (condition_proj): Conv2d(144, 768, kernel_size=(1, 1), stride=(1, 1))
+      (norm): Identity()
+      (mlp): Sequential(
+        (0): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+        (1): SiLU()
+        (2): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (adaln): Sequential(
+        (0): SiLU()
+        (1): Conv2d(48, 144, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (output): Sequential(
+        (0): Conv2d(48, 48, kernel_size=(1, 1), stride=(1, 1))
+        (1): PixelShuffle(upscale_factor=4)
+      )
+      (gate_activation): LeakyHardSigmoid()
+    )
+  )
+)
+
+MODULES
+================================================================================
+                                                                       PULSE                     params=14,179,432
+encoder                                                                Encoder                   params=12,133,696
+encoder.patch_embed                                                    Conv2d                    params=393,728
+encoder.blocks                                                         ModuleList                params=11,575,296
+encoder.blocks.0                                                       DCB                       params=2,893,824
+encoder.blocks.0.conv1                                                 Conv2d                    params=262,656
+encoder.blocks.0.conv2                                                 Conv2d                    params=5,120
+encoder.blocks.0.conv3                                                 Conv2d                    params=262,656
+encoder.blocks.0.dc_activation                                         GELU                      params=0
+encoder.blocks.0.conv4                                                 Conv2d                    params=1,050,624
+encoder.blocks.0.conv5                                                 Conv2d                    params=1,049,088
+encoder.blocks.0.ffn_activation                                        GELU                      params=0
+encoder.blocks.0.norm1                                                 RMSNorm2d                 params=512
+encoder.blocks.0.norm2                                                 RMSNorm2d                 params=512
+encoder.blocks.0.ca                                                    Sequential                params=262,656
+encoder.blocks.0.ca.0                                                  AdaptiveAvgPool2d         params=0
+encoder.blocks.0.ca.1                                                  Conv2d                    params=262,656
+encoder.blocks.0.ca.2                                                  Sigmoid                   params=0
+encoder.blocks.1                                                       DCB                       params=2,893,824
+encoder.blocks.1.conv1                                                 Conv2d                    params=262,656
+encoder.blocks.1.conv2                                                 Conv2d                    params=5,120
+encoder.blocks.1.conv3                                                 Conv2d                    params=262,656
+encoder.blocks.1.dc_activation                                         GELU                      params=0
+encoder.blocks.1.conv4                                                 Conv2d                    params=1,050,624
+encoder.blocks.1.conv5                                                 Conv2d                    params=1,049,088
+encoder.blocks.1.ffn_activation                                        GELU                      params=0
+encoder.blocks.1.norm1                                                 RMSNorm2d                 params=512
+encoder.blocks.1.norm2                                                 RMSNorm2d                 params=512
+encoder.blocks.1.ca                                                    Sequential                params=262,656
+encoder.blocks.1.ca.0                                                  AdaptiveAvgPool2d         params=0
+encoder.blocks.1.ca.1                                                  Conv2d                    params=262,656
+encoder.blocks.1.ca.2                                                  Sigmoid                   params=0
+encoder.blocks.2                                                       DCB                       params=2,893,824
+encoder.blocks.2.conv1                                                 Conv2d                    params=262,656
+encoder.blocks.2.conv2                                                 Conv2d                    params=5,120
+encoder.blocks.2.conv3                                                 Conv2d                    params=262,656
+encoder.blocks.2.dc_activation                                         GELU                      params=0
+encoder.blocks.2.conv4                                                 Conv2d                    params=1,050,624
+encoder.blocks.2.conv5                                                 Conv2d                    params=1,049,088
+encoder.blocks.2.ffn_activation                                        GELU                      params=0
+encoder.blocks.2.norm1                                                 RMSNorm2d                 params=512
+encoder.blocks.2.norm2                                                 RMSNorm2d                 params=512
+encoder.blocks.2.ca                                                    Sequential                params=262,656
+encoder.blocks.2.ca.0                                                  AdaptiveAvgPool2d         params=0
+encoder.blocks.2.ca.1                                                  Conv2d                    params=262,656
+encoder.blocks.2.ca.2                                                  Sigmoid                   params=0
+encoder.blocks.3                                                       DCB                       params=2,893,824
+encoder.blocks.3.conv1                                                 Conv2d                    params=262,656
+encoder.blocks.3.conv2                                                 Conv2d                    params=5,120
+encoder.blocks.3.conv3                                                 Conv2d                    params=262,656
+encoder.blocks.3.dc_activation                                         GELU                      params=0
+encoder.blocks.3.conv4                                                 Conv2d                    params=1,050,624
+encoder.blocks.3.conv5                                                 Conv2d                    params=1,049,088
+encoder.blocks.3.ffn_activation                                        GELU                      params=0
+encoder.blocks.3.norm1                                                 RMSNorm2d                 params=512
+encoder.blocks.3.norm2                                                 RMSNorm2d                 params=512
+encoder.blocks.3.ca                                                    Sequential                params=262,656
+encoder.blocks.3.ca.0                                                  AdaptiveAvgPool2d         params=0
+encoder.blocks.3.ca.1                                                  Conv2d                    params=262,656
+encoder.blocks.3.ca.2                                                  Sigmoid                   params=0
+encoder.norm_out                                                       RMSNorm2d                 params=512
+encoder.proj_out                                                       Conv2d                    params=164,160
+entropy_model                                                          HyperTwoStepEM            params=1,337,224
+entropy_model.hyper_enc                                                HyperEncoder              params=303,456
+entropy_model.hyper_enc.body                                           Sequential                params=303,456
+entropy_model.hyper_enc.body.0                                         DCB                       params=97,056
+entropy_model.hyper_enc.body.0.adaptor                                 Conv2d                    params=30,816
+entropy_model.hyper_enc.body.0.block                                   DCB                       params=66,240
+entropy_model.hyper_enc.body.0.block.conv1                             Conv2d                    params=9,312
+entropy_model.hyper_enc.body.0.block.conv2                             Conv2d                    params=960
+entropy_model.hyper_enc.body.0.block.conv3                             Conv2d                    params=9,312
+entropy_model.hyper_enc.body.0.block.dc_activation                     GELU                      params=0
+entropy_model.hyper_enc.body.0.block.conv4                             Conv2d                    params=18,624
+entropy_model.hyper_enc.body.0.block.conv5                             Conv2d                    params=18,528
+entropy_model.hyper_enc.body.0.block.ffn_activation                    GELU                      params=0
+entropy_model.hyper_enc.body.0.block.norm1                             RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.0.block.norm2                             RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.0.block.ca                                Sequential                params=9,312
+entropy_model.hyper_enc.body.0.block.ca.0                              AdaptiveAvgPool2d         params=0
+entropy_model.hyper_enc.body.0.block.ca.1                              Conv2d                    params=9,312
+entropy_model.hyper_enc.body.0.block.ca.2                              Sigmoid                   params=0
+entropy_model.hyper_enc.body.1                                         HyperDownBlock            params=103,200
+entropy_model.hyper_enc.body.1.down                                    Conv2d                    params=36,960
+entropy_model.hyper_enc.body.1.dcb                                     DCB                       params=66,240
+entropy_model.hyper_enc.body.1.dcb.block                               DCB                       params=66,240
+entropy_model.hyper_enc.body.1.dcb.block.conv1                         Conv2d                    params=9,312
+entropy_model.hyper_enc.body.1.dcb.block.conv2                         Conv2d                    params=960
+entropy_model.hyper_enc.body.1.dcb.block.conv3                         Conv2d                    params=9,312
+entropy_model.hyper_enc.body.1.dcb.block.dc_activation                 GELU                      params=0
+entropy_model.hyper_enc.body.1.dcb.block.conv4                         Conv2d                    params=18,624
+entropy_model.hyper_enc.body.1.dcb.block.conv5                         Conv2d                    params=18,528
+entropy_model.hyper_enc.body.1.dcb.block.ffn_activation                GELU                      params=0
+entropy_model.hyper_enc.body.1.dcb.block.norm1                         RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.1.dcb.block.norm2                         RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.1.dcb.block.ca                            Sequential                params=9,312
+entropy_model.hyper_enc.body.1.dcb.block.ca.0                          AdaptiveAvgPool2d         params=0
+entropy_model.hyper_enc.body.1.dcb.block.ca.1                          Conv2d                    params=9,312
+entropy_model.hyper_enc.body.1.dcb.block.ca.2                          Sigmoid                   params=0
+entropy_model.hyper_enc.body.2                                         HyperDownBlock            params=103,200
+entropy_model.hyper_enc.body.2.down                                    Conv2d                    params=36,960
+entropy_model.hyper_enc.body.2.dcb                                     DCB                       params=66,240
+entropy_model.hyper_enc.body.2.dcb.block                               DCB                       params=66,240
+entropy_model.hyper_enc.body.2.dcb.block.conv1                         Conv2d                    params=9,312
+entropy_model.hyper_enc.body.2.dcb.block.conv2                         Conv2d                    params=960
+entropy_model.hyper_enc.body.2.dcb.block.conv3                         Conv2d                    params=9,312
+entropy_model.hyper_enc.body.2.dcb.block.dc_activation                 GELU                      params=0
+entropy_model.hyper_enc.body.2.dcb.block.conv4                         Conv2d                    params=18,624
+entropy_model.hyper_enc.body.2.dcb.block.conv5                         Conv2d                    params=18,528
+entropy_model.hyper_enc.body.2.dcb.block.ffn_activation                GELU                      params=0
+entropy_model.hyper_enc.body.2.dcb.block.norm1                         RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.2.dcb.block.norm2                         RMSNorm2d                 params=96
+entropy_model.hyper_enc.body.2.dcb.block.ca                            Sequential                params=9,312
+entropy_model.hyper_enc.body.2.dcb.block.ca.0                          AdaptiveAvgPool2d         params=0
+entropy_model.hyper_enc.body.2.dcb.block.ca.1                          Conv2d                    params=9,312
+entropy_model.hyper_enc.body.2.dcb.block.ca.2                          Sigmoid                   params=0
+entropy_model.hyper_dec                                                HyperDecoder              params=154,688
+entropy_model.hyper_dec.body                                           Sequential                params=154,688
+entropy_model.hyper_dec.body.0                                         HyperUpBlock              params=61,824
+entropy_model.hyper_dec.body.0.up                                      Conv2d                    params=37,248
+entropy_model.hyper_dec.body.0.dcb                                     DCB                       params=24,576
+entropy_model.hyper_dec.body.0.dcb.block                               DCB                       params=24,576
+entropy_model.hyper_dec.body.0.dcb.block.conv1                         Conv2d                    params=2,400
+entropy_model.hyper_dec.body.0.dcb.block.conv2                         Conv2d                    params=960
+entropy_model.hyper_dec.body.0.dcb.block.conv3                         Conv2d                    params=2,400
+entropy_model.hyper_dec.body.0.dcb.block.dc_activation                 HardGELU                  params=0
+entropy_model.hyper_dec.body.0.dcb.block.conv4                         Conv2d                    params=4,800
+entropy_model.hyper_dec.body.0.dcb.block.conv5                         Conv2d                    params=4,704
+entropy_model.hyper_dec.body.0.dcb.block.ffn_activation                HardGELU                  params=0
+entropy_model.hyper_dec.body.0.dcb.block.norm1                         Identity                  params=0
+entropy_model.hyper_dec.body.0.dcb.block.norm2                         Identity                  params=0
+entropy_model.hyper_dec.body.0.dcb.block.ca                            Sequential                params=9,312
+entropy_model.hyper_dec.body.0.dcb.block.ca.0                          AdaptiveAvgPool2d         params=0
+entropy_model.hyper_dec.body.0.dcb.block.ca.1                          Conv2d                    params=9,312
+entropy_model.hyper_dec.body.0.dcb.block.ca.2                          Sigmoid                   params=0
+entropy_model.hyper_dec.body.1                                         HyperUpBlock              params=61,824
+entropy_model.hyper_dec.body.1.up                                      Conv2d                    params=37,248
+entropy_model.hyper_dec.body.1.dcb                                     DCB                       params=24,576
+entropy_model.hyper_dec.body.1.dcb.block                               DCB                       params=24,576
+entropy_model.hyper_dec.body.1.dcb.block.conv1                         Conv2d                    params=2,400
+entropy_model.hyper_dec.body.1.dcb.block.conv2                         Conv2d                    params=960
+entropy_model.hyper_dec.body.1.dcb.block.conv3                         Conv2d                    params=2,400
+entropy_model.hyper_dec.body.1.dcb.block.dc_activation                 HardGELU                  params=0
+entropy_model.hyper_dec.body.1.dcb.block.conv4                         Conv2d                    params=4,800
+entropy_model.hyper_dec.body.1.dcb.block.conv5                         Conv2d                    params=4,704
+entropy_model.hyper_dec.body.1.dcb.block.ffn_activation                HardGELU                  params=0
+entropy_model.hyper_dec.body.1.dcb.block.norm1                         Identity                  params=0
+entropy_model.hyper_dec.body.1.dcb.block.norm2                         Identity                  params=0
+entropy_model.hyper_dec.body.1.dcb.block.ca                            Sequential                params=9,312
+entropy_model.hyper_dec.body.1.dcb.block.ca.0                          AdaptiveAvgPool2d         params=0
+entropy_model.hyper_dec.body.1.dcb.block.ca.1                          Conv2d                    params=9,312
+entropy_model.hyper_dec.body.1.dcb.block.ca.2                          Sigmoid                   params=0
+entropy_model.hyper_dec.body.2                                         Conv2d                    params=31,040
+entropy_model.em_step1                                                 EMStep1                   params=166,656
+entropy_model.em_step1.in_proj                                         Conv2d                    params=41,088
+entropy_model.em_step1.dcb                                             DCB                       params=43,008
+entropy_model.em_step1.dcb.block                                       DCB                       params=43,008
+entropy_model.em_step1.dcb.block.conv1                                 Conv2d                    params=4,224
+entropy_model.em_step1.dcb.block.conv2                                 Conv2d                    params=1,280
+entropy_model.em_step1.dcb.block.conv3                                 Conv2d                    params=4,224
+entropy_model.em_step1.dcb.block.dc_activation                         HardGELU                  params=0
+entropy_model.em_step1.dcb.block.conv4                                 Conv2d                    params=8,448
+entropy_model.em_step1.dcb.block.conv5                                 Conv2d                    params=8,320
+entropy_model.em_step1.dcb.block.ffn_activation                        HardGELU                  params=0
+entropy_model.em_step1.dcb.block.norm1                                 Identity                  params=0
+entropy_model.em_step1.dcb.block.norm2                                 Identity                  params=0
+entropy_model.em_step1.dcb.block.ca                                    Sequential                params=16,512
+entropy_model.em_step1.dcb.block.ca.0                                  AdaptiveAvgPool2d         params=0
+entropy_model.em_step1.dcb.block.ca.1                                  Conv2d                    params=16,512
+entropy_model.em_step1.dcb.block.ca.2                                  Sigmoid                   params=0
+entropy_model.em_step1.out_proj                                        Conv2d                    params=82,560
+entropy_model.em_step2                                                 EMStep2                   params=207,296
+entropy_model.em_step2.in_proj                                         Conv2d                    params=123,008
+entropy_model.em_step2.dcb                                             DCB                       params=43,008
+entropy_model.em_step2.dcb.block                                       DCB                       params=43,008
+entropy_model.em_step2.dcb.block.conv1                                 Conv2d                    params=4,224
+entropy_model.em_step2.dcb.block.conv2                                 Conv2d                    params=1,280
+entropy_model.em_step2.dcb.block.conv3                                 Conv2d                    params=4,224
+entropy_model.em_step2.dcb.block.dc_activation                         HardGELU                  params=0
+entropy_model.em_step2.dcb.block.conv4                                 Conv2d                    params=8,448
+entropy_model.em_step2.dcb.block.conv5                                 Conv2d                    params=8,320
+entropy_model.em_step2.dcb.block.ffn_activation                        HardGELU                  params=0
+entropy_model.em_step2.dcb.block.norm1                                 Identity                  params=0
+entropy_model.em_step2.dcb.block.norm2                                 Identity                  params=0
+entropy_model.em_step2.dcb.block.ca                                    Sequential                params=16,512
+entropy_model.em_step2.dcb.block.ca.0                                  AdaptiveAvgPool2d         params=0
+entropy_model.em_step2.dcb.block.ca.1                                  Conv2d                    params=16,512
+entropy_model.em_step2.dcb.block.ca.2                                  Sigmoid                   params=0
+entropy_model.em_step2.out_proj                                        Conv2d                    params=41,280
+entropy_model.scale_dec                                                ScaleDecoder              params=496,648
+entropy_model.scale_dec.proj                                           Conv2d                    params=496,640
+entropy_model.entropy_bottleneck                                       BitEstimator              params=8,448
+entropy_model.gaussian_conditional                                     GaussianEncoder           params=0
+entropy_model.rate                                                     TargetRateModule          params=0
+decoder                                                                Decoder                   params=708,504
+decoder.up0                                                            Sequential                params=46,224
+decoder.up0.0                                                          Conv2d                    params=46,224
+decoder.blocks                                                         ModuleList                params=285,664
+decoder.blocks.0                                                       DCB                       params=142,832
+decoder.blocks.0.conv1                                                 Conv2d                    params=20,880
+decoder.blocks.0.conv2                                                 Conv2d                    params=1,440
+decoder.blocks.0.conv3                                                 Conv2d                    params=20,880
+decoder.blocks.0.dc_activation                                         HardGELU                  params=0
+decoder.blocks.0.conv4                                                 Conv2d                    params=39,440
+decoder.blocks.0.conv5                                                 Conv2d                    params=39,312
+decoder.blocks.0.ffn_activation                                        HardGELU                  params=0
+decoder.blocks.0.norm1                                                 Identity                  params=0
+decoder.blocks.0.norm2                                                 Identity                  params=0
+decoder.blocks.0.ca                                                    Sequential                params=20,880
+decoder.blocks.0.ca.0                                                  AdaptiveAvgPool2d         params=0
+decoder.blocks.0.ca.1                                                  Conv2d                    params=20,880
+decoder.blocks.0.ca.2                                                  Sigmoid                   params=0
+decoder.blocks.1                                                       DCB                       params=142,832
+decoder.blocks.1.conv1                                                 Conv2d                    params=20,880
+decoder.blocks.1.conv2                                                 Conv2d                    params=1,440
+decoder.blocks.1.conv3                                                 Conv2d                    params=20,880
+decoder.blocks.1.dc_activation                                         HardGELU                  params=0
+decoder.blocks.1.conv4                                                 Conv2d                    params=39,440
+decoder.blocks.1.conv5                                                 Conv2d                    params=39,312
+decoder.blocks.1.ffn_activation                                        HardGELU                  params=0
+decoder.blocks.1.norm1                                                 Identity                  params=0
+decoder.blocks.1.norm2                                                 Identity                  params=0
+decoder.blocks.1.ca                                                    Sequential                params=20,880
+decoder.blocks.1.ca.0                                                  AdaptiveAvgPool2d         params=0
+decoder.blocks.1.ca.1                                                  Conv2d                    params=20,880
+decoder.blocks.1.ca.2                                                  Sigmoid                   params=0
+decoder.renderer                                                       AdaLNRenderer             params=375,456
+decoder.renderer.latent_upsample                                       Sequential                params=246,528
+decoder.renderer.latent_upsample.0                                     Conv2d                    params=246,528
+decoder.renderer.latent_upsample.1                                     PixelShuffle              params=0
+decoder.renderer.input_proj                                            Conv2d                    params=2,304
+decoder.renderer.condition_proj                                        Conv2d                    params=111,360
+decoder.renderer.norm                                                  Identity                  params=0
+decoder.renderer.mlp                                                   Sequential                params=4,704
+decoder.renderer.mlp.0                                                 Conv2d                    params=2,352
+decoder.renderer.mlp.1                                                 SiLU                      params=0
+decoder.renderer.mlp.2                                                 Conv2d                    params=2,352
+decoder.renderer.adaln                                                 Sequential                params=7,056
+decoder.renderer.adaln.0                                               SiLU                      params=0
+decoder.renderer.adaln.1                                               Conv2d                    params=7,056
+decoder.renderer.output                                                Sequential                params=2,352
+decoder.renderer.output.0                                              Conv2d                    params=2,352
+decoder.renderer.output.1                                              PixelShuffle              params=0
+decoder.renderer.gate_activation                                       LeakyHardSigmoid          params=0
