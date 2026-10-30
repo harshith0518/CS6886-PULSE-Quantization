@@ -7,14 +7,14 @@ sources below. This file lists what was used, and how confident we can be in eac
 
 | Tag | Meaning |
 |---|---|
-| **[V]** | Verified in this session by reading the artefact or extracting its content |
+| **[V]** | Verified in this session by reading the artefact, or by fetching the source over HTTP |
 | **[E]** | Verified by execution: the library or API was actually called and produced values |
-| **[R]** | Standard reference from the literature; **not machine-verified in this session** |
+| **[R]** | Standard reference from the literature; **not verified in this session** |
 
-Note on **[R]**: web search was unavailable in this environment (the search tool has no API key),
-so the external references below are cited from established knowledge and were not re-checked
-against a live index. Anyone writing this up for submission should confirm them before a
-bibliography is final.
+Network status: `web_search` is unavailable here (the tool has no API key), so there is no search
+engine. `web_fetch` **does** work, and Python `urllib` works from the shell, so a citation can be
+verified whenever a stable URL is known. Five of the seven literature references below were fetched
+and confirmed on 2026-10-30; the remaining two are still **[R]** and say so.
 
 ## 1. The model and its paper
 
@@ -53,13 +53,13 @@ Per-file SHA-256 is in `datasets/set14/manifest.json` so the download is auditab
 | Method | Used in | Source | Status |
 |---|---|---|---|
 | Rate-equivalent penalty `100*((1+d_bpp/100)*2^(-d_psnr/slope)-1)` | all penalty and budget numbers | **defined in this repository**, `scripts/pipeline.py:598`. Not a published metric | [V] |
-| Bjøntegaard delta-rate | `scripts/analyze_comparison.py` | G. Bjøntegaard, "Calculation of average coding efficiency based on subjective quality scores" (2001); the BD-PSNR extension is the VCEG-AI11 contribution (2008) | [R] |
-| Monotone cubic (PCHIP) interpolation | BD-rate curves | Fritsch and Carlson, "Monotone piecewise cubic interpolation", SIAM J. Numer. Anal. 17(2), 1980 | [R] |
-| `scipy.interpolate.PchipInterpolator` | BD-rate curves | SciPy 1.18.1 | [E] |
-| Mixed-integer linear programming | `scripts/solve_ilp.py` | HiGHS: Huangfu and Hall, "Parallelizing the dual revised simplex method", Math. Prog. Computation 10(1), 2018 | [R] |
-| `scipy.optimize.milp` | solver, no extra dependency | SciPy 1.18.1 wrapping HiGHS | [E] |
-| Per-output-channel symmetric weight quantization | `pulsequant/core.py` | Jacob et al., "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference", CVPR 2018 | [R] |
-| Straight-through estimator (proposed QAT only, not run) | not implemented | Bengio, Léonard, Courville, "Estimating or propagating gradients through stochastic neurons", 2013 | [R] |
+| Bjøntegaard delta-rate | `scripts/analyze_comparison.py` | G. Bjøntegaard, "Calculation of average coding efficiency based on subjective quality scores" (2001), plus the BD-PSNR extension in the VCEG-AI11 contribution (2008). **No stable URL found; not verified** | [R] |
+| Monotone cubic (PCHIP) interpolation | BD-rate curves | F. N. Fritsch and J. Butland, "A method for constructing local monotone piecewise cubic interpolants", SIAM J. Sci. Comput. 5(2), 300-304, 1984, DOI 10.1137/0905021 - confirmed as the algorithm SciPy implements. End slopes use C. Moler, *Numerical Computing with Matlab*, 2004 | [V] |
+| `scipy.interpolate.PchipInterpolator` | BD-rate curves | SciPy 1.18.1; documented as shape-preserving C1 monotone cubic, no overshoot | [E] / [V] |
+| Mixed-integer linear programming | `scripts/solve_ilp.py` | Q. Huangfu and J. A. J. Hall, "Parallelizing the dual revised simplex method", Mathematical Programming Computation 10(1), 119-142, 2018, DOI 10.1007/s12532-017-0130-5 - the citation HiGHS itself requests | [V] |
+| `scipy.optimize.milp` | solver, no extra dependency | SciPy 1.18.1; documented as a deterministic wrapper of HiGHS | [E] / [V] |
+| Per-output-channel symmetric weight quantization | `pulsequant/core.py` | B. Jacob, S. Kligys, B. Chen, M. Zhu, M. Tang, A. Howard, H. Adam, D. Kalenichenko, "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference", arXiv:1712.05877, 2017 (CVPR 2018) | [V] |
+| Straight-through estimator (proposed QAT only, not run) | not implemented | Y. Bengio, N. Léonard, A. Courville, "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation", arXiv:1308.3432, 2013. This is the paper that names the straight-through estimator | [V] |
 | NVML total-energy counter and power sampling | `scripts/bench_configs.py` | NVIDIA Management Library, `nvmlDeviceGetTotalEnergyConsumption`, `nvmlDeviceGetPowerUsage` | [E] |
 | Simulated-format methodology: no speed or energy claim for fake quantization | `results/mixed/COMPARISON.md` | this repository's own rule, `AGENTS.md` rule 4 | [V] |
 
@@ -96,7 +96,7 @@ Each headline statement and the artefact that demonstrates it.
 | Calibrated activation quantization, W8A8 | not implemented |
 | Generalisation beyond three small datasets | Kodak 24, CLIC 41, Set14 14; Set14 is a transfer check, not a peer benchmark |
 | Perceptual quality | only MSE/PSNR was measured, no LPIPS or other perceptual metric was run |
-| The `[R]` citations above | not machine-verified in this session |
+| The `[R]` citations above | not machine-verified in this session; only Bjøntegaard remains unverified |
 
 ## 6. Reproduction chain
 
