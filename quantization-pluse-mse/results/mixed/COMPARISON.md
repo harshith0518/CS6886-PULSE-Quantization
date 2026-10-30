@@ -100,31 +100,52 @@ recommended operating point" needs that qualifier.
 **The fragile components stay expensive.** H0, H3 and D5 cannot go below FP16, so the entropy
 network and renderer MLP contribute fixed cost with no compression available inside the 1% budget.
 
-## 5. Speed: not measured, and nothing here makes it faster
+## 5. Speed and energy: measured, and nothing got faster
 
-I have to be blunt, because it is the one part of your question I cannot answer with evidence.
+These numbers did not exist when this document was first written. They now do, and they were
+produced with a paired design, because a naive sequential benchmark turned out to be unusable: on
+this laptop the *same* FP32 configuration measured 248 ms at the start of a run and 308 ms at the
+end, a 25% drift from throttling. See `results/metrics/README.md` for that control and for the
+interleaved protocol.
 
-**There is no latency, throughput, energy or memory measurement for any quantized configuration in
-this repository.** The mixed model and the base model run at the same speed by construction: the
-quantizer writes quantized values back into FP32 tensors, so every convolution still executes in
-FP32 on the same kernels. There is no faster path to measure. The repository even states this as a
-rule: "fake-quant latency/energy/memory are intentionally excluded; they belong to the real-format
-benchmark."
+Median paired deltas against FP32, 10 Kodak images, 5 rounds, 50 pairs per cell, bootstrap 95% CI:
 
-So the honest answer to "how much faster did it become" is: **the model is 60.4% smaller in bytes
-and 0% faster in wall-clock time as built.** Any speed claim at this point would be invented.
+| Config | QP | Latency | Energy |
+|---|---:|---|---|
+| ILP mixed | 0 | **+5.66%** (+1.12 to +12.91) | -0.74% (-2.61 to +7.71) |
+| ILP mixed | 3 | **+4.79%** (+1.27 to +9.80) | -0.39% (-2.24 to +7.76) |
+| ILP mixed | 7 | +4.35% (-0.60 to +7.92) | +0.43% (-2.30 to +7.85) |
+| FP16 autocast | 3 | +4.29% (+1.18 to +9.72) | **-9.99%** (-15.14 to -5.28) |
+| FP16 autocast | 7 | +4.51% (+0.46 to +8.77) | **-9.81%** (-12.75 to -4.68) |
+| BF16 autocast | 3 | -1.55% (-2.69 to +4.02) | **-8.61%** (-13.43 to -4.64) |
+| BF16 autocast | 7 | +1.82% (-0.33 to +7.37) | **-8.86%** (-10.38 to -2.20) |
 
-What it would take to produce a real speed number:
+Readings:
+
+- **No configuration is faster.** Not one latency delta has a confidence interval entirely below
+  zero. The mixed model is 4-6% slower; genuine half precision is neutral to slightly slower.
+- **FP16 and BF16 cut energy by about 9-12%**, with intervals excluding zero at QP3 and QP7. This is
+  the only measured efficiency gain in the study, and it comes from real half-precision kernels,
+  not from quantization.
+- **The ILP model does not change energy** (intervals span zero at every QP), exactly as the
+  mechanism predicts: the weights are still FP32 and the kernels are unchanged, so the 60% size
+  saving buys zero runtime benefit as built.
+- The ILP latency penalty is **observed but not explained**. Fake quantization should be neutral;
+  the plausible mechanism is that changed weight values alter latent statistics and therefore the
+  work done in rate search and entropy coding. It was not isolated experimentally.
+- Peak VRAM is higher for fake-quant configurations (about 281 MB vs 228 MB), but that is a harness
+  artifact: the quantizer keeps an FP32 clone so it can restore weights. Not a memory regression.
+
+The honest one-line answer to "how much faster": **it is not faster at all.** It is 60.4% smaller
+in bytes, 9-12% more energy-efficient only if you additionally run real FP16/BF16 kernels, and
+marginally slower in wall-clock time as shipped.
+
+What would change that:
 
 | Path | Status | Expected |
 |---|---|---|
-| FP16/BF16 modules actually run in half precision | not done; FP16/BF16 are real on `sm_86` | measurable now, the cheapest honest win |
-| INT8 kernels (TensorRT or ONNX Runtime on the E2/E3 blocks) | not built; needs ONNX export | where the real gain is |
+| INT8 kernels (TensorRT or ONNX Runtime on the E2/E3 blocks) | not built; needs ONNX export | the only route to a real INT8 speedup |
 | Simulated formats (FP8, FP4, INT4) | by definition no speed claim | forbidden |
-
-If you want a speed figure, the realistic next step is a half-precision latency benchmark, roughly
-three hours: cast the FP16/BF16 components with `.half()`, time encode and decode against FP32 on
-the same images, and report J/image and ms only for formats that genuinely execute differently.
 
 ## 6. Summary
 
@@ -135,7 +156,8 @@ the same images, and report J/image and ms only for formats that genuinely execu
 | Bitrate at QP4-QP7 | **0.08% to 0.42% smaller files** |
 | PSNR | -0.004 to -0.063 dB, worst at QP7 |
 | Robustness across datasets | stable within 1.4x, vs 2.9x for uniform INT8 |
-| Speed | **unchanged and unmeasured**; no fast path exists yet |
+| Latency | **4-6% slower** as built; no configuration is faster |
+| Energy | **unchanged** for the mixed model; -9 to -12% only with real FP16/BF16 kernels |
 | Retraining required | none |
 
 ## Files
