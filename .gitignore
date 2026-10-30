@@ -28,6 +28,7 @@ venv/
 # Full-resolution evaluation sets are re-downloadable; keep the 0.1 MB thumbnails.
 datasets/kodak/*.png
 datasets/clic_professional/
+datasets/set14/*.png
 # Raw append-only sweep ledger (~85 MB); regenerate with pipeline.py sweep.
 quantization-pluse-mse/results/_ledger/
 # Raw per-image sweep dumps are subsets of the ledger above.

@@ -16,8 +16,10 @@
 | ILP4. Presentation | Planned | `presentation/outline.md` |
 
 **Solved headline:** 21.677 MB against 54.688 MB FP32 (**-60.4%**) at a 1% worst-QP penalty
-budget. Measured **0.672% on Kodak and 0.851% on CLIC** against a predicted 0.972%, so the solver's
-estimate is conservative on both datasets and the assignment stays inside its budget.
+budget. Measured **0.672% on Kodak, 0.851% on CLIC and 0.935% on Set14** against a predicted
+0.972%, so the solver's estimate is conservative on all three sets and the assignment stays
+inside its budget everywhere. Set14 was never used to fit the coefficients, so that third number
+is a genuine transfer result.
 
 Two corrections to the plan below, both deliberate:
 

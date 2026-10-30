@@ -69,6 +69,42 @@ which is consistent with the earlier finding that E1 was green on Kodak and yell
 point of constraining the total rather than each component. Both stay inside the 1% budget on the
 harder dataset.
 
+## Results, Set14, 14 images, QPs 0-7
+
+Third, independent set: 14 natural images at native resolution, 250x360 to 768x512, never used for
+calibration or coefficient fitting. Provenance in `datasets/set14/README.md`.
+
+| Config | Size MB | Saving | Worst-QP penalty | Mean penalty |
+|---|---:|---:|---:|---:|
+| FP32 | 54.688 | 0.0% | 0.000% | 0.000% |
+| FP16 | 27.416 | 49.9% | 0.056% | 0.011% |
+| BF16 | 27.416 | 49.9% | 0.160% | 0.047% |
+| INT8 | 13.904 | 74.6% | 19.374% | 11.533% |
+| safe | 17.904 | 67.3% | 2.810% | 1.659% |
+| greedy | 24.565 | 55.1% | 0.393% | 0.303% |
+| **ilp** | **21.677** | **60.4%** | **0.935%** | **0.512%** |
+
+The coefficients were fitted on Kodak and CLIC only, so this is a genuine transfer test. The ILP
+assignment stays inside its 1% budget on all three sets.
+
+## Cross-dataset summary
+
+Worst-QP penalty, same assignment on each set:
+
+| Config | Kodak | CLIC | Set14 | Spread |
+|---|---:|---:|---:|---:|
+| FP16 | 0.038% | 0.047% | 0.056% | 1.5x |
+| BF16 | 0.106% | 0.155% | 0.160% | 1.5x |
+| INT8 | 26.184% | 56.701% | 19.374% | 2.9x |
+| safe | 2.633% | 4.301% | 2.810% | 1.6x |
+| greedy | 0.386% | 0.358% | 0.393% | 1.1x |
+| ilp | 0.672% | 0.851% | 0.935% | 1.4x |
+
+The two conclusions that matter are stable: uniform INT8 is unusable everywhere (19-57%), and a
+total-constrained assignment stays near-zero penalty everywhere. `greedy` and `ilp` vary by at most
+1.4x across sets, while uniform INT8 varies by 2.9x, which is the whole argument for constraining
+the total rather than each component.
+
 ## ILP per-QP behaviour, Kodak
 
 | QP | bpp | PSNR | d_PSNR | d_bpp | penalty |
@@ -102,6 +138,10 @@ Uniform INT8, the case that matters for the solver, is predicted within about 5%
 under-predicted on CLIC. The single-component coefficients are therefore usable as ILP input
 without re-measurement. BF16 ratios are meaningless because both sides are near zero.
 
+Set14 has no single-component coefficients, because the 19-component sweep covers Kodak and CLIC
+only, so additivity is not testable there. `analyze_additivity.py` skips any dataset without
+coefficients rather than emitting a zero prediction and a meaningless ratio.
+
 The ILP run itself is a second check on the model: predicted 0.972% at QP7, measured 0.672%,
 so the solver's estimate is conservative rather than optimistic.
 
@@ -121,6 +161,6 @@ so the solver's estimate is conservative rather than optimistic.
   and no latency or energy is claimed for any format.
 - INT4, FP8 and FP4 remain per-output-channel-only, so they are pessimistic as 4-bit/8-bit float
   representatives.
-- Two datasets. A third independent set was requested but no fourth image set exists in the repo
-  and outbound TLS is blocked in this environment, so it could not be fetched. The harness accepts
-  any `datasets/<name>`, so adding one is a single command.
+- Three datasets: Kodak, CLIC Professional, Set14. Set14 is small (14 images) and lower-resolution
+  than the other two, so treat it as a transfer check rather than a benchmark of equal weight. It
+  has no single-component coefficients, so additivity cannot be tested on it.

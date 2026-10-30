@@ -1,0 +1,77 @@
+{
+  "count": 14,
+  "files": [
+    {
+      "bytes": 531037,
+      "file": "img_001.png",
+      "sha256": "d60c263b88e82f70dccb0112c8e1e5f66ca8be6581d88ceabb353fe4c88feada"
+    },
+    {
+      "bytes": 821015,
+      "file": "img_002.png",
+      "sha256": "282a29a2d82defbda925c01875b765c4c5c33f85f2f5655400a771eb7241d247"
+    },
+    {
+      "bytes": 162038,
+      "file": "img_003.png",
+      "sha256": "ecf4c67660202decfbabf5898ef56a2cd1a88393d48dfc9208d4467ac9a76713"
+    },
+    {
+      "bytes": 154469,
+      "file": "img_004.png",
+      "sha256": "04ae5ef38fc38ec1db20df2842c07226d7684da312fd3bd4cd0bd0401d9f62b0"
+    },
+    {
+      "bytes": 192368,
+      "file": "img_005.png",
+      "sha256": "ca96cdc294c81b1810dab4ba73c3675049cfd127d090a4719ff21f6a9d96b4bd"
+    },
+    {
+      "bytes": 110826,
+      "file": "img_006.png",
+      "sha256": "bd3710be9a2d9efdfa254ac2282dd7eaec0079d7bcd43fcb256517afebbfee58"
+    },
+    {
+      "bytes": 348592,
+      "file": "img_007.png",
+      "sha256": "d72e12d6eb8144ad2420fe91af19bcb51256ac17b8221fa1c8f89f2a3d6b50c0"
+    },
+    {
+      "bytes": 130720,
+      "file": "img_008.png",
+      "sha256": "c49e96409094b390704ec1eeab85a0f1c7660249ca8826ffe468c046758e3ab9"
+    },
+    {
+      "bytes": 374782,
+      "file": "img_009.png",
+      "sha256": "469af940770cb99f92abc82a597388fe07b5eaf7a557c9e20c0094efc2870e01"
+    },
+    {
+      "bytes": 318631,
+      "file": "img_010.png",
+      "sha256": "e62db478accc42370e463ac95f93e691debe751196f5927494cce1bae22df754"
+    },
+    {
+      "bytes": 618686,
+      "file": "img_011.png",
+      "sha256": "44509e5c39eb0a0af5b0cf887ee53194a1f6830d125cff763275e13544ed4614"
+    },
+    {
+      "bytes": 507582,
+      "file": "img_012.png",
+      "sha256": "f727b04ddea2c2ae07784ee9e9dd9db5c6035121d93de933eac3a9a8ad33a0a7"
+    },
+    {
+      "bytes": 269141,
+      "file": "img_013.png",
+      "sha256": "2743edf18619b152bcff0da9383110b4257531a096369a8dcf7e879e43c1e03e"
+    },
+    {
+      "bytes": 441802,
+      "file": "img_014.png",
+      "sha256": "6795235d3a79bbb80f951b199752d2e64882f649c86efe3d94695020f425c11d"
+    }
+  ],
+  "note": "Set14 HR images, third evaluation set (never used for calibration or tuning)",
+  "source": "https://github.com/jbhuang0604/SelfExSR/tree/master/data/Set14/image_SRF_2"
+}

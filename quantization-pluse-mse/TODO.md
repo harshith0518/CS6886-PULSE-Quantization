@@ -243,8 +243,12 @@ The multi-component capability was added as two additive scripts instead of a ch
 - [x] `scripts/solve_ilp.py`: MILP via HiGHS (`scipy.optimize.milp`, no new dependency).
   Variables `x[component, precision]` shared across QPs, per-QP quality constraints, size
   objective, greedy baseline for comparison.
-- [ ] Evaluate the ILP assignment with the harness.
-- [ ] Third dataset: not present in `datasets/`; the harness accepts any `datasets/<name>`.
+- [x] Evaluate the ILP assignment with the harness.
+- [x] Third dataset: `datasets/set14`, 14 images downloaded from SelfExSR, provenance in its README.
+  FP32 reference generated, noise floor recorded, all 7 configs measured.
+- [x] Three-way evaluation against the FP32 baseline: Kodak, CLIC, Set14, all 8 QPs each.
+- [ ] Single-component coefficients for Set14 (the 19-component sweep covers Kodak and CLIC only),
+  which is why additivity cannot be tested on the third set.
 
 **Measured on Kodak, all 8 QPs** (worst-QP mean penalty, analytic size):
 

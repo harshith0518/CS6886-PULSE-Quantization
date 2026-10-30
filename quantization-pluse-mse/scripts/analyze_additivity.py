@@ -74,6 +74,12 @@ def main():
             print(f"skip {dataset}: no summary")
             continue
         coefficients = load_coefficients(root, dataset)
+        if not coefficients:
+            print(
+                f"skip {dataset}: no single-component coefficients. "
+                "Additivity is only testable where the 19-component sweep was run."
+            )
+            continue
 
         measured = {(row["config"], int(row["qp"])): row for row in summary}
         for config, meta in configs.items():
@@ -96,7 +102,9 @@ def main():
                     predicted_bpp += coefficient["d_bpp"] or 0.0
                 actual = number(row.get("mean_penalty_pct"))
                 ratio = None
-                if actual is not None and predicted_penalty > 1e-9:
+                if missing or predicted_penalty <= 1e-9:
+                    ratio = None
+                elif actual is not None:
                     ratio = actual / predicted_penalty
                 all_rows.append({
                     "dataset": dataset,
