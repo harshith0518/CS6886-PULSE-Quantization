@@ -1,0 +1,25 @@
+{
+  "assignment": {
+    "D0": "int8",
+    "D1": "int8",
+    "D2": "int8",
+    "D3": "fp16",
+    "D4": "int8",
+    "D5": "fp16",
+    "D6": "int8",
+    "D7": "int8",
+    "D8": "int8",
+    "E0": "bf16",
+    "E1": "fp16",
+    "E2": "int8",
+    "E3": "int8",
+    "E4": "int8",
+    "E5": "int8",
+    "H0": "fp16",
+    "H1": "int8",
+    "H2": "int8",
+    "H3": "fp16"
+  },
+  "name": "safe",
+  "note": "most aggressive precision under a 1% worst-QP penalty per component"
+}

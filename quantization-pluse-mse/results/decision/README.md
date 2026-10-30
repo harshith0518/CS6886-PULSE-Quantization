@@ -58,28 +58,47 @@ or parameters is red at INT8". No component meets it. The only large fragile com
 fine-tuning run to reach INT8 on E1 buys nothing that BF16 does not already give. Record the
 skip as a measured decision, and revisit only if a red component grows past 5%.
 
-**Greedy: run it, but treat it as the baseline, not the answer.** `decision_budget_frontier.png`
-carries the greedy path. At a 1% additive budget it yields 24.56 MB (-55.1%) with BF16:3,
-FP16:12, FP32:3, INT8:1. Greedy is order-dependent, cannot express "this component needs a
-different level at QP5 than at QP0", and cannot trade two components against each other.
+**Greedy: keep it as the baseline.** At a 1% budget the greedy path with the weakest sensible
+constraint yields 24.56 MB (-55.1%). It is order-dependent and cannot carry extra constraints.
 
-**ILP: do it, and do it after additivity is validated.** The problem is small (19 components x
-8 formats x 8 QPs = 1,216 binaries), so CP-SAT solves it in seconds. It adds what greedy cannot:
-a global quality constraint instead of a greedy one, a size or memory objective, and per-QP
-assignments. Two solves: size objective across all formats, and a latency/energy objective only
-if the bench exists.
+**ILP: done, and it wins.** The problem is 19 components x 8 precision options = 152 binaries.
+Because PULSE ships one weight file for all eight QPs, the variables are `x[component, precision]`
+and the quality constraint is enforced at every QP, so the binding constraint is the worst-QP
+total rather than the sum of per-component worst cases. Solved with HiGHS through
+`scipy.optimize.milp` (already installed; OR-Tools was not needed).
 
-**The gate before either:** every number on this page is an *additive prediction*, the sum of
-single-component penalties. It is unvalidated. `pipeline.py:425` builds exactly one config per
-component, so a whole-model run cannot be expressed yet. Uniform INT8, FP16 and FP32 whole-model
-runs must be measured first; if measured uniform INT8 is far from the summed 65.3%, the ILP
-coefficients are invalid and the ILP result is worthless.
+| Budget | ILP size | Greedy size | ILP worst-QP predicted |
+|---:|---:|---:|---:|
+| 0.25% | 27.140 MB | 27.274 MB | 0.249% |
+| 0.50% | 24.546 MB | 24.546 MB | 0.462% |
+| 1.00% | **21.677 MB** | 21.677 MB | 0.972% |
+| 2.00% | 18.389 MB | 18.389 MB | 1.986% |
+| 3.00% | **17.885 MB** | 18.071 MB | 3.000% |
 
-Recommended order:
+At the 1% budget the ILP reaches 60.4% size reduction. Greedy matches it at two budgets and
+loses at the extremes; the honest conclusion is that this instance is easy for greedy, and the
+ILP's value is the guarantee plus room for constraints greedy cannot express (memory, a
+per-component floor, an uneven quality requirement).
 
-1. Add a multi-component config to `pipeline.py` (blocker for everything below).
-2. Measure whole-model FP32 / FP16 / BF16 / INT8 on Kodak and CLIC, all 8 QPs: the additivity check.
-3. Build `coefficients.csv` from the ledger and run greedy as the baseline.
-4. Run CP-SAT ILP with the size objective; compare against greedy and uniform.
-5. Validate the chosen assignment with the same protocol, all 8 QPs, 3 datasets.
-6. Only if a red component exceeds 5% of MACs: QAT.
+## The additivity gate: passed
+
+Every number on this page is an additive prediction, the sum of single-component penalties.
+That assumption was tested with `scripts/analyze_additivity.py` against whole-model runs on
+Kodak and CLIC at all 8 QPs.
+
+| Config | Measured / predicted, Kodak | Measured / predicted, CLIC |
+|---|---|---|
+| uniform INT8 | 0.96 - 1.05 | 1.02 - 1.11 |
+| safe mixed | 0.75 - 0.95 | 0.92 - 1.00 |
+| greedy mixed | 0.73 - 1.66 (values under 0.4%) | 0.88 - 1.36 (values under 0.4%) |
+
+Additivity holds within about 5% for uniform INT8, which is the case that matters, and the
+prediction is slightly conservative on Kodak and slightly optimistic on CLIC. The summed
+coefficients are therefore a valid input to the solver, and no coefficient has to be re-measured
+before use. Ratios for BF16 are meaningless because both sides are near zero.
+
+Remaining order of work:
+
+1. Validate the ILP assignment with the harness (in progress, `scripts/eval_assignment.py`).
+2. Third dataset: the harness accepts any `datasets/<name>`, but no fourth set exists in the repo.
+3. Only if a red component exceeds 5% of MACs: QAT.

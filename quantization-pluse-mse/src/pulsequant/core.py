@@ -157,6 +157,8 @@ def component_size(model: nn.Module, component: str, fmt: str) -> dict:
 def weight_stats(handle: "QuantHandle", fmt: str) -> list[dict]:
     rows = []
     for name in handle.module_names:
+        layer = handle.layer_fmt.get(name, fmt)
+        qmax = layer_qmax(layer)
         original = handle.originals[name].detach().float()
         quantized = handle.modules[name].weight.detach().float()
         error = original - quantized
@@ -165,26 +167,27 @@ def weight_stats(handle: "QuantHandle", fmt: str) -> list[dict]:
         fan_in = (
             handle.modules[name].in_channels // handle.modules[name].groups
         ) * handle.modules[name].kernel_size[0] * handle.modules[name].kernel_size[1]
-        scale = quant_scale(original, fmt, handle.qmax)
+        scale = quant_scale(original, layer, qmax)
         if scale is None:
             clip_frac = 0.0
-        elif fmt in {"fp8_e4m3", "fp8_e5m2"}:
-            max_finite = 448.0 if fmt == "fp8_e4m3" else 57344.0
+        elif layer in {"fp8_e4m3", "fp8_e5m2"}:
+            max_finite = 448.0 if layer == "fp8_e4m3" else 57344.0
             clip_frac = float(((original / scale).abs() >= max_finite * 0.999).float().mean().item())
-        elif fmt == "fp4_e2m1":
+        elif layer == "fp4_e2m1":
             clip_frac = float(((original / scale).abs() >= 6.0 * 0.999).float().mean().item())
         else:
             clip_frac = float(
-                (torch.round(original / scale).clamp(-handle.qmax, handle.qmax).abs() >= handle.qmax)
+                (torch.round(original / scale).clamp(-qmax, qmax).abs() >= qmax)
                 .float().mean().item()
             )
         rows.append({
             "layer": name,
+            "format": layer,
             "sqnr_db": 10.0 * math.log10(signal / noise) if noise > 0 else float("inf"),
             "clip_frac": clip_frac,
             "max_abs_err": float(error.abs().max().item()),
             "fan_in": fan_in,
-            "effective_bits": weight_bits(fmt, float(fan_in)),
+            "effective_bits": weight_bits(layer, float(fan_in)),
         })
     return rows
 
@@ -201,6 +204,7 @@ class QuantHandle:
     quantized_hash: str = ""
     restored_hash: str = ""
     modules: dict[str, nn.Conv2d] = field(default_factory=dict, repr=False)
+    layer_fmt: dict[str, str] = field(default_factory=dict)
 
     def restore(self) -> None:
         for name, module in self.modules.items():
@@ -254,3 +258,46 @@ def assert_handle(handle: QuantHandle) -> None:
         raise AssertionError("quantization did not change the weights")
     if not handle.weights_restored:
         raise AssertionError("weights were not restored exactly")
+
+
+def layer_qmax(fmt: str) -> int:
+    return 7 if fmt == "int4" else 127
+
+
+def apply_assignment(
+    model: nn.Module, assignment: dict[str, str], *, control: str = "none"
+) -> QuantHandle:
+    if not assignment:
+        raise ValueError("empty assignment")
+    modules: dict[str, nn.Conv2d] = {}
+    layer_fmt: dict[str, str] = {}
+    for component in sorted(assignment):
+        fmt = assignment[component]
+        if fmt not in {"fp16", "bf16", "fp8_e4m3", "fp8_e5m2", "int8", "int4", "fp4_e2m1"}:
+            raise ValueError(f"unknown format {fmt!r} for component {component!r}")
+        component_modules = dict(conv_modules(model, component))
+        if not component_modules:
+            raise ValueError(f"component {component!r} resolved no Conv2d modules")
+        for name, module in component_modules.items():
+            if name in modules:
+                raise ValueError(f"module {name!r} assigned by two components")
+            modules[name] = module
+            layer_fmt[name] = fmt
+    names = sorted(modules)
+    originals = {name: modules[name].weight.detach().clone() for name in names}
+    original_hash = weights_sha256([originals[name] for name in names])
+    if control == "identity":
+        quantized_hash = original_hash
+    elif control == "none":
+        with torch.no_grad():
+            for name in names:
+                fmt = layer_fmt[name]
+                modules[name].weight.copy_(fake_quant(modules[name].weight, fmt, layer_qmax(fmt)))
+        quantized_hash = weights_sha256([modules[name].weight.detach() for name in names])
+    else:
+        raise ValueError(f"unknown control {control!r}")
+    return QuantHandle(
+        component="+".join(sorted(assignment)), qmax=127, control=control,
+        module_names=names, originals=originals, fmt="mixed", original_hash=original_hash,
+        quantized_hash=quantized_hash, modules=modules, layer_fmt=layer_fmt,
+    )

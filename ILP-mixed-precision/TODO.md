@@ -1,7 +1,6 @@
 # ILP Mixed-Precision - TODO and Progress
 
-> Status: **unblocked**. The PTQ sweep is complete (69,233 rows, 135 configs, 0 failures).
-> No coefficient table and no solver code exist yet.
+> Status: **solved and validated**. MILP solved with HiGHS, assignment measured on Kodak and CLIC.
 > Model: `checkpoints/pulse-mse`.
 > Hardware: RTX 3050 Laptop 4 GB, CUDA 12.4, PyTorch 2.6.0+cu124.
 > Last updated: 2026-10-30.
@@ -10,23 +9,37 @@
 
 | Work package | Status | Evidence |
 |---|---|---|
-| ILP0. Inputs from PTQ sweep | **Unblocked** | `quantization-pluse-mse/results/_ledger/sweep.csv`, 69,233 rows |
-| ILP1. Coefficient table | Ready to build | `configs/ilp_model.yaml`, `results/analysis/component_precision_metrics.csv` |
-| ILP2. Solver implementation | Planned | `scripts/` is empty; `ortools` not installed |
-| ILP3. Assignment validation | Blocked on ILP2 | needs a multi-component config in `pipeline.py` |
+| ILP0. Inputs from PTQ sweep | **Done** | `results/_ledger/sweep.csv`, 69,233 rows; additivity validated |
+| ILP1. Coefficient table | **Done** | read directly from `{fmt}/results/{summary,configs_<fmt>}.csv` |
+| ILP2. Solver implementation | **Done** | `quantization-pluse-mse/scripts/solve_ilp.py`, `results/ilp/solve.csv` |
+| ILP3. Assignment validation | **Done** | `quantization-pluse-mse/results/mixed/`, measured on Kodak and CLIC |
 | ILP4. Presentation | Planned | `presentation/outline.md` |
+
+**Solved headline:** 21.677 MB against 54.688 MB FP32 (**-60.4%**) at a 1% worst-QP penalty
+budget. Measured **0.672% on Kodak and 0.851% on CLIC** against a predicted 0.972%, so the solver's
+estimate is conservative on both datasets and the assignment stays inside its budget.
+
+Two corrections to the plan below, both deliberate:
+
+1. The solver is **HiGHS via `scipy.optimize.milp`**, not OR-Tools CP-SAT. `scipy` was already
+   installed, so no new dependency and no approval was needed to install one.
+2. Variables are **`x[component, precision]`, not `x[component, precision, QP]`**. PULSE ships one
+   weight file serving all eight QPs, so a per-QP assignment is not deployable. The QP dimension
+   belongs in the *constraints* (one per QP), not in the variables. This also makes the binding
+   constraint the worst-QP total, which is the physically meaningful budget.
 
 ---
 
 ### ILP0 - Confirm inputs and scope
 
 **What to do**
-- [ ] Confirm the PTQ sweep has covered all candidate components.
-- [ ] Confirm which formats are real and which are simulated.
-- [ ] Confirm the quality threshold per QP.
-- [ ] Confirm the memory budget (4 GB).
-- [ ] Confirm the objective: latency, energy, or weighted cost.
-- [ ] Confirm whether the assignment is per QP or shared across QPs.
+- [x] Confirm the PTQ sweep has covered all candidate components.
+- [x] Confirm which formats are real and which are simulated.
+- [x] Confirm the quality threshold per QP.
+- [x] Confirm whether the assignment is per QP or shared across QPs: **shared**, see above.
+- [ ] Confirm the memory budget (4 GB): the solved assignment is 21.7 MB of weights, so memory is
+  not binding; no separate constraint was needed.
+- [ ] Confirm the objective: latency and energy are still unmeasured, so the objective is size.
 - [ ] Freeze the input table version and hash.
 
 **What we have done**

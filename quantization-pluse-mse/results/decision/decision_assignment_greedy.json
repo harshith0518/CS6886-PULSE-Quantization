@@ -1,0 +1,22 @@
+{
+  "assignment": {
+    "D0": "fp16",
+    "D1": "fp16",
+    "D2": "bf16",
+    "D3": "fp16",
+    "D4": "bf16",
+    "D6": "fp16",
+    "E0": "bf16",
+    "E1": "fp16",
+    "E2": "fp16",
+    "E3": "int8",
+    "E4": "fp16",
+    "E5": "fp16",
+    "H0": "fp16",
+    "H1": "fp16",
+    "H2": "fp16",
+    "H3": "fp16"
+  },
+  "name": "greedy",
+  "note": "greedy path at a 1% additive penalty budget"
+}

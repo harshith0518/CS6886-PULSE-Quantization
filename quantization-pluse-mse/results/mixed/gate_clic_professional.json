@@ -1,0 +1,5 @@
+{
+  "fp32_reproduces_reference": true,
+  "note": "fp32 must be bit-identical to the reference stream and reconstruction",
+  "qps": 8
+}

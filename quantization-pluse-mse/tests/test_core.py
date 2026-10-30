@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "quantization-pluse-mse" / "src"))
 import torch
 
 from codec.checkpoint import load_model
-from pulsequant.core import apply_quant, assert_handle
+from pulsequant.core import apply_assignment, apply_quant, assert_handle, weight_stats
 from pulsequant.eval import decode_fixed, output_delta
 
 
@@ -58,6 +58,52 @@ class TestInt8Controls(unittest.TestCase):
         delta8 = output_delta(self.before, after8)
         delta4 = output_delta(self.before, after4)
         self.assertGreater(delta4, delta8)
+
+
+class TestMixedAssignment(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        torch.manual_seed(0)
+        cls.model = load_model("checkpoints/pulse-mse", "cpu", entropy=False).eval()
+        cls.y_hat = torch.randn(1, 320, 12, 12)
+        cls.before = decode_fixed(cls.model, cls.y_hat, 3)
+        cls.assignment = {"D1": "int8", "D2": "fp16", "E5": "bf16"}
+
+    def test_mixed_changes_and_restores(self):
+        handle = apply_assignment(self.model, self.assignment)
+        self.assertTrue(handle.weights_changed)
+        self.assertEqual(handle.fmt, "mixed")
+        self.assertEqual(set(handle.layer_fmt.values()), {"int8", "fp16", "bf16"})
+        handle.restore()
+        assert_handle(handle)
+
+    def test_mixed_identity_does_not_change(self):
+        handle = apply_assignment(self.model, self.assignment, control="identity")
+        self.assertFalse(handle.weights_changed)
+        handle.restore()
+        assert_handle(handle)
+
+    def test_mixed_output_changes(self):
+        handle = apply_assignment(self.model, self.assignment)
+        after = decode_fixed(self.model, self.y_hat, 3)
+        handle.restore()
+        assert_handle(handle)
+        self.assertGreater(output_delta(self.before, after), 0.0)
+
+    def test_mixed_weight_stats_use_per_layer_format(self):
+        handle = apply_assignment(self.model, self.assignment)
+        rows = weight_stats(handle, "mixed")
+        handle.restore()
+        formats = {row["format"] for row in rows}
+        self.assertEqual(formats, {"int8", "fp16", "bf16"})
+
+    def test_empty_assignment_rejected(self):
+        with self.assertRaises(ValueError):
+            apply_assignment(self.model, {})
+
+    def test_unknown_format_rejected(self):
+        with self.assertRaises(ValueError):
+            apply_assignment(self.model, {"D1": "int7"})
 
 
 if __name__ == "__main__":

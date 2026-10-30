@@ -730,6 +730,23 @@ def main():
 
     total_fp32 = sum(data.fp32.values())
     total_safe = sum(row["size_mb"] for row in records) * 1e6
+
+    safe_assignment = {c: data.safe_level(c) for c in data.components}
+    safe_assignment = {c: f for c, f in safe_assignment.items() if f != "fp32"}
+    greedy_assignment = {c: levels[c] for c in data.components if levels[c] != "fp32"}
+    for name, assignment, note in (
+        ("safe", safe_assignment, "most aggressive precision under a 1% worst-QP penalty per component"),
+        ("greedy", greedy_assignment, "greedy path at a 1% additive penalty budget"),
+    ):
+        payload = {
+            "name": name,
+            "note": note,
+            "assignment": dict(sorted(assignment.items())),
+        }
+        (output / f"decision_assignment_{name}.json").write_text(
+            json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
+
     print(json.dumps({
         "formats": data.formats,
         "components": len(data.components),
@@ -741,6 +758,8 @@ def main():
         "red_at_int8": sum(1 for r in records if r["int8_verdict"] == "red"),
         "needs_qat": [r["component"] for r in records if r["needs_qat"]],
         "qat_candidates": [r["component"] for r in records if r["qat_candidate"]],
+        "safe_components_quantized": len(safe_assignment),
+        "greedy_components_quantized": len(greedy_assignment),
         "greedy_1pct_size_mb": round(budget_size, 2),
         "greedy_1pct_saving_pct": round(100 * (1 - budget_size / (total_fp32 / 1e6)), 1),
         "greedy_1pct_levels": {k: v for k, v in sorted(levels.items())},

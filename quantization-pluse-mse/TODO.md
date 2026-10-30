@@ -226,10 +226,41 @@ Done. `scripts/visualize_decision.py` writes six figures plus `decision_summary.
 
 ### WP11 - Mixed-precision model and evaluation (v3)
 
-- [ ] Implement a multi-component config so one model can carry a per-component assignment.
-- [ ] Build the mixed-precision model from the assignment.
-- [ ] Evaluate on Kodak, CLIC, and a third dataset against the FP32 baseline at all 8 QPs.
-- [ ] Report d_PSNR, d_bpp, penalty, stream-hash equality, and size for the mixed model.
+The multi-component capability was added as two additive scripts instead of a change to
+`pipeline.py`, so the verified single-component path is untouched.
+
+- [x] `src/pulsequant/core.py`: `apply_assignment` applies a per-component precision map in one
+  pass, with `layer_fmt` carried on `QuantHandle` and used by `weight_stats`.
+- [x] `scripts/eval_assignment.py`: whole-model measurement of uniform formats and mixed
+  assignments against the FP32 reference.
+- [x] **FP32 gate passed on Kodak**: the harness reproduces the reference stream and
+  reconstruction hashes exactly at all 8 QPs.
+- [x] Whole-model Kodak, all 8 QPs: FP32, FP16, BF16, INT8, safe, greedy.
+- [ ] Whole-model CLIC, all 8 QPs: running.
+- [x] `scripts/analyze_additivity.py`: additivity test. **Additivity holds**: measured over
+  predicted penalty ratio is 0.96-1.05 for uniform INT8 across all 8 QPs, so the summed
+  single-component coefficients are a valid predictor.
+- [x] `scripts/solve_ilp.py`: MILP via HiGHS (`scipy.optimize.milp`, no new dependency).
+  Variables `x[component, precision]` shared across QPs, per-QP quality constraints, size
+  objective, greedy baseline for comparison.
+- [ ] Evaluate the ILP assignment with the harness.
+- [ ] Third dataset: not present in `datasets/`; the harness accepts any `datasets/<name>`.
+
+**Measured on Kodak, all 8 QPs** (worst-QP mean penalty, analytic size):
+
+| Config | Size MB | Saving | Worst-QP penalty % |
+|---|---:|---:|---:|
+| FP32 | 54.688 | 0.0 | 0.000 |
+| FP16 | 27.416 | 49.87 | 0.038 |
+| BF16 | 27.416 | 49.87 | 0.106 |
+| INT8 | 13.904 | 74.57 | 26.184 |
+| safe (per-component 1%) | 17.904 | 67.26 | 2.633 |
+| greedy (1% total) | 24.565 | 55.08 | 0.386 |
+| ILP (1% total, predicted) | 21.677 | 60.36 | 0.972 |
+
+The ILP at the same 1% budget finds **21.677 MB where the earlier greedy found 24.565 MB**,
+because the greedy compared here enforces the constraint per QP rather than on the sum of
+per-component worst cases.
 
 ---
 

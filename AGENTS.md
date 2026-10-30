@@ -115,13 +115,30 @@ Rebuild the native entropy extension with:
   (E1 14.8% vs 1.35%): 3 mantissa bits < 8-bit uniform.
 - INT4/FP4 are per-output-channel only; group/block scaling is not implemented, so the
   4-bit columns are a lower bound on achievable 4-bit quality.
-- Missing: whole-model multi-component configs, additivity, W8A8, calibration set,
-  BD-rate, ILP solver, latency/energy bench, report, slides.
-- `pandas`, `matplotlib`, `seaborn`, `pyarrow`, `ortools`, `onnx`, `onnxruntime`,
-  `tensorrt`, and `pytest` are absent. The analysis scripts are stdlib + PIL only, so
-  `pandas`/`matplotlib` are not required; `ortools` is required for ILP.
-- Calibration and QAT data still missing. QAT is not triggered by rule: no component that
-  is >= 5% of MACs or params is Red at INT8.
+- Missing: W8A8, calibration set, BD-rate, latency/energy bench, report, slides, a third dataset.
+- **Whole-model evaluation exists**: `core.apply_assignment` plus `scripts/eval_assignment.py`
+  measure a per-component precision map through the real codec on every image and QP.
+  `pipeline.py` still only builds single-component configs; the mixed path is separate on purpose.
+- **FP32 gate passes on Kodak and CLIC**: the harness reproduces the reference stream and
+  reconstruction hashes exactly at all 8 QPs.
+- **Additivity is validated** (`scripts/analyze_additivity.py`): measured-over-predicted penalty
+  ratio is 0.96-1.05 on Kodak and 1.02-1.11 on CLIC for uniform INT8. The summed single-component
+  coefficients are valid ILP input; no coefficient needs re-measuring. Do not repeat the mistake of
+  summing each component's *own worst QP*: that inflates the total (65.3% vs the true 26.7% at QP0).
+- **Mixed-precision results on Kodak and CLIC** (worst-QP penalty, analytic size): uniform FP16
+  27.416 MB / 0.038% and 0.047%, uniform INT8 13.904 MB / 26.184% and 56.701%, `safe` 17.904 MB /
+  2.633% and 4.301%, `greedy` 24.565 MB / 0.386% and 0.358%, `ilp` 21.677 MB / 0.672% and 0.851%.
+  The `ilp` assignment is the recommended operating point: -60.4% size inside a 1% budget on both
+  datasets, and the solver's own prediction of 0.972% was conservative.
+- **ILP solved with HiGHS** (`scipy.optimize.milp`, already installed; OR-Tools not needed).
+  Variables are `x[component, precision]` shared across QPs with per-QP quality constraints, because
+  PULSE ships one weight file for all eight QPs. `scripts/solve_ilp.py` writes `results/ilp/`.
+- QAT remains not triggered by rule: no component holding >= 5% of MACs or params is Red at INT8.
+- `pandas`, `matplotlib`, `seaborn`, `pyarrow`, `ortools`, `onnx`, `onnxruntime`, `tensorrt`, and
+  `pytest` are absent. The analysis scripts are stdlib + PIL only, so `pandas`/`matplotlib` are not
+  required. `scipy` is installed and is what the ILP uses.
+- Calibration and QAT data still missing. A third evaluation dataset is missing: outbound TLS is
+  blocked in this environment, so nothing can be downloaded; the harness accepts `datasets/<name>`.
 
 ## Quantization rules
 

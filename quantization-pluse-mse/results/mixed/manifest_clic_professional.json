@@ -1,0 +1,57 @@
+{
+  "command": "quantization-pluse-mse\\scripts\\eval_assignment.py --dataset clic_professional --configs fp32 fp16 bf16 int8 safe greedy ilp --output quantization-pluse-mse\\results\\mixed",
+  "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+  "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+  "eval_flags": {
+    "cudnn_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "device": "cuda",
+    "matmul_allow_tf32": false,
+    "tf32": false,
+    "threads": 1
+  },
+  "git": {
+    "commit": "8bcf2917886b4fba640dbe2de1c374d570e59da4",
+    "dirty": true
+  },
+  "hardware": {
+    "capability": "8.6",
+    "cuda_available": true,
+    "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "total_memory_mb": 4095.5
+  },
+  "model_path": "checkpoints\\pulse-mse",
+  "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+  "packages": {
+    "cuda": "12.4",
+    "numpy": "2.5.2",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.6",
+    "torch": "2.6.0+cu124"
+  },
+  "quant_config": {
+    "configs": [
+      "fp32",
+      "fp16",
+      "bf16",
+      "int8",
+      "safe",
+      "greedy",
+      "ilp"
+    ],
+    "dataset": "clic_professional",
+    "mode": "w_only",
+    "qps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "quant_config_sha256": "0ab639c9407fd48d3486b7a1250eaa3b6f7d6d27e56e4299c7d8eb4970e89604"
+}
