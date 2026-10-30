@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT / "quantization-pluse-mse" / "src"))
 import torch
 
 from codec.checkpoint import load_model
-from pulsequant.core import COMPONENTS, apply_assignment, assert_handle, weight_stats
+from pulsequant.core import COMPONENTS, apply_assignment, assert_handle, component_size, weight_stats
 from pulsequant.eval import (
     build_manifest,
     configure_eval,
@@ -68,7 +68,7 @@ def load_reference(reference_dir: Path) -> tuple[dict, dict]:
     slopes = {}
     curve_path = reference_dir / "curve.json"
     if curve_path.is_file():
-        payload = json.loads(curve_path.read_text(encoding="utf-8"))
+        payload = json.loads(curve_path.read_text(encoding="utf-8-sig"))
         slopes = {int(k): float(v) for k, v in payload.get("slopes", {}).items()}
     return reference, slopes
 
@@ -95,23 +95,27 @@ def resolve_config(name: str, decision_dir: Path, ilp_dir: Path) -> tuple[str, d
         path = decision_dir / f"decision_assignment_{name}.json"
         if not path.is_file():
             raise SystemExit(f"missing {path}; run scripts/visualize_decision.py first")
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
         return name, payload["assignment"], payload.get("note", name)
     if name == "ilp":
         path = ilp_dir / "assignment_ilp.json"
         if not path.is_file():
             raise SystemExit(f"missing {path}; run scripts/solve_ilp.py first")
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
         return "ilp", payload["assignment"], payload.get("note", "ilp")
     path = Path(name)
     if path.is_file():
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
         assignment = payload.get("assignment", payload)
+        if not isinstance(assignment, dict) or any(isinstance(v, dict) for v in assignment.values()):
+            raise SystemExit(
+                f"{path} does not look like a single assignment; pass a file whose 'assignment' "
+                "maps component names to precision strings, or extract one tier first")
         return path.stem, assignment, str(path)
     raise SystemExit(f"unknown config {name!r}")
 
 
-def analytic_size(assignment: dict, sizes: dict, fp32: dict) -> dict:
+def analytic_size(assignment: dict, sizes: dict, fp32: dict, model=None) -> dict:
     total_fp32 = sum(fp32.get(component, 0.0) for component in MAIN_SWEEP)
     total = 0.0
     for component in MAIN_SWEEP:
@@ -120,6 +124,9 @@ def analytic_size(assignment: dict, sizes: dict, fp32: dict) -> dict:
             total += fp32.get(component, 0.0)
         else:
             value = sizes.get((component, fmt))
+            if value is None and model is not None:
+                value = float(component_size(model, component, fmt)["quant_bytes"])
+                sizes[(component, fmt)] = value
             if value is None:
                 raise SystemExit(f"no measured size for {component} {fmt}")
             total += value
@@ -166,7 +173,7 @@ def main():
     for name in args.configs:
         config_name, assignment, note = resolve_config(name, Path(args.decision_dir), Path(args.ilp_dir))
         config_id = sha256_json({"mode": "w_only", "assignment": assignment, "control": "none"})[:12]
-        size = analytic_size(assignment, sizes, fp32)
+        size = analytic_size(assignment, sizes, fp32, model)
         handle = None
         try:
             if assignment:

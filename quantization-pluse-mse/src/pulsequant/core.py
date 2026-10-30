@@ -77,6 +77,33 @@ def weights_sha256(weights: list[torch.Tensor]) -> str:
     return digest.hexdigest()
 
 
+BASE_FORMATS = {"fp16", "bf16", "fp8_e4m3", "fp8_e5m2", "int8", "int4", "fp4_e2m1"}
+GROUP_FORMATS = {"int8", "int4", "fp4_e2m1"}
+
+
+def parse_format(fmt: str) -> tuple[str, int]:
+    """Split an optional group suffix: "int4g16" -> ("int4", 16). Plain names keep group 0."""
+    if fmt in BASE_FORMATS:
+        return fmt, 0
+    if "g" in fmt:
+        base, _, group = fmt.partition("g")
+        if base in GROUP_FORMATS and group.isdigit():
+            value = int(group)
+            if value < 1:
+                raise ValueError(f"group size must be positive in {fmt!r}")
+            return base, value
+    raise ValueError(f"unknown format {fmt!r}")
+
+
+def format_bits(fmt: str, fan_in: float) -> float:
+    base, group = parse_format(fmt)
+    if base in {"fp16", "bf16"}:
+        return 16.0
+    width = {"fp8_e4m3": 8.0, "fp8_e5m2": 8.0, "int8": 8.0, "int4": 4.0, "fp4_e2m1": 4.0}[base]
+    scale_bits = 32.0 / (group if group else fan_in)
+    return width + scale_bits
+
+
 def quant_scale(source: torch.Tensor, fmt: str, qmax: int = 127):
     max_abs = source.abs().amax(dim=tuple(range(1, source.ndim)), keepdim=True).clamp_min(1e-12)
     if fmt in {"fp16", "bf16"}:
@@ -92,7 +119,28 @@ def quant_scale(source: torch.Tensor, fmt: str, qmax: int = 127):
     return max_abs / qmax
 
 
+def fake_quant_grouped(weight: torch.Tensor, fmt: str = "int4", group: int = 16) -> torch.Tensor:
+    """Fake-quantize with one scale per `group` consecutive fan-in weights."""
+    base, _ = parse_format(fmt)
+    qmax = 7 if base == "int4" else 127
+    source = weight.detach().float()
+    shape = source.shape
+    flat = source.reshape(shape[0], -1)
+    width = flat.shape[1]
+    padded = (-width) % group
+    if padded:
+        flat = torch.nn.functional.pad(flat, (0, padded))
+    blocks = flat.reshape(shape[0], -1, group)
+    scale = blocks.abs().amax(dim=2, keepdim=True).clamp_min(1e-12) / qmax
+    quantized = torch.round(blocks / scale).clamp(-qmax, qmax) * scale
+    return quantized.reshape(shape[0], -1)[:, :width].reshape(shape).to(weight.dtype)
+
+
 def fake_quant(weight: torch.Tensor, fmt: str = "int8", qmax: int = 127) -> torch.Tensor:
+    base, group = parse_format(fmt)
+    if group:
+        return fake_quant_grouped(weight, base, group)
+    fmt = base
     source = weight.detach().float()
     if fmt in {"fp16", "bf16"}:
         dtype = torch.float16 if fmt == "fp16" else torch.bfloat16
@@ -117,17 +165,7 @@ def fake_quant(weight: torch.Tensor, fmt: str = "int8", qmax: int = 127) -> torc
 
 
 def weight_bits(fmt: str, fan_in: float) -> float:
-    if fmt in {"fp16", "bf16"}:
-        return 16.0
-    if fmt in {"fp8_e4m3", "fp8_e5m2"}:
-        return 8.0 + 32.0 / fan_in
-    if fmt == "int8":
-        return 8.0 + 32.0 / fan_in
-    if fmt == "int4":
-        return 4.0 + 32.0 / fan_in
-    if fmt == "fp4_e2m1":
-        return 4.0 + 32.0 / fan_in
-    return 32.0
+    return format_bits(fmt, fan_in)
 
 
 def component_size(model: nn.Module, component: str, fmt: str) -> dict:
@@ -158,7 +196,8 @@ def weight_stats(handle: "QuantHandle", fmt: str) -> list[dict]:
     rows = []
     for name in handle.module_names:
         layer = handle.layer_fmt.get(name, fmt)
-        qmax = layer_qmax(layer)
+        base, group = parse_format(layer)
+        qmax = 7 if base == "int4" else 127
         original = handle.originals[name].detach().float()
         quantized = handle.modules[name].weight.detach().float()
         error = original - quantized
@@ -167,7 +206,8 @@ def weight_stats(handle: "QuantHandle", fmt: str) -> list[dict]:
         fan_in = (
             handle.modules[name].in_channels // handle.modules[name].groups
         ) * handle.modules[name].kernel_size[0] * handle.modules[name].kernel_size[1]
-        scale = quant_scale(original, layer, qmax)
+        fmt = base
+        scale = quant_scale(original, fmt, qmax)
         if scale is None:
             clip_frac = 0.0
         elif layer in {"fp8_e4m3", "fp8_e5m2"}:
@@ -273,8 +313,10 @@ def apply_assignment(
     layer_fmt: dict[str, str] = {}
     for component in sorted(assignment):
         fmt = assignment[component]
-        if fmt not in {"fp16", "bf16", "fp8_e4m3", "fp8_e5m2", "int8", "int4", "fp4_e2m1"}:
-            raise ValueError(f"unknown format {fmt!r} for component {component!r}")
+        try:
+            parse_format(fmt)
+        except ValueError:
+            raise ValueError(f"unknown format {fmt!r} for component {component!r}") from None
         component_modules = dict(conv_modules(model, component))
         if not component_modules:
             raise ValueError(f"component {component!r} resolved no Conv2d modules")

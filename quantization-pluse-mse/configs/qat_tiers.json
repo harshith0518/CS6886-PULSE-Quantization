@@ -1,0 +1,47 @@
+{
+  "_rationale": {
+    "ladder": "Escalation follows measured sensitivity, not intuition. Three components are intolerant at INT8 and are held at BF16 in every tier: H0 (10.09% worst-QP penalty), H3 (38.15%) and D5 (8.06%). The ladder varies only the four encoder DCB blocks, which hold 84.7% of all parameters and 41% of kMAC/px, so they decide both size and risk.",
+    "entropy_frozen": "The entropy components H0-H3 stay at 16-bit and are frozen during fine-tuning. The released bundle ships precomputed integer CDF tables in entropy_control_int.pt; changing those weights would invalidate the bit-exact coding contract. Keeping them fixed is what makes the QAT checkpoint safe to decode.",
+    "train_scope": "backbone = encoder and decoder weights. The entropy model and the QP controls are frozen.",
+    "tier1": "Control. The validated post-training optimum at a 1% worst-QP budget. QAT must not make it worse; if it does, the fine-tuning recipe is wrong.",
+    "tier2": "The realistic win. All four encoder blocks move to INT8, which is 3.50% predicted penalty before any recovery, to check whether QAT can bring 84.7% of the parameter mass to 8 bits. Target size about 15.8 MB.",
+    "tier3": "The frontier. The four encoder blocks drop to 4-bit with group-32 scaling (5.0 effective bits per weight, versus 8.03 for INT8). Per-channel INT4 measured 148-3767% penalty; group-32 cuts the weight error 32% versus per-channel. Target size about 11.3 MB. Expected to fail recovery, which is itself the finding."
+  },
+  "tier1_safe_int8": {
+    "label": "Safe INT8",
+    "intent": "validated post-training optimum, control",
+    "predicted_worst_qp_penalty_pct": 0.97,
+    "target_size_mb": 21.68,
+    "assignment": {
+      "E0": "bf16", "E1": "fp16", "E2": "int8", "E3": "int8", "E4": "fp16", "E5": "fp16",
+      "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16",
+      "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16",
+      "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"
+    }
+  },
+  "tier2_wide_int8": {
+    "label": "Wide INT8",
+    "intent": "all four encoder blocks at INT8, rest unchanged",
+    "predicted_worst_qp_penalty_pct": 3.5,
+    "target_size_mb": 15.78,
+    "assignment": {
+      "E0": "bf16", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8",
+      "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16",
+      "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16",
+      "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"
+    }
+  },
+  "tier3_int4_encoder": {
+    "label": "INT4 encoder, group 32",
+    "intent": "four encoder blocks at 4-bit with group scaling, everything else as tier 2",
+    "predicted_worst_qp_penalty_pct": null,
+    "target_size_mb": 11.3,
+    "assignment": {
+      "E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32",
+      "E5": "int8",
+      "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16",
+      "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16",
+      "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"
+    }
+  }
+}
