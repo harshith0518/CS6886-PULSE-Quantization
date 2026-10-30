@@ -23,7 +23,13 @@ On the GPU, which is how every number in this project was measured:
 
 - **Decode is 91% entropy coding.** 80 ms of 88 ms. The synthesis network is **8 ms**.
 - **Encode is 61% entropy coding.** 80 ms of 131 ms; the analysis network is 51 ms.
-- Over a full round trip, **73% of the time is in the entropy stage** and 27% in the neural networks.
+- On the GPU, **73% of a full round trip is in the entropy stage** and 27% in the neural networks.
+
+**Scope warning.** That 73% figure is GPU-only. On one CPU thread the split is about 50/50
+(network 100 ms, entropy 98 ms at 512x512), so any ranking of optimisation levers must state which
+device it applies to. The entropy stage also absorbs per-call CDF and index setup, which
+`decode_decomposition.md` separates out: of the "entropy" time, roughly 55 ms per call on CPU is
+table building rather than coding.
 
 The entropy stage is the integer CDF decoder in the C++ extension, and its cost is essentially
 **independent of device and thread count** (80 ms on GPU, 105 ms on one CPU thread, 106 ms on four).
