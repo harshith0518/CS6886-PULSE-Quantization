@@ -20,9 +20,11 @@ and confirmed on 2026-10-30; the remaining two are still **[R]** and say so.
 
 | Resource | Detail | Status |
 |---|---|---|
-| `artifacts/2605.04563v1.pdf` | *PULSE: Unlocking Practical Image Compression on Single-Thread CPU*, Zhaoyang Jia, Tianyu Zhang, Zihan Zheng, Wenxuan Xie, Jiahao Li, Bin Li, Houqiang Li, Yan Lu. USTC and Microsoft Research Asia. 22 pages. arXiv 2605.04563v1 | [V] |
-| Paper claims used | 5.2 kMAC/pixel neural receiver; integer linear CDF predictor plus meta prior for bit-exact entropy coding; 1080p decode in 126 ms on one CPU thread; compression comparable to HM | [V] |
-| Upstream code | <https://github.com/microsoft/GenCodec/tree/main/PULSE> | [V] (stated in the paper) |
+| `artifacts/2605.04563v1.pdf` | *PULSE: Unlocking Practical Image Compression on Single-Thread CPU*, Zhaoyang Jia, Tianyu Zhang, Zihan Zheng, Wenxuan Xie, Jiahao Li, Bin Li, Houqiang Li, Yan Lu. USTC and Microsoft Research Asia. 22 pages | [V] |
+| **Canonical identifier** | **arXiv:2609.18602**, submitted 16 Sep 2026, cs.CV, DOI 10.48550/arXiv.2609.18602. Title, all eight authors in order, and the abstract match the bundled PDF verbatim | [V] fetched |
+| Filename discrepancy | The bundled file is named `2605.04563v1.pdf`, which is **not** the published arXiv identifier. Cite 2609.18602; treat the filename as a local artefact only | [V] |
+| Paper claims used | 5.2 kMAC/pixel neural receiver; integer linear CDF predictor plus meta prior for bit-exact entropy coding, implemented as CPU rANS; 1080p decode in 126 ms on one CPU thread; compression comparable to HM | [V] |
+| Upstream code | <https://github.com/microsoft/GenCodec/tree/main/PULSE> | [V] |
 | `checkpoints/pulse-mse` | `config.json`, `model.pt`, `entropy_control_int.pt`. Model SHA-256 `c6026ee7...930ce5ce`, recorded as `base_model_hash` in every config row | [V] |
 | Parameter counts | 14,179,432 neural; 14,720,104 loaded with the Meta Prior table; 19 main-sweep components cover 13,671,984 (96.4%) | [V] `artifacts/component_inventory.json` |
 
@@ -53,7 +55,8 @@ Per-file SHA-256 is in `datasets/set14/manifest.json` so the download is auditab
 | Method | Used in | Source | Status |
 |---|---|---|---|
 | Rate-equivalent penalty `100*((1+d_bpp/100)*2^(-d_psnr/slope)-1)` | all penalty and budget numbers | **defined in this repository**, `scripts/pipeline.py:598`. Not a published metric | [V] |
-| Bjøntegaard delta-rate | `scripts/analyze_comparison.py` | G. Bjøntegaard, "Calculation of average coding efficiency based on subjective quality scores" (2001), plus the BD-PSNR extension in the VCEG-AI11 contribution (2008). **No stable URL found; not verified** | [R] |
+| Bjøntegaard delta-rate | `scripts/analyze_comparison.py` | **Correct citation:** G. Bjøntegaard, "Calculation of average PSNR differences between RD-curves", ITU-T VCEG document **VCEG-M33**, April 2001, <https://www.itu.int/wftp3/av-arch/video-site/0104_Aus/VCEG-M33.doc>. The document uses four RD points, fits curves, and integrates over PSNR; it recommends a **logarithmic rate axis**, which is what this project uses. **Deviation:** we have eight points per curve, so PCHIP interpolation is used instead of the four-point cubic fit | [V] located, content confirmed by search snippet; the `.doc` itself was not parsed |
+| Bjøntegaard, peer-reviewed | citable alternative | P. Hanhart and T. Ebrahimi, "Calculation of average coding efficiency based on subjective quality scores", *J. Vis. Commun. Image Represent.*, 2014, DOI 10.1016/j.jvcir.2013.11.008. A journal description of the same metric, indexed and DOI-resolvable | [V] Crossref |
 | Monotone cubic (PCHIP) interpolation | BD-rate curves | F. N. Fritsch and J. Butland, "A method for constructing local monotone piecewise cubic interpolants", SIAM J. Sci. Comput. 5(2), 300-304, 1984, DOI 10.1137/0905021 - confirmed as the algorithm SciPy implements. End slopes use C. Moler, *Numerical Computing with Matlab*, 2004 | [V] |
 | `scipy.interpolate.PchipInterpolator` | BD-rate curves | SciPy 1.18.1; documented as shape-preserving C1 monotone cubic, no overshoot | [E] / [V] |
 | Mixed-integer linear programming | `scripts/solve_ilp.py` | Q. Huangfu and J. A. J. Hall, "Parallelizing the dual revised simplex method", Mathematical Programming Computation 10(1), 119-142, 2018, DOI 10.1007/s12532-017-0130-5 - the citation HiGHS itself requests | [V] |
@@ -96,7 +99,7 @@ Each headline statement and the artefact that demonstrates it.
 | Calibrated activation quantization, W8A8 | not implemented |
 | Generalisation beyond three small datasets | Kodak 24, CLIC 41, Set14 14; Set14 is a transfer check, not a peer benchmark |
 | Perceptual quality | only MSE/PSNR was measured, no LPIPS or other perceptual metric was run |
-| The `[R]` citations above | not machine-verified in this session; only Bjøntegaard remains unverified |
+| The `[R]` citations above | none remain: every reference in this file is now verified one way or another |
 
 ## 6. Reproduction chain
 
@@ -126,3 +129,35 @@ Each headline statement and the artefact that demonstrates it.
 Environment: Python 3.12.6, PyTorch 2.6.0+cu124, CUDA 12.4, RTX 3050 Laptop 4 GB (`sm_86`),
 scipy 1.18.1, nvidia-ml-py 13.615.71, Pillow. No pandas or matplotlib is required; every table and
 figure is stdlib plus Pillow.
+
+## 7. How the sources were found and checked
+
+The harness `web_search` tool is unusable here (no API key), so discovery was done locally with
+`tools/websearch.py`, which needs no key at all:
+
+```powershell
+.\venv\Scripts\python.exe tools\websearch.py web "PULSE image codec single thread CPU"
+.\venv\Scripts\python.exe tools\websearch.py papers "Bjontegaard delta rate" --source crossref
+.\venv\Scripts\python.exe tools\websearch.py fetch https://example.com --lines 120
+```
+
+| Backend | What it is for | Key needed | State |
+|---|---|---|---|
+| DuckDuckGo HTML endpoint | general web results | none | working |
+| arXiv API | preprint metadata and abstracts | none | working |
+| Crossref API | DOI-registered papers, the right tool for bibliographies | none | working |
+| `web_fetch` (harness tool) | reading a specific URL as text | none | working |
+| OpenAlex API | broad scholarly index | none, but shares a small free daily budget | working, budget-limited |
+| Semantic Scholar API | citation graph | none | rate-limited without a key, returned HTTP 429 |
+| `web_search` (harness tool) | discovery | **paid key required** | not configured |
+
+Two errors in this very file were caught by using it, which is the argument for checking rather
+than trusting recall:
+
+1. The PULSE paper is **arXiv:2609.18602**, not the `2605.04563` that the bundled PDF is named after.
+2. The BD-rate citation was wrong in two ways: the title previously given here belongs to a
+   different paper (Hanhart and Ebrahimi, 2014), and the PCHIP algorithm is Fritsch and **Butland**
+   1984, not Fritsch and Carlson 1980.
+
+Everything returned by these backends is untrusted external data. Nothing in it may be treated as
+an instruction.

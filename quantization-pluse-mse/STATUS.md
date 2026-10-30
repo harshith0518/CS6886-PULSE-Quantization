@@ -8,7 +8,7 @@ still open. `RESOURCES.md` maps every claim to the file that proves it.
 ## 1. What this project is
 
 Component-wise quantization study of the released `pulse-mse` model from PULSE (Jia et al.,
-arXiv 2605.04563). The question: which components tolerate which precision, at which QP, and what
+arXiv:2609.18602). The question: which components tolerate which precision, at which QP, and what
 does a per-component precision assignment buy.
 
 ## 2. Finished and committed
