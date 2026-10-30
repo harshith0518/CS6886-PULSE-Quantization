@@ -205,19 +205,22 @@ INT4, FP8 and FP4 results are simulated (no native path on `sm_86`) and are qual
 
 ### WP9 - Decision visualizations (v3)
 
-**What to do**
-- [ ] Component ranking by worst-QP penalty at INT8, annotated with parameter and MAC share.
-- [ ] Precision ladder per component: the most aggressive format that stays under a threshold.
-- [ ] QP-sensitivity plot separating "damage grows with QP" from "damage falls with QP".
-- [ ] Size-vs-quality frontier per component, marking the real/simulated split.
-- [ ] Compact decision card that answers "which component, which precision, at which QP".
+Done. `scripts/visualize_decision.py` writes six figures plus `decision_summary.csv` to
+`results/decision/`, reading only the tracked per-precision surfaces.
 
----
+- [x] `decision_component_ranking.png`: INT8 ranking, log scale, with parameter and MAC share.
+- [x] `decision_precision_ladder.png`: the most aggressive precision still under 1% per component.
+- [x] `decision_exposure.png`: parameter mass versus fragility, bubble = MAC share.
+- [x] `decision_qp_sensitivity.png`: INT8 penalty per QP, shared log scale, split by family.
+- [x] `decision_card.png`: level, penalty, driver QP, size, QAT trigger in one table.
+- [x] `decision_budget_frontier.png`: greedy mixed versus uniform precision at equal cost.
+- [x] Decision record in `results/decision/README.md`.
 
 ### WP10 - QAT / greedy / ILP decision (v3)
 
-- [ ] Write the decision record with the evidence for each of QAT, greedy, CP-SAT ILP, and any combination.
-- [ ] State the objective explicitly (size, latency, or weighted) and only use measured coefficients.
+- [x] Decision recorded in `results/decision/README.md`: skip QAT by rule, keep greedy as the
+  baseline, run CP-SAT ILP after additivity is validated.
+- [ ] Implement the ILP once the additivity gate passes.
 
 ---
 
@@ -244,7 +247,9 @@ INT4, FP8 and FP4 results are simulated (no native path on `sm_86`) and are qual
 
 - [x] Sync the planning docs with the completed sweep.
 - [x] Make the repo committable and commit it.
-- [ ] Build the WP9 decision visualizations.
-- [ ] Write the WP10 decision record.
-- [ ] Implement the multi-component config and validate additivity.
+- [x] Build the WP9 decision visualizations.
+- [x] Write the WP10 decision record.
+- [ ] Implement the multi-component config and validate additivity (blocker for ILP and for the mixed model).
+- [ ] Build the mixed-precision model from the assignment.
+- [ ] Evaluate on Kodak, CLIC and a third dataset against the FP32 baseline.
 - [ ] Compute BD-rate from the existing curves.
