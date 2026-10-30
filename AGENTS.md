@@ -185,12 +185,16 @@ Rebuild the native entropy extension with:
 ## ILP rules
 
 - Run ILP only after the PTQ sweep produces coefficients.
-- Variables: component x precision x QP.
-- Objective: minimize latency or a weighted latency/energy cost.
-- Constraints: `delta_psnr <= epsilon`, memory <= 4 GB, supported formats only,
+- Variables: component x precision, shared across QPs. PULSE ships one weight file for all eight
+  QPs, so a per-QP variable would not be deployable. Put the QP dimension in the constraints
+  (one quality constraint per QP), which makes the worst-QP total the binding budget.
+- Objective: minimize model size in bytes, unless a measured latency or energy table exists.
+- Constraints: per-QP penalty `<= epsilon`, memory `<= 4 GB`, supported formats only,
   one precision per component.
-- Use OR-Tools CP-SAT first; Gurobi only if available.
-- Validate the mixed assignment with the same protocol as the sweep.
+- Solver: HiGHS via `scipy.optimize.milp` (already installed). OR-Tools CP-SAT only if a future
+  instance stops being solvable; Gurobi only if available.
+- Always run the greedy baseline alongside and report both.
+- Validate the mixed assignment with the same protocol as the sweep (`scripts/eval_assignment.py`).
 - Do not invent missing coefficients.
 - Do not claim ILP speedups from simulated formats.
 
