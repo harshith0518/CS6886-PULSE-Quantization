@@ -25,7 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PY = sys.executable
 
-TIER_ORDER = ["tier1_safe_int8", "tier2_wide_int8", "tier3_int4_encoder"]
+TIER_ORDER = ["tier1_more_int8", "tier2_moderate_int4", "tier3_more_int4"]
 
 
 def now() -> str:

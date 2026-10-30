@@ -1,41 +1,43 @@
 {
   "_rationale": {
-    "ladder": "Escalation follows measured sensitivity, not intuition. Three components are intolerant at INT8 and are held at BF16 in every tier: H0 (10.09% worst-QP penalty), H3 (38.15%) and D5 (8.06%). The ladder varies only the four encoder DCB blocks, which hold 84.7% of all parameters and 41% of kMAC/px, so they decide both size and risk.",
-    "entropy_frozen": "The entropy components H0-H3 stay at 16-bit and are frozen during fine-tuning. The released bundle ships precomputed integer CDF tables in entropy_control_int.pt; changing those weights would invalidate the bit-exact coding contract. Keeping them fixed is what makes the QAT checkpoint safe to decode.",
-    "train_scope": "backbone = encoder and decoder weights. The entropy model and the QP controls are frozen.",
-    "tier1": "Control. The validated post-training optimum at a 1% worst-QP budget. QAT must not make it worse; if it does, the fine-tuning recipe is wrong.",
-    "tier2": "The realistic win. All four encoder blocks move to INT8, which is 3.50% predicted penalty before any recovery, to check whether QAT can bring 84.7% of the parameter mass to 8 bits. Target size about 15.8 MB.",
-    "tier3": "The frontier. The four encoder blocks drop to 4-bit with group-32 scaling (5.0 effective bits per weight, versus 8.03 for INT8). Per-channel INT4 measured 148-3767% penalty; group-32 cuts the weight error 32% versus per-channel. Target size about 11.3 MB. Expected to fail recovery, which is itself the finding."
+    "selection_rule": "Move the components with the lowest cost per MB saved first: penalty points paid divided by megabytes saved. That is the quantity the greedy and MILP solvers minimise, and it is computed for every component in results/qat/WHY_THESE_COMPONENTS.md. A component is excluded when its cost per MB is one to two orders of magnitude worse than the alternatives.",
+    "excluded": "H0 (10.09% at INT8, 33 cost/MB), H3 (38.15%, 184 cost/MB) and D5 (8.06%, 1712 cost/MB) stay BF16 in every tier. E0, H2, D3, D7 and E5 are also excluded from INT4: at group-32 they cost 41 to 3083 per MB, against 26-31 for E2/E3/E4.",
+    "why_encoder_blocks": "E1-E4 are 2.89M parameters each and hold 11.6 MB of a 54.7 MB model, yet they are the four cheapest rows in the INT8 table (0.14 to 0.46 cost/MB). The cheapest components are also the largest, which is why they carry every tier.",
+    "entropy_frozen": "H0-H3 stay at 16-bit and are frozen during fine-tuning. The bundle ships precomputed integer CDF tables in entropy_control_int.pt; changing those weights would invalidate the bit-exact coding contract.",
+    "train_scope": "backbone = encoder and decoder weights; entropy model and QP controls frozen.",
+    "tier1": "More INT8. Every component whose cost per MB is under roughly 5 goes to INT8; the three intolerant ones stay BF16. This is the aggressive uniform-INT8 hypothesis: 14.4 MB, predicted about 9.1% penalty before any recovery.",
+    "tier2": "Moderate INT4 plus few INT8. The two cheapest INT4 rows (E2 at 26.1 and E3 at 31.4 cost/MB) move to group-32 4-bit, while E1 and E4 stay INT8 because their INT4 cost is 157.5 and 31.2. Tests whether QAT can hold a mixed 4-bit/8-bit encoder.",
+    "tier3": "More INT4. All four encoder blocks at group-32 4-bit: 11.4 MB, predicted hundreds of percent. This is a falsification test, not a candidate. If QAT cannot rescue it, the negative result is the finding and it is reported with numbers."
   },
-  "tier1_safe_int8": {
-    "label": "Safe INT8",
-    "intent": "validated post-training optimum, control",
-    "predicted_worst_qp_penalty_pct": 0.97,
-    "target_size_mb": 21.68,
+  "tier1_more_int8": {
+    "label": "More INT8",
+    "intent": "all components with INT8 cost/MB under ~5 at INT8, intolerant three at BF16",
+    "predicted_worst_qp_penalty_pct": 9.1,
+    "target_size_mb": 14.4,
     "assignment": {
-      "E0": "bf16", "E1": "fp16", "E2": "int8", "E3": "int8", "E4": "fp16", "E5": "fp16",
-      "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16",
+      "E0": "int8", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8",
+      "H0": "bf16", "H1": "int8", "H2": "int8", "H3": "bf16",
+      "D0": "int8", "D1": "int8", "D2": "int8", "D3": "int8", "D4": "int8",
+      "D5": "bf16", "D6": "int8", "D7": "int8", "D8": "int8"
+    }
+  },
+  "tier2_moderate_int4": {
+    "label": "Moderate INT4 + few INT8",
+    "intent": "two cheapest INT4 components at group-32 4-bit, E1/E4 at INT8, rest 16-bit",
+    "predicted_worst_qp_penalty_pct": 63.0,
+    "target_size_mb": 13.6,
+    "assignment": {
+      "E0": "bf16", "E1": "int8", "E2": "int4g32", "E3": "int4g32", "E4": "int8", "E5": "int8",
+      "H0": "bf16", "H1": "fp16", "H2": "bf16", "H3": "bf16",
       "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16",
       "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"
     }
   },
-  "tier2_wide_int8": {
-    "label": "Wide INT8",
-    "intent": "all four encoder blocks at INT8, rest unchanged",
-    "predicted_worst_qp_penalty_pct": 3.5,
-    "target_size_mb": 15.78,
-    "assignment": {
-      "E0": "bf16", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8",
-      "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16",
-      "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16",
-      "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"
-    }
-  },
-  "tier3_int4_encoder": {
-    "label": "INT4 encoder, group 32",
-    "intent": "four encoder blocks at 4-bit with group scaling, everything else as tier 2",
-    "predicted_worst_qp_penalty_pct": null,
-    "target_size_mb": 11.3,
+  "tier3_more_int4": {
+    "label": "More INT4 + few INT8",
+    "intent": "all four encoder blocks at group-32 4-bit, E5 at INT8, rest 16-bit",
+    "predicted_worst_qp_penalty_pct": 323.0,
+    "target_size_mb": 11.4,
     "assignment": {
       "E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32",
       "E5": "int8",
