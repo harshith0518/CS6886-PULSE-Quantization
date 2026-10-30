@@ -1,0 +1,47 @@
+{
+  "runs": [
+    {
+      "batch": 1,
+      "crop": 512,
+      "qp": 3,
+      "step_s": 0.1624,
+      "peak_vram_mb": 415.4,
+      "bpp": 0.9146,
+      "mse": 0.004526,
+      "loss": 1.0117,
+      "status": "ok"
+    },
+    {
+      "batch": 2,
+      "crop": 512,
+      "qp": 3,
+      "step_s": 0.13,
+      "peak_vram_mb": 713.9,
+      "bpp": 0.9127,
+      "mse": 0.004534,
+      "loss": 1.01,
+      "status": "ok"
+    },
+    {
+      "batch": 4,
+      "crop": 512,
+      "qp": 3,
+      "step_s": 0.1573,
+      "peak_vram_mb": 1327.6,
+      "bpp": 0.911,
+      "mse": 0.004542,
+      "loss": 1.0085,
+      "status": "ok"
+    }
+  ],
+  "projection": {
+    "measured_step_s": 0.13,
+    "batch": 2,
+    "crop": 512,
+    "peak_vram_mb": 713.9,
+    "steps_500": 1.08,
+    "steps_1000": 2.17,
+    "steps_2000": 4.33,
+    "units": "minutes for the stated number of optimizer steps"
+  }
+}
