@@ -1,0 +1,3169 @@
+{
+  "components": {
+    "D0": {
+      "kmac_per_px": 0.18,
+      "name": "initial_projection",
+      "params": 46224,
+      "prefixes": [
+        "decoder.up0"
+      ],
+      "side": "decode"
+    },
+    "D1": {
+      "kmac_per_px": 0.4730724264705883,
+      "name": "decoder_dcb_0",
+      "params": 142832,
+      "prefixes": [
+        "decoder.blocks.0"
+      ],
+      "side": "decode"
+    },
+    "D2": {
+      "kmac_per_px": 0.4730724264705883,
+      "name": "decoder_dcb_1",
+      "params": 142832,
+      "prefixes": [
+        "decoder.blocks.1"
+      ],
+      "side": "decode"
+    },
+    "D3": {
+      "kmac_per_px": 0.96,
+      "name": "latent_upsampling",
+      "params": 246528,
+      "prefixes": [
+        "decoder.renderer.latent_upsample"
+      ],
+      "side": "decode"
+    },
+    "D4": {
+      "kmac_per_px": 0.432,
+      "name": "condition_projection",
+      "params": 111360,
+      "prefixes": [
+        "decoder.renderer.condition_proj"
+      ],
+      "side": "decode"
+    },
+    "D5": {
+      "kmac_per_px": 0.288,
+      "name": "renderer_mlp",
+      "params": 4704,
+      "prefixes": [
+        "decoder.renderer.mlp"
+      ],
+      "side": "decode"
+    },
+    "D6": {
+      "kmac_per_px": 0.432,
+      "name": "adaln",
+      "params": 7056,
+      "prefixes": [
+        "decoder.renderer.adaln"
+      ],
+      "side": "decode"
+    },
+    "D7": {
+      "kmac_per_px": 0.144,
+      "name": "output_projection",
+      "params": 2352,
+      "prefixes": [
+        "decoder.renderer.output"
+      ],
+      "side": "decode"
+    },
+    "D8": {
+      "kmac_per_px": 0.144,
+      "name": "renderer_input",
+      "params": 2304,
+      "prefixes": [
+        "decoder.renderer.input_proj"
+      ],
+      "side": "decode"
+    },
+    "D9": {
+      "kmac_per_px": 0.0,
+      "name": "qp_gates_control",
+      "params": 1584,
+      "prefixes": [
+        "decoder.q_scale_codec_dec",
+        "decoder.q_scale_dico",
+        "decoder.renderer.q_scale",
+        "q_scale_enc",
+        "entropy_model.q_scale_hyper_z",
+        "entropy_model.q_scale_hyper_m",
+        "entropy_model.q_scale_prior_2m",
+        "entropy_model.q_basic"
+      ],
+      "side": "both"
+    },
+    "E0": {
+      "kmac_per_px": 1.536,
+      "name": "patch_embedding",
+      "params": 393728,
+      "prefixes": [
+        "encoder.patch_embed"
+      ],
+      "side": "encode"
+    },
+    "E1": {
+      "kmac_per_px": 10.258125490196077,
+      "name": "encoder_dcb_0",
+      "params": 2893824,
+      "prefixes": [
+        "encoder.blocks.0"
+      ],
+      "side": "encode"
+    },
+    "E2": {
+      "kmac_per_px": 10.258125490196077,
+      "name": "encoder_dcb_1",
+      "params": 2893824,
+      "prefixes": [
+        "encoder.blocks.1"
+      ],
+      "side": "encode"
+    },
+    "E3": {
+      "kmac_per_px": 10.258125490196077,
+      "name": "encoder_dcb_2",
+      "params": 2893824,
+      "prefixes": [
+        "encoder.blocks.2"
+      ],
+      "side": "encode"
+    },
+    "E4": {
+      "kmac_per_px": 10.258125490196077,
+      "name": "encoder_dcb_3",
+      "params": 2893824,
+      "prefixes": [
+        "encoder.blocks.3"
+      ],
+      "side": "encode"
+    },
+    "E5": {
+      "kmac_per_px": 0.64,
+      "name": "latent_projection",
+      "params": 164672,
+      "prefixes": [
+        "encoder.norm_out",
+        "encoder.proj_out"
+      ],
+      "side": "encode"
+    },
+    "H0": {
+      "kmac_per_px": 0.45294292279411763,
+      "name": "hyper_encoder",
+      "params": 303456,
+      "prefixes": [
+        "entropy_model.hyper_enc"
+      ],
+      "side": "encode"
+    },
+    "H1": {
+      "kmac_per_px": 0.23672757352941176,
+      "name": "hyper_decoder",
+      "params": 154688,
+      "prefixes": [
+        "entropy_model.hyper_dec"
+      ],
+      "side": "both"
+    },
+    "H2": {
+      "kmac_per_px": 0.5805078431372549,
+      "name": "em_step_1",
+      "params": 166656,
+      "prefixes": [
+        "entropy_model.em_step1"
+      ],
+      "side": "both"
+    },
+    "H3": {
+      "kmac_per_px": 0.7405078431372549,
+      "name": "em_step_2",
+      "params": 207296,
+      "prefixes": [
+        "entropy_model.em_step2"
+      ],
+      "side": "both"
+    },
+    "H4": {
+      "kmac_per_px": 0.12,
+      "name": "scale_decoder_control",
+      "params": 496648,
+      "prefixes": [
+        "entropy_model.scale_dec"
+      ],
+      "side": "both"
+    },
+    "H5": {
+      "kmac_per_px": 0.0,
+      "name": "entropy_lookup_control",
+      "params": 549120,
+      "prefixes": [
+        "entropy_model.entropy_bottleneck",
+        "entropy_model.meta_prior"
+      ],
+      "side": "both"
+    }
+  },
+  "conv_rows": [
+    {
+      "component": "D1",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 9.926470588235293e-06,
+      "macs": 20736,
+      "name": "decoder.blocks.0.ca.1",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D1",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.081,
+      "macs": 169205760,
+      "name": "decoder.blocks.0.conv1",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D1",
+      "fan_in": 9,
+      "groups": 144,
+      "in_channels": 144,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.0050625,
+      "macs": 10575360,
+      "name": "decoder.blocks.0.conv2",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D1",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.081,
+      "macs": 169205760,
+      "name": "decoder.blocks.0.conv3",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D1",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.153,
+      "macs": 319610880,
+      "name": "decoder.blocks.0.conv4",
+      "out_channels": 272,
+      "output_shape": [
+        1,
+        272,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D1",
+      "fan_in": 272,
+      "groups": 1,
+      "in_channels": 272,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.153,
+      "macs": 319610880,
+      "name": "decoder.blocks.0.conv5",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 9.926470588235293e-06,
+      "macs": 20736,
+      "name": "decoder.blocks.1.ca.1",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.081,
+      "macs": 169205760,
+      "name": "decoder.blocks.1.conv1",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 9,
+      "groups": 144,
+      "in_channels": 144,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.0050625,
+      "macs": 10575360,
+      "name": "decoder.blocks.1.conv2",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.081,
+      "macs": 169205760,
+      "name": "decoder.blocks.1.conv3",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.153,
+      "macs": 319610880,
+      "name": "decoder.blocks.1.conv4",
+      "out_channels": 272,
+      "output_shape": [
+        1,
+        272,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D2",
+      "fan_in": 272,
+      "groups": 1,
+      "in_channels": 272,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.153,
+      "macs": 319610880,
+      "name": "decoder.blocks.1.conv5",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D6",
+      "fan_in": 48,
+      "groups": 1,
+      "in_channels": 48,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.432,
+      "macs": 902430720,
+      "name": "decoder.renderer.adaln.1",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        272,
+        480
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D4",
+      "fan_in": 144,
+      "groups": 1,
+      "in_channels": 144,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.432,
+      "macs": 902430720,
+      "name": "decoder.renderer.condition_proj",
+      "out_channels": 768,
+      "output_shape": [
+        1,
+        768,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D8",
+      "fan_in": 48,
+      "groups": 1,
+      "in_channels": 48,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.144,
+      "macs": 300810240,
+      "name": "decoder.renderer.input_proj",
+      "out_channels": 48,
+      "output_shape": [
+        1,
+        48,
+        272,
+        480
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D3",
+      "fan_in": 320,
+      "groups": 1,
+      "in_channels": 320,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.96,
+      "macs": 2005401600,
+      "name": "decoder.renderer.latent_upsample.0",
+      "out_channels": 768,
+      "output_shape": [
+        1,
+        768,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D5",
+      "fan_in": 48,
+      "groups": 1,
+      "in_channels": 48,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.144,
+      "macs": 300810240,
+      "name": "decoder.renderer.mlp.0",
+      "out_channels": 48,
+      "output_shape": [
+        1,
+        48,
+        272,
+        480
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D5",
+      "fan_in": 48,
+      "groups": 1,
+      "in_channels": 48,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.144,
+      "macs": 300810240,
+      "name": "decoder.renderer.mlp.2",
+      "out_channels": 48,
+      "output_shape": [
+        1,
+        48,
+        272,
+        480
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D7",
+      "fan_in": 48,
+      "groups": 1,
+      "in_channels": 48,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.144,
+      "macs": 300810240,
+      "name": "decoder.renderer.output.0",
+      "out_channels": 48,
+      "output_shape": [
+        1,
+        48,
+        272,
+        480
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "D0",
+      "fan_in": 320,
+      "groups": 1,
+      "in_channels": 320,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.18,
+      "macs": 376012800,
+      "name": "decoder.up0.0",
+      "out_channels": 144,
+      "output_shape": [
+        1,
+        144,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00012549019607843137,
+      "macs": 262144,
+      "name": "encoder.blocks.0.ca.1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.0.conv1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 9,
+      "groups": 512,
+      "in_channels": 512,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "encoder.blocks.0.conv2",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.0.conv3",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.0.conv4",
+      "out_channels": 2048,
+      "output_shape": [
+        1,
+        2048,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E1",
+      "fan_in": 2048,
+      "groups": 1,
+      "in_channels": 2048,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.0.conv5",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00012549019607843137,
+      "macs": 262144,
+      "name": "encoder.blocks.1.ca.1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.1.conv1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 9,
+      "groups": 512,
+      "in_channels": 512,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "encoder.blocks.1.conv2",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.1.conv3",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.1.conv4",
+      "out_channels": 2048,
+      "output_shape": [
+        1,
+        2048,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E2",
+      "fan_in": 2048,
+      "groups": 1,
+      "in_channels": 2048,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.1.conv5",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00012549019607843137,
+      "macs": 262144,
+      "name": "encoder.blocks.2.ca.1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.2.conv1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 9,
+      "groups": 512,
+      "in_channels": 512,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "encoder.blocks.2.conv2",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.2.conv3",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.2.conv4",
+      "out_channels": 2048,
+      "output_shape": [
+        1,
+        2048,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E3",
+      "fan_in": 2048,
+      "groups": 1,
+      "in_channels": 2048,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.2.conv5",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00012549019607843137,
+      "macs": 262144,
+      "name": "encoder.blocks.3.ca.1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.3.conv1",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 9,
+      "groups": 512,
+      "in_channels": 512,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "encoder.blocks.3.conv2",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 1.024,
+      "macs": 2139095040,
+      "name": "encoder.blocks.3.conv3",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.3.conv4",
+      "out_channels": 2048,
+      "output_shape": [
+        1,
+        2048,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E4",
+      "fan_in": 2048,
+      "groups": 1,
+      "in_channels": 2048,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.096,
+      "macs": 8556380160,
+      "name": "encoder.blocks.3.conv5",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "E0",
+      "fan_in": 768,
+      "groups": 1,
+      "in_channels": 3,
+      "kernel": [
+        16,
+        16
+      ],
+      "kmac_per_px": 1.536,
+      "macs": 3208642560,
+      "name": "encoder.patch_embed",
+      "out_channels": 512,
+      "output_shape": [
+        1,
+        512,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        16,
+        16
+      ]
+    },
+    {
+      "component": "E5",
+      "fan_in": 512,
+      "groups": 1,
+      "in_channels": 512,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.64,
+      "macs": 1336934400,
+      "name": "encoder.proj_out",
+      "out_channels": 320,
+      "output_shape": [
+        1,
+        320,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 128,
+      "groups": 1,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 7.84313725490196e-06,
+      "macs": 16384,
+      "name": "entropy_model.em_step1.dcb.block.ca.1",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.016,
+      "macs": 33423360,
+      "name": "entropy_model.em_step1.dcb.block.conv1",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 9,
+      "groups": 128,
+      "in_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.em_step1.dcb.block.conv2",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.016,
+      "macs": 33423360,
+      "name": "entropy_model.em_step1.dcb.block.conv3",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.032,
+      "macs": 66846720,
+      "name": "entropy_model.em_step1.dcb.block.conv4",
+      "out_channels": 256,
+      "output_shape": [
+        1,
+        256,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 64,
+      "groups": 4,
+      "in_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.032,
+      "macs": 66846720,
+      "name": "entropy_model.em_step1.dcb.block.conv5",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 320,
+      "groups": 1,
+      "in_channels": 320,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.16,
+      "macs": 334233600,
+      "name": "entropy_model.em_step1.in_proj",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H2",
+      "fan_in": 128,
+      "groups": 1,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.32,
+      "macs": 668467200,
+      "name": "entropy_model.em_step1.out_proj",
+      "out_channels": 640,
+      "output_shape": [
+        1,
+        640,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 128,
+      "groups": 1,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 7.84313725490196e-06,
+      "macs": 16384,
+      "name": "entropy_model.em_step2.dcb.block.ca.1",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.016,
+      "macs": 33423360,
+      "name": "entropy_model.em_step2.dcb.block.conv1",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 9,
+      "groups": 128,
+      "in_channels": 128,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.em_step2.dcb.block.conv2",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.016,
+      "macs": 33423360,
+      "name": "entropy_model.em_step2.dcb.block.conv3",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 32,
+      "groups": 4,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.032,
+      "macs": 66846720,
+      "name": "entropy_model.em_step2.dcb.block.conv4",
+      "out_channels": 256,
+      "output_shape": [
+        1,
+        256,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 64,
+      "groups": 4,
+      "in_channels": 256,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.032,
+      "macs": 66846720,
+      "name": "entropy_model.em_step2.dcb.block.conv5",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 960,
+      "groups": 1,
+      "in_channels": 960,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.48,
+      "macs": 1002700800,
+      "name": "entropy_model.em_step2.in_proj",
+      "out_channels": 128,
+      "output_shape": [
+        1,
+        128,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H3",
+      "fan_in": 128,
+      "groups": 1,
+      "in_channels": 128,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.16,
+      "macs": 334233600,
+      "name": "entropy_model.em_step2.out_proj",
+      "out_channels": 320,
+      "output_shape": [
+        1,
+        320,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.4117647058823526e-06,
+      "macs": 9216,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.ca.1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00225,
+      "macs": 4700160,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.conv1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 9,
+      "groups": 96,
+      "in_channels": 96,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.00084375,
+      "macs": 1762560,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.conv2",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00225,
+      "macs": 4700160,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.conv3",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.conv4",
+      "out_channels": 192,
+      "output_shape": [
+        1,
+        192,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 48,
+      "groups": 4,
+      "in_channels": 192,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.hyper_dec.body.0.dcb.block.conv5",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_dec.body.0.up",
+      "out_channels": 384,
+      "output_shape": [
+        1,
+        384,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.4117647058823526e-06,
+      "macs": 9216,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.ca.1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.conv1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 9,
+      "groups": 96,
+      "in_channels": 96,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.003375,
+      "macs": 7050240,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.conv2",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.conv3",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 24,
+      "groups": 4,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.conv4",
+      "out_channels": 192,
+      "output_shape": [
+        1,
+        192,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 48,
+      "groups": 4,
+      "in_channels": 192,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "entropy_model.hyper_dec.body.1.dcb.block.conv5",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.036,
+      "macs": 75202560,
+      "name": "entropy_model.hyper_dec.body.1.up",
+      "out_channels": 384,
+      "output_shape": [
+        1,
+        384,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H1",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.12,
+      "macs": 250675200,
+      "name": "entropy_model.hyper_dec.body.2",
+      "out_channels": 320,
+      "output_shape": [
+        1,
+        320,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 320,
+      "groups": 1,
+      "in_channels": 320,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.12,
+      "macs": 250675200,
+      "name": "entropy_model.hyper_enc.body.0.adaptor",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.4117647058823526e-06,
+      "macs": 9216,
+      "name": "entropy_model.hyper_enc.body.0.block.ca.1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.036,
+      "macs": 75202560,
+      "name": "entropy_model.hyper_enc.body.0.block.conv1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 9,
+      "groups": 96,
+      "in_channels": 96,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.003375,
+      "macs": 7050240,
+      "name": "entropy_model.hyper_enc.body.0.block.conv2",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.036,
+      "macs": 75202560,
+      "name": "entropy_model.hyper_enc.body.0.block.conv3",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.072,
+      "macs": 150405120,
+      "name": "entropy_model.hyper_enc.body.0.block.conv4",
+      "out_channels": 192,
+      "output_shape": [
+        1,
+        192,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 192,
+      "groups": 1,
+      "in_channels": 192,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.072,
+      "macs": 150405120,
+      "name": "entropy_model.hyper_enc.body.0.block.conv5",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        68,
+        120
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.4117647058823526e-06,
+      "macs": 9216,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.ca.1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.conv1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 9,
+      "groups": 96,
+      "in_channels": 96,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.00084375,
+      "macs": 1762560,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.conv2",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.conv3",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.conv4",
+      "out_channels": 192,
+      "output_shape": [
+        1,
+        192,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 192,
+      "groups": 1,
+      "in_channels": 192,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.018,
+      "macs": 37601280,
+      "name": "entropy_model.hyper_enc.body.1.dcb.block.conv5",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 384,
+      "groups": 1,
+      "in_channels": 384,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.036,
+      "macs": 75202560,
+      "name": "entropy_model.hyper_enc.body.1.down",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        34,
+        60
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 4.4117647058823526e-06,
+      "macs": 9216,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.ca.1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00225,
+      "macs": 4700160,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.conv1",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 9,
+      "groups": 96,
+      "in_channels": 96,
+      "kernel": [
+        3,
+        3
+      ],
+      "kmac_per_px": 0.0002109375,
+      "macs": 440640,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.conv2",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        17,
+        30
+      ],
+      "padding": [
+        1,
+        1
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.00225,
+      "macs": 4700160,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.conv3",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.conv4",
+      "out_channels": 192,
+      "output_shape": [
+        1,
+        192,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 192,
+      "groups": 1,
+      "in_channels": 192,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.0045,
+      "macs": 9400320,
+      "name": "entropy_model.hyper_enc.body.2.dcb.block.conv5",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H0",
+      "fan_in": 384,
+      "groups": 1,
+      "in_channels": 384,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.009,
+      "macs": 18800640,
+      "name": "entropy_model.hyper_enc.body.2.down",
+      "out_channels": 96,
+      "output_shape": [
+        1,
+        96,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    },
+    {
+      "component": "H4",
+      "fan_in": 96,
+      "groups": 1,
+      "in_channels": 96,
+      "kernel": [
+        1,
+        1
+      ],
+      "kmac_per_px": 0.12,
+      "macs": 250675200,
+      "name": "entropy_model.scale_dec.proj",
+      "out_channels": 5120,
+      "output_shape": [
+        1,
+        5120,
+        17,
+        30
+      ],
+      "padding": [
+        0,
+        0
+      ],
+      "stride": [
+        1,
+        1
+      ]
+    }
+  ],
+  "input": {
+    "height": 1088,
+    "qp": 3,
+    "width": 1920
+  },
+  "kodak_sizes": {
+    "kodim01t.jpg": [
+      150,
+      150
+    ],
+    "kodim02t.jpg": [
+      150,
+      150
+    ],
+    "kodim03t.jpg": [
+      150,
+      150
+    ],
+    "kodim04t.jpg": [
+      150,
+      150
+    ],
+    "kodim05t.jpg": [
+      150,
+      150
+    ],
+    "kodim06t.jpg": [
+      150,
+      150
+    ],
+    "kodim07t.jpg": [
+      150,
+      150
+    ],
+    "kodim08t.jpg": [
+      150,
+      150
+    ],
+    "kodim09t.jpg": [
+      150,
+      150
+    ],
+    "kodim10t.jpg": [
+      150,
+      150
+    ],
+    "kodim11t.jpg": [
+      150,
+      150
+    ],
+    "kodim12t.jpg": [
+      150,
+      150
+    ],
+    "kodim13t.jpg": [
+      150,
+      150
+    ],
+    "kodim14t.jpg": [
+      150,
+      150
+    ],
+    "kodim15t.jpg": [
+      150,
+      150
+    ],
+    "kodim16t.jpg": [
+      150,
+      150
+    ],
+    "kodim17t.jpg": [
+      150,
+      150
+    ],
+    "kodim18t.jpg": [
+      150,
+      150
+    ],
+    "kodim19t.jpg": [
+      150,
+      150
+    ],
+    "kodim20t.jpg": [
+      150,
+      150
+    ],
+    "kodim21t.jpg": [
+      150,
+      150
+    ],
+    "kodim22t.jpg": [
+      150,
+      150
+    ],
+    "kodim23t.jpg": [
+      150,
+      150
+    ],
+    "kodim24t.jpg": [
+      150,
+      150
+    ]
+  },
+  "main_sweep": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "H0",
+    "H1",
+    "H2",
+    "H3",
+    "D0",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "model": "checkpoints\\pulse-mse",
+  "pixels": 2088960,
+  "table4_check": {
+    "analysis": {
+      "delta": -0.011498039215688038,
+      "expected": 43.22,
+      "measured": 43.20850196078431,
+      "pass": true,
+      "pct": -0.026603515075629414,
+      "tolerance": 0.4322
+    },
+    "em1": {
+      "delta": 0.0005078431372549375,
+      "expected": 0.58,
+      "measured": 0.5805078431372549,
+      "pass": true,
+      "pct": 0.087559161595685,
+      "tolerance": 0.0058
+    },
+    "em2": {
+      "delta": 0.0005078431372549375,
+      "expected": 0.74,
+      "measured": 0.7405078431372549,
+      "pass": true,
+      "pct": 0.06862745098039635,
+      "tolerance": 0.0074
+    },
+    "hyper_dec": {
+      "delta": -0.00327242647058823,
+      "expected": 0.24,
+      "measured": 0.23672757352941176,
+      "pass": true,
+      "pct": -1.363511029411768,
+      "tolerance": 0.005
+    },
+    "hyper_enc": {
+      "delta": 0.0029429227941176195,
+      "expected": 0.45,
+      "measured": 0.45294292279411763,
+      "pass": true,
+      "pct": 0.6539828431372463,
+      "tolerance": 0.005
+    },
+    "linear_cdf": {
+      "delta": 0.0,
+      "expected": 0.12,
+      "measured": 0.12,
+      "pass": true,
+      "pct": 0.0,
+      "tolerance": 0.005
+    },
+    "synthesis": {
+      "delta": -0.003855147058823505,
+      "expected": 3.53,
+      "measured": 3.5261448529411763,
+      "pass": true,
+      "pct": -0.10921096483919035,
+      "tolerance": 0.0353
+    }
+  }
+}

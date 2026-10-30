@@ -1,0 +1,25 @@
+"C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe" "C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\pipeline.py" overnight --datasets clic_professional --formats fp4_e2m1 --components all --qps 0 1 2 3 4 5 6 7 --device cuda --threads 1 --ledger quantization-pluse-mse/results/_ledger --output-root quantization-pluse-mse --log-dir quantization-pluse-mse/logs --skip-reference
+[2026-10-24T10:33:06.944985+00:00] datasets=['clic_professional'] formats=['fp4_e2m1'] components=['all'] qps=[0, 1, 2, 3, 4, 5, 6, 7]
+[2026-10-24T10:33:06.945991+00:00] ledger=quantization-pluse-mse\results\_ledger output_root=quantization-pluse-mse
+[2026-10-24T10:33:06.949822+00:00] dataset clic_professional: 41 images
+[2026-10-24T10:33:06.950890+00:00] reference exists for clic_professional; skipping
+[2026-10-24T10:33:06.951975+00:00] RUN "C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe" "C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\pipeline.py" sweep --format fp4_e2m1 --components all --control none --dataset clic_professional --qps 0 1 2 3 4 5 6 7 --reference-dir quantization-pluse-mse\results\_ledger\reference --output quantization-pluse-mse\results\_ledger\sweep.csv --configs-output quantization-pluse-mse\results\_ledger\configs.csv --weight-stats-output quantization-pluse-mse\results\_ledger\weight_stats.csv --progress quantization-pluse-mse\results\_ledger\progress.jsonl --manifests quantization-pluse-mse\results\_ledger\manifests --device cuda --threads 1
+[2026-10-24T12:47:19.291177+00:00] EXIT 0
+[2026-10-24T12:47:19.316177+00:00] RUN "C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe" "C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\pipeline.py" export --format fp4_e2m1 --sweep quantization-pluse-mse\results\_ledger\sweep.csv --configs quantization-pluse-mse\results\_ledger\configs.csv --weight-stats quantization-pluse-mse\results\_ledger\weight_stats.csv --reference quantization-pluse-mse\results\_ledger\reference --manifests quantization-pluse-mse\results\_ledger\manifests --inventory quantization-pluse-mse/artifacts/component_inventory.json --output-root quantization-pluse-mse
+[2026-10-24T12:47:41.487582+00:00] EXIT 0
+[2026-10-24T12:47:42.701510+00:00] {
+  "timestamp": "20261024T103306Z",
+  "datasets": [
+    "clic_professional"
+  ],
+  "formats": [
+    "fp4_e2m1"
+  ],
+  "sweep_rows": 69233,
+  "configs": 135,
+  "weight_rows": 698,
+  "failures": 0,
+  "status_counts": {
+    "ok": 69233
+  }
+}

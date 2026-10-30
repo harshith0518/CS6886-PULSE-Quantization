@@ -1,0 +1,260 @@
+# Component manifest for the PULSE-MSE component-wise precision study.
+# This is a planning manifest, not an executable config.
+# Parameter counts come from the released pulse-mse bundle and
+# pulse_mse_model_report.txt. Counts include biases and tiny parameters.
+
+model:
+  name: pulse-mse
+  checkpoint: ../checkpoints/pulse-mse
+  config: ../checkpoints/pulse-mse/config.json
+  architecture:
+    M: 320
+    z_ch: 96
+    hidden_size: 144
+    hidden_size_x: 48
+    hx_bottleneck: 48
+    num_cond_blocks: 2
+    entropy_channels: 128
+    dico_block_variant: ca
+  qps: [0, 1, 2, 3, 4, 5, 6, 7]
+  neural_params: 14179432
+  loaded_params_with_meta_prior: 14720104
+  conv_weight_params: 14127360
+  fp32_mb: 54.09
+  int8_mb: 13.52
+
+existing_integer_runtime:
+  module: entropy_model.scale_dec
+  implementation: IntegerLinearCDFIndexDecoder
+  artifact: entropy_control_int.pt
+  note: Already integer in the released bundle. Treat as a control, not a PTQ target.
+
+excluded_from_weight_quantization:
+  - entropy_model.meta_prior
+  - entropy_model.entropy_bottleneck
+  - "*.q_scale_enc"
+  - "*.q_scale_hyper_z"
+  - "*.q_scale_hyper_m"
+  - "*.q_scale_prior_2m"
+  - "*.q_basic"
+  - "*.qp_bias"
+  - "*.position_bias"
+  - "*.norm1.weight"
+  - "*.norm2.weight"
+  - "*.norm_out.weight"
+  - "*.norm.weight"
+  - "*.bias"
+
+components:
+  E0:
+    name: patch_embedding
+    group: encoder
+    modules:
+      - encoder.patch_embed
+    params: 393728
+    conv_weight_params: 393216
+    notes: 16x16 stride-16 patch embedding; first layer.
+
+  E1:
+    name: encoder_dcb_0
+    group: encoder
+    modules:
+      - encoder.blocks.0
+    params: 2893824
+    conv_weight_params: 2888192
+    notes: DCB with conv1, depthwise conv2, conv3, conv4, conv5, CA.
+
+  E2:
+    name: encoder_dcb_1
+    group: encoder
+    modules:
+      - encoder.blocks.1
+    params: 2893824
+    conv_weight_params: 2888192
+    notes: DCB with conv1, depthwise conv2, conv3, conv4, conv5, CA.
+
+  E3:
+    name: encoder_dcb_2
+    group: encoder
+    modules:
+      - encoder.blocks.2
+    params: 2893824
+    conv_weight_params: 2888192
+    notes: DCB with conv1, depthwise conv2, conv3, conv4, conv5, CA.
+
+  E4:
+    name: encoder_dcb_3
+    group: encoder
+    modules:
+      - encoder.blocks.3
+    params: 2893824
+    conv_weight_params: 2888192
+    notes: DCB with conv1, depthwise conv2, conv3, conv4, conv5, CA.
+
+  E5:
+    name: latent_projection
+    group: encoder
+    modules:
+      - encoder.norm_out
+      - encoder.proj_out
+    params: 164672
+    conv_weight_params: 163840
+    notes: 512 -> 320 projection plus RMSNorm.
+
+  H0:
+    name: hyper_encoder
+    group: entropy
+    modules:
+      - entropy_model.hyper_enc
+    params: 303456
+    conv_weight_params: 300576
+    notes: 3 blocks; downsample to z resolution.
+
+  H1:
+    name: hyper_decoder
+    group: entropy
+    modules:
+      - entropy_model.hyper_dec
+    params: 154688
+    conv_weight_params: 152256
+    notes: grouped convolutions and upsampling.
+
+  H2:
+    name: em_step_1
+    group: entropy
+    modules:
+      - entropy_model.em_step1
+    params: 166656
+    conv_weight_params: 164992
+    notes: grouped convolutions; outputs qstep and means.
+
+  H3:
+    name: em_step_2
+    group: entropy
+    modules:
+      - entropy_model.em_step2
+    params: 207296
+    conv_weight_params: 205952
+    notes: grouped convolutions; refines means.
+
+  H4:
+    name: scale_decoder_control
+    group: entropy
+    modules:
+      - entropy_model.scale_dec
+    params: 496648
+    conv_weight_params: 491520
+    notes: Already integer in the released bundle. Control only.
+
+  H5:
+    name: entropy_lookup_control
+    group: entropy
+    modules:
+      - entropy_model.entropy_bottleneck
+      - entropy_model.meta_prior
+    params: 549120
+    conv_weight_params: 0
+    notes: Lookup tables. Do not weight-quantize. QP gates are in D9.
+
+  D0:
+    name: initial_projection
+    group: decoder
+    modules:
+      - decoder.up0
+    params: 46224
+    conv_weight_params: 46080
+    notes: 320 -> 144 projection.
+
+  D1:
+    name: decoder_dcb_0
+    group: decoder
+    modules:
+      - decoder.blocks.0
+    params: 142832
+    conv_weight_params: 141840
+    quantize_descendants: [conv1, conv2, conv3, conv4, conv5, ca.1]
+    keep_fp32: [bias]
+    notes: DCB with depthwise conv2; D1 scope is conv1-conv5 plus ca.1, biases FP32.
+
+  D2:
+    name: decoder_dcb_1
+    group: decoder
+    modules:
+      - decoder.blocks.1
+    params: 142832
+    conv_weight_params: 141840
+    notes: DCB with depthwise conv2.
+
+  D3:
+    name: latent_upsampling
+    group: decoder
+    modules:
+      - decoder.renderer.latent_upsample
+    params: 246528
+    conv_weight_params: 245760
+    notes: 320 -> 768 projection plus PixelShuffle 4.
+
+  D4:
+    name: condition_projection
+    group: decoder
+    modules:
+      - decoder.renderer.condition_proj
+    params: 111360
+    conv_weight_params: 110592
+    notes: 144 -> 768 projection.
+
+  D5:
+    name: renderer_mlp
+    group: decoder
+    modules:
+      - decoder.renderer.mlp
+    params: 4704
+    conv_weight_params: 4608
+    notes: 48 -> 48 MLP with SiLU.
+
+  D6:
+    name: adaln
+    group: decoder
+    modules:
+      - decoder.renderer.adaln
+    params: 7056
+    conv_weight_params: 6912
+    notes: 48 -> 144 projection with SiLU.
+
+  D7:
+    name: output_projection
+    group: decoder
+    modules:
+      - decoder.renderer.output
+    params: 2352
+    conv_weight_params: 2304
+    notes: 48 -> 3 projection plus PixelShuffle 4.
+
+  D8:
+    name: renderer_input
+    group: decoder
+    modules:
+      - decoder.renderer.input_proj
+      - decoder.renderer.position_bias
+    params: 3072
+    conv_weight_params: 2304
+    notes: Tiny; test only as a separate sensitivity case.
+
+  D9:
+    name: qp_gates
+    group: decoder
+    modules:
+      - decoder.q_scale_codec_dec
+      - decoder.q_scale_dico
+      - decoder.renderer.q_scale
+      - q_scale_enc
+      - entropy_model.q_scale_hyper_z
+      - entropy_model.q_scale_hyper_m
+      - entropy_model.q_scale_prior_2m
+      - entropy_model.q_basic
+    params: 1584
+    conv_weight_params: 0
+    notes: Scalar gates; keep FP32 in the main sweep.
+
+main_sweep_components: [E0, E1, E2, E3, E4, E5, H0, H1, H2, H3, D0, D1, D2, D3, D4, D5, D6, D7, D8]
+control_components: [H4, H5, D9]

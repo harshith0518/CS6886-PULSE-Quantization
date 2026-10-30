@@ -1,0 +1,347 @@
+[
+  {
+    "command": "\"C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\pipeline.py\" sweep --format fp16 --components D1 --control none --dataset kodak_thumb --qps 0 --max-images 1 --reference-dir quantization-pluse-mse\\results\\_ledger\\reference --output quantization-pluse-mse\\results\\_ledger\\sweep.csv --configs-output quantization-pluse-mse\\results\\_ledger\\configs.csv --weight-stats-output quantization-pluse-mse\\results\\_ledger\\weight_stats.csv --progress quantization-pluse-mse\\results\\_ledger\\progress.jsonl --manifests quantization-pluse-mse\\results\\_ledger\\manifests --device cuda --threads 1",
+    "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+    "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+    "eval_flags": {
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "device": "cuda",
+      "matmul_allow_tf32": false,
+      "tf32": false,
+      "threads": 1
+    },
+    "git": {
+      "commit": "9f871b7d7153ff7c4cb6d914f52332e9dbff58aa",
+      "dirty": true
+    },
+    "hardware": {
+      "capability": "8.6",
+      "cuda_available": true,
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_memory_mb": 4095.5
+    },
+    "model_path": "checkpoints\\pulse-mse",
+    "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+    "packages": {
+      "cuda": "12.4",
+      "numpy": "2.5.2",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.12.6",
+      "torch": "2.6.0+cu124"
+    },
+    "quant_config": {
+      "components": [
+        "D1"
+      ],
+      "control": "none",
+      "dataset": "kodak_thumb",
+      "format": "fp16",
+      "legacy": false,
+      "max_images": 1,
+      "mode": "w_only",
+      "qps": [
+        0
+      ],
+      "tf32": "off"
+    },
+    "quant_config_sha256": "6549a68870b93154866d0ba7d3737a252961c7af1b12afe4a1c0533905885b9c"
+  },
+  {
+    "command": "\"C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\pipeline.py\" sweep --format fp16 --components all --control none --dataset kodak --qps 0 1 2 3 4 5 6 7 --reference-dir quantization-pluse-mse\\results\\_ledger\\reference --output quantization-pluse-mse\\results\\_ledger\\sweep.csv --configs-output quantization-pluse-mse\\results\\_ledger\\configs.csv --weight-stats-output quantization-pluse-mse\\results\\_ledger\\weight_stats.csv --progress quantization-pluse-mse\\results\\_ledger\\progress.jsonl --manifests quantization-pluse-mse\\results\\_ledger\\manifests --device cuda --threads 1",
+    "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+    "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+    "eval_flags": {
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "device": "cuda",
+      "matmul_allow_tf32": false,
+      "tf32": false,
+      "threads": 1
+    },
+    "git": {
+      "commit": "9f871b7d7153ff7c4cb6d914f52332e9dbff58aa",
+      "dirty": true
+    },
+    "hardware": {
+      "capability": "8.6",
+      "cuda_available": true,
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_memory_mb": 4095.5
+    },
+    "model_path": "checkpoints\\pulse-mse",
+    "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+    "packages": {
+      "cuda": "12.4",
+      "numpy": "2.5.2",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.12.6",
+      "torch": "2.6.0+cu124"
+    },
+    "quant_config": {
+      "components": [
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "control": "none",
+      "dataset": "kodak",
+      "format": "fp16",
+      "legacy": false,
+      "max_images": null,
+      "mode": "w_only",
+      "qps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tf32": "off"
+    },
+    "quant_config_sha256": "c4012820df673a96324ca99670d7291e457aa9c65d95bd8b99711265163077dd"
+  },
+  {
+    "command": "\"C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\pipeline.py\" sweep --format fp16 --components all --control none --dataset clic_professional --qps 0 1 2 3 4 5 6 7 --reference-dir quantization-pluse-mse\\results\\_ledger\\reference --output quantization-pluse-mse\\results\\_ledger\\sweep.csv --configs-output quantization-pluse-mse\\results\\_ledger\\configs.csv --weight-stats-output quantization-pluse-mse\\results\\_ledger\\weight_stats.csv --progress quantization-pluse-mse\\results\\_ledger\\progress.jsonl --manifests quantization-pluse-mse\\results\\_ledger\\manifests --device cuda --threads 1",
+    "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+    "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+    "eval_flags": {
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "device": "cuda",
+      "matmul_allow_tf32": false,
+      "tf32": false,
+      "threads": 1
+    },
+    "git": {
+      "commit": "9f871b7d7153ff7c4cb6d914f52332e9dbff58aa",
+      "dirty": true
+    },
+    "hardware": {
+      "capability": "8.6",
+      "cuda_available": true,
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_memory_mb": 4095.5
+    },
+    "model_path": "checkpoints\\pulse-mse",
+    "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+    "packages": {
+      "cuda": "12.4",
+      "numpy": "2.5.2",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.12.6",
+      "torch": "2.6.0+cu124"
+    },
+    "quant_config": {
+      "components": [
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "control": "none",
+      "dataset": "clic_professional",
+      "format": "fp16",
+      "legacy": false,
+      "max_images": null,
+      "mode": "w_only",
+      "qps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tf32": "off"
+    },
+    "quant_config_sha256": "6e9475d8cb90acec2a9592f3a3125314d5c968d3af600872bc714ce4ce5d0079"
+  },
+  {
+    "command": "\"C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\pipeline.py\" sweep --format fp16 --components all --control none --dataset kodak --qps 0 1 2 3 4 5 6 7 --reference-dir quantization-pluse-mse\\results\\_ledger\\reference --output quantization-pluse-mse\\results\\_ledger\\sweep.csv --configs-output quantization-pluse-mse\\results\\_ledger\\configs.csv --weight-stats-output quantization-pluse-mse\\results\\_ledger\\weight_stats.csv --progress quantization-pluse-mse\\results\\_ledger\\progress.jsonl --manifests quantization-pluse-mse\\results\\_ledger\\manifests --device cuda --threads 1",
+    "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+    "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+    "eval_flags": {
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "device": "cuda",
+      "matmul_allow_tf32": false,
+      "tf32": false,
+      "threads": 1
+    },
+    "git": {
+      "commit": "9f871b7d7153ff7c4cb6d914f52332e9dbff58aa",
+      "dirty": true
+    },
+    "hardware": {
+      "capability": "8.6",
+      "cuda_available": true,
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_memory_mb": 4095.5
+    },
+    "model_path": "checkpoints\\pulse-mse",
+    "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+    "packages": {
+      "cuda": "12.4",
+      "numpy": "2.5.2",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.12.6",
+      "torch": "2.6.0+cu124"
+    },
+    "quant_config": {
+      "components": [
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "control": "none",
+      "dataset": "kodak",
+      "format": "fp16",
+      "legacy": false,
+      "max_images": null,
+      "mode": "w_only",
+      "qps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tf32": "off"
+    },
+    "quant_config_sha256": "c4012820df673a96324ca99670d7291e457aa9c65d95bd8b99711265163077dd"
+  },
+  {
+    "command": "\"C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\pipeline.py\" sweep --format fp16 --components all --control none --dataset clic_professional --qps 0 1 2 3 4 5 6 7 --reference-dir quantization-pluse-mse\\results\\_ledger\\reference --output quantization-pluse-mse\\results\\_ledger\\sweep.csv --configs-output quantization-pluse-mse\\results\\_ledger\\configs.csv --weight-stats-output quantization-pluse-mse\\results\\_ledger\\weight_stats.csv --progress quantization-pluse-mse\\results\\_ledger\\progress.jsonl --manifests quantization-pluse-mse\\results\\_ledger\\manifests --device cuda --threads 1",
+    "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+    "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+    "eval_flags": {
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "device": "cuda",
+      "matmul_allow_tf32": false,
+      "tf32": false,
+      "threads": 1
+    },
+    "git": {
+      "commit": "9f871b7d7153ff7c4cb6d914f52332e9dbff58aa",
+      "dirty": true
+    },
+    "hardware": {
+      "capability": "8.6",
+      "cuda_available": true,
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_memory_mb": 4095.5
+    },
+    "model_path": "checkpoints\\pulse-mse",
+    "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+    "packages": {
+      "cuda": "12.4",
+      "numpy": "2.5.2",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.12.6",
+      "torch": "2.6.0+cu124"
+    },
+    "quant_config": {
+      "components": [
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "control": "none",
+      "dataset": "clic_professional",
+      "format": "fp16",
+      "legacy": false,
+      "max_images": null,
+      "mode": "w_only",
+      "qps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tf32": "off"
+    },
+    "quant_config_sha256": "6e9475d8cb90acec2a9592f3a3125314d5c968d3af600872bc714ce4ce5d0079"
+  }
+]

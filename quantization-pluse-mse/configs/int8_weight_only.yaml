@@ -1,0 +1,30 @@
+# First INT8 milestone: one component, weight-only.
+format: int8
+mode: w_only
+granularity: per_output_channel_symmetric
+qmax: 127
+control_qmax: 7
+component: D1
+component_scope:
+  - decoder.blocks.0.conv1
+  - decoder.blocks.0.conv2
+  - decoder.blocks.0.conv3
+  - decoder.blocks.0.conv4
+  - decoder.blocks.0.conv5
+  - decoder.blocks.0.ca.1
+biases: fp32
+norms: fp32
+qp_gates: fp32
+dataset_smoke: kodak
+dataset_real_loop: clic_professional
+smoke_images: 8
+smoke_qps: [0, 3, 7]
+real_loop_qps: [0, 1, 2, 3, 4, 5, 6, 7]
+controls:
+  identity:
+    description: apply/restore with no weight change; stream hashes must match FP32
+  int4:
+    description: same function with qmax=7; must hurt more than INT8
+reference:
+  kodak: benchmark_results/pulse_mse_20261011_043023.json
+  clic_professional: benchmark_results/pulse_mse_20261011_045724.json

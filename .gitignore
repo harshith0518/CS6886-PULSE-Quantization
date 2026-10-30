@@ -23,3 +23,12 @@ data/
 .DS_Store
 .venv/
 venv/
+
+# --- Large or regenerable experiment data ---
+# Full-resolution evaluation sets are re-downloadable; keep the 0.1 MB thumbnails.
+datasets/kodak/*.png
+datasets/clic_professional/
+# Raw append-only sweep ledger (~85 MB); regenerate with pipeline.py sweep.
+quantization-pluse-mse/results/_ledger/
+# Raw per-image sweep dumps are subsets of the ledger above.
+quantization-pluse-mse/*/results/sweep_*.csv

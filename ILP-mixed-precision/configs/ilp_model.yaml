@@ -1,0 +1,128 @@
+# ILP mixed-precision model configuration.
+# This is a planning manifest, not an executable config.
+
+model:
+  name: pulse-mse
+  checkpoint: ../checkpoints/pulse-mse
+  qps: [0, 1, 2, 3, 4, 5, 6, 7]
+  components:
+    - E0
+    - E1
+    - E2
+    - E3
+    - E4
+    - E5
+    - H0
+    - H1
+    - H2
+    - H3
+    - D0
+    - D1
+    - D2
+    - D3
+    - D4
+    - D5
+    - D6
+    - D7
+    - D8
+  control_components: [H4, H5, D9]
+
+precisions:
+  fp32:
+    supported: true
+    simulated: false
+    bits: 32
+  fp16:
+    supported: true
+    simulated: false
+    bits: 16
+  bf16:
+    supported: true
+    simulated: false
+    bits: 16
+  int8:
+    supported: true
+    simulated: false
+    bits: 8
+    backend: tensorrt
+  fp8_e4m3:
+    supported: false
+    simulated: true
+    bits: 8
+  fp8_e5m2:
+    supported: false
+    simulated: true
+    bits: 8
+  fp4_e2m1:
+    supported: false
+    simulated: true
+    bits: 4
+  int4:
+    supported: false
+    simulated: true
+    bits: 4
+
+objective:
+  default: latency
+  options: [latency, energy, weighted]
+  weights:
+    latency: 1.0
+    energy: 0.0
+
+constraints:
+  one_precision_per_component: true
+  quality:
+    metric: delta_psnr
+    epsilon_db:
+      "0": 0.20
+      "1": 0.20
+      "2": 0.20
+      "3": 0.20
+      "4": 0.20
+      "5": 0.20
+      "6": 0.20
+      "7": 0.20
+  memory_mb: 4096
+  supported_only: true
+  simulated_allowed: false
+  decode_ok_required: true
+  cdf_ok_required: true
+
+data:
+  source: ../quantization-pluse-mse/results/tables
+  coefficient_table: coefficients.csv
+  required_columns:
+    - component
+    - precision
+    - qp
+    - delta_psnr
+    - delta_bpp
+    - encode_ms
+    - decode_ms
+    - peak_memory_mb
+    - energy_j
+    - supported
+    - simulated
+    - decode_ok
+    - cdf_ok
+    - run_id
+
+solver:
+  primary: ortools_cp_sat
+  fallback: gurobi
+  baseline: greedy
+  time_limit_s: 60
+  num_workers: 1
+  random_seed: 0
+
+validation:
+  datasets: [kodak, clic_professional]
+  compare_against: [fp32, fp16, int8]
+  metrics: [psnr, bpp, delta_psnr, delta_bpp, encode_ms, decode_ms, peak_memory_mb, energy_j]
+  require_bitstream_check: true
+  require_cdf_check: true
+
+outputs:
+  assignment: results/assignment.csv
+  summary: results/ilp_summary.json
+  validation: results/validation.csv

@@ -1,0 +1,112 @@
+# Experiment matrix for the PULSE-MSE component-wise precision study (v2.1).
+# Planning manifest only.
+
+datasets:
+  kodak:
+    path: ../datasets/kodak
+    images: 24
+    resolution: "150x150 thumbnails"
+    role: smoke only
+  clic_professional:
+    path: ../datasets/clic_professional
+    images: 41
+    resolution: high resolution
+    role: real quantization loop
+  calibration:
+    path: null
+    images: 0
+    role: PTQ calibration
+    status: missing
+    recommended: DIV2K validation 801-900 or CLIC train, 64-128 crops of 512x512
+  qat:
+    path: null
+    images: 0
+    role: QAT fine-tuning
+    status: missing
+    recommended: DIV2K/Flickr2K/CLIC train, disjoint from evaluation
+
+qps: [0, 1, 2, 3, 4, 5, 6, 7]
+smoke_qps: [0, 3, 7]
+smoke_images: 8
+full_images:
+  kodak: 24
+  clic_professional: 41
+
+formats:
+  core: [fp16, bf16, int8, fp8_e4m3, fp8_e5m2, fp4_e2m1, int4]
+  real: [fp16, bf16, int8]
+  simulated: [fp8_e4m3, fp8_e5m2, fp4_e2m1, int4]
+
+components:
+  main: [E0, E1, E2, E3, E4, E5, H0, H1, H2, H3, D0, D1, D2, D3, D4, D5, D6, D7, D8]
+  controls: [H4, H5, D9]
+
+phase_0:
+  name: harness trust
+  order:
+    - inventory + Table 4 check + Kodak size print
+    - FP32 reference Kodak 24 x QP 0-7, twice TF32 off + once default flags
+    - G0a + noise floor
+    - D1 INT8 smoke on first 8 Kodak sorted, QP 0/3/7
+    - identity control and INT4 qmax=7 positive control
+    - show data
+  gates:
+    - "G0a: reference matches frozen baseline within noise floor"
+    - "D1 controls: identity stream hashes match, INT4 hurts more than INT8, weights change then restore, output changes on fixed input"
+
+phase_1:
+  name: weight-only screen
+  components: main
+  formats: core
+  mode: w_only
+  datasets: [kodak]
+  qps: [0, 1, 2, 3, 4, 5, 6, 7]
+  note: Kodak is smoke; D1/E1 already run on Kodak and CLIC.
+
+phase_2:
+  name: targeted follow-ups
+  steps:
+    2a: W8A8 INT8/FP8 dynamic then static, shared vs per-QP calibration
+    2b: leaf split by role on top-3 sensitive blocks
+    2c: clipping min-max vs percentile vs MSE-optimal
+    2d: group size 16/32/64/128 where it divides
+    2e: CLIC confirmation shortlist
+    2f: encode FP32, decode quantized for H1-H3 only
+  datasets: [kodak, clic_professional]
+
+phase_3:
+  name: whole-model and additivity
+  runs:
+    - uniform whole-model per format
+    - all-green components at INT8
+    - all-green + yellow at INT8
+    - predicted sum-of-singles vs measured whole-model
+  datasets: [kodak, clic_professional]
+
+phase_4:
+  name: conditional QAT and ILP
+  qat_trigger: component matters (>=5% MACs or params) and is Red at INT8
+  ilp_trigger: at least 2 components have different safe precisions
+  ilp_variables: x[c,p] shared across QPs
+  ilp_constraints: per-QP penalty, memory <= 4096 MB, supported formats only
+  ilp_objectives: [size_all_formats, latency_energy_real_formats]
+
+phase_5:
+  name: conditional deployment
+  formats: [fp32, fp16, bf16, int8]
+  note: no speed, memory or energy claim for simulated formats
+
+fixed_protocol:
+  seed: 0
+  tf32_off: true
+  cudnn_deterministic: true
+  cudnn_benchmark: false
+  cpu_threads: 1
+  image_order: sorted_path
+  padding: model_default
+  smoke_images: first_8_sorted
+  resume_key: "(quant_config_hash, dataset, image, qp)"
+  progress_log: results/progress.jsonl
+  manifest_dir: results/manifests
+  sweep_output: results/sweep.csv
+  summary_dir: results/summary

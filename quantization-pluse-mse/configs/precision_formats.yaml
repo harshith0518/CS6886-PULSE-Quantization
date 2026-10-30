@@ -1,0 +1,162 @@
+# Precision format and scheme manifest for PULSE-MSE.
+# This is a planning manifest, not an executable config.
+
+hardware:
+  gpu: NVIDIA GeForce RTX 3050 Laptop GPU
+  compute_capability: "8.6"
+  vram_gb: 4
+  cuda: "12.4"
+  pytorch: "2.6.0+cu124"
+  native_formats:
+    - fp32
+    - tf32_compute_only
+    - fp16
+    - bf16
+    - int8_tensorrt
+  simulated_only_formats:
+    - fp8_e4m3
+    - fp8_e5m2
+    - fp4_e2m1
+    - int4
+  notes:
+    - FP8 requires sm_89 or newer for native support.
+    - FP4/INT4 are not assumed native on this laptop.
+    - No latency, memory, or energy claim for simulated formats.
+
+formats:
+  fp32:
+    bits: 32
+    layout: "1-8-23"
+    finite_max: 3.4028235e38
+    min_normal: 1.17549435e-38
+    use: baseline
+    calibration: none
+  fp16:
+    bits: 16
+    layout: "1-5-10"
+    finite_max: 65504
+    min_normal: 6.103515625e-5
+    use: deployment control
+    calibration: none
+  bf16:
+    bits: 16
+    layout: "1-8-7"
+    finite_max: 3.38953139e38
+    min_normal: 1.17549435e-38
+    use: deployment control
+    calibration: none
+  fp8_e4m3:
+    bits: 8
+    layout: "1-4-3"
+    finite_max: 448
+    min_normal: 0.015625
+    use: simulated weights
+    calibration: weight scale, optional activation scale
+  fp8_e5m2:
+    bits: 8
+    layout: "1-5-2"
+    finite_max: 57344
+    min_normal: 6.103515625e-5
+    use: simulated activations
+    calibration: optional activation scale
+  int8:
+    bits: 8
+    layout: integer
+    range_symmetric: [-127, 127]
+    use: main deployable low precision
+    calibration: weights per output channel, activations symmetric per tensor
+  fp4_e2m1:
+    bits: 4
+    layout: "1-2-1"
+    positive_values: [0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0]
+    block_size: 16
+    use: simulated block-scaled weights
+    calibration: block scale
+  int4:
+    bits: 4
+    layout: integer
+    range_symmetric: [-7, 7]
+    group_size: 16
+    use: simulated group-scaled weights
+    calibration: group scale
+  nf4:
+    bits: 4
+    layout: non-uniform
+    use: optional
+    calibration: block scale
+  mxfp8:
+    bits: 8
+    layout: OCP microscaling
+    use: optional
+    calibration: block scale
+  mxfp4:
+    bits: 4
+    layout: OCP microscaling
+    use: optional
+    calibration: block scale
+
+schemes:
+  weight_only:
+    description: Quantize convolution weights only. Keep activations FP32/FP16.
+    calibration: none
+    first: true
+  weight_and_activation_dynamic:
+    description: Quantize weights and use per-tensor dynamic activation scales.
+    calibration: none
+    first: false
+  weight_and_activation_static:
+    description: Quantize weights and use calibrated activation scales.
+    calibration: required
+    first: false
+
+granularity:
+  int8_weight: per_output_channel_symmetric
+  int8_activation: per_tensor_symmetric
+  int4_weight: per_group_symmetric
+  int4_group_sizes: [16]
+  fp8_weight: per_tensor
+  fp8_activation: per_tensor
+  fp4_weight: per_block
+  fp4_block_sizes: [16]
+  block_rule: block 16 along fan-in; per-output-channel fallback when fan_in % 16 != 0
+  no_4bit_activations: true
+
+calibration:
+  modes: [min_max, percentile_99_9, percentile_99_99, mse_optimal]
+  scope: [shared_across_qps, per_qp]
+  default: percentile_99_9
+  activation_samples_per_tensor: 1024
+  image_crops: 512
+  seed: 0
+
+rounding:
+  ptq: round_to_nearest_even
+  qat: stochastic_rounding
+  optional: adaround
+
+saturation_and_error_logging:
+  - min
+  - max
+  - mean
+  - std
+  - percentile_99_9
+  - saturation_rate
+  - sqnr_db
+  - mse
+  - cosine
+
+excluded_from_weight_quantization:
+  - entropy_model.meta_prior
+  - entropy_model.entropy_bottleneck
+  - "*.q_scale_enc"
+  - "*.q_scale_hyper_z"
+  - "*.q_scale_hyper_m"
+  - "*.q_scale_prior_2m"
+  - "*.q_basic"
+  - "*.qp_bias"
+  - "*.position_bias"
+  - "*.norm1.weight"
+  - "*.norm2.weight"
+  - "*.norm_out.weight"
+  - "*.norm.weight"
+  - "*.bias"

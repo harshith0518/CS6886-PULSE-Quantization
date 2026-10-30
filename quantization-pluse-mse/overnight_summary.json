@@ -1,0 +1,16 @@
+{
+  "configs": 135,
+  "datasets": [
+    "clic_professional"
+  ],
+  "failures": 0,
+  "formats": [
+    "fp4_e2m1"
+  ],
+  "status_counts": {
+    "ok": 69233
+  },
+  "sweep_rows": 69233,
+  "timestamp": "20261024T103306Z",
+  "weight_rows": 698
+}
