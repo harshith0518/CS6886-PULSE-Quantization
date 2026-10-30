@@ -29,6 +29,10 @@ venv/
 datasets/kodak/*.png
 datasets/clic_professional/
 datasets/set14/*.png
+datasets/qat_pool/**/*.png
+datasets/qat_pool/**/*.jpg
+datasets/qat_pool/**/*.jpeg
+datasets/qat_pool/*.zip
 # Raw append-only sweep ledger (~85 MB); regenerate with pipeline.py sweep.
 quantization-pluse-mse/results/_ledger/
 # Raw per-image sweep dumps are subsets of the ledger above.
