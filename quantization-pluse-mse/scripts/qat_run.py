@@ -139,6 +139,10 @@ def main():
                         choices=["assigned", "backbone", "encoder", "all"])
     parser.add_argument("--clip", type=float, default=1.0)
     parser.add_argument("--log-every", type=int, default=50)
+    parser.add_argument("--objective", choices=["rate_preserving", "rd"], default="rate_preserving",
+                        help="rate_preserving keeps bitrate at its pre-QAT value and pushes distortion down")
+    parser.add_argument("--rate-weight", type=float, default=1.0,
+                        help="weight on the rate-deviation penalty for --objective rate_preserving")
     parser.add_argument("--rd-weight", type=float, default=4.0,
                         help="multiplier on the distortion term; higher protects PSNR")
     parser.add_argument("--eval-every", type=int, default=0,
@@ -188,7 +192,7 @@ def main():
     ], lr=args.lr)
 
     validation_images = pool[: max(1, args.eval_images)]
-    validation_qps = (0, 3, 7)
+    validation_qps = tuple(range(8))
     baseline_measure = measure(model, validation_images, args.crop, validation_qps)
     slopes = slopes_from(baseline_measure)
     baseline_psnr = sum(v[0] for v in baseline_measure.values()) / len(baseline_measure)
@@ -216,8 +220,18 @@ def main():
             # recover quality; rd_weight biases it back toward PSNR.
             target = crop * 2 - 1
             mse_all = (output - target).square().mean(dim=(1, 2, 3))
-            lam = criterion.lambdas[qp]
-            loss = (args.rd_weight * lam * mse_all).mean() + rates["sq_loss"].mean()
+            bpp = rates["sq_loss"].mean()
+            if args.objective == "rate_preserving":
+                # Keep bitrate at its pre-QAT level and push distortion down. Optimising the raw RD
+                # objective instead slides *along* the curve: 5,900 steps bought 29% rate for 1.54 dB,
+                # a 52% penalty. Normalising both terms makes the target "same rate, less error".
+                ref_psnr, ref_bpp = baseline_measure[qp]
+                ref_mse = 10.0 ** (-ref_psnr / 10.0)
+                rate_term = args.rate_weight * ((bpp / ref_bpp) - 1.0) ** 2
+                loss = args.rd_weight * (mse_all.mean() / ref_mse) + rate_term
+            else:
+                lam = criterion.lambdas[qp]
+                loss = (args.rd_weight * lam * mse_all).mean() + bpp
             metrics = {"loss": loss.detach(), "bpp": rates["sq_loss"].mean().detach(),
                        "mse": mse_all.mean().detach()}
             (loss / args.accumulate).backward()
