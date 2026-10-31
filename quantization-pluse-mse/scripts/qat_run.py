@@ -74,11 +74,14 @@ def measure(model, images, crop, qps) -> dict:
                 mse = (pixels - image).square().mean().item()
                 psnr = -10 * math.log10(max(mse, 1e-12))
                 bpp = 8 * len(stream) / (image.shape[-2] * image.shape[-1])
-                previous = out.get(qp, (0.0, 0.0, 0))
-                out[qp] = (previous[0] + psnr, previous[1] + bpp, previous[2] + 1)
+                surrogate = float(model(image, return_codec_res=True, qp=qp)[2]["sq_loss"].mean())
+                previous = out.get(qp, (0.0, 0.0, 0.0, 0))
+                out[qp] = (previous[0] + psnr, previous[1] + bpp,
+                           previous[2] + surrogate, previous[3] + 1)
     if was_training:
         model.train()
-    return {qp: (total / count, rate / count) for qp, (total, rate, count) in out.items()}
+    return {qp: (total / count, rate / count, sur / count)
+            for qp, (total, rate, sur, count) in out.items()}
 
 
 def slopes_from(points: dict) -> dict:
@@ -102,10 +105,11 @@ def slopes_from(points: dict) -> dict:
 def penalty_score(baseline: dict, current: dict, slopes: dict) -> float:
     """Worst-QP rate-equivalent penalty against the pre-QAT model, the metric we report."""
     worst = 0.0
-    for qp, (psnr, bpp) in current.items():
+    for qp, values in current.items():
         if qp not in baseline:
             continue
-        base_psnr, base_bpp = baseline[qp]
+        psnr, bpp = values[0], values[1]
+        base_psnr, base_bpp = baseline[qp][0], baseline[qp][1]
         d_psnr = psnr - base_psnr
         d_bpp = 100.0 * (bpp / base_bpp - 1.0) if base_bpp else 0.0
         slope = slopes.get(qp) or 3.0
@@ -139,8 +143,12 @@ def main():
                         choices=["assigned", "backbone", "encoder", "all"])
     parser.add_argument("--clip", type=float, default=1.0)
     parser.add_argument("--log-every", type=int, default=50)
-    parser.add_argument("--objective", choices=["rate_preserving", "rd"], default="rate_preserving",
+    parser.add_argument("--objective", choices=["augmented_lagrangian", "rate_preserving", "rd"],
+                        default="augmented_lagrangian",
                         help="rate_preserving keeps bitrate at its pre-QAT value and pushes distortion down")
+    parser.add_argument("--mu-alpha", type=float, default=1.0,
+                        help="dual step size for the augmented-Lagrangian rate multiplier")
+    parser.add_argument("--mu-max", type=float, default=20.0)
     parser.add_argument("--rate-weight", type=float, default=1.0,
                         help="weight on the rate-deviation penalty for --objective rate_preserving")
     parser.add_argument("--rd-weight", type=float, default=4.0,
@@ -203,6 +211,7 @@ def main():
          "psnr": round(baseline_psnr, 4), "bpp": round(baseline_bpp, 4),
          "slopes": {str(k): round(v, 3) for k, v in slopes.items()}})
 
+    mu = 0.0
     started = time.perf_counter()
     running = []
     for step in range(1, args.steps + 1):
@@ -221,7 +230,20 @@ def main():
             target = crop * 2 - 1
             mse_all = (output - target).square().mean(dim=(1, 2, 3))
             bpp = rates["sq_loss"].mean()
-            if args.objective == "rate_preserving":
+            if args.objective == "augmented_lagrangian":
+                # Minimise distortion subject to holding the rate at its pre-QAT value. The dual
+                # multiplier mu is what enforces the constraint; a fixed penalty cannot, because it
+                # either lets the model drift or makes it dump distortion to hit the target.
+                # mu is updated on the fixed validation set from the surrogate rate, which is the
+                # only rate the training loss can see (stream bpp is a different quantity, roughly
+                # a third of the surrogate, so comparing the two makes mu diverge).
+                ref_psnr = baseline_measure[qp][0]
+                ref_mse = 10.0 ** (-ref_psnr / 10.0)
+                ref_sur = baseline_measure[qp][2]
+                rate_ratio = bpp / ref_sur - 1.0
+                loss = (args.rd_weight * (mse_all.mean() / ref_mse)
+                        + mu * rate_ratio)
+            elif args.objective == "rate_preserving":
                 # Keep bitrate at its pre-QAT level and push distortion down. Optimising the raw RD
                 # objective instead slides *along* the curve: 5,900 steps bought 29% rate for 1.54 dB,
                 # a 52% penalty. Normalising both terms makes the target "same rate, less error".
@@ -243,6 +265,11 @@ def main():
         running.extend(chunk)
         if args.eval_every and (step % args.eval_every == 0 or step == args.steps):
             current = measure(model, validation_images, args.crop, validation_qps)
+            if args.objective == "augmented_lagrangian":
+                errors = [current[q][2] / baseline_measure[q][2] - 1.0
+                          for q in validation_qps if baseline_measure[q][2] > 0]
+                mu = max(-args.mu_max, min(args.mu_max,
+                                           mu + args.mu_alpha * (sum(errors) / max(1, len(errors)))))
             score = penalty_score(baseline_measure, current, slopes)
             psnr = sum(v[0] for v in current.values()) / len(current)
             bpp = sum(v[1] for v in current.values()) / len(current)
@@ -253,7 +280,9 @@ def main():
             log({"tier": args.tier_name, "events": "validated", "step": step,
                  "psnr": round(psnr, 4), "bpp": round(bpp, 4),
                  "d_psnr_vs_start": round(psnr - baseline_psnr, 4),
-                 "penalty_vs_start_pct": round(score, 3), "best": improved})
+                 "penalty_vs_start_pct": round(score, 3),
+                 "mu": round(mu, 4) if args.objective == "augmented_lagrangian" else None,
+                 "best": improved})
         if step % args.log_every == 0 or step == 1 or step == args.steps:
             recent = running[-args.log_every:]
             log({"tier": args.tier_name, "events": "step", "step": step,

@@ -110,7 +110,11 @@ def main():
     parser.add_argument("--steps", type=int, default=3000)
     parser.add_argument("--rd-weight", type=float, default=1.0)
     parser.add_argument("--rate-weight", type=float, default=1.0)
-    parser.add_argument("--objective", choices=["rate_preserving", "rd"], default="rate_preserving")
+    parser.add_argument("--mu-alpha", type=float, default=1.0)
+    parser.add_argument("--mu-max", type=float, default=20.0)
+    parser.add_argument("--objective",
+                        choices=["augmented_lagrangian", "rate_preserving", "rd"],
+                        default="augmented_lagrangian")
     parser.add_argument("--eval-every", type=int, default=100)
     parser.add_argument("--eval-images", type=int, default=4)
     parser.add_argument("--lr", type=float, default=1e-5)
@@ -177,6 +181,8 @@ def main():
                         "--crop", str(args.crop), "--scope", args.scope,
                         "--rd-weight", str(args.rd_weight),
                         "--rate-weight", str(args.rate_weight),
+                        "--mu-alpha", str(args.mu_alpha),
+                        "--mu-max", str(args.mu_max),
                         "--objective", args.objective,
                         "--eval-every", str(args.eval_every),
                         "--eval-images", str(args.eval_images),
