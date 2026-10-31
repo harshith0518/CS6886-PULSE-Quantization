@@ -1,0 +1,87 @@
+{
+  "tier": "tier1_more_int8",
+  "label": "More INT8",
+  "predicted_raw_pct": 9.1,
+  "target_size_mb": 14.4,
+  "started": "2026-10-31T14:20:17Z",
+  "before_status": 0,
+  "before": {
+    "worst_qp_penalty_pct": 8.613,
+    "per_dataset": {
+      "kodak": {
+        "worst_qp_penalty_pct": 5.293,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      },
+      "clic_professional": {
+        "worst_qp_penalty_pct": 8.613,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      },
+      "set14": {
+        "worst_qp_penalty_pct": 6.176,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      }
+    }
+  },
+  "qat_status": 0,
+  "training": {
+    "tier": "tier1_more_int8",
+    "events": "finish",
+    "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier1_more_int8",
+    "steps": 2000,
+    "train_minutes": 13.5,
+    "final_loss": 14.87184,
+    "final_bpp": 0.8,
+    "baseline_val_psnr": 33.7247,
+    "best_penalty_vs_start_pct": 0.0,
+    "best_step": 0,
+    "kept_best_checkpoint": true,
+    "assignment": {
+      "E0": "int8",
+      "E1": "int8",
+      "E2": "int8",
+      "E3": "int8",
+      "E4": "int8",
+      "E5": "int8",
+      "H0": "bf16",
+      "H1": "int8",
+      "H2": "int8",
+      "H3": "bf16",
+      "D0": "int8",
+      "D1": "int8",
+      "D2": "int8",
+      "D3": "int8",
+      "D4": "int8",
+      "D5": "bf16",
+      "D6": "int8",
+      "D7": "int8",
+      "D8": "int8"
+    }
+  },
+  "after_status": 0,
+  "after": {
+    "worst_qp_penalty_pct": 8.613,
+    "per_dataset": {
+      "kodak": {
+        "worst_qp_penalty_pct": 5.293,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      },
+      "clic_professional": {
+        "worst_qp_penalty_pct": 8.613,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      },
+      "set14": {
+        "worst_qp_penalty_pct": 6.176,
+        "size_mb": 14.401,
+        "saving_pct": 73.67
+      }
+    }
+  },
+  "recovery_pct_points": 0.0,
+  "recovery_ratio": 0.0,
+  "finished": "2026-10-31T14:46:08Z"
+}

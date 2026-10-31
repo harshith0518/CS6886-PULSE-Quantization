@@ -1,0 +1,87 @@
+{
+  "tier": "tier3_more_int4",
+  "label": "More INT4 + few INT8",
+  "predicted_raw_pct": 323.0,
+  "target_size_mb": 11.4,
+  "started": "2026-10-31T15:11:02Z",
+  "before_status": 0,
+  "before": {
+    "worst_qp_penalty_pct": 1771.715,
+    "per_dataset": {
+      "kodak": {
+        "worst_qp_penalty_pct": 521.027,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      },
+      "clic_professional": {
+        "worst_qp_penalty_pct": 1771.715,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      },
+      "set14": {
+        "worst_qp_penalty_pct": 680.168,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      }
+    }
+  },
+  "qat_status": 0,
+  "training": {
+    "tier": "tier3_more_int4",
+    "events": "finish",
+    "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier3_more_int4",
+    "steps": 2000,
+    "train_minutes": 12.56,
+    "final_loss": 3.37228,
+    "final_bpp": 1.0433,
+    "baseline_val_psnr": 28.8967,
+    "best_penalty_vs_start_pct": -74.029,
+    "best_step": 1900,
+    "kept_best_checkpoint": true,
+    "assignment": {
+      "E0": "bf16",
+      "E1": "int4g32",
+      "E2": "int4g32",
+      "E3": "int4g32",
+      "E4": "int4g32",
+      "E5": "int8",
+      "H0": "fp16",
+      "H1": "fp16",
+      "H2": "bf16",
+      "H3": "fp16",
+      "D0": "bf16",
+      "D1": "fp16",
+      "D2": "bf16",
+      "D3": "fp16",
+      "D4": "bf16",
+      "D5": "fp16",
+      "D6": "fp16",
+      "D7": "fp16",
+      "D8": "fp16"
+    }
+  },
+  "after_status": 0,
+  "after": {
+    "worst_qp_penalty_pct": 84.217,
+    "per_dataset": {
+      "kodak": {
+        "worst_qp_penalty_pct": 58.225,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      },
+      "clic_professional": {
+        "worst_qp_penalty_pct": 84.217,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      },
+      "set14": {
+        "worst_qp_penalty_pct": 70.608,
+        "size_mb": 11.369,
+        "saving_pct": 79.21
+      }
+    }
+  },
+  "recovery_pct_points": 1687.498,
+  "recovery_ratio": 0.952,
+  "finished": "2026-10-31T15:36:18Z"
+}

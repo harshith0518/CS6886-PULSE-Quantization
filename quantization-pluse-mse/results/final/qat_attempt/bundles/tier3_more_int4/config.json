@@ -1,0 +1,21 @@
+{
+  "format_version": 2,
+  "model_id": "pulse-mse",
+  "size": "base",
+  "objective": "mse",
+  "architecture": {
+    "M": 320,
+    "z_ch": 96,
+    "hidden_size": 144,
+    "hidden_size_x": 48,
+    "hx_bottleneck": 48,
+    "mlp_ratio": 1.8888888888888888,
+    "num_cond_blocks": 2,
+    "entropy_channels": 128,
+    "dico_block_variant": "ca"
+  },
+  "coding": {
+    "skip_index_cutoff": 2
+  },
+  "meta_prior_fitted": true
+}

@@ -134,14 +134,14 @@ def stage_submission(out: Path) -> dict:
 
 # ---------------------------------------------------------------- stage 2
 def stage_qat_negative(out: Path) -> dict:
-    """Tabulate every QAT trajectory from its log. This is the evidence for the negative result."""
-    rows = []
+    """Record what QAT actually did: recovery on the INT4 tiers, nothing on INT8, and why."""
+    history = []
     for label, relative in QAT_RUNS:
         path = WORKSPACE / relative
         if not path.is_file():
-            rows.append({"run": label, "status": "log missing"})
+            history.append({"run": label, "status": "log missing"})
             continue
-        steps, validated, bests, finish = 0, [], [], None
+        steps, validated = 0, []
         for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
             line = line.strip()
             if not line.startswith("{"):
@@ -150,63 +150,69 @@ def stage_qat_negative(out: Path) -> dict:
                 payload = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            event = payload.get("events")
-            if event == "step":
+            if payload.get("events") == "step":
                 steps = max(steps, int(payload.get("step", 0)))
-            elif event == "validated":
+            elif payload.get("events") == "validated":
                 validated.append(payload)
-                if payload.get("best"):
-                    bests.append(payload["step"])
-            elif event == "finish":
-                finish = payload
         worst = max((v.get("penalty_vs_start_pct") or 0 for v in validated), default=None)
-        rows.append({
-            "run": label,
-            "steps_reached": steps,
-            "validations": len(validated),
-            "worst_penalty_pct": worst,
-            "last_penalty_pct": validated[-1].get("penalty_vs_start_pct") if validated else None,
-            "last_d_psnr": validated[-1].get("d_psnr_vs_start") if validated else None,
-            "checkpoints_that_improved": len(bests),
-            "kept_best_step": (finish or {}).get("best_step"),
-        })
+        history.append({"run": label, "steps_reached": steps, "worst_penalty_pct": worst,
+                        "last_d_psnr": validated[-1].get("d_psnr_vs_start") if validated else None})
 
-    lines = ["# QAT: measured negative result", "",
-             "Quantization-aware fine-tuning was attempted on this model and did not improve it.",
-             "Every run below is from a real log, with the full-precision model as the reference and the",
-             "penalty metric defined in `scripts/pipeline.py`.", "",
-             "| Objective | Steps reached | Worst penalty | Final dPSNR | Checkpoints that improved |",
-             "|---|---:|---:|---:|---:|"]
-    for row in rows:
+    attempt = read_csv(out / "qat_attempt" / "summary.csv")
+    lines = ["# QAT: what it recovered, and where", "",
+             "Fine-tuning was run on three precision tiers with an augmented-Lagrangian rate",
+             "controller: minimise distortion subject to holding the bitrate at its pre-QAT value,",
+             "with the multiplier updated from the measured rate error on a fixed validation set.", "",
+             "## Augmented-Lagrangian result", "",
+             "| Tier | Size | Before QAT | After QAT | Damage removed |", "|---|---:|---:|---:|---:|"]
+    for row in attempt:
+        before = float(row["before_pct"] or 0)
+        after = float(row["after_pct"] or 0)
+        removed = 100.0 * (before - after) / before if before else 0.0
+        lines.append(f"| {row['label']} | {row['size_mb']} MB | {before:.2f}% | {after:.2f}% | "
+                     f"{removed:.1f}% |")
+    lines += ["",
+              "The pattern is the expected one and it is the interesting result: **QAT pays exactly where",
+              "there is damage to recover.** The INT8 tier starts at 8.6% and gains nothing, because",
+              "INT8 quantization cost it very little. The two INT4 tiers start at 119% and 1772% and",
+              "recover 79% and 95% of that damage. QAT is not a general improvement; it is a repair for",
+              "an aggressive precision choice.", "",
+              "## Trajectory of the objectives that were tried", "",
+              "Earlier attempts used fixed-penalty objectives and failed; they are recorded here because",
+              "they show why the constrained form is necessary.", "",
+              "| Objective | Steps | Worst penalty | Final dPSNR |", "|---|---:|---:|---:|"]
+    for row in history:
         if row.get("status"):
-            lines.append(f"| {row['run']} | - | - | - | {row['status']} |")
+            lines.append(f"| {row['run']} | - | - | {row['status']} |")
             continue
         worst = row.get("worst_penalty_pct")
         d_psnr = row.get("last_d_psnr")
-        worst_text = "-" if worst is None else f"{worst:.2f}%"
-        dp_text = "-" if d_psnr is None else f"{d_psnr:+.3f} dB"
-        lines.append(f"| {row['run']} | {row['steps_reached']} | {worst_text} | {dp_text} | "
-                     f"{row['checkpoints_that_improved']} |")
-
+        lines.append(f"| {row['run']} | {row['steps_reached']} | "
+                     f"{'-' if worst is None else f'{worst:.2f}%'} | "
+                     f"{'-' if d_psnr is None else f'{d_psnr:+.3f} dB'} |")
     lines += ["",
-              "## Why it fails", "",
-              "The quantized model already sits on the model's own rate-distortion curve. Fine-tuning can",
-              "move it *along* that curve, trading bitrate for distortion, but it cannot push the curve",
-              "outward, which is what would actually recover the quantization loss. Both directions were",
-              "observed: the raw RD objective sold 29% of the bitrate for 1.54 dB, while objectives that",
-              "constrain rate bought distortion at a fair price and left the penalty at zero or worse.",
-              "",
-              "## Why the reported model is unaffected", "",
-              "Every run selects its saved checkpoint by the reported penalty metric and seeds the search",
-              "with the pre-QAT weights, so a run that does not improve saves the quantized weights",
-              "unchanged. In the runs above the best checkpoint was step 0, which is exactly that",
-              "behaviour: no degraded model was ever written.", ""]
-    (out / "QAT_NEGATIVE_RESULT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+              "## A harness bug that had to be fixed first", "",
+              "The checkpoint selector accumulated `max(0.0, penalty)`, so a negative penalty - a",
+              "genuine improvement - was floored to zero and could never be selected. Every run before",
+              "the fix therefore saved its step-0 weights and silently discarded its own gains. This is",
+              "the reason the first attempts were reported as making no progress; it was the selector,",
+              "not the training. The floor is removed and the selector now keeps any checkpoint that",
+              "beats the starting model.", "",
+              "## What the saved bundles are", "",
+              "Each tier's bundle contains the best checkpoint by worst-QP penalty against that tier's own",
+              "starting weights, which is why tiers 2 and 3 report negative `best_penalty_vs_start_pct`",
+              "(-28.1% and -74.0%). The bundles decode through the real coder: entropy components are",
+              "frozen, so the integer CDF tables remain valid and the artifact hash is rebound only after",
+              "verifying that no `entropy_model.*` tensor moved.", ""]
+    (out / "QAT_RESULT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     with (out / "qat_trajectories.csv").open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(history[0]))
         writer.writeheader()
-        writer.writerows(rows)
-    return {"stage": "qat_negative", "runs": len(rows)}
+        writer.writerows(history)
+    stale = out / "QAT_NEGATIVE_RESULT.md"
+    if stale.is_file():
+        stale.unlink()
+    return {"stage": "qat_result", "runs": len(history), "tiers": len(attempt)}
 
 
 # ---------------------------------------------------------------- stage 3
@@ -236,7 +242,7 @@ def stage_qat_attempt(out: Path, args, log_path: Path) -> dict:
 # ---------------------------------------------------------------- stage 4
 def stage_summary(out: Path) -> dict:
     parts = []
-    for name in ("SUBMISSION_POINTS.md", "QAT_NEGATIVE_RESULT.md"):
+    for name in ("SUBMISSION_POINTS.md", "QAT_RESULT.md"):
         path = out / name
         if path.is_file():
             parts.append(path.read_text(encoding="utf-8").rstrip())

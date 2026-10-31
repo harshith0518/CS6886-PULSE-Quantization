@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment,7b6b7256c5c9,clic_professional,0,41,0.136624,30.859383,0.438861,0.20031,20.473837,5.726721,24.359476,alberto-montalesi-176097.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,1,41,0.182248,31.831448,0.392279,0.156008,18.852019,6.079518,16.808479,alberto-montalesi-176097.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,2,41,0.241699,32.835023,0.364654,0.081712,18.665848,7.384817,20.014922,paul-itkin-46101.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,3,41,0.313397,33.812094,0.323825,-0.139974,17.912637,8.397266,22.569052,paul-itkin-46101.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,4,41,0.402299,34.757358,0.262733,-0.42573,18.632538,11.218566,31.556659,paul-itkin-46101.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,5,41,0.515157,35.708305,0.160743,-0.792068,19.851285,15.255801,63.813307,paul-itkin-46101.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,6,41,0.65304,36.58913,0.047556,-1.250084,20.726694,19.227936,55.122524,vita-vilcina-3055.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,7,41,0.805696,37.335452,-0.146213,-1.799777,19.178133,23.398974,75.999288,vita-vilcina-3055.png,0.0,0.0

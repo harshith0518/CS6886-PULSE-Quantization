@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment,7b6b7256c5c9,clic_professional,0,41,0.138121,29.053925,-1.366597,-3.778907,25.173991,94.564795,289.321885,kazuend-28556.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,1,41,0.183806,30.156266,-1.282903,-3.28215,23.004275,82.912667,238.655127,kazuend-28556.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,2,41,0.24285,31.215768,-1.254601,-3.009629,21.837818,74.91298,203.917165,sergey-zolkin-21232.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,3,41,0.315373,32.250467,-1.237802,-2.845685,20.929376,68.817095,175.757293,sergey-zolkin-21232.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,4,41,0.406144,33.1744,-1.320225,-2.762797,21.702021,70.038984,171.019775,sergey-zolkin-21232.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,5,41,0.523027,34.008347,-1.539216,-2.902633,23.364876,79.402509,185.922541,sergey-zolkin-21232.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,6,41,0.670002,34.707607,-1.833967,-3.501451,26.109985,96.156156,217.613695,paul-itkin-46101.png,0.0,0.0
+assignment,7b6b7256c5c9,clic_professional,7,41,0.84123,35.229362,-2.252303,-4.216886,27.391065,119.180202,247.335477,paul-itkin-46101.png,0.0,0.0

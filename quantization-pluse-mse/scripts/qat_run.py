@@ -104,7 +104,7 @@ def slopes_from(points: dict) -> dict:
 
 def penalty_score(baseline: dict, current: dict, slopes: dict) -> float:
     """Worst-QP rate-equivalent penalty against the pre-QAT model, the metric we report."""
-    worst = 0.0
+    worst = float("-inf")
     for qp, values in current.items():
         if qp not in baseline:
             continue
@@ -117,7 +117,10 @@ def penalty_score(baseline: dict, current: dict, slopes: dict) -> float:
             continue
         penalty = 100.0 * ((1.0 + d_bpp / 100.0) * 2.0 ** (-d_psnr / slope) - 1.0)
         worst = max(worst, penalty)
-    return worst
+    # Not floored at zero: a negative worst-QP penalty means the checkpoint genuinely beat the
+    # starting model, which is exactly what should be selected. Flooring here silently discarded
+    # every improvement the augmented-Lagrangian run produced.
+    return worst if worst != float("-inf") else 0.0
 
 
 def random_crop(image: torch.Tensor, size: int, generator: torch.Generator) -> torch.Tensor:
