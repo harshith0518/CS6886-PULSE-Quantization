@@ -28,6 +28,25 @@ PY = sys.executable
 TIER_ORDER = ["tier1_more_int8", "tier2_moderate_int4", "tier3_more_int4"]
 
 
+def hold_awake() -> bool:
+    """Stop Windows sleeping mid-run. The previous overnight run died when the machine slept."""
+    try:
+        import ctypes
+        kernel32 = ctypes.windll.kernel32
+        ES_CONTINUOUS, ES_SYSTEM_REQUIRED = 0x80000000, 0x00000001
+        return bool(kernel32.SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED))
+    except Exception:
+        return False
+
+
+def release_awake() -> None:
+    try:
+        import ctypes
+        ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)
+    except Exception:
+        pass
+
+
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -89,7 +108,9 @@ def main():
     parser.add_argument("--tiers", default="quantization-pluse-mse/configs/qat_tiers.json")
     parser.add_argument("--tier", nargs="+", default=TIER_ORDER)
     parser.add_argument("--steps", type=int, default=3000)
-    parser.add_argument("--rd-weight", type=float, default=4.0)
+    parser.add_argument("--rd-weight", type=float, default=1.0)
+    parser.add_argument("--rate-weight", type=float, default=1.0)
+    parser.add_argument("--objective", choices=["rate_preserving", "rd"], default="rate_preserving")
     parser.add_argument("--eval-every", type=int, default=100)
     parser.add_argument("--eval-images", type=int, default=4)
     parser.add_argument("--lr", type=float, default=1e-5)
@@ -111,10 +132,12 @@ def main():
         args.max_images = 2
         args.accumulate = 1
 
+    awake = hold_awake()
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=True)
     log_path = out / "overnight.log"
     log_path.write_text(f"=== {now()} start\n", encoding="utf-8")
+    log({"events": "start", "sleep_guard": str(bool(awake))})
     tiers = json.loads(Path(args.tiers).read_text(encoding="utf-8"))
 
     results = []
@@ -153,6 +176,8 @@ def main():
                         "--lr", str(args.lr), "--accumulate", str(args.accumulate),
                         "--crop", str(args.crop), "--scope", args.scope,
                         "--rd-weight", str(args.rd_weight),
+                        "--rate-weight", str(args.rate_weight),
+                        "--objective", args.objective,
                         "--eval-every", str(args.eval_every),
                         "--eval-images", str(args.eval_images),
                         "--device", args.device], log_path)
@@ -197,7 +222,8 @@ def main():
                              r.get("after", {}).get("worst_qp_penalty_pct"),
                              r.get("recovery_pct_points"), r.get("recovery_ratio"),
                              training.get("steps"), training.get("train_minutes")])
-    log({"events": "done", "output": str(out), "tiers": len(results)})
+    release_awake()
+    log({"events": "done", "output": str(out), "tiers": len(results), "kept_awake": awake})
 
 
 if __name__ == "__main__":

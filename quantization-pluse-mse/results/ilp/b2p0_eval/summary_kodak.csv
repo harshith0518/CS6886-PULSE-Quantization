@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment_ilp_b2p0,2b9375dac86b,kodak,0,24,0.15468,28.506048,-0.006984,-0.029699,0.55641,0.759645,1.453679,kodim15.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,1,24,0.211225,29.579106,-0.015675,-0.057756,0.438804,0.87603,1.747091,kodim03.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,2,24,0.285975,30.723566,-0.019604,-0.044487,0.250746,0.745584,1.216754,kodim23.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,3,24,0.376848,31.877279,-0.032711,-0.090996,0.135874,0.883993,2.252768,kodim23.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,4,24,0.488944,33.073292,-0.040034,-0.065097,-0.047712,0.781928,1.135437,kodim15.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,5,24,0.626982,34.332553,-0.04961,-0.071287,-0.048899,0.89913,1.412021,kodim03.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,6,24,0.790739,35.574897,-0.068891,-0.090823,-0.1002,1.156402,1.627863,kodim20.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,kodak,7,24,0.967553,36.69637,-0.086554,-0.135322,-0.154572,1.395032,2.352568,kodim13.png,0.0,0.0

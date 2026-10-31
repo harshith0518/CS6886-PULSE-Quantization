@@ -1,6 +1,2 @@
 budget_pct,ilp_size_mb,ilp_saving_pct,ilp_worst_qp_penalty_pct,greedy_size_mb,greedy_saving_pct,greedy_worst_qp_penalty_pct,ilp_beats_greedy_mb,components_quantized,status
-0.25,27.14,50.37,0.2492,27.274,50.13,0.1906,0.134,18,0
-0.5,24.546,55.12,0.462,24.546,55.12,0.462,0.0,19,0
 1.0,21.677,60.36,0.9715,21.677,60.36,0.9713,0.0,19,0
-2.0,18.389,66.38,1.9864,18.389,66.38,1.9864,0.0,19,0
-3.0,17.885,67.3,2.9998,18.071,66.96,2.9999,0.186,11,0

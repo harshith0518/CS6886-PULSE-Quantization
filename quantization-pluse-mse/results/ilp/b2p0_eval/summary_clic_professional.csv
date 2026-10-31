@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,0,41,0.113251,30.406982,-0.01354,-0.062437,1.170804,1.578358,5.385788,schicka-307.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,1,41,0.152745,31.421267,-0.017902,-0.056795,0.819366,1.342333,3.014969,alberto-montalesi-176097.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,2,41,0.203775,32.443406,-0.026963,-0.064366,0.620713,1.367031,3.039212,todd-quackenbush-27493.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,3,41,0.266751,33.458882,-0.029387,-0.063606,0.366791,1.136765,2.199296,todd-quackenbush-27493.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,4,41,0.343975,34.455496,-0.039129,-0.085508,0.203083,1.174221,1.868359,jason-briscoe-149782.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,5,41,0.442231,35.499387,-0.048176,-0.081865,0.102754,1.258391,2.084365,todd-quackenbush-27493.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,6,41,0.559648,36.484688,-0.056886,-0.107952,0.169619,1.524305,2.775122,vita-vilcina-3055.png,0.0,0.0
+assignment_ilp_b2p0,2b9375dac86b,clic_professional,7,41,0.698084,37.406629,-0.075035,-0.118791,0.151625,1.936473,2.994408,paul-itkin-46101.png,0.0,0.0
