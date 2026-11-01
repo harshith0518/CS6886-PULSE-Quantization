@@ -1,0 +1,13 @@
+[
+  {
+    "stage": "qat_result",
+    "runs": 4,
+    "tiers": 3,
+    "seconds": 0.0
+  },
+  {
+    "stage": "summary",
+    "sections": 9,
+    "seconds": 0.0
+  }
+]

@@ -39,3 +39,6 @@ quantization-pluse-mse/results/_ledger/
 quantization-pluse-mse/*/results/sweep_*.csv
 # local scratch for experiments
 .scratch/
+
+# TeX engine binary (re-fetch with tools/fetch_tectonic.py)
+tools/tectonic/

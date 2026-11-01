@@ -1,0 +1,251 @@
+%% CS6886 course project report -- two-page limit excluding references.
+%% Build:  tools/tectonic/tectonic.exe submission/report.tex
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage[margin=0.68in]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\definecolor{navy}{HTML}{1E2761}
+
+% compress vertical space so the content fits two pages
+\titlespacing*{\section}{0pt}{5pt}{2pt}
+\titlespacing*{\subsection}{0pt}{4pt}{1pt}
+\setlength{\parskip}{2pt}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlist[itemize]{topsep=1pt,itemsep=0pt,leftmargin=12pt,parsep=0pt}
+\renewcommand{\baselinestretch}{0.97}
+
+\titleformat{\section}{\normalfont\bfseries\color{navy}\large}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries\color{navy}\normalsize}{\thesubsection}{0.5em}{}
+
+\newcommand{\best}[1]{\textbf{#1}}
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+\centering
+{\LARGE\bfseries\color{navy} Which Bits Can We Drop?\par}
+\vspace{3pt}
+{\large Component-Wise Quantization, Mixed-Precision Selection and QAT for a Learned Image Codec\par}
+\vspace{4pt}
+{\normalsize Harshith (and team) \quad\textbar\quad CS6886 Final Project \quad\textbar\quad November 2026\par}
+\vspace{2pt}
+{\small Code: \url{https://github.com/harshith0518/CS6886-PULSE-Quantization}\par}
+\vspace{8pt}
+\begin{minipage}{0.92\textwidth}
+\small
+\textbf{Abstract.}
+A learned image codec stores one weight file that must serve eight quality settings, so the usual
+recipe---pick one precision for the whole model---ignores that the model is wildly unbalanced.
+We measure how much each of nineteen components tolerates seven formats across eight quality
+settings and two datasets (69{,}233 measurements), and feed those costs to a mixed-integer program
+that chooses one precision per component. Result: \best{21.677 MB} against 54.688 MB FP32, a
+\best{60.4\%} reduction at a \best{0.94\%} worst-case rate-equivalent penalty and $+0.48$ to
+$+0.55\%$ BD-rate on three datasets. Against uniform INT8---which yields a \emph{smaller} file at
+26.18\% penalty---the mixed assignment is \best{39$\times$} better quality at comparable size.
+We then test quantization-aware fine-tuning (QAT): it removes \best{61--98\%} of the damage on
+hand-chosen assignments and \best{exactly 0\%} on the solver-optimised one, so QAT repairs what an
+assignment leaves on the table, and an optimal assignment leaves nothing.
+\end{minipage}
+\vspace{8pt}
+\end{@twocolumnfalse}
+]
+
+\section{Introduction}
+Post-training quantization is the standard way to shrink a neural codec, and the standard practice
+is a single precision for the whole model because per-layer analysis costs time. For
+\emph{pulse-mse}~\cite{pulse} that reflex is expensive: 85.6\% of its 14.18M parameters sit in six
+encoder blocks, while the entropy model---which dominates decode latency---holds under 10\%, and the
+599k-parameter decoder contains the single most fragile component in the network. Sensitivity is also
+not monotone in size: a 2.89M-parameter encoder block tolerates 8-bit weights at 0.5\% penalty while
+a 4.7k-parameter renderer MLP loses 8\%.
+
+We therefore ask three questions. \textbf{(Q1)} Which components tolerate which precision, at which
+quality setting? \textbf{(Q2)} Given those measurements, what is the smallest per-component
+assignment that stays inside a quality budget? \textbf{(Q3)} Can QAT recover the residual loss, and
+where does it stop paying? A fourth, unplanned question proved the most useful: why does
+quantization not make this codec faster?
+
+\section{Prior work}
+Integer quantization with per-output-channel symmetric scales and straight-through gradient
+estimation is established practice~\cite{jacob,bengio}. Learned image compression is represented here
+by PULSE~\cite{pulse}. Mixed-precision allocation as an integer program is a standard
+formulation~\cite{highs}; we solve it with HiGHS through SciPy. For rate-distortion comparison we
+follow Bj{\o}ntegaard delta-rate~\cite{bjontegaard}, deviating only in using monotone piecewise-cubic
+interpolation~\cite{pchip} because we have eight points per curve rather than the four the original
+method assumes.
+
+\section{Idea and implementation}
+\subsection{Measuring sensitivity}
+We quantize \emph{one} component at a time, leaving every other component and all activations in
+FP32, and run the full codec over every image at every quality setting. Seven formats, nineteen
+components, two datasets (Kodak~\cite{kodak} screening, CLIC Professional~\cite{clic} confirmation)
+and eight settings give 69{,}233 rows with zero failures and weight restoration verified by hash. An
+FP32 gate reproduces the reference bitstream and reconstruction hashes exactly at all eight settings,
+so any difference is attributable to the quantized component.
+
+Quality is summarised by a rate-equivalent penalty that folds a quality change and a bitrate change
+into one number,
+\begin{equation}
+\text{penalty}=100\left[\left(1+\tfrac{\Delta\text{bpp}}{100}\right)2^{-\Delta\text{PSNR}/\sigma}-1\right],
+\end{equation}
+where $\sigma$ is the local slope of the reference curve. Zero means indistinguishable from FP32.
+The optimiser constrains the worst setting: the maximum over the eight settings of the mean over
+images.
+
+Optimising over the sum of single-component costs assumes additivity, so we tested it: a uniform INT8
+model's measured penalty against the sum of its nineteen component penalties gives a ratio of
+0.96--1.05 on Kodak and 1.02--1.11 on CLIC. Additivity holds. A trap worth recording: summing each
+component's \emph{own} worst setting inflates the total to 65.3\% where the true value at a single
+setting is 26.7\%; costs must be summed per setting, then maximised.
+
+\subsection{The allocation problem}
+Because one weight file serves all eight settings, a per-setting choice would not be deployable. The
+model has one binary variable per (component, format) pair, shared across settings, with one quality
+constraint per setting:
+\begin{equation*}
+\begin{aligned}
+\min\;&\textstyle\sum_{c,f}\text{size}(c,f)\,x_{c,f}\\
+\text{s.t.}\;&\textstyle\sum_{c,f}\text{pen}(c,f,q)\,x_{c,f}\le \epsilon \quad \forall q\in\{0,\dots,7\}\\
+&\textstyle\sum_{f} x_{c,f}=1 \quad \forall c .
+\end{aligned}
+\end{equation*}
+The objective is bytes; deliberately not latency, because no per-format latency table exists for this
+GPU and an objective using one would optimise invented data. A greedy baseline is solved alongside.
+
+\subsection{Quantization-aware fine-tuning}
+QAT here means straight-through quantized convolutions followed by minimising distortion subject to
+holding the bitrate at its pre-quantization value. A fixed rate penalty fails in both directions---too
+weak and the model drifts down the RD curve, too strong and it destroys quality to hit the target---so
+we use an augmented Lagrangian whose multiplier is updated from the measured rate error on a fixed
+validation set:
+\begin{equation*}
+\mathcal{L}=\frac{D}{D_{\text{ref}}}+\mu\left(\frac{R}{R_{\text{ref}}}-1\right),\qquad
+\mu\leftarrow\mathrm{clip}\!\left(\mu+\alpha\,e_{\text{rate}}\right).
+\end{equation*}
+Entropy components are \emph{frozen}: the shipped bundle holds precomputed integer CDF tables that
+would no longer describe the weights, breaking the encoder/decoder contract. The saved checkpoint must
+beat its own starting point, so a bad run cannot ship a worse model. Training uses 100 DIV2K~\cite{div2k}
+images disjoint from every test set, 12{,}000 steps at 512-pixel crops, about 100 minutes per tier on
+one 4\,GB laptop GPU---2.2\% of the optimiser steps and 0.2\% of the sample budget of
+pretraining~\cite{pulse}. This is a repair operation, not retraining.
+
+\section{Evaluation}
+\subsection{Against the baseline}
+Table~\ref{tab:frontier} reports all three operating points, measured on all three test sets at all
+eight settings against the same FP32 reference. The solver predicted 0.9715\% for the champion and
+measured 0.94\%: the analytic model errs conservative on every dataset. Set14 was never used for
+fitting and holds, which is the best evidence that the assignment transfers.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Measured operating points. Worst-setting penalty (\%), lower is better. FP32 is 54.688 MB;
+BD-rate for the champion is $+0.48/+0.55/+0.49\%$.}
+\label{tab:frontier}
+\begin{tabular}{lrrrr}
+\toprule
+Point & MB & Save & Kodak & CLIC \\
+\midrule
+1\% champion      & \best{21.677} & $-60.4\%$ & \best{0.67} & \best{0.85} \\
+1.8\% variant     & 18.664 & $-65.9\%$ & 1.27 & 1.60 \\
+INT8 tier + QAT   & \best{14.401} & $-73.7\%$ & 1.85 & 2.87 \\
+\midrule
+uniform INT8      & 13.904 & $-74.6\%$ & 26.18 & 56.70 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The decisive comparison is the last row. Uniform INT8 produces a \emph{smaller} file than our champion
+and is 39$\times$ worse on Kodak and 67$\times$ worse on CLIC. Uniform settings also vary 2.9$\times$
+across datasets while mixed assignments vary at most 1.4$\times$: constraining the total rather than
+each component buys robustness as well as quality.
+
+\subsection{What QAT contributed}
+Table~\ref{tab:qat} isolates the third question. QAT removes 61--98\% of the damage on assignments
+chosen by hand, and \emph{nothing at all} on the assignment the solver had already optimised. The
+pattern is the useful result: fine-tuning is a \emph{substitute} for allocation, not a supplement.
+The size of the repair is set by what the assignment left on the table, and a mixed-integer program
+that has minimised total damage leaves almost nothing.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{QAT at 12{,}000 steps. Worst-setting penalty (\%) before and after; the last row used 8{,}000
+steps.}
+\label{tab:qat}
+\begin{tabular}{lrrrr}
+\toprule
+Tier & MB & Before & After & Removed \\
+\midrule
+INT8, 16 comps    & 14.401 & 8.61 & \best{3.36} & 61.0\% \\
+INT4, 2 blocks    & 13.572 & 119.18 & \best{20.53} & 82.8\% \\
+INT4, 4 blocks    & 11.369 & 1771.71 & \best{41.84} & 97.6\% \\
+ILP 2\% assignment & 18.389 & 1.936 & 1.936 & \best{0.0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Why there is no speedup}
+No configuration measured faster. Paired interleaved benchmarking across 50 pairs per cell gives
+$+4.79\%$ latency for the mixed model (95\% CI $+1.27$ to $+9.80$) and $-0.39\%$ energy, whose
+interval spans zero. The reason is arithmetic: a decode is 88\,ms, of which 80\,ms is entropy coding
+and 8\,ms is the convolutional network. Quantization accelerates convolutions, and convolutions are
+9\% of a decode and 27\% of a round trip. Simulated formats (FP8, INT4, FP4) carry no speed claim at
+all; only FP16 and BF16 run real kernels here, and they save energy rather than time.
+
+\section{Conclusion}
+Granularity, not precision, is the lever: mixed precision is worth 39$\times$ over uniform precision
+at comparable size. And QAT is a substitute for good allocation---it recovered 61--98\% of the damage
+on hand-chosen assignments and 0\% on an optimal one. Both halves matter, and the second is only
+visible because we measured the control case.
+
+\subsection*{Limitations}
+(a) Our checkpoint selector under-reports QAT: a 6-crop validation probe scored the best INT8 model as
+no better than its start ($-0.08\%$) while the full evaluation shows 8.61\%$\to$3.36\%, so saved
+checkpoints are probably not the best available. (b) Weights only; activations remain FP32, so W8A8 is
+not exercised. (c) 4-bit is simulated, so its speed is unmodelled. (d) One entropy lane remains---the
+largest unused latency lever. (e) QAT results are one seed on 100 images; the qualitative finding
+holds across three tiers and two step counts, the exact percentages are single-run.
+
+\begingroup
+\small
+\begin{thebibliography}{11}
+\setlength{\itemsep}{0pt}
+\bibitem{pulse} Jia et al. \emph{PULSE: a learned image codec}. arXiv:2609.18602, 2026.
+\bibitem{jacob} Jacob et al. Quantization and training of neural networks for efficient
+integer-arithmetic-only inference. \emph{CVPR}, 2018. arXiv:1712.05877.
+\bibitem{bengio} Bengio, L\'eonard, Courville. Estimating or propagating gradients through stochastic
+neurons for conditional computation. arXiv:1308.3432, 2013.
+\bibitem{bjontegaard} G. Bj{\o}ntegaard. Calculation of average PSNR differences between RD-curves.
+\emph{ITU-T VCEG-M33}, 2001.
+\bibitem{pchip} Fritsch, Butland. A method for constructing local monotone piecewise cubic
+interpolants. \emph{SIAM J. Sci. Comput.} 5(2):300--304, 1984. DOI 10.1137/0905021.
+\bibitem{highs} Huangfu, Hall. Parallelizing the dual revised simplex method. \emph{Math. Prog.
+Comp.} 10(1):119--142, 2018. DOI 10.1007/s12532-017-0130-5.
+\bibitem{kodak} Eastman Kodak Company. Kodak PhotoCD image dataset, 1991.
+\bibitem{clic} Toderici et al. Workshop and challenge on learned image compression. \emph{CVPR
+Workshops}, 2020.
+\bibitem{div2k} Agustsson, Timofte. NTIRE 2017 challenge on single image super-resolution.
+\emph{CVPR Workshops}, 2017.
+\bibitem{set14} Zeyde, Elad, Protter. On single image scale-up using sparse-representations.
+\emph{Curves and Surfaces}, 2010.
+\bibitem{code} Our code and results:
+\url{https://github.com/harshith0518/CS6886-PULSE-Quantization}.
+\end{thebibliography}
+\endgroup
+
+\end{document}

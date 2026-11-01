@@ -1,0 +1,51 @@
+{
+  "command": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\eval_assignment.py --model checkpoints/pulse-mse --output C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before --configs C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json --dataset clic_professional",
+  "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
+  "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
+  "eval_flags": {
+    "cudnn_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "device": "cuda",
+    "matmul_allow_tf32": false,
+    "tf32": false,
+    "threads": 1
+  },
+  "git": {
+    "commit": "5f57aa5ac267c9836a2feafb3bd24beb79ab22d3",
+    "dirty": true
+  },
+  "hardware": {
+    "capability": "8.6",
+    "cuda_available": true,
+    "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "total_memory_mb": 4095.5
+  },
+  "model_path": "checkpoints\\pulse-mse",
+  "model_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce",
+  "packages": {
+    "cuda": "12.4",
+    "numpy": "2.5.2",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.6",
+    "torch": "2.6.0+cu124"
+  },
+  "quant_config": {
+    "configs": [
+      "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"
+    ],
+    "dataset": "clic_professional",
+    "mode": "w_only",
+    "qps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "quant_config_sha256": "5e1c55b49dd8fdd3a1be4f4bb7a848120b148e3a30697c0d4bac5236cb339d2c"
+}

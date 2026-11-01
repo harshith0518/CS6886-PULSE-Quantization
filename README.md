@@ -1,3 +1,100 @@
+# CS6886 Final Project - Which Bits Can We Drop?
+
+Component-wise quantization, mixed-precision selection and quantization-aware fine-tuning for the
+PULSE learned image codec.
+
+**Report:** [`submission/report.pdf`](submission/report.pdf) (2 pages, LaTeX source in
+`submission/report.tex`) · **Slides:** [`submission/PULSE-quantization-deck.pdf`](submission/PULSE-quantization-deck.pdf)
+· **Extended write-up** (not submitted): [`submission/supplementary-report.pdf`](submission/supplementary-report.pdf)
+
+## Result
+
+| Point | Size | Saving | Kodak | CLIC | Set14 |
+|---|---|---|---|---|---|
+| 1% budget champion | 21.677 MB | -60.4% | 0.672% | 0.851% | 0.935% |
+| 1.8% budget variant | 18.664 MB | -65.9% | 1.268% | 1.595% | 1.601% |
+| INT8 tier + QAT 12k | 14.401 MB | -73.7% | 1.848% | 2.874% | 3.363% |
+
+Worst-quality-setting rate-equivalent penalty against the 54.688 MB FP32 baseline. The comparison
+that motivates the work: **uniform INT8 is 13.904 MB at 26.18% penalty**, so the mixed assignment is
+39x better quality at comparable size.
+
+## Check out
+
+```bash
+git clone https://github.com/harshith0518/CS6886-PULSE-Quantization.git
+cd CS6886-PULSE-Quantization
+git checkout 1a56d85
+```
+
+## Install
+
+Python 3.12, CUDA 12.4, one 4 GB GPU is enough.
+
+```bash
+python -m venv venv
+.\venv\Scripts\activate          # Windows;  source venv/bin/activate on POSIX
+pip install -r requirements.txt
+pip install -e . --no-build-isolation   # builds the native entropy extension
+python -c "import MLCodec_extensions_cpp; print('entropy extension ok')"
+```
+
+The released checkpoint is expected at `checkpoints/pulse-mse/` (three files: `config.json`,
+`model.pt`, `entropy_control_int.pt`).
+
+## Run
+
+Evaluate a mixed-precision assignment through the real codec, on every image at every quality
+setting:
+
+```powershell
+.\venv\Scripts\python.exe quantization-pluse-mse\scripts\eval_assignment.py `
+  --model checkpoints/pulse-mse `
+  --configs quantization-pluse-mse\results\ilp\assignment_ilp.json `
+  --dataset kodak --output results\check
+```
+
+Solve the assignment for a quality budget:
+
+```powershell
+.\venv\Scripts\python.exe quantization-pluse-mse\scripts\solve_ilp.py --budget 1.0 1.8 --headline 1.0
+```
+
+Run the unit tests (10 tests over the quantization core):
+
+```powershell
+.\venv\Scripts\python.exe -m unittest discover -s quantization-pluse-mse\tests
+```
+
+## Reproduce the deliverables
+
+```powershell
+python quantization-pluse-mse\scripts\make_report.py   # rebuilds the extended DOCX report
+python quantization-pluse-mse\scripts\make_deck.py     # rebuilds the slide deck
+.\tools\tectonic\tectonic.exe submission\report.tex   # rebuilds the 2-page report
+```
+
+`tools/fetch_tectonic.py` downloads the TeX engine if it is absent. Figures and tables are regenerated
+from the committed CSVs, so no number in the documents is typed by hand.
+
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| `codec/` | The PULSE codec: model, entropy coding, runtime, checkpoint I/O |
+| `quantization-pluse-mse/` | The quantization study: sweep, analysis, ILP, QAT, reports |
+| `quantization-pluse-mse/STATUS.md` | Project checkpoint: every number, every open item, every trap |
+| `quantization-pluse-mse/RESOURCES.md` | Claim-to-proof map with verified citations |
+| `submission/` | Report, slides, and the extended write-up |
+| `datasets/` | Kodak, CLIC Professional, Set14, and the QAT pool (images not tracked) |
+
+Full method and results: `submission/report.pdf`. The complete engineering record, including the
+failures and the measurement traps, is in `quantization-pluse-mse/STATUS.md`.
+
+---
+
+# PULSE - upstream repository
+
 <h2 align="center">PULSE: Unlocking Practical Image Compression on Single-Thread CPU</h2>
 
 <p align="center">

@@ -1,0 +1,25 @@
+{
+  "name": "tier3_more_int4",
+  "note": "all four encoder blocks at group-32 4-bit, E5 at INT8, rest 16-bit",
+  "assignment": {
+    "E0": "bf16",
+    "E1": "int4g32",
+    "E2": "int4g32",
+    "E3": "int4g32",
+    "E4": "int4g32",
+    "E5": "int8",
+    "H0": "fp16",
+    "H1": "fp16",
+    "H2": "bf16",
+    "H3": "fp16",
+    "D0": "bf16",
+    "D1": "fp16",
+    "D2": "bf16",
+    "D3": "fp16",
+    "D4": "bf16",
+    "D5": "fp16",
+    "D6": "fp16",
+    "D7": "fp16",
+    "D8": "fp16"
+  }
+}

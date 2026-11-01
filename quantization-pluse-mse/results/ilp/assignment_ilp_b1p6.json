@@ -1,0 +1,62 @@
+{
+  "assignment": {
+    "D0": "fp16",
+    "D1": "int8",
+    "D2": "int8",
+    "D3": "fp16",
+    "D4": "int8",
+    "D5": "fp16",
+    "D6": "fp16",
+    "D7": "fp16",
+    "D8": "fp16",
+    "E0": "bf16",
+    "E1": "fp16",
+    "E2": "int8",
+    "E3": "int8",
+    "E4": "fp16",
+    "E5": "fp16",
+    "H0": "fp16",
+    "H1": "int8",
+    "H2": "fp16",
+    "H3": "fp16"
+  },
+  "budget_pct": 1.6,
+  "datasets": [
+    "kodak",
+    "clic_professional"
+  ],
+  "greedy_same_budget": {
+    "fp32_mb": 54.688,
+    "per_qp_penalty_pct": {
+      "0": 1.1013,
+      "1": 1.0039,
+      "2": 0.9938,
+      "3": 0.92,
+      "4": 0.8682,
+      "5": 1.0369,
+      "6": 1.1766,
+      "7": 1.4437
+    },
+    "saving_pct": 61.32,
+    "size_mb": 21.151,
+    "worst_qp_penalty_pct": 1.4437
+  },
+  "name": "ilp",
+  "note": "MILP optimum at a 1.6% worst-QP penalty budget (HiGHS via scipy.optimize.milp)",
+  "predicted": {
+    "fp32_mb": 54.688,
+    "per_qp_penalty_pct": {
+      "0": 1.1013,
+      "1": 1.0039,
+      "2": 0.9938,
+      "3": 0.92,
+      "4": 0.8682,
+      "5": 1.0369,
+      "6": 1.1766,
+      "7": 1.4437
+    },
+    "saving_pct": 61.32,
+    "size_mb": 21.151,
+    "worst_qp_penalty_pct": 1.4437
+  }
+}

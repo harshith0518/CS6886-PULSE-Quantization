@@ -1,0 +1,25 @@
+{
+  "name": "tier1_more_int8",
+  "note": "all components with INT8 cost/MB under ~5 at INT8, intolerant three at BF16",
+  "assignment": {
+    "E0": "int8",
+    "E1": "int8",
+    "E2": "int8",
+    "E3": "int8",
+    "E4": "int8",
+    "E5": "int8",
+    "H0": "bf16",
+    "H1": "int8",
+    "H2": "int8",
+    "H3": "bf16",
+    "D0": "int8",
+    "D1": "int8",
+    "D2": "int8",
+    "D3": "int8",
+    "D4": "int8",
+    "D5": "bf16",
+    "D6": "int8",
+    "D7": "int8",
+    "D8": "int8"
+  }
+}

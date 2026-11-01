@@ -1,0 +1,31 @@
+
+=== 2026-10-31T12:23:47Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\qat_overnight.py --steps 2000 --lr 1e-06 --accumulate 2 --objective augmented_lagrangian --rd-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --eval-every 100 --eval-images 4 --datasets kodak clic_professional set14 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt
+{"events": "start", "sleep_guard": "True"}
+{"tier": "tier1_more_int8", "events": "measure_before"}
+{"tier": "tier1_more_int8", "events": "qat", "steps": 2000}
+{"tier": "tier1_more_int8", "events": "measure_after"}
+{"tier": "tier1_more_int8", "before": {"worst_qp_penalty_pct": 8.613, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 5.293, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 8.613, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 6.176, "size_mb": 14.401, "saving_pct": 73.67}}}, "after": {"worst_qp_penalty_pct": 8.613, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 5.293, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 8.613, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 6.176, "size_mb": 14.401, "saving_pct": 73.67}}}, "recovery_pct_points": 0.0}
+{"tier": "tier2_moderate_int4", "events": "measure_before"}
+{"tier": "tier2_moderate_int4", "events": "qat", "steps": 2000}
+{"tier": "tier2_moderate_int4", "events": "measure_after"}
+{"tier": "tier2_moderate_int4", "before": {"worst_qp_penalty_pct": 119.18, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 85.449, "size_mb": 13.572, "saving_pct": 75.18}, "clic_professional": {"worst_qp_penalty_pct": 119.18, "size_mb": 13.572, "saving_pct": 75.18}, "set14": {"worst_qp_penalty_pct": 91.891, "size_mb": 13.572, "saving_pct": 75.18}}}, "after": {"worst_qp_penalty_pct": 119.18, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 85.449, "size_mb": 13.572, "saving_pct": 75.18}, "clic_professional": {"worst_qp_penalty_pct": 119.18, "size_mb": 13.572, "saving_pct": 75.18}, "set14": {"worst_qp_penalty_pct": 91.891, "size_mb": 13.572, "saving_pct": 75.18}}}, "recovery_pct_points": 0.0}
+{"tier": "tier3_more_int4", "events": "measure_before"}
+{"tier": "tier3_more_int4", "events": "qat", "steps": 2000}
+{"tier": "tier3_more_int4", "events": "measure_after"}
+
+=== 2026-10-31T14:20:16Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\qat_overnight.py --steps 2000 --lr 1e-06 --accumulate 2 --objective augmented_lagrangian --rd-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --eval-every 100 --eval-images 4 --datasets kodak clic_professional set14 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt
+{"events": "start", "sleep_guard": "True"}
+{"tier": "tier1_more_int8", "events": "measure_before"}
+{"tier": "tier1_more_int8", "events": "qat", "steps": 2000}
+{"tier": "tier1_more_int8", "events": "measure_after"}
+{"tier": "tier1_more_int8", "before": {"worst_qp_penalty_pct": 8.613, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 5.293, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 8.613, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 6.176, "size_mb": 14.401, "saving_pct": 73.67}}}, "after": {"worst_qp_penalty_pct": 8.613, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 5.293, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 8.613, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 6.176, "size_mb": 14.401, "saving_pct": 73.67}}}, "recovery_pct_points": 0.0}
+{"tier": "tier2_moderate_int4", "events": "measure_before"}
+{"tier": "tier2_moderate_int4", "events": "qat", "steps": 2000}
+{"tier": "tier2_moderate_int4", "events": "measure_after"}
+{"tier": "tier2_moderate_int4", "before": {"worst_qp_penalty_pct": 119.18, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 85.449, "size_mb": 13.572, "saving_pct": 75.18}, "clic_professional": {"worst_qp_penalty_pct": 119.18, "size_mb": 13.572, "saving_pct": 75.18}, "set14": {"worst_qp_penalty_pct": 91.891, "size_mb": 13.572, "saving_pct": 75.18}}}, "after": {"worst_qp_penalty_pct": 25.273, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 21.36, "size_mb": 13.572, "saving_pct": 75.18}, "clic_professional": {"worst_qp_penalty_pct": 23.399, "size_mb": 13.572, "saving_pct": 75.18}, "set14": {"worst_qp_penalty_pct": 25.273, "size_mb": 13.572, "saving_pct": 75.18}}}, "recovery_pct_points": 93.907}
+{"tier": "tier3_more_int4", "events": "measure_before"}
+{"tier": "tier3_more_int4", "events": "qat", "steps": 2000}
+{"tier": "tier3_more_int4", "events": "measure_after"}
+{"tier": "tier3_more_int4", "before": {"worst_qp_penalty_pct": 1771.715, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 521.027, "size_mb": 11.369, "saving_pct": 79.21}, "clic_professional": {"worst_qp_penalty_pct": 1771.715, "size_mb": 11.369, "saving_pct": 79.21}, "set14": {"worst_qp_penalty_pct": 680.168, "size_mb": 11.369, "saving_pct": 79.21}}}, "after": {"worst_qp_penalty_pct": 84.217, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 58.225, "size_mb": 11.369, "saving_pct": 79.21}, "clic_professional": {"worst_qp_penalty_pct": 84.217, "size_mb": 11.369, "saving_pct": 79.21}, "set14": {"worst_qp_penalty_pct": 70.608, "size_mb": 11.369, "saving_pct": 79.21}}}, "recovery_pct_points": 1687.498}
+{"events": "done", "output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt", "tiers": 3, "kept_awake": true}
+=== 2026-10-31T15:36:18Z exit 0

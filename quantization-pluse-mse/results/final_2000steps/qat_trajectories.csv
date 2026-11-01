@@ -1,0 +1,5 @@
+run,steps_reached,worst_penalty_pct,last_d_psnr
+"raw RD objective, lr 3e-6, rate term unconstrained",5900,72.462,-1.5356
+"rate-preserving, lr 3e-6, rate weight 1",200,0,0.1887
+"rate-preserving, lr 3e-6, rate weight 1 (restart)",1200,12.788,0.1183
+"rate-preserving, lr 1e-6, rate weight 8",300,46.179,-2.2196

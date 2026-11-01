@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment,1419bf8259da,clic_professional,0,41,0.219267,31.593581,1.17306,0.614103,98.185847,39.977388,98.553321,allef-vinicius-109434.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,1,41,0.284493,32.488932,1.049763,0.517518,95.242206,44.893918,135.297399,alberto-montalesi-176097.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,2,41,0.362958,33.413104,0.942735,0.434715,93.938291,50.822627,181.256423,paul-itkin-46101.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,3,41,0.458915,34.269568,0.781299,-0.125564,93.610395,58.671876,215.677377,vita-vilcina-3055.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,4,41,0.571147,35.126051,0.631426,-0.886627,91.826446,63.794827,223.196414,vita-vilcina-3055.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,5,41,0.714439,35.920574,0.373012,-1.781691,90.173334,72.195862,202.962255,vita-vilcina-3055.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,6,41,0.874227,36.639965,0.098391,-2.72938,82.520707,76.359986,174.770973,vita-vilcina-3055.png,0.0,0.0
+assignment,1419bf8259da,clic_professional,7,41,1.053418,37.220737,-0.260928,-3.625439,74.650268,84.217036,233.760236,vita-vilcina-3055.png,0.0,0.0

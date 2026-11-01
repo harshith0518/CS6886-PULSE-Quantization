@@ -1,0 +1,30 @@
+=== 2026-10-31T10:09:22Z start
+
+=== 2026-10-31T10:09:22Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\before --configs quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json"]}
+{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 5.293, "mean_penalty_pct": 2.52}
+{"output": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\before", "rows": 192, "configs": 1}
+=== 2026-10-31T10:10:21Z exit 0
+
+=== 2026-10-31T10:10:21Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\before --configs quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json"]}
+{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 8.613, "mean_penalty_pct": 4.362}
+{"output": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\before", "rows": 328, "configs": 1}
+=== 2026-10-31T10:15:52Z exit 0
+
+=== 2026-10-31T10:15:52Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\before --configs quantization-pluse-mse\results\qat\run2_20261031T153921\tier1_more_int8\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json"]}
+{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 6.176, "mean_penalty_pct": 2.893}
+{"output": "quantization-pluse-mse\\results\\qat\\run2_20261031T153921\\tier1_more_int8\\before", "rows": 112, "configs": 1}
+=== 2026-10-31T10:16:25Z exit 0
+
+=== 2026-10-31T10:16:25Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier1_more_int8 --pool datasets/qat_pool/div2k_valid --output quantization-pluse-mse\results\qat\run2_20261031T153921 --steps 2000 --lr 3e-06 --accumulate 2 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --objective rate_preserving --eval-every 100 --eval-images 4 --device cuda
+{"tier": "tier1_more_int8", "events": "start", "steps": 2000, "crop": 512, "scope": "backbone", "lr": 3e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "int8", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "int8", "H2": "int8", "H3": "bf16", "D0": "int8", "D1": "int8", "D2": "int8", "D3": "int8", "D4": "int8", "D5": "bf16", "D6": "int8", "D7": "int8", "D8": "int8"}}
+{"tier": "tier1_more_int8", "events": "baseline_validation", "psnr": 33.7247, "bpp": 0.3185, "slopes": {"0": 2.884, "1": 2.827, "2": 2.788, "3": 2.797, "4": 2.82, "5": 2.796, "6": 2.693, "7": 2.637}}
+{"tier": "tier1_more_int8", "events": "step", "step": 1, "loss": 8.08241, "bpp": 0.8229, "mse": 0.002109, "elapsed_s": 1.3}
+{"tier": "tier1_more_int8", "events": "step", "step": 50, "loss": 8.53288, "bpp": 0.6126, "mse": 0.002847, "elapsed_s": 49.2}
+{"tier": "tier1_more_int8", "events": "validated", "step": 100, "psnr": 33.9933, "bpp": 0.3434, "d_psnr_vs_start": 0.2686, "penalty_vs_start_pct": 0.0, "best": false}
+{"tier": "tier1_more_int8", "events": "step", "step": 100, "loss": 8.101, "bpp": 0.6683, "mse": 0.002564, "elapsed_s": 114.0}
+{"tier": "tier1_more_int8", "events": "step", "step": 150, "loss": 11.81013, "bpp": 0.8575, "mse": 0.003211, "elapsed_s": 166.3}
+{"tier": "tier1_more_int8", "events": "validated", "step": 200, "psnr": 33.9134, "bpp": 0.3386, "d_psnr_vs_start": 0.1887, "penalty_vs_start_pct": 0.0, "best": false}
+{"tier": "tier1_more_int8", "events": "step", "step": 200, "loss": 10.48714, "bpp": 0.7948, "mse": 0.003037, "elapsed_s": 231.1}
