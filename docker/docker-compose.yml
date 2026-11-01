@@ -1,0 +1,37 @@
+services:
+  # Default: run the unit tests. Proves the image and the entropy extension work.
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: pulse-quantization:cpu
+    working_dir: /app
+    volumes:
+      - ../checkpoints:/app/checkpoints:ro
+      - ../datasets:/app/datasets:ro
+    command: >
+      python -m unittest discover -s quantization-pluse-mse/tests
+
+  # Reproduce the headline number: 21.677 MB at 0.672% on Kodak.
+  verify:
+    image: pulse-quantization:cpu
+    working_dir: /app
+    volumes:
+      - ../checkpoints:/app/checkpoints:ro
+      - ../datasets:/app/datasets:ro
+      - ../results-docker:/app/results
+    command: >
+      python quantization-pluse-mse/scripts/eval_assignment.py
+      --model checkpoints/pulse-mse
+      --configs quantization-pluse-mse/results/ilp/assignment_ilp.json
+      --dataset kodak
+      --output results/check
+
+  # Solve a different quality budget (seconds, no GPU needed).
+  solve:
+    image: pulse-quantization:cpu
+    working_dir: /app
+    volumes:
+      - ../checkpoints:/app/checkpoints:ro
+    command: >
+      python quantization-pluse-mse/scripts/solve_ilp.py --budget 1.0 1.8 --headline 1.0

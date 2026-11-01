@@ -134,6 +134,7 @@ pip install -e . --no-build-isolation                # builds the entropy extens
 | `submission/` | The 2-page report, the slides, and a 5-page supplement. |
 | `datasets/` | Kodak, CLIC Professional, Set14 and the fine-tuning pool. Images not tracked. |
 | `RUNBOOK.md` | Setup, every command, runtimes, troubleshooting. |
+| `docker/` | One Linux container for the evaluation path and the tests. |
 | `docs/archive/` | Earlier working notes, kept for provenance. |
 
 ## 5. Resources
@@ -150,7 +151,14 @@ pip install -e . --no-build-isolation                # builds the entropy extens
 | Documents | LaTeX through Tectonic, `python-docx`, `python-pptx` |
 
 Datasets: Kodak (24 images, screening), CLIC Professional (41, confirmation), Set14 (14, transfer
-check), DIV2K validation (100, fine-tuning pool only).
+check), DIV2K validation (100, fine-tuning pool only). No images are tracked.
+
+Two files that upstream shipped are not in this repository, to keep it under 10 MB: the paper PDF and
+proposal material, and the sample `image.png` that the upstream commands use as an example input.
+Supply your own image if you run those examples.
+
+To skip the native install, use the container: `docker/README.md` has the build and three run
+commands. The container is written but was not built on the development machine.
 
 The complete method and the result tables are in `submission/report.pdf`. The engineering record,
 including the mistakes made and corrected, is in `quantization-pluse-mse/STATUS.md`.

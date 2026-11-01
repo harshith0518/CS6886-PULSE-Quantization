@@ -84,6 +84,13 @@ That script downloads DIV2K validation, extracts it, writes a SHA-256 manifest, 
 a pool from any evaluation set**. Keep that property if you modify it: a pool that overlaps a test set
 makes every downstream number meaningless.
 
+## 5b. Or use the container
+
+If you do not want to build the environment by hand, `docker/README.md` has a single Linux image that
+installs the dependencies and compiles the entropy extension. Mount `checkpoints/` and `datasets/`,
+then run the tests and the evaluation. The container was written but not built on the development
+machine, so treat its first build as a test.
+
 ## 6. Verify the install (2 minutes)
 
 ```powershell
