@@ -42,3 +42,6 @@ quantization-pluse-mse/*/results/sweep_*.csv
 
 # TeX engine binary (re-fetch with tools/fetch_tectonic.py)
 tools/tectonic/
+
+# Run logs are generated locally; the summaries they feed are tracked instead
+quantization-pluse-mse/logs/

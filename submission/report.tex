@@ -66,10 +66,10 @@ assignment leaves on the table, and an optimal assignment leaves nothing.
 Post-training quantization is the standard way to shrink a neural codec, and the standard practice
 is a single precision for the whole model because per-layer analysis costs time. For
 \emph{pulse-mse}~\cite{pulse} that reflex is expensive: 85.6\% of its 14.18M parameters sit in six
-encoder blocks, while the entropy model---which dominates decode latency---holds under 10\%, and the
-599k-parameter decoder contains the single most fragile component in the network. Sensitivity is also
-not monotone in size: a 2.89M-parameter encoder block tolerates 8-bit weights at 0.5\% penalty while
-a 4.7k-parameter renderer MLP loses 8\%.
+encoder blocks, while the entropy model---which dominates decode latency---holds 9.4\%, and the
+708k-parameter decoder is only 5.0\% of the network yet contains a 4.7k block that loses 8\% at 8 bits.
+Sensitivity is therefore not monotone in size: a 2.89M-parameter encoder block tolerates 8-bit weights
+at 0.5\% penalty while that 4.7k renderer MLP loses 8\%.
 
 We therefore ask three questions. \textbf{(Q1)} Which components tolerate which precision, at which
 quality setting? \textbf{(Q2)} Given those measurements, what is the smallest per-component
