@@ -1,152 +1,159 @@
 # Which Bits Can We Drop?
 
-**Component-wise quantization, mixed-precision selection and quantization-aware fine-tuning for the
-PULSE learned image codec.** CS6886 final project.
+Component-wise quantization, mixed-precision selection and quantization-aware fine-tuning for the
+PULSE learned image codec. CS6886 final project.
 
-**Report (2 pages):** [`submission/report.pdf`](submission/report.pdf) ·
-**Slides:** [`submission/PULSE-quantization-deck.pdf`](submission/PULSE-quantization-deck.pdf) ·
-**Full runbook:** [`RUNBOOK.md`](RUNBOOK.md)
+Report (2 pages): `submission/report.pdf` | Slides: `submission/PULSE-quantization-deck.pdf` |
+Runbook: `RUNBOOK.md`
 
 ---
 
-## What this repository is
+## 1. What PULSE is, and what we did after the clone
 
-This is a **fork of the PULSE reference implementation** (from
-[`microsoft/GenCodec`](https://github.com/microsoft/GenCodec), paper
-[arXiv:2609.18602](https://arxiv.org/abs/2609.18602), weights on
-[HuggingFace](https://huggingface.co/zhaoyangjia/PULSE)) with a quantization study built on top of it.
+PULSE is a learned image codec. A convolutional encoder maps an image to a latent. A learned entropy
+model codes that latent with a range coder. A convolutional decoder rebuilds the image. PULSE is known
+for fast single-thread CPU decoding and for bit-exact entropy coding across platforms.
 
-The upstream code in `codec/`, `deployment/`, `configs/` and the training scripts is **unchanged and
-not ours**. Everything under `quantization-pluse-mse/` and `submission/` is our work.
+We cloned `microsoft/GenCodec`, which holds the PULSE release. The upstream part is `codec/`,
+`deployment/`, `configs/` and the training scripts. We did not change it. We added one study on top of
+the released `pulse-mse` checkpoint, in `quantization-pluse-mse/`.
 
-## The problem
+PULSE ships one weight file of 54.688 MB. That file serves eight quality settings. We cannot choose a
+precision for each setting, because one file must satisfy all eight.
 
-PULSE ships **one weight file (54.688 MB, 14.18M parameters)** that must serve **eight quality
-settings**. The standard way to shrink it is to pick one precision for the whole model — but the model
-is wildly unbalanced:
+## 2. The challenge, and how we travelled through it
 
-| Group | Parameters | Share | Why it matters |
+**The challenge.** The usual way to shrink a model is one precision for the complete model, because a
+study of each part takes time. That method is a loss here. The parts are not equal:
+
+| Group | Parameters | Share | Behaviour |
 |---|---|---|---|
-| Encoder E0–E5 | 12.13M | 85.6% | four blocks alone are 11.6 MB |
-| Entropy H0–H3 | 1.34M | 9.4% | dominates decode time (73%) |
-| Decoder D0–D8 | 708k | 5.0% | small, but holds a 4.7k block that loses 8% at 8 bits |
+| Encoder E0-E5 | 12.13M | 85.6% | large, and cheap to quantize |
+| Entropy H0-H3 | 1.34M | 9.4% | small, and takes 73% of a decode |
+| Decoder D0-D8 | 708k | 5.0% | small, but one 4.7k block loses 8% at 8 bits |
 
-**Our goal:** find the smallest per-component precision assignment that stays inside a quality budget,
-then test whether fine-tuning can recover what it costs.
+A 2.89M encoder block loses 0.5% at 8 bits. A 4.7k renderer block loses 8% at the same precision.
+Sensitivity does not follow size.
 
-## What we did
+**The journey, in four steps.**
 
-1. **Measured sensitivity.** Quantized **one component at a time** (everything else FP32), across
-   **7 formats × 19 components × 8 quality settings × 2 datasets** = 69,233 measurements, with an FP32
-   gate that reproduces the reference bitstream exactly at every setting.
-2. **Verified the measurements are additive** (0.96–1.05 Kodak, 1.02–1.11 CLIC), so single-component
-   costs can be summed and used as optimizer coefficients.
-3. **Solved the allocation as a mixed-integer program.** One precision per component, *shared across
-   all eight quality settings* because one file must serve all eight, with one quality constraint per
-   setting. Solved with HiGHS.
-4. **Fine-tuned the result** with straight-through quantized convolutions and an augmented-Lagrangian
-   rate constraint, holding bitrate fixed while pushing distortion down. Entropy weights stay frozen
-   so the integer CDF tables in the bundle remain valid.
+1. *Measure.* We quantized one part at a time, kept all other parts in FP32, and ran the complete codec
+   on every image at every setting. That is 7 formats x 19 parts x 8 settings x 2 datasets: 69,233
+   rows. We added two safeguards. An FP32 gate must reproduce the reference bitstream. A hash check
+   must confirm each weight restoration.
+2. *Check the assumptions.* The solver adds single-part costs, so we tested that the costs add. They
+   do: the ratio is 0.96 to 1.05 on Kodak and 1.02 to 1.11 on CLIC.
+3. *Allocate.* We stated the choice as a mixed-integer linear program. One binary variable for each
+   pair of a part and a format, shared across all eight settings, with one quality limit for each
+   setting. The objective is bytes. We did not use latency, because we have no measured latency table
+   for each format, and an objective with invented data is not a result.
+4. *Repair.* We fine-tuned the aggressive assignments. We used quantized convolutions with a
+   straight-through gradient, and an augmented Lagrangian that holds the bitrate at its old value
+   while it pushes distortion down. We froze the entropy parts, because the bundle holds integer CDF
+   tables and moving the entropy weights would break the contract between encoder and decoder.
 
-## Results
+**What we expected.** We expected a large size reduction with a small quality cost, and we expected
+fine-tuning to recover most of the remaining cost. We also expected a small latency win.
 
-Worst-quality-setting rate-equivalent penalty against FP32. Lower is better.
+## 3. What we got
 
-| Configuration | Size | Saving | Kodak | CLIC | Set14 |
-|---|---|---|---|---|---|
-| **ILP mixed, 1% budget** | **21.677 MB** | **−60.4%** | **0.672%** | **0.851%** | **0.935%** |
-| ILP mixed, 1.8% budget | 18.664 MB | −65.9% | 1.268% | 1.595% | 1.601% |
-| INT8 tier + QAT (12k steps) | 14.401 MB | −73.7% | 1.848% | 2.874% | 3.363% |
-| uniform INT8 (the naive baseline) | 13.904 MB | −74.6% | 26.184% | 56.701% | 19.374% |
+Expected and measured, side by side. Values are worst-setting rate-equivalent penalty against FP32.
 
-BD-rate for the champion: **+0.48 / +0.55 / +0.49%** (Kodak / CLIC / Set14). Set14 was never used for
-fitting, so it is a genuine transfer check.
+| | Expected | Measured |
+|---|---|---|
+| Size at the 1% budget | about 22 MB | **21.677 MB (-60.4%)** |
+| Quality cost at that budget | under 1% | **0.94%** worst case, BD-rate +0.48 to +0.55% |
+| Fine-tuning on aggressive tiers | large repair | **61% to 98% of the damage removed** |
+| Fine-tuning on the optimal tier | small repair | **0.0%** |
+| Latency | a small win | **no win.** 4.79% slower, interval +1.27 to +9.80 |
 
-**The headline:** uniform INT8 produces a *smaller* file than our champion and is **39× worse on Kodak
-and 67× worse on CLIC**. Granularity, not precision, is what matters.
+| Configuration | Size | Kodak | CLIC | Set14 |
+|---|---|---|---|---|
+| **ILP mixed, 1% budget** | **21.677 MB** | **0.672%** | **0.851%** | **0.935%** |
+| ILP mixed, 1.8% budget | 18.664 MB | 1.268% | 1.595% | 1.601% |
+| INT8 tier + fine-tuning | 14.401 MB | 1.848% | 2.874% | 3.363% |
+| uniform INT8 | 13.904 MB | 26.184% | 56.701% | 19.374% |
 
-## What worked, and what did not
+The last two rows decide the argument. Uniform INT8 gives a smaller file than our champion, and it
+loses 39 times more quality on Kodak and 67 times on CLIC. The problem is granularity, not
+quantization.
 
-**Worked**
+**The models in this repository.**
 
-- Per-component sensitivity plus an ILP: 60% of the bytes gone for under 1% quality cost.
-- The mixed-versus-uniform gap (39–67×), the single strongest result in the project.
-- **QAT as a repair mechanism.** It removed **61%**, **83%** and **98%** of the damage on three
-  hand-chosen assignments, taking a 14.401 MB INT8 model from 8.61% to 3.36%.
-- Group-32 scaling for 4-bit: cut INT4 weight error 40% and damage 5–22× versus per-channel.
+| Model | Where it lives | Form |
+|---|---|---|
+| FP32 base (`pulse-mse`) | `checkpoints/pulse-mse/` (not tracked, 84 MB) | Download from HuggingFace |
+| Champion, 21.677 MB | `quantization-pluse-mse/results/ilp/assignment_ilp_b1p0.json` | Precision map |
+| Variant, 18.664 MB | `quantization-pluse-mse/results/ilp/assignment_ilp_b1p8.json` | Precision map |
+| INT8 tier + fine-tuning, 14.401 MB | `quantization-pluse-mse/results/night/qat_int8_12k/bundles/` | Precision map plus weights |
 
-**Did not work**
+We do not store weight files in git, because each one is 56 MB. A precision map plus the base
+checkpoint defines each operating point exactly. RUNBOOK section 7.4 rebuilds a fine-tuned bundle.
 
-- **No latency win.** Quantization accelerates convolutions, which are 9% of a decode; 73% is entropy
-  coding. Measured +4.79% latency (95% CI +1.27 to +9.80), energy change −0.39% with an interval
-  spanning zero. We report this rather than hide it.
-- **4-bit alone.** Even with group scaling, INT4 costs 26–157 penalty points per MB saved versus
-  0.14–0.46 for INT8 — about two orders of magnitude worse per byte.
-- **QAT on the optimizer's own assignment: exactly 0.0% gain.** Fine-tuning repairs what an assignment
-  leaves on the table, and an optimal assignment leaves nothing. We consider this our most useful
-  finding, not a failure.
-- **Reproducing the full pretraining corpus** (Open Images + SAM-1B is terabytes). We fine-tuned on 100
-  DIV2K images instead: 2.2% of the pretraining optimizer steps and 0.2% of its sample budget.
+## 4. Conclusion, commands and layout
 
-## Tools and resources
+**Conclusion.** Granularity is the lever. At the same size, mixed precision is 39 times better than
+uniform precision. Fine-tuning replaces a good allocation and does not extend it: it removed 61% to 98%
+of the damage on hand-chosen assignments and 0% on the assignment the solver optimized. Quantization
+did not make this codec faster. A decode spends 80 of its 88 ms in entropy coding, and only 8 ms in the
+network that quantization accelerates.
 
-| Purpose | Tool |
-|---|---|
-| Model, quantization simulation, fine-tuning | PyTorch 2.6.0 + CUDA 12.4, one RTX 3050 Laptop (4 GB) |
-| Entropy coding | PULSE native extension (`MLCodec_extensions_cpp`) |
-| Mixed-integer optimization | HiGHS via `scipy.optimize.milp` |
-| Energy and power | NVIDIA NVML total-energy counters |
-| Rate-distortion comparison | Bjøntegaard delta-rate with PCHIP interpolation |
-| Documents | LaTeX (Tectonic), `python-docx`, `python-pptx`, LibreOffice for PDF export |
-| Data | Kodak, CLIC Professional, Set14, DIV2K (fine-tuning pool) |
-
-## Quick start
+**Run it.**
 
 ```bash
-git clone https://github.com/harshith0518/CS6886-PULSE-Quantization.git
-cd CS6886-PULSE-Quantization
 python -m venv venv && .\venv\Scripts\activate      # source venv/bin/activate on POSIX
 pip install -r requirements.txt
 pip install -e . --no-build-isolation                # builds the entropy extension
 ```
 
-Download the released checkpoint from [HuggingFace](https://huggingface.co/zhaoyangjia/PULSE) into
-`checkpoints/pulse-mse/` (three files: `config.json`, `model.pt`, `entropy_control_int.pt` — the third
-is mandatory, the loader refuses a bundle without it).
-
-Then reproduce the headline number:
-
 ```powershell
+# headline number: 21.677 MB and 0.672% on Kodak
 .\venv\Scripts\python.exe quantization-pluse-mse\scripts\eval_assignment.py `
   --model checkpoints/pulse-mse `
   --configs quantization-pluse-mse\results\ilp\assignment_ilp.json `
   --dataset kodak --output results\check
+
+# solve a different budget
+.\venv\Scripts\python.exe quantization-pluse-mse\scripts\solve_ilp.py --budget 1.0 1.8 --headline 1.0
+
+# tests
+.\venv\Scripts\python.exe -m unittest discover -s quantization-pluse-mse\tests
 ```
 
-`RUNBOOK.md` has every command, expected runtime, and troubleshooting step.
+**Layout.**
 
-## Repository map
-
-| Path | What is in it |
+| Path | Contents |
 |---|---|
-| `codec/`, `deployment/`, `configs/`, `train_*.py` | **Upstream PULSE** — not our work |
-| `quantization-pluse-mse/` | Our study: sweep, analysis, ILP, QAT, all result tables |
-| `quantization-pluse-mse/STATUS.md` | Project checkpoint — every number, every trap we hit |
-| `quantization-pluse-mse/RESOURCES.md` | Claim-to-proof map with verified citations |
-| `submission/` | Report (`.tex` + `.pdf`), slides, and a longer supplementary write-up |
-| `datasets/` | Evaluation sets and the fine-tuning pool (images are not tracked) |
-| `docs/archive/` | Earlier working notes, kept for provenance |
+| `codec/` | PULSE model, entropy coding and runtime. Upstream code. |
+| `checkpoints/pulse-mse/` | The FP32 base model. Not tracked. |
+| `quantization-pluse-mse/scripts/` | Our entry points: sweep, analysis, ILP, evaluation, fine-tuning. |
+| `quantization-pluse-mse/results/` | Every measured table, figure and precision map. |
+| `quantization-pluse-mse/STATUS.md` | The project checkpoint: all numbers, all open items, all traps. |
+| `quantization-pluse-mse/RESOURCES.md` | A map from each claim to the file that proves it, with citations. |
+| `quantization-pluse-mse/results/qat/WHY_THESE_COMPONENTS.md` | Why we chose these parts, with the cost per MB. |
+| `submission/` | The 2-page report, the slides, and a 5-page supplement. |
+| `datasets/` | Kodak, CLIC Professional, Set14 and the fine-tuning pool. Images not tracked. |
+| `RUNBOOK.md` | Setup, every command, runtimes, troubleshooting. |
+| `docs/archive/` | Earlier working notes, kept for provenance. |
 
-## Conclusion
+## 5. Resources
 
-Mixed precision buys 60% of this model for under 1% quality cost, and it beats uniform quantization by
-39× at comparable size. Fine-tuning is a *substitute* for good allocation rather than a supplement: it
-recovered 61–98% of the damage on hand-chosen precision, and nothing on the assignment the solver had
-already optimized. Both halves of that statement are useful, and the second is only visible because we
-measured the control case.
+| Need | Value |
+|---|---|
+| Python | 3.12 |
+| PyTorch | 2.6.0 with CUDA 12.4 |
+| GPU | 4 GB is enough. We used one RTX 3050 Laptop. |
+| CPU-only | Works for evaluation. Fine-tuning wants the GPU. |
+| Disk | About 10 GB free |
+| Solver | HiGHS through `scipy.optimize.milp`. Already in the requirements. |
+| Checkpoint | `pulse-mse` from https://huggingface.co/zhaoyangjia/PULSE |
+| Documents | LaTeX through Tectonic, `python-docx`, `python-pptx` |
 
-Quantization did not make the codec faster, and §4.3 of the report explains why in arithmetic rather
-than assertion.
+Datasets: Kodak (24 images, screening), CLIC Professional (41, confirmation), Set14 (14, transfer
+check), DIV2K validation (100, fine-tuning pool only).
+
+The complete method and the result tables are in `submission/report.pdf`. The engineering record,
+including the mistakes we made and corrected, is in `quantization-pluse-mse/STATUS.md`.
 
 ---
 
