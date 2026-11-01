@@ -137,8 +137,8 @@ validation set:
 Entropy components are \emph{frozen}: the shipped bundle holds precomputed integer CDF tables that
 would no longer describe the weights, breaking the encoder/decoder contract. The saved checkpoint must
 beat its own starting point, so a bad run cannot ship a worse model. Training uses 100 DIV2K~\cite{div2k}
-images disjoint from every test set, 12{,}000 steps at 512-pixel crops, about 100 minutes per tier on
-one 4\,GB laptop GPU---2.2\% of the optimiser steps and 0.2\% of the sample budget of
+images disjoint from every test set, 12{,}000 steps at 512-pixel crops, about 100 minutes per tier on one
+4\,GB laptop GPU (PyTorch 2.6, CUDA 12.4, HiGHS via SciPy)---2.2\% of the optimiser steps and 0.2\% of the sample budget of
 pretraining~\cite{pulse}. This is a repair operation, not retraining.
 
 \section{Evaluation}
