@@ -1,4 +1,4 @@
-# Which Bits Can We Drop?
+# Which Bits Can Be Dropped?
 
 Component-wise quantization, mixed-precision selection and quantization-aware fine-tuning for the
 PULSE learned image codec. CS6886 final project.
@@ -8,20 +8,20 @@ Runbook: `RUNBOOK.md`
 
 ---
 
-## 1. What PULSE is, and what we did after the clone
+## 1. What PULSE is, and what was added after the clone
 
 PULSE is a learned image codec. A convolutional encoder maps an image to a latent. A learned entropy
 model codes that latent with a range coder. A convolutional decoder rebuilds the image. PULSE is known
 for fast single-thread CPU decoding and for bit-exact entropy coding across platforms.
 
-We cloned `microsoft/GenCodec`, which holds the PULSE release. The upstream part is `codec/`,
-`deployment/`, `configs/` and the training scripts. We did not change it. We added one study on top of
-the released `pulse-mse` checkpoint, in `quantization-pluse-mse/`.
+This repository is a fork of `microsoft/GenCodec`, which holds the PULSE release. The upstream part is
+`codec/`, `deployment/`, `configs/` and the training scripts. It is unchanged. One study was added on
+top of the released `pulse-mse` checkpoint, in `quantization-pluse-mse/`.
 
-PULSE ships one weight file of 54.688 MB. That file serves eight quality settings. We cannot choose a
-precision for each setting, because one file must satisfy all eight.
+PULSE ships one weight file of 54.688 MB. That file serves eight quality settings. A precision cannot
+be chosen for each setting, because one file must satisfy all eight.
 
-## 2. The challenge, and how we travelled through it
+## 2. The challenge, and how it was approached
 
 **The challenge.** The usual way to shrink a model is one precision for the complete model, because a
 study of each part takes time. That method is a loss here. The parts are not equal:
@@ -37,25 +37,25 @@ Sensitivity does not follow size.
 
 **The journey, in four steps.**
 
-1. *Measure.* We quantized one part at a time, kept all other parts in FP32, and ran the complete codec
-   on every image at every setting. That is 7 formats x 19 parts x 8 settings x 2 datasets: 69,233
-   rows. We added two safeguards. An FP32 gate must reproduce the reference bitstream. A hash check
+1. *Measure.* One part was quantized at a time, all other parts stayed in FP32, and the complete codec
+   ran on every image at every setting. That is 7 formats x 19 parts x 8 settings x 2 datasets: 69,233
+   rows. Two safeguards were added. An FP32 gate must reproduce the reference bitstream. A hash check
    must confirm each weight restoration.
-2. *Check the assumptions.* The solver adds single-part costs, so we tested that the costs add. They
+2. *Check the assumptions.* The solver adds single-part costs, so additivity was tested. They
    do: the ratio is 0.96 to 1.05 on Kodak and 1.02 to 1.11 on CLIC.
-3. *Allocate.* We stated the choice as a mixed-integer linear program. One binary variable for each
+3. *Allocate.* The choice is stated as a mixed-integer linear program. One binary variable for each
    pair of a part and a format, shared across all eight settings, with one quality limit for each
-   setting. The objective is bytes. We did not use latency, because we have no measured latency table
-   for each format, and an objective with invented data is not a result.
-4. *Repair.* We fine-tuned the aggressive assignments. We used quantized convolutions with a
-   straight-through gradient, and an augmented Lagrangian that holds the bitrate at its old value
-   while it pushes distortion down. We froze the entropy parts, because the bundle holds integer CDF
+   setting. The objective is bytes. Latency was not used, because no measured latency table
+   exists for each format, and an objective with invented data is not a result.
+4. *Repair.* The aggressive assignments were fine-tuned. Quantized convolutions ran with a
+   straight-through gradient, and an augmented Lagrangian held the bitrate at its old value while it
+   pushed distortion down. The entropy parts stayed frozen, because the bundle holds integer CDF
    tables and moving the entropy weights would break the contract between encoder and decoder.
 
-**What we expected.** We expected a large size reduction with a small quality cost, and we expected
-fine-tuning to recover most of the remaining cost. We also expected a small latency win.
+**What was expected.** A large size reduction at a small quality cost, fine-tuning that recovers most
+of the remaining cost, and a small latency win.
 
-## 3. What we got
+## 3. What was measured
 
 Expected and measured, side by side. Values are worst-setting rate-equivalent penalty against FP32.
 
@@ -74,7 +74,7 @@ Expected and measured, side by side. Values are worst-setting rate-equivalent pe
 | INT8 tier + fine-tuning | 14.401 MB | 1.848% | 2.874% | 3.363% |
 | uniform INT8 | 13.904 MB | 26.184% | 56.701% | 19.374% |
 
-The last two rows decide the argument. Uniform INT8 gives a smaller file than our champion, and it
+The last two rows decide the argument. Uniform INT8 gives a smaller file than the champion, and it
 loses 39 times more quality on Kodak and 67 times on CLIC. The problem is granularity, not
 quantization.
 
@@ -87,7 +87,7 @@ quantization.
 | Variant, 18.664 MB | `quantization-pluse-mse/results/ilp/assignment_ilp_b1p8.json` | Precision map |
 | INT8 tier + fine-tuning, 14.401 MB | `quantization-pluse-mse/results/night/qat_int8_12k/bundles/` | Precision map plus weights |
 
-We do not store weight files in git, because each one is 56 MB. A precision map plus the base
+Weight files are not stored in git, because each one is 56 MB. A precision map plus the base
 checkpoint defines each operating point exactly. RUNBOOK section 7.4 rebuilds a fine-tuned bundle.
 
 ## 4. Conclusion, commands and layout
@@ -126,11 +126,11 @@ pip install -e . --no-build-isolation                # builds the entropy extens
 |---|---|
 | `codec/` | PULSE model, entropy coding and runtime. Upstream code. |
 | `checkpoints/pulse-mse/` | The FP32 base model. Not tracked. |
-| `quantization-pluse-mse/scripts/` | Our entry points: sweep, analysis, ILP, evaluation, fine-tuning. |
+| `quantization-pluse-mse/scripts/` | Entry points: sweep, analysis, ILP, evaluation, fine-tuning. |
 | `quantization-pluse-mse/results/` | Every measured table, figure and precision map. |
 | `quantization-pluse-mse/STATUS.md` | The project checkpoint: all numbers, all open items, all traps. |
 | `quantization-pluse-mse/RESOURCES.md` | A map from each claim to the file that proves it, with citations. |
-| `quantization-pluse-mse/results/qat/WHY_THESE_COMPONENTS.md` | Why we chose these parts, with the cost per MB. |
+| `quantization-pluse-mse/results/qat/WHY_THESE_COMPONENTS.md` | Why these parts were chosen, with the cost per MB. |
 | `submission/` | The 2-page report, the slides, and a 5-page supplement. |
 | `datasets/` | Kodak, CLIC Professional, Set14 and the fine-tuning pool. Images not tracked. |
 | `RUNBOOK.md` | Setup, every command, runtimes, troubleshooting. |
@@ -142,7 +142,7 @@ pip install -e . --no-build-isolation                # builds the entropy extens
 |---|---|
 | Python | 3.12 |
 | PyTorch | 2.6.0 with CUDA 12.4 |
-| GPU | 4 GB is enough. We used one RTX 3050 Laptop. |
+| GPU | 4 GB is enough. One RTX 3050 Laptop was used. |
 | CPU-only | Works for evaluation. Fine-tuning wants the GPU. |
 | Disk | About 10 GB free |
 | Solver | HiGHS through `scipy.optimize.milp`. Already in the requirements. |
@@ -153,7 +153,7 @@ Datasets: Kodak (24 images, screening), CLIC Professional (41, confirmation), Se
 check), DIV2K validation (100, fine-tuning pool only).
 
 The complete method and the result tables are in `submission/report.pdf`. The engineering record,
-including the mistakes we made and corrected, is in `quantization-pluse-mse/STATUS.md`.
+including the mistakes made and corrected, is in `quantization-pluse-mse/STATUS.md`.
 
 ---
 

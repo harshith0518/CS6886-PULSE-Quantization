@@ -165,18 +165,18 @@ def dark_slide():
 # ================================================================== 1 title
 s = dark_slide()
 frame = textbox(s, 0.9, 1.9, 11.5, 1.9)
-para(frame, "Which bits can we drop?", 54, ICE, bold=True, first=True, font=HEAD, space_after=8)
+para(frame, "Which bits can be dropped?", 54, ICE, bold=True, first=True, font=HEAD, space_after=8)
 para(frame, "Component-wise quantization of a learned image codec", 24, WHITE, space_after=0)
 frame = textbox(s, 0.9, 3.75, 11.5, 0.9)
 para(frame, "PULSE-MSE  |  14.18M parameters  |  8 quality settings  |  one weight file",
      17, ICE, first=True, space_after=6)
-para(frame, "We keep 39 times more quality than uniform INT8 at the same size.", 17, MINT, space_after=0)
+para(frame, "The mixed model keeps 39 times more quality than uniform INT8 at the same size.", 17, MINT, space_after=0)
 card(s, 0.9, 5.0, 3.5, 1.2, "21.677 MB", "60.4 percent smaller. Loss is 0.94 percent.", big_size=32)
 card(s, 4.65, 5.0, 3.5, 1.2, "18.664 MB", "65.9 percent smaller. Loss is 1.60 percent.", big_size=32)
 card(s, 8.40, 5.0, 3.5, 1.2, "39x", "better than uniform INT8 at the same size", big_size=32)
-notes(s, "One sentence: we measured which parts of a codec tolerate low precision, solved the choice as an "
-         "integer program, and used fine-tuning where the choice was aggressive. Three numbers: two "
-         "operating points and the ratio against the naive baseline.")
+notes(s, "One sentence: this work measured which parts of a codec tolerate low precision, stated the "
+         "choice as an integer program, and used fine-tuning where the choice was aggressive. Three "
+         "numbers: two operating points and the ratio against the naive baseline.")
 
 # ================================================================== 2 problem
 s = slide()
@@ -201,7 +201,7 @@ notes(s, "The imbalance is the whole motivation. Uniform precision over-spends o
 
 # ================================================================== 3 method
 s = slide()
-title(s, "How we measured it", "69,233 measurements. One part at a time.")
+title(s, "How it was measured", "69,233 measurements. One part at a time.")
 for index, (head, body) in enumerate([
         ("7 formats", "FP16, BF16, FP8-E4M3, FP8-E5M2, INT8, INT4, FP4-E2M1"),
         ("19 parts x 8 settings", "weights only. All other parts stay in FP32."),
@@ -239,7 +239,7 @@ notes(s, "Read a cell as the percentage penalty to quantize that part alone. The
 
 # ================================================================== 5 allocation + frontier
 s = slide()
-title(s, "We solved the choice as an integer program", "one variable per part. Shared across all eight settings.")
+title(s, "The choice, solved as an integer program", "one variable per part. Shared across all eight settings.")
 frame = textbox(s, 0.62, 1.95, 5.9, 4.5)
 para(frame, "Why shared variables", 18, NAVY, bold=True, first=True, font=HEAD, space_after=6)
 para(frame, "One weight file serves all eight settings. A different assignment per setting would need "
@@ -247,7 +247,7 @@ para(frame, "One weight file serves all eight settings. A different assignment p
 para(frame, "Constraints", 18, NAVY, bold=True, font=HEAD, space_after=6)
 para(frame, "One quality limit for each setting. Eight limits in total.", 15, SLATE, space_after=12)
 para(frame, "Objective", 18, NAVY, bold=True, font=HEAD, space_after=6)
-para(frame, "Minimise bytes. Not latency: we have no measured latency table per format, so an objective "
+para(frame, "Minimise bytes. Not latency: no measured latency table exists for each format, so an objective "
             "using one would optimize invented data.", 15, SLATE, space_after=0)
 table(s, 6.75, 2.0, 5.95, 1.9, ["Point", "Size", "Kodak", "CLIC"],
       [["1% champion", "21.677 MB", "0.67%", "0.85%"],
@@ -257,7 +257,7 @@ table(s, 6.75, 2.0, 5.95, 1.9, ["Point", "Size", "Kodak", "CLIC"],
 frame = textbox(s, 6.75, 4.15, 5.95, 2.2)
 para(frame, "The knee is between 1.6 and 1.8 percent: 2.5 MB falls away in one step.", 15, SLATE,
      first=True, space_after=8)
-para(frame, "The 1.8 percent assignment beats the 2 percent one we first chose. It is 0.275 MB larger and "
+para(frame, "The 1.8 percent assignment beats the 2 percent one chosen first. It is 0.275 MB larger and "
             "better on all three sets.", 15, SLATE, space_after=8)
 para(frame, "Solved with HiGHS. A greedy baseline matches it within a few percent.", 14, MUTED,
      space_after=0)
@@ -300,7 +300,7 @@ frame = textbox(s, 8.6, 2.05, 4.1, 4.4)
 para(frame, "26.18%", 40, RED, bold=True, first=True, font=HEAD, space_after=2)
 para(frame, "uniform INT8 at 13.9 MB", 14, SLATE, space_after=16)
 para(frame, "0.67%", 40, MINT, bold=True, font=HEAD, space_after=2)
-para(frame, "our champion at 21.7 MB", 14, SLATE, space_after=16)
+para(frame, "the champion at 21.7 MB", 14, SLATE, space_after=16)
 para(frame, "Uniform INT8 also varies 2.9 times across datasets. The mixed model varies 1.4 times. A "
             "limit on the total gives quality and stability.", 15, NAVY, bold=True, space_after=0)
 footer(s, "results/mixed/ | 7 configurations, 3 datasets")
@@ -310,7 +310,7 @@ notes(s, "This is the slide that justifies the project. Uniform quantization pro
 
 # ================================================================== 7 4-bit and QAT setup
 s = slide()
-title(s, "4-bit failed. That is why we fine-tuned.", "Group scaling helped by 5 to 22 times. Not enough.")
+title(s, "4-bit failed. That is why fine-tuning was needed.", "Group scaling helped by 5 to 22 times. Not enough.")
 table(s, 0.62, 2.0, 6.9, 2.4,
       ["Part", "INT8 cost/MB", "INT4 cost/MB"],
       [["E3", "0.14", "31.4"], ["E2", "0.17", "26.1"], ["E4", "0.24", "31.2"],
@@ -349,19 +349,19 @@ card(s, 8.95, 3.2, 3.75, 1.1, "61-98%", "of damage removed on hand-chosen tiers"
 frame = textbox(s, 0.62, 4.6, 12.1, 1.9)
 para(frame, "Fine-tuning replaces a good allocation. It does not extend it.", 18, NAVY, bold=True,
      first=True, space_after=8)
-para(frame, "At 2,000 steps the INT8 tier gained nothing. We first concluded that QAT only helps severe "
+para(frame, "At 2,000 steps the INT8 tier gained nothing. The first conclusion was that QAT only helps severe "
             "damage. At 12,000 steps it removed 61 percent. The first result was a step-budget effect.",
      15, MUTED, space_after=8)
-para(frame, "This is our most useful finding, not a failure: the repair is as large as the damage that the "
+para(frame, "This is the most useful finding, not a failure: the repair is as large as the damage that the "
             "choice left behind.", 16, SLATE, space_after=0)
 footer(s, "results/final/qat_attempt/summary.csv | results/night/qat_int8_12k/summary.csv")
 notes(s, "Two-sided result. QAT is a repair mechanism, and the size of the repair is set by how badly the "
-         "assignment was chosen. On our optimized model it did nothing, which is the correct answer. State "
-         "the correction honestly: our first reading was wrong.")
+         "assignment was chosen. On the optimized model it did nothing, which is the correct answer. State "
+         "the correction honestly: the first reading was wrong.")
 
 # ================================================================== 9 latency
 s = slide()
-title(s, "We did not get a speedup. Here is why.", "Quantization accelerates the part that is not the bottleneck.")
+title(s, "No speedup. Here is why.", "Quantization accelerates the part that is not the bottleneck.")
 frame = textbox(s, 0.62, 1.95, 7.6, 2.4)
 para(frame, "A decode takes 88 ms.", 20, NAVY, bold=True, first=True, font=HEAD, space_after=8)
 para(frame, "Entropy coding takes 80 ms. The network takes 8 ms.", 17, SLATE, space_after=6)
@@ -373,7 +373,7 @@ card(s, 8.45, 1.95, 4.25, 1.15, "+4.79%", "latency for the mixed model. 95 perce
 card(s, 8.45, 3.2, 4.25, 1.15, "-0.39%", "energy change. The interval includes zero.", accent=MUTED,
      big_size=30)
 frame = textbox(s, 0.62, 4.65, 12.1, 1.9)
-para(frame, "We make no speed claim for FP8, INT4 or FP4. These formats run as simulated quantization.",
+para(frame, "No speed claim is made for FP8, INT4 or FP4. These formats run as simulated quantization.",
      16, SLATE, first=True, space_after=8)
 para(frame, "Only FP16 and BF16 have real kernels on this GPU. They save energy, not time.", 16, SLATE,
      space_after=8)
@@ -386,7 +386,7 @@ notes(s, "The honest negative. Quantization makes convolutions cheaper, and conv
 # ================================================================== 10 conclusion
 s = dark_slide()
 frame = textbox(s, 0.9, 0.85, 11.5, 0.8)
-para(frame, "What we would ship, and what would change it", 34, ICE, bold=True, first=True, font=HEAD,
+para(frame, "What to ship, and what would change it", 34, ICE, bold=True, first=True, font=HEAD,
      space_after=0)
 card(s, 0.9, 1.85, 6.0, 1.35, "21.677 MB", "champion. 60.4 percent smaller, 0.94 percent loss.", big_size=32)
 card(s, 0.9, 3.3, 6.0, 1.35, "18.664 MB", "size-first variant. 65.9 percent smaller, 1.60 percent loss.",
@@ -396,7 +396,7 @@ para(frame, "Do not use uniform INT8 at 13.9 MB. It is smaller and 39 times wors
      first=True, space_after=6)
 para(frame, "Do not use 4-bit without fine-tuning.", 15, RED, bold=True, space_after=0)
 frame = textbox(s, 7.2, 1.85, 5.5, 4.3)
-para(frame, "Limits we state first", 20, MINT, bold=True, first=True, font=HEAD, space_after=8)
+para(frame, "Limits stated first", 20, MINT, bold=True, first=True, font=HEAD, space_after=8)
 for text in ["Checkpoint selection under-reports the QAT gain. The probe said no change; the full test "
              "said 8.61 to 3.36 percent.",
              "Weights only. No activation quantization, so W8A8 is not tested.",
@@ -407,8 +407,8 @@ for text in ["Checkpoint selection under-reports the QAT gain. The probe said no
 frame = textbox(s, 0.9, 6.35, 11.5, 0.7)
 para(frame, "Granularity is the lever. Fine-tuning repairs what a choice leaves. An optimal choice leaves "
             "nothing.", 17, MINT, bold=True, first=True, space_after=0)
-notes(s, "Close on the trade-off and the limits. If asked what we would do next: fix checkpoint selection, "
-         "then test real integer kernels, then multi-lane entropy coding.")
+notes(s, "Close on the trade-off and the limits. The next steps: fix checkpoint selection, then test real "
+         "integer kernels, then multi-lane entropy coding.")
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 prs.save(OUT)

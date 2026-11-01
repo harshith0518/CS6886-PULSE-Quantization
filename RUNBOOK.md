@@ -217,7 +217,7 @@ on this machine. Use Python's `urllib` (all download scripts here do) rather tha
 
 **CUDA out of memory** — reduce `--max-images`, or evaluate dataset by dataset. Fine-tuning a 512-crop
 tier peaks around 3.8 GB; nothing will fit if another process holds the GPU. Check for orphaned
-`python.exe` before benchmarking (it silently inflated one of our runs by 25%).
+`python.exe` before benchmarking (it silently inflated one run by 25%).
 
 **Numbers disagree by a lot (> 1 absolute point)** — check, in order: the checkpoint hash, that the
 FP32 gate passed, and that you are comparing the same assignment file. The penalty metric is sensitive
@@ -230,7 +230,7 @@ in the caption. Trust the CSV over the document and regenerate.
 
 | Question | File |
 |---|---|
-| What exactly did we measure, and what did we learn? | `quantization-pluse-mse/STATUS.md` |
+| What exactly was measured, and what was learned? | `quantization-pluse-mse/STATUS.md` |
 | Which file proves a specific claim? | `quantization-pluse-mse/RESOURCES.md` |
 | Why these components and not others? | `quantization-pluse-mse/results/qat/WHY_THESE_COMPONENTS.md` |
 | The 2-page submission | `submission/report.pdf` |

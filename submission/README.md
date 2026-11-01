@@ -51,7 +51,7 @@ cost that an assignment leaves. An optimal assignment leaves none.
 1. **Checkpoint selection under-reports the fine-tuning gain.** A 6-crop probe rated the best INT8
    model as equal to its start. The full evaluation shows 8.61% to 3.36%. The saved checkpoints are
    probably not the best available.
-2. **Weights only.** Activations stay in FP32, so we do not test W8A8.
+2. **Weights only.** Activations stay in FP32, so W8A8 is not tested.
 3. **4-bit is simulated.** Quality is measured. Speed is not claimed.
 4. **One entropy lane.** The largest unused latency lever, and it changes the bitstream contract.
 5. **One seed, one pool.** The direction holds across three tiers and two step counts. The exact

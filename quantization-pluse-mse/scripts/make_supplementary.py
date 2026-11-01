@@ -128,7 +128,7 @@ def code(text):
 # ------------------------------------------------------------------ title
 title = doc.add_paragraph()
 title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-run = title.add_run("Which bits can we drop? Supplementary material")
+run = title.add_run("Which bits can be dropped? Supplementary material")
 run.font.name = "Cambria"
 run.font.size = Pt(20)
 run.bold = True
@@ -146,14 +146,14 @@ body("The submitted report has two pages. This document has the method detail, t
      "and the engineering record. Read the report first. Use this document to check a number or to "
      "repeat the work.")
 body("The project asks one question. Which parts of a learned image codec can use a low precision? The "
-     "answer is an assignment: one precision for each part. We measure the cost of each choice, solve "
-     "the assignment as an integer program, and then test whether fine-tuning can recover the "
+     "answer is an assignment: one precision for each part. The cost of each choice is measured, the "
+     "assignment is solved as an integer program, and fine-tuning is then tested as a way to recover the "
      "remaining cost.")
 
 # ------------------------------------------------------------------ 2 method
 h1("2  Method")
 h2("2.1  Measurement")
-body("We quantize one part at a time. All other parts and all activations stay in FP32. We then run the "
+body("One part is quantized at a time. All other parts and all activations stay in FP32. The codec then runs the "
      "complete codec on each image at each quality setting. The plan covers seven formats, 19 parts, "
      "two datasets and eight settings. That gives 69,233 rows.")
 body("Two safeguards make a row valid. First, an FP32 gate must reproduce the reference bitstream and "
@@ -161,15 +161,15 @@ body("Two safeguards make a row valid. First, an FP32 gate must reproduce the re
      "restoration. No run failed this check.")
 
 h2("2.2  The quality metric")
-body("We need one number that holds a quality change and a bitrate change together. We use a "
+body("One number must hold a quality change and a bitrate change together. One metric does it: a "
      "rate-equivalent penalty:")
 code("penalty = 100 * [ (1 + d_bpp/100) * 2^(-d_PSNR / slope) - 1 ]")
 body("The value is zero when the model is equal to FP32. The optimizer limits the worst setting. The "
-     "worst setting is the maximum over the eight settings of the mean over the images. We also report "
-     "Bjontegaard delta-rate as a second view, so that no claim depends on one metric.")
+     "worst setting is the maximum over the eight settings of the mean over the images. Bjontegaard "
+     "delta-rate is also reported as a second view, so that no claim depends on one metric.")
 
 h2("2.3  Additivity")
-body("The optimizer adds single-part costs. That step is correct only if the costs add. We tested the "
+body("The optimizer adds single-part costs. That step is correct only if the costs add. The test ran on a "
      "condition. Divide the measured penalty of a uniform INT8 model by the sum of the 19 single-part "
      "penalties. The ratio is 0.96 to 1.05 on Kodak and 1.02 to 1.11 on CLIC.")
 body("One warning. Do not add the worst setting of each part. That sum gives 65.3 percent, but the true "
@@ -179,21 +179,21 @@ h2("2.4  The allocation program")
 body("One weight file serves all eight settings. A different assignment for each setting is therefore "
      "not deployable. The model uses one binary variable for each pair of a part and a format. Each "
      "variable is shared by all settings. The model has one quality constraint for each setting.")
-body("The objective is the number of bytes. It is not latency. We have no measured latency table for "
-     "each format on this GPU. An objective that used such a table would optimize data that we "
-     "invented. We solve with HiGHS, and we also solve a greedy baseline for comparison.")
+body("The objective is the number of bytes. It is not latency. No measured latency table exists for "
+     "each format on this GPU, and an objective that used such a table would optimize invented data. "
+     "HiGHS solves the program, and a greedy baseline is also solved for comparison.")
 
 h2("2.5  Fine-tuning")
-body("We apply quantized convolutions with a straight-through gradient. We then minimize distortion and "
+body("Quantized convolutions run with a straight-through gradient. Distortion is then minimized and the "
      "hold the bitrate at its pre-quantization value. A fixed rate penalty failed in both directions. A "
      "weak penalty lets the model move down the rate-distortion curve. A strong penalty destroys "
-     "quality to obey the rate target. We use an augmented Lagrangian instead. The multiplier comes "
+     "quality to obey the rate target. An augmented Lagrangian is used instead. The multiplier comes "
      "from the measured rate error on a fixed validation set.")
-body("We freeze the entropy parts. The bundle contains integer CDF tables. If the entropy weights move, "
+body("The entropy parts are frozen. The bundle contains integer CDF tables. If the entropy weights move, "
      "those tables no longer describe the weights, and the encoder and the decoder disagree. The saved "
-     "checkpoint must be better than its own start. If it is not, we keep the start weights. A bad run "
+     "checkpoint must be better than its own start. If it is not, the start weights are kept. A bad run "
      "therefore cannot ship a worse model.")
-body("Training uses 100 DIV2K images that are disjoint from all test sets. We run 12,000 steps on "
+body("Training uses 100 DIV2K images that are disjoint from all test sets. The run uses 12,000 steps on "
      "512-pixel crops. That takes about 100 minutes for one tier on one 4 GB laptop GPU. This work uses "
      "2.2 percent of the optimizer steps and 0.2 percent of the sample budget of the pretraining. Thus "
      "it is a repair operation, not a new training.")
@@ -212,7 +212,7 @@ table(["Point", "Size", "Saving", "Kodak", "CLIC", "Set14"],
       caption="Table 1. Measured configurations. Values are worst-setting rate-equivalent penalty "
               "against a 54.688 MB FP32 baseline. Source: results/mixed/, results/final/.")
 body("The champion predicted 0.9715 percent and measured 0.94 percent. The prediction is conservative "
-     "on each dataset. We did not use Set14 for fitting, so the result there is a transfer test. It "
+     "on each dataset. Set14 was not used for fitting, so the result there is a transfer test. It "
      "holds.")
 
 h2("3.2  The knee")
@@ -222,8 +222,8 @@ table(["Budget", "Size", "Predicted penalty"],
        ["1.8%", "18.664 MB", "1.7162%"], ["2.0%", "18.389 MB", "1.9864%"]],
       caption="Table 2. A fine budget sweep. Between 1.6 and 1.8 percent the size falls 2.5 MB in one "
               "step. Source: results/night/ilp_fine_sweep.json.")
-body("The 1.8 percent assignment beats the 2 percent assignment that we first chose. It is 0.275 MB "
-     "larger and better on all three datasets. We replaced the 2 percent point. This is why a frontier "
+body("The 1.8 percent assignment beats the 2 percent assignment chosen first. It is 0.275 MB "
+     "larger and better on all three datasets. The 2 percent point was replaced. This is why a frontier "
      "must be swept and not guessed.")
 
 h2("3.3  Fine-tuning results")
@@ -253,18 +253,18 @@ body("Per-output-channel INT4 measured 148 to 3767 percent penalty. Group scalin
      "worth shipping without fine-tuning.")
 
 h2("3.5  Latency and energy")
-body("No configuration was faster than FP32. We used paired interleaved benchmarking with 50 pairs for "
+body("No configuration was faster than FP32. Paired interleaved benchmarking was used with 50 pairs for "
      "each cell. The mixed model is 4.79 percent slower, with a 95 percent confidence interval of "
      "+1.27 to +9.80. Its energy change is -0.39 percent, and the interval includes zero.")
 body("The cause is arithmetic. A decode takes 88 ms. Entropy coding takes 80 ms of that time. The "
      "convolutional network takes 8 ms. Convolutions are 9 percent of a decode and 27 percent of a "
      "round trip. Quantization makes convolutions cheaper, so it cannot fix the bottleneck.")
-body("We make no speed claim for FP8, INT4 or FP4. These formats run as simulated quantization. Only "
+body("No speed claim is made for FP8, INT4 or FP4. These formats run as simulated quantization. Only "
      "FP16 and BF16 use real kernels on this GPU. They save energy, not time.")
 
 # ------------------------------------------------------------------ 4 record
 h1("4  Engineering record")
-body("The pipeline did not work on the first attempt. Three failures did not show an error message. We "
+body("The pipeline did not work on the first attempt. Three failures did not show an error message. They "
      "record them because each one is a general trap.")
 bullet("Checkpoint selector floored at zero. The selector accumulated max(0, penalty). A negative "
        "penalty means an improvement, so the selector could never choose an improved checkpoint. Each "
@@ -276,8 +276,8 @@ bullet("Two different bitrates. The training loss sees a surrogate rate of about
 bullet("An inference-mode trap. The codec compress helper runs under inference mode. If you call it "
        "between training steps, it caches inference tensors on the entropy model, and the next backward "
        "pass fails. Validation must call the model methods under no-grad instead.")
-body("We also made a wrong conclusion and corrected it. At 2,000 steps the INT8 tier gained nothing, "
-     "and we concluded that QAT only helps severe damage. At 12,000 steps the same tier removed 61 "
+body("A wrong conclusion was also made and corrected. At 2,000 steps the INT8 tier gained nothing, "
+     "and the conclusion was that QAT only helps severe damage. At 12,000 steps the same tier removed 61 "
      "percent. The first result was a step-budget effect, not a property of the model.")
 
 # ------------------------------------------------------------------ 5 limits
@@ -285,7 +285,7 @@ h1("5  Limitations")
 bullet("Checkpoint selection under-reports the fine-tuning gain. A probe with 6 crops rated the best "
        "INT8 model as equal to its start (-0.08 percent). The full evaluation shows 8.61 to 3.36 "
        "percent. The saved checkpoints are probably not the best available.")
-bullet("Weights only. Activations stay in FP32, so we do not test W8A8. W8A8 is the configuration that "
+bullet("Weights only. Activations stay in FP32, so W8A8 is not tested. W8A8 is the configuration that "
        "would use an integer kernel.")
 bullet("The 4-bit formats are simulated. Their quality numbers are real. Their speed is not modelled.")
 bullet("The entropy coder uses one lane. Multi-lane coding is the largest unused latency lever, and it "
