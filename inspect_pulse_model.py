@@ -466,7 +466,7 @@ print()
 # SAVE A COMPACT REPORT
 # ============================================================
 
-report_path = "pulse_mse_model_report.txt"
+report_path = "docs/archive/early-model-report.txt"
 
 with open(report_path, "w", encoding="utf-8") as f:
 
