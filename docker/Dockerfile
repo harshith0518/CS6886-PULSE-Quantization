@@ -35,8 +35,14 @@ COPY . ./
 RUN pip install -e . --no-build-isolation \
     && python -c "import MLCodec_extensions_cpp; print('entropy extension ok')"
 
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # The 84 MB checkpoint and the evaluation images are mounted, never baked in.
 VOLUME ["/app/checkpoints", "/app/datasets"]
+
+# The entrypoint fetches the checkpoint on first run, then runs the command.
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Default command proves the install: ten unit tests over the quantization core.
 CMD ["python", "-m", "unittest", "discover", "-s", "quantization-pluse-mse/tests"]

@@ -1,5 +1,6 @@
 services:
-  # Default: run the unit tests. Proves the image and the entropy extension work.
+  # Named volumes keep the one-time download and the output between runs.
+  # To use checkpoints you already have, comment the named volume below and uncomment the bind mount.
   app:
     build:
       context: ..
@@ -7,19 +8,19 @@ services:
     image: pulse-quantization:cpu
     working_dir: /app
     volumes:
-      - ../checkpoints:/app/checkpoints:ro
+      - pulse-checkpoints:/app/checkpoints
+      # - ../checkpoints:/app/checkpoints:ro
       - ../datasets:/app/datasets:ro
-    command: >
-      python -m unittest discover -s quantization-pluse-mse/tests
+    command: python -m unittest discover -s quantization-pluse-mse/tests
 
   # Reproduce the headline number: 21.677 MB at 0.672% on Kodak.
   verify:
     image: pulse-quantization:cpu
     working_dir: /app
     volumes:
-      - ../checkpoints:/app/checkpoints:ro
+      - pulse-checkpoints:/app/checkpoints
       - ../datasets:/app/datasets:ro
-      - ../results-docker:/app/results
+      - pulse-results:/app/results
     command: >
       python quantization-pluse-mse/scripts/eval_assignment.py
       --model checkpoints/pulse-mse
@@ -27,11 +28,13 @@ services:
       --dataset kodak
       --output results/check
 
-  # Solve a different quality budget (seconds, no GPU needed).
+  # Solve a different quality budget. Seconds, no GPU, no checkpoint needed.
   solve:
     image: pulse-quantization:cpu
     working_dir: /app
-    volumes:
-      - ../checkpoints:/app/checkpoints:ro
     command: >
       python quantization-pluse-mse/scripts/solve_ilp.py --budget 1.0 1.8 --headline 1.0
+
+volumes:
+  pulse-checkpoints:
+  pulse-results:

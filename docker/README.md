@@ -16,15 +16,30 @@ formality, and expect to adjust one or two lines. The commands below are what th
 | The codec, the study scripts and the result tables | Output results |
 | The documents are not needed | PDFs, decks, the TeX binary |
 
+## Where the models come from
+
+| Model | In the image? | How you get it |
+|---|---|---|
+| The FP32 base, `pulse-mse` (84 MB) | **No** | The entrypoint downloads it once into a named volume on first run |
+| The three quantized operating points | **Yes, as precision maps** | They are JSON files in `quantization-pluse-mse/results/ilp/` and need no download |
+| A fine-tuned bundle (56 MB per tier) | No | Regenerate with `qat_overnight.py`; not shipped |
+
+This is the useful split. A "quantized model" here is **a precision map applied to the base
+checkpoint at load time**, not a separate weight file. So the repository already carries all three
+operating points, and the only download is the 84 MB base model.
+
+The first `docker compose run` downloads the base model into the `pulse-checkpoints` volume. Later
+runs start instantly. To use a copy you already have, comment the named volume in
+`docker-compose.yml` and uncomment the bind mount beside it.
+
 ## Prerequisites
 
 - Docker 24 or newer, with the Compose plugin (`docker compose`).
-- A local `checkpoints/pulse-mse/` with three files: `config.json`, `model.pt`,
-  `entropy_control_int.pt`. Download from <https://huggingface.co/zhaoyangjia/PULSE>.
-- A local `datasets/kodak/` with the 24 Kodak images. Add `clic_professional/` and `set14/` if you
-  want the full comparison.
+- About 1 GB of free disk for the image and the model.
+- A local `datasets/kodak/` with the 24 Kodak images, mounted read-only. Add `clic_professional/` and
+  `set14/` for the full comparison.
 
-The mounts are read-only, so the container cannot damage your data.
+The dataset mount is read-only, so the container cannot damage your data.
 
 ## Build
 
