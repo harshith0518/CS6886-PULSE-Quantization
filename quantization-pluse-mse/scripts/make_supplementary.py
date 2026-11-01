@@ -23,9 +23,9 @@ ROOT = Path(__file__).resolve().parents[2]
 W = ROOT / "quantization-pluse-mse"
 OUT = ROOT / "submission" / "supplementary-notes.docx"
 
-NAVY = RGBColor(0x1E, 0x27, 0x61)
-SLATE = RGBColor(0x36, 0x45, 0x4F)
-MUTED = RGBColor(0x6B, 0x7A, 0x8C)
+NAVY = RGBColor(0x00, 0x00, 0x00)
+SLATE = RGBColor(0x00, 0x00, 0x00)
+MUTED = RGBColor(0x00, 0x00, 0x00)
 
 doc = Document()
 normal = doc.styles["Normal"]
@@ -93,8 +93,8 @@ def table(headers, rows, caption=None, size=9.5):
         run = p.add_run(text)
         run.bold = True
         run.font.size = Pt(size)
-        run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-        shade(cell, "1E2761")
+        run.font.color.rgb = RGBColor(0x00, 0x00, 0x00)
+        shade(cell, "D9D9D9")
     for r, row in enumerate(rows):
         cells = tbl.add_row().cells
         for index, text in enumerate(row):
@@ -103,10 +103,21 @@ def table(headers, rows, caption=None, size=9.5):
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT if index == 0 else WD_ALIGN_PARAGRAPH.RIGHT
             run = p.add_run(str(text))
             run.font.size = Pt(size)
-            if r % 2 == 0:
-                shade(cells[index], "EFF3F9")
     for row in tbl.rows:
         row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+    def rule(row, where):
+        for cell in row.cells:
+            props = cell._tc.get_or_add_tcPr()
+            borders = OxmlElement("w:tcBorders")
+            edge = OxmlElement(f"w:{where}")
+            edge.set(qn("w:val"), "single")
+            edge.set(qn("w:sz"), "8")
+            edge.set(qn("w:color"), "000000")
+            borders.append(edge)
+            props.append(borders)
+    rule(tbl.rows[0], "top")
+    rule(tbl.rows[0], "bottom")
+    rule(tbl.rows[-1], "bottom")
     if caption:
         p = doc.add_paragraph()
         run = p.add_run(caption)
@@ -153,8 +164,8 @@ body("The project asks one question. Which parts of a learned image codec can us
 # ------------------------------------------------------------------ 2 method
 h1("2  Method")
 h2("2.1  Measurement")
-body("One part is quantized at a time. All other parts and all activations stay in FP32. The codec then runs the "
-     "complete codec on each image at each quality setting. The plan covers seven formats, 19 parts, "
+body("One part is quantized at a time. All other parts and all activations stay in FP32. The complete codec then runs "
+     "on each image at each quality setting. The plan covers seven formats, 19 parts, "
      "two datasets and eight settings. That gives 69,233 rows.")
 body("Two safeguards make a row valid. First, an FP32 gate must reproduce the reference bitstream and "
      "the reconstruction at all eight settings. Second, a hash check must confirm each weight "
@@ -169,8 +180,8 @@ body("The value is zero when the model is equal to FP32. The optimizer limits th
      "delta-rate is also reported as a second view, so that no claim depends on one metric.")
 
 h2("2.3  Additivity")
-body("The optimizer adds single-part costs. That step is correct only if the costs add. The test ran on a "
-     "condition. Divide the measured penalty of a uniform INT8 model by the sum of the 19 single-part "
+body("The optimizer adds single-part costs. That step is correct only if the costs add. The condition was "
+     "tested. Divide the measured penalty of a uniform INT8 model by the sum of the 19 single-part "
      "penalties. The ratio is 0.96 to 1.05 on Kodak and 1.02 to 1.11 on CLIC.")
 body("One warning. Do not add the worst setting of each part. That sum gives 65.3 percent, but the true "
      "value at one setting is 26.7 percent. Add the costs for one setting, then take the maximum.")
@@ -184,8 +195,8 @@ body("The objective is the number of bytes. It is not latency. No measured laten
      "HiGHS solves the program, and a greedy baseline is also solved for comparison.")
 
 h2("2.5  Fine-tuning")
-body("Quantized convolutions run with a straight-through gradient. Distortion is then minimized and the "
-     "hold the bitrate at its pre-quantization value. A fixed rate penalty failed in both directions. A "
+body("Quantized convolutions run with a straight-through gradient. Distortion is then minimized while the "
+     "bitrate is held at its pre-quantization value. A fixed rate penalty failed in both directions. A "
      "weak penalty lets the model move down the rate-distortion curve. A strong penalty destroys "
      "quality to obey the rate target. An augmented Lagrangian is used instead. The multiplier comes "
      "from the measured rate error on a fixed validation set.")
