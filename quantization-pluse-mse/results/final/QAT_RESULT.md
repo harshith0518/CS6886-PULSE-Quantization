@@ -11,6 +11,10 @@ with the multiplier updated from the measured rate error on a fixed validation s
 | More INT8 | 14.401 MB | 8.61% | 8.61% | 0.0% |
 | Moderate INT4 + few INT8 | 13.572 MB | 119.18% | 25.27% | 78.8% |
 | More INT4 + few INT8 | 11.369 MB | 1771.71% | 84.22% | 95.2% |
+| More INT8 | 14.401 MB | 8.61% | 3.36% | 61.0% |
+| Moderate INT4 + few INT8 | 13.572 MB | 119.18% | 20.53% | 82.8% |
+| More INT4 + few INT8 | 11.369 MB | 1771.71% | 41.84% | 97.6% |
+| ILP 2% + QAT | 18.389 MB | 1.94% | 1.94% | 0.0% |
 
 The pattern is the expected one and it is the interesting result: **QAT pays exactly where
 there is damage to recover.** The INT8 tier starts at 8.6% and gains nothing, because

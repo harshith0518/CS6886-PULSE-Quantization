@@ -1,0 +1,12 @@
+{
+  "1.6": {
+    "kodak": 0.973,
+    "clic_professional": 1.35,
+    "set14": 1.247
+  },
+  "1.8": {
+    "kodak": 1.268,
+    "clic_professional": 1.595,
+    "set14": 1.601
+  }
+}

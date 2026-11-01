@@ -1,0 +1,22 @@
+[
+  {
+    "budget_pct": 1.2,
+    "size_mb": 21.396,
+    "predicted_pct": 1.1374
+  },
+  {
+    "budget_pct": 1.4,
+    "size_mb": 21.258,
+    "predicted_pct": 1.2851
+  },
+  {
+    "budget_pct": 1.6,
+    "size_mb": 21.151,
+    "predicted_pct": 1.4437
+  },
+  {
+    "budget_pct": 1.8,
+    "size_mb": 18.664,
+    "predicted_pct": 1.7162
+  }
+]

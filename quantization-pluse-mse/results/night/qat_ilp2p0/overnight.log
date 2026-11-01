@@ -1,0 +1,236 @@
+=== 2026-10-31T21:32:33Z start
+
+=== 2026-10-31T21:32:33Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.395, "mean_penalty_pct": 0.937}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\before", "rows": 192, "configs": 1}
+=== 2026-10-31T21:33:33Z exit 0
+
+=== 2026-10-31T21:33:33Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.936, "mean_penalty_pct": 1.415}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\before", "rows": 328, "configs": 1}
+=== 2026-10-31T21:39:01Z exit 0
+
+=== 2026-10-31T21:39:01Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.707, "mean_penalty_pct": 1.055}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\before", "rows": 112, "configs": 1}
+=== 2026-10-31T21:39:33Z exit 0
+
+=== 2026-10-31T21:39:33Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\configs\qat_ilp2p0.json --tier-name ilp_2pct_qat --pool datasets/qat_pool/div2k_valid --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0 --steps 8000 --lr 1e-06 --accumulate 1 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 250 --eval-images 6 --device cuda
+{"tier": "ilp_2pct_qat", "events": "start", "steps": 8000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"D0": "fp16", "D1": "int8", "D2": "int8", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16", "E0": "bf16", "E1": "fp16", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "fp16", "H0": "fp16", "H1": "int8", "H2": "fp16", "H3": "fp16"}}
+{"tier": "ilp_2pct_qat", "events": "baseline_validation", "psnr": 33.3044, "bpp": 0.3475, "slopes": {"0": 2.719, "1": 2.737, "2": 2.777, "3": 2.793, "4": 2.806, "5": 2.814, "6": 2.776, "7": 2.747}}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1, "loss": 5.75435, "bpp": 1.0854, "mse": 0.00188, "elapsed_s": 0.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 50, "loss": 5.31103, "bpp": 0.7831, "mse": 0.002898, "elapsed_s": 20.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 100, "loss": 3.97136, "bpp": 0.6527, "mse": 0.002579, "elapsed_s": 40.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 150, "loss": 5.24411, "bpp": 0.9465, "mse": 0.002931, "elapsed_s": 60.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 200, "loss": 3.83647, "bpp": 0.7659, "mse": 0.002218, "elapsed_s": 80.0}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 250, "psnr": 34.0459, "bpp": 0.4978, "d_psnr_vs_start": 0.7415, "penalty_vs_start_pct": 30.758, "mu": 0.4743, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 250, "loss": 4.60861, "bpp": 0.8744, "mse": 0.002389, "elapsed_s": 120.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 300, "loss": 5.98091, "bpp": 1.0317, "mse": 0.002602, "elapsed_s": 140.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 350, "loss": 5.54712, "bpp": 0.9779, "mse": 0.00248, "elapsed_s": 160.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 400, "loss": 5.57724, "bpp": 1.0105, "mse": 0.00238, "elapsed_s": 180.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 450, "loss": 5.45611, "bpp": 0.9959, "mse": 0.002247, "elapsed_s": 200.2}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 500, "psnr": 34.2547, "bpp": 0.6032, "d_psnr_vs_start": 0.9504, "penalty_vs_start_pct": 62.404, "mu": 1.3419, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 500, "loss": 5.98189, "bpp": 1.0077, "mse": 0.002895, "elapsed_s": 241.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 550, "loss": 6.55889, "bpp": 1.0217, "mse": 0.001831, "elapsed_s": 261.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 600, "loss": 6.95862, "bpp": 0.9652, "mse": 0.002068, "elapsed_s": 281.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 650, "loss": 7.56135, "bpp": 1.0464, "mse": 0.002287, "elapsed_s": 301.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 700, "loss": 7.76331, "bpp": 0.8881, "mse": 0.002778, "elapsed_s": 320.6}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 750, "psnr": 34.4213, "bpp": 0.6056, "d_psnr_vs_start": 1.1169, "penalty_vs_start_pct": 45.846, "mu": 2.1425, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 750, "loss": 6.28384, "bpp": 1.0554, "mse": 0.001862, "elapsed_s": 361.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 800, "loss": 8.84018, "bpp": 0.9251, "mse": 0.002174, "elapsed_s": 380.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 850, "loss": 8.57353, "bpp": 1.0842, "mse": 0.001879, "elapsed_s": 400.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 900, "loss": 7.83884, "bpp": 1.0631, "mse": 0.001711, "elapsed_s": 420.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 950, "loss": 8.35358, "bpp": 0.8842, "mse": 0.002185, "elapsed_s": 440.6}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 1000, "psnr": 34.4455, "bpp": 0.563, "d_psnr_vs_start": 1.1411, "penalty_vs_start_pct": 25.257, "mu": 2.7611, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1000, "loss": 8.64126, "bpp": 0.8892, "mse": 0.002275, "elapsed_s": 481.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1050, "loss": 9.69963, "bpp": 1.0335, "mse": 0.002002, "elapsed_s": 501.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1100, "loss": 9.85314, "bpp": 0.9479, "mse": 0.002275, "elapsed_s": 521.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1150, "loss": 9.29006, "bpp": 1.0278, "mse": 0.001944, "elapsed_s": 541.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1200, "loss": 9.1673, "bpp": 0.8931, "mse": 0.00214, "elapsed_s": 561.2}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 1250, "psnr": 34.3439, "bpp": 0.5064, "d_psnr_vs_start": 1.0395, "penalty_vs_start_pct": 14.031, "mu": 3.1927, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1250, "loss": 10.32871, "bpp": 0.9382, "mse": 0.002524, "elapsed_s": 603.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1300, "loss": 10.94514, "bpp": 0.9875, "mse": 0.002445, "elapsed_s": 623.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1350, "loss": 10.33202, "bpp": 0.8485, "mse": 0.002491, "elapsed_s": 644.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1400, "loss": 9.87283, "bpp": 0.8207, "mse": 0.002382, "elapsed_s": 664.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1450, "loss": 9.84273, "bpp": 0.8944, "mse": 0.002157, "elapsed_s": 684.1}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 1500, "psnr": 34.1823, "bpp": 0.4638, "d_psnr_vs_start": 0.8779, "penalty_vs_start_pct": 7.631, "mu": 3.4986, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1500, "loss": 9.21478, "bpp": 0.9859, "mse": 0.001856, "elapsed_s": 724.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1550, "loss": 9.82441, "bpp": 0.7697, "mse": 0.002536, "elapsed_s": 744.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1600, "loss": 10.7044, "bpp": 0.8102, "mse": 0.002442, "elapsed_s": 764.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1650, "loss": 9.61419, "bpp": 0.9628, "mse": 0.001833, "elapsed_s": 784.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1700, "loss": 11.70812, "bpp": 0.8543, "mse": 0.002827, "elapsed_s": 803.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 1750, "psnr": 34.004, "bpp": 0.4317, "d_psnr_vs_start": 0.6997, "penalty_vs_start_pct": 3.931, "mu": 3.7159, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1750, "loss": 9.38183, "bpp": 0.7508, "mse": 0.002236, "elapsed_s": 844.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1800, "loss": 11.56462, "bpp": 0.9768, "mse": 0.002457, "elapsed_s": 864.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1850, "loss": 10.84683, "bpp": 0.7534, "mse": 0.002602, "elapsed_s": 884.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1900, "loss": 12.62801, "bpp": 0.8464, "mse": 0.003096, "elapsed_s": 904.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 1950, "loss": 11.87107, "bpp": 0.8003, "mse": 0.003094, "elapsed_s": 924.2}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 2000, "psnr": 33.8582, "bpp": 0.4097, "d_psnr_vs_start": 0.5538, "penalty_vs_start_pct": 1.878, "mu": 3.8726, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2000, "loss": 12.43435, "bpp": 0.8546, "mse": 0.003065, "elapsed_s": 964.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2050, "loss": 11.09246, "bpp": 0.7582, "mse": 0.00293, "elapsed_s": 984.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2100, "loss": 12.25458, "bpp": 0.7682, "mse": 0.00327, "elapsed_s": 1004.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2150, "loss": 11.05685, "bpp": 0.7502, "mse": 0.002701, "elapsed_s": 1024.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2200, "loss": 10.50938, "bpp": 0.7857, "mse": 0.002543, "elapsed_s": 1043.8}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 2250, "psnr": 33.7255, "bpp": 0.3937, "d_psnr_vs_start": 0.4211, "penalty_vs_start_pct": 0.858, "mu": 3.9863, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2250, "loss": 12.512, "bpp": 0.8011, "mse": 0.003231, "elapsed_s": 1083.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2300, "loss": 12.16369, "bpp": 0.8759, "mse": 0.002677, "elapsed_s": 1103.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2350, "loss": 11.64902, "bpp": 0.9015, "mse": 0.002657, "elapsed_s": 1123.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2400, "loss": 11.93472, "bpp": 0.8242, "mse": 0.002758, "elapsed_s": 1143.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2450, "loss": 13.15127, "bpp": 0.8215, "mse": 0.003437, "elapsed_s": 1163.3}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 2500, "psnr": 33.6372, "bpp": 0.3849, "d_psnr_vs_start": 0.3329, "penalty_vs_start_pct": 0.751, "mu": 4.0767, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2500, "loss": 11.73263, "bpp": 0.913, "mse": 0.002676, "elapsed_s": 1204.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2550, "loss": 10.90348, "bpp": 0.7332, "mse": 0.002798, "elapsed_s": 1224.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2600, "loss": 11.47876, "bpp": 0.767, "mse": 0.002761, "elapsed_s": 1244.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2650, "loss": 11.73617, "bpp": 0.7488, "mse": 0.003069, "elapsed_s": 1264.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2700, "loss": 12.60753, "bpp": 0.8055, "mse": 0.003153, "elapsed_s": 1283.9}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 2750, "psnr": 33.5472, "bpp": 0.3744, "d_psnr_vs_start": 0.2428, "penalty_vs_start_pct": 0.672, "mu": 4.1417, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2750, "loss": 11.60861, "bpp": 0.7567, "mse": 0.002994, "elapsed_s": 1324.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2800, "loss": 11.86606, "bpp": 0.8131, "mse": 0.003087, "elapsed_s": 1344.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2850, "loss": 12.3511, "bpp": 0.7627, "mse": 0.003223, "elapsed_s": 1364.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2900, "loss": 10.01701, "bpp": 0.7591, "mse": 0.002565, "elapsed_s": 1383.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 2950, "loss": 10.62558, "bpp": 0.7691, "mse": 0.002462, "elapsed_s": 1403.8}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 3000, "psnr": 33.4981, "bpp": 0.3687, "d_psnr_vs_start": 0.1937, "penalty_vs_start_pct": 0.616, "mu": 4.1937, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3000, "loss": 10.03989, "bpp": 0.7555, "mse": 0.002409, "elapsed_s": 1444.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3050, "loss": 10.92095, "bpp": 0.8564, "mse": 0.002259, "elapsed_s": 1464.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3100, "loss": 13.28943, "bpp": 0.7851, "mse": 0.003318, "elapsed_s": 1484.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3150, "loss": 11.99735, "bpp": 0.8661, "mse": 0.00278, "elapsed_s": 1504.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3200, "loss": 10.44581, "bpp": 0.6968, "mse": 0.002577, "elapsed_s": 1524.5}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 3250, "psnr": 33.4416, "bpp": 0.3633, "d_psnr_vs_start": 0.1372, "penalty_vs_start_pct": 0.822, "mu": 4.2324, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3250, "loss": 11.72113, "bpp": 0.6592, "mse": 0.003577, "elapsed_s": 1565.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3300, "loss": 10.2793, "bpp": 0.666, "mse": 0.002568, "elapsed_s": 1585.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3350, "loss": 10.74553, "bpp": 0.791, "mse": 0.002314, "elapsed_s": 1605.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3400, "loss": 13.43552, "bpp": 0.76, "mse": 0.003603, "elapsed_s": 1624.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3450, "loss": 10.2358, "bpp": 0.7756, "mse": 0.002462, "elapsed_s": 1644.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 3500, "psnr": 33.3739, "bpp": 0.3575, "d_psnr_vs_start": 0.0696, "penalty_vs_start_pct": 0.968, "mu": 4.2572, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3500, "loss": 10.80877, "bpp": 0.6758, "mse": 0.00285, "elapsed_s": 1686.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3550, "loss": 10.24524, "bpp": 0.6639, "mse": 0.00286, "elapsed_s": 1707.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3600, "loss": 13.6507, "bpp": 0.8809, "mse": 0.003287, "elapsed_s": 1728.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3650, "loss": 11.48125, "bpp": 0.7758, "mse": 0.002686, "elapsed_s": 1749.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3700, "loss": 11.83905, "bpp": 0.7677, "mse": 0.002915, "elapsed_s": 1768.8}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 3750, "psnr": 33.3489, "bpp": 0.3551, "d_psnr_vs_start": 0.0445, "penalty_vs_start_pct": 0.956, "mu": 4.2773, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3750, "loss": 12.20886, "bpp": 0.7354, "mse": 0.003269, "elapsed_s": 1810.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3800, "loss": 9.27732, "bpp": 0.7568, "mse": 0.002196, "elapsed_s": 1831.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3850, "loss": 13.19131, "bpp": 0.8514, "mse": 0.003448, "elapsed_s": 1851.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3900, "loss": 13.35934, "bpp": 0.8154, "mse": 0.003539, "elapsed_s": 1871.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 3950, "loss": 10.76457, "bpp": 0.8, "mse": 0.002506, "elapsed_s": 1891.4}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 4000, "psnr": 33.299, "bpp": 0.3514, "d_psnr_vs_start": -0.0053, "penalty_vs_start_pct": 1.204, "mu": 4.2893, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4000, "loss": 12.87894, "bpp": 0.8051, "mse": 0.003428, "elapsed_s": 1931.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4050, "loss": 10.49596, "bpp": 0.6521, "mse": 0.002939, "elapsed_s": 1951.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4100, "loss": 10.15899, "bpp": 0.6664, "mse": 0.002617, "elapsed_s": 1971.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4150, "loss": 12.68464, "bpp": 0.7607, "mse": 0.003404, "elapsed_s": 1991.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4200, "loss": 13.93417, "bpp": 0.7995, "mse": 0.00393, "elapsed_s": 2011.1}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 4250, "psnr": 33.2661, "bpp": 0.3483, "d_psnr_vs_start": -0.0382, "penalty_vs_start_pct": 1.299, "mu": 4.2932, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4250, "loss": 10.32748, "bpp": 0.7445, "mse": 0.002613, "elapsed_s": 2051.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4300, "loss": 11.04805, "bpp": 0.7514, "mse": 0.002721, "elapsed_s": 2071.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4350, "loss": 13.13062, "bpp": 0.6753, "mse": 0.003902, "elapsed_s": 2091.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4400, "loss": 11.60648, "bpp": 0.7553, "mse": 0.003129, "elapsed_s": 2111.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4450, "loss": 12.42839, "bpp": 0.7171, "mse": 0.003222, "elapsed_s": 2131.0}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 4500, "psnr": 33.2661, "bpp": 0.3476, "d_psnr_vs_start": -0.0382, "penalty_vs_start_pct": 0.835, "mu": 4.295, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4500, "loss": 11.23362, "bpp": 0.8729, "mse": 0.002603, "elapsed_s": 2171.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4550, "loss": 11.63046, "bpp": 0.7807, "mse": 0.002861, "elapsed_s": 2191.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4600, "loss": 11.45326, "bpp": 0.7723, "mse": 0.002844, "elapsed_s": 2211.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4650, "loss": 10.92154, "bpp": 0.7658, "mse": 0.00262, "elapsed_s": 2230.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4700, "loss": 12.84853, "bpp": 0.8011, "mse": 0.003465, "elapsed_s": 2250.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 4750, "psnr": 33.2325, "bpp": 0.3458, "d_psnr_vs_start": -0.0719, "penalty_vs_start_pct": 1.289, "mu": 4.2942, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4750, "loss": 12.2032, "bpp": 0.7292, "mse": 0.00312, "elapsed_s": 2291.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4800, "loss": 12.55929, "bpp": 0.9028, "mse": 0.002925, "elapsed_s": 2311.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4850, "loss": 12.18215, "bpp": 0.8407, "mse": 0.002956, "elapsed_s": 2331.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4900, "loss": 12.96631, "bpp": 0.8088, "mse": 0.003371, "elapsed_s": 2350.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 4950, "loss": 12.26349, "bpp": 0.7817, "mse": 0.002994, "elapsed_s": 2370.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 5000, "psnr": 33.2204, "bpp": 0.3443, "d_psnr_vs_start": -0.084, "penalty_vs_start_pct": 1.137, "mu": 4.2909, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5000, "loss": 12.73103, "bpp": 0.9007, "mse": 0.002906, "elapsed_s": 2411.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5050, "loss": 11.06711, "bpp": 0.8219, "mse": 0.002555, "elapsed_s": 2431.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5100, "loss": 14.4352, "bpp": 0.7651, "mse": 0.004107, "elapsed_s": 2451.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5150, "loss": 11.82442, "bpp": 0.6849, "mse": 0.003305, "elapsed_s": 2471.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5200, "loss": 11.24401, "bpp": 0.7815, "mse": 0.002888, "elapsed_s": 2491.1}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 5250, "psnr": 33.2207, "bpp": 0.3443, "d_psnr_vs_start": -0.0837, "penalty_vs_start_pct": 1.05, "mu": 4.288, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5250, "loss": 13.67061, "bpp": 0.85, "mse": 0.003423, "elapsed_s": 2531.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5300, "loss": 11.12294, "bpp": 0.6921, "mse": 0.00292, "elapsed_s": 2551.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5350, "loss": 13.91959, "bpp": 0.8613, "mse": 0.003538, "elapsed_s": 2571.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5400, "loss": 11.28582, "bpp": 0.6677, "mse": 0.003326, "elapsed_s": 2591.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5450, "loss": 13.00196, "bpp": 0.7658, "mse": 0.003457, "elapsed_s": 2611.0}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 5500, "psnr": 33.2062, "bpp": 0.3425, "d_psnr_vs_start": -0.0982, "penalty_vs_start_pct": 1.035, "mu": 4.28, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5500, "loss": 10.46756, "bpp": 0.6219, "mse": 0.002951, "elapsed_s": 2651.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5550, "loss": 12.46101, "bpp": 0.7588, "mse": 0.003331, "elapsed_s": 2671.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5600, "loss": 12.04587, "bpp": 0.7077, "mse": 0.003161, "elapsed_s": 2691.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5650, "loss": 11.66429, "bpp": 0.7247, "mse": 0.003101, "elapsed_s": 2711.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5700, "loss": 11.50663, "bpp": 0.7041, "mse": 0.003005, "elapsed_s": 2731.2}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 5750, "psnr": 33.2136, "bpp": 0.3431, "d_psnr_vs_start": -0.0907, "penalty_vs_start_pct": 1.184, "mu": 4.2744, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5750, "loss": 11.37846, "bpp": 0.73, "mse": 0.003007, "elapsed_s": 2771.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5800, "loss": 13.08314, "bpp": 0.845, "mse": 0.003823, "elapsed_s": 2791.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5850, "loss": 12.22008, "bpp": 0.7061, "mse": 0.00354, "elapsed_s": 2810.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5900, "loss": 11.38631, "bpp": 0.7808, "mse": 0.002856, "elapsed_s": 2830.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 5950, "loss": 9.81115, "bpp": 0.7012, "mse": 0.002341, "elapsed_s": 2850.6}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 6000, "psnr": 33.2043, "bpp": 0.3423, "d_psnr_vs_start": -0.1001, "penalty_vs_start_pct": 1.265, "mu": 4.2675, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6000, "loss": 11.1943, "bpp": 0.8336, "mse": 0.002738, "elapsed_s": 2891.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6050, "loss": 12.38563, "bpp": 0.8009, "mse": 0.003174, "elapsed_s": 2911.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6100, "loss": 10.38021, "bpp": 0.7887, "mse": 0.002256, "elapsed_s": 2931.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6150, "loss": 11.25131, "bpp": 0.7417, "mse": 0.002862, "elapsed_s": 2950.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6200, "loss": 12.01298, "bpp": 0.7347, "mse": 0.003452, "elapsed_s": 2970.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 6250, "psnr": 33.2046, "bpp": 0.3422, "d_psnr_vs_start": -0.0998, "penalty_vs_start_pct": 1.364, "mu": 4.2605, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6250, "loss": 11.58154, "bpp": 0.7423, "mse": 0.003196, "elapsed_s": 3011.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6300, "loss": 10.29348, "bpp": 0.7786, "mse": 0.002535, "elapsed_s": 3031.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6350, "loss": 10.71705, "bpp": 0.7453, "mse": 0.002607, "elapsed_s": 3050.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6400, "loss": 10.97298, "bpp": 0.7669, "mse": 0.002685, "elapsed_s": 3070.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6450, "loss": 14.86615, "bpp": 0.8624, "mse": 0.003955, "elapsed_s": 3090.5}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 6500, "psnr": 33.2042, "bpp": 0.342, "d_psnr_vs_start": -0.1002, "penalty_vs_start_pct": 1.205, "mu": 4.2532, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6500, "loss": 12.17724, "bpp": 0.7346, "mse": 0.003305, "elapsed_s": 3130.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6550, "loss": 11.41392, "bpp": 0.8329, "mse": 0.00275, "elapsed_s": 3150.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6600, "loss": 11.29827, "bpp": 0.8048, "mse": 0.002725, "elapsed_s": 3170.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6650, "loss": 12.29066, "bpp": 0.6902, "mse": 0.003244, "elapsed_s": 3190.4}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6700, "loss": 12.19737, "bpp": 0.7163, "mse": 0.003175, "elapsed_s": 3210.3}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 6750, "psnr": 33.1912, "bpp": 0.3413, "d_psnr_vs_start": -0.1131, "penalty_vs_start_pct": 1.267, "mu": 4.2443, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6750, "loss": 11.74589, "bpp": 0.789, "mse": 0.003032, "elapsed_s": 3250.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6800, "loss": 12.73483, "bpp": 0.9046, "mse": 0.003053, "elapsed_s": 3270.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6850, "loss": 14.08505, "bpp": 0.813, "mse": 0.003657, "elapsed_s": 3290.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6900, "loss": 11.9364, "bpp": 0.7018, "mse": 0.003364, "elapsed_s": 3310.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 6950, "loss": 11.18425, "bpp": 0.7702, "mse": 0.002752, "elapsed_s": 3330.1}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 7000, "psnr": 33.1954, "bpp": 0.3412, "d_psnr_vs_start": -0.1089, "penalty_vs_start_pct": 1.227, "mu": 4.2351, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7000, "loss": 12.37614, "bpp": 0.7345, "mse": 0.003346, "elapsed_s": 3370.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7050, "loss": 11.59307, "bpp": 0.7762, "mse": 0.00285, "elapsed_s": 3390.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7100, "loss": 12.69643, "bpp": 0.6937, "mse": 0.003837, "elapsed_s": 3410.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7150, "loss": 11.9309, "bpp": 0.8084, "mse": 0.002946, "elapsed_s": 3430.3}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7200, "loss": 13.67849, "bpp": 0.8273, "mse": 0.003702, "elapsed_s": 3450.3}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 7250, "psnr": 33.1841, "bpp": 0.3409, "d_psnr_vs_start": -0.1202, "penalty_vs_start_pct": 1.226, "mu": 4.2248, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7250, "loss": 12.53095, "bpp": 0.7705, "mse": 0.003281, "elapsed_s": 3490.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7300, "loss": 13.5546, "bpp": 0.8208, "mse": 0.003479, "elapsed_s": 3510.5}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7350, "loss": 11.88606, "bpp": 0.8023, "mse": 0.003062, "elapsed_s": 3530.1}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7400, "loss": 11.35426, "bpp": 0.7968, "mse": 0.002676, "elapsed_s": 3549.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7450, "loss": 10.1828, "bpp": 0.6702, "mse": 0.00272, "elapsed_s": 3569.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 7500, "psnr": 33.2059, "bpp": 0.3419, "d_psnr_vs_start": -0.0985, "penalty_vs_start_pct": 1.242, "mu": 4.2175, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7500, "loss": 12.12704, "bpp": 0.7133, "mse": 0.003203, "elapsed_s": 3610.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7550, "loss": 12.19105, "bpp": 0.7685, "mse": 0.00313, "elapsed_s": 3630.0}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7600, "loss": 11.422, "bpp": 0.7601, "mse": 0.002878, "elapsed_s": 3649.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7650, "loss": 10.94173, "bpp": 0.7365, "mse": 0.002976, "elapsed_s": 3669.6}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7700, "loss": 10.93157, "bpp": 0.7236, "mse": 0.003018, "elapsed_s": 3689.6}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 7750, "psnr": 33.2193, "bpp": 0.3428, "d_psnr_vs_start": -0.0851, "penalty_vs_start_pct": 1.282, "mu": 4.2133, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7750, "loss": 13.01484, "bpp": 0.7983, "mse": 0.003558, "elapsed_s": 3730.2}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7800, "loss": 8.93339, "bpp": 0.7692, "mse": 0.002024, "elapsed_s": 3749.9}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7850, "loss": 11.88798, "bpp": 0.8114, "mse": 0.003134, "elapsed_s": 3769.8}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7900, "loss": 14.71801, "bpp": 0.8308, "mse": 0.003906, "elapsed_s": 3789.7}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 7950, "loss": 13.51165, "bpp": 0.7701, "mse": 0.003723, "elapsed_s": 3809.7}
+{"tier": "ilp_2pct_qat", "events": "validated", "step": 8000, "psnr": 33.2205, "bpp": 0.343, "d_psnr_vs_start": -0.0838, "penalty_vs_start_pct": 1.083, "mu": 4.2091, "best": false}
+{"tier": "ilp_2pct_qat", "events": "step", "step": 8000, "loss": 12.01377, "bpp": 0.8455, "mse": 0.002717, "elapsed_s": 3850.1}
+{"tier": "ilp_2pct_qat", "events": "finish", "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\bundles\\ilp_2pct_qat", "steps": 8000, "train_minutes": 64.18, "final_loss": 12.01377, "final_bpp": 0.8455, "baseline_val_psnr": 33.3044, "best_penalty_vs_start_pct": 0.0, "best_step": 0, "kept_best_checkpoint": true, "assignment": {"D0": "fp16", "D1": "int8", "D2": "int8", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16", "E0": "bf16", "E1": "fp16", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "fp16", "H0": "fp16", "H1": "int8", "H2": "fp16", "H3": "fp16"}}
+=== 2026-10-31T22:44:29Z exit 0
+
+=== 2026-10-31T22:44:30Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\bundles\ilp_2pct_qat --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.395, "mean_penalty_pct": 0.937}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\after", "rows": 192, "configs": 1}
+=== 2026-10-31T22:45:41Z exit 0
+
+=== 2026-10-31T22:45:41Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\bundles\ilp_2pct_qat --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.936, "mean_penalty_pct": 1.415}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\after", "rows": 328, "configs": 1}
+=== 2026-10-31T22:51:12Z exit 0
+
+=== 2026-10-31T22:51:12Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\bundles\ilp_2pct_qat --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_ilp2p0\ilp_2pct_qat\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json"]}
+{"config": "assignment", "config_id": "2b9375dac86b", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 18.389, "saving_pct": 66.38, "effective_bits_per_param": 2.69, "worst_qp_mean_penalty_pct": 1.707, "mean_penalty_pct": 1.055}
+{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_ilp2p0\\ilp_2pct_qat\\after", "rows": 112, "configs": 1}
+=== 2026-10-31T22:51:44Z exit 0

@@ -1,5 +1,5 @@
 {
-  "command": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\eval_assignment.py --model checkpoints/pulse-mse --output C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before --configs C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json --dataset clic_professional",
+  "command": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before --configs quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json --dataset clic_professional",
   "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
   "entropy_control_sha256": "3bf9a6137cd7595e567c6a159caa6ae0811276b5ac398e4c2ff949eb95f7312d",
   "eval_flags": {
@@ -12,7 +12,7 @@
     "threads": 1
   },
   "git": {
-    "commit": "5f57aa5ac267c9836a2feafb3bd24beb79ab22d3",
+    "commit": "d5f158dcd32b2377720f58c3982d1a90df9198ba",
     "dirty": true
   },
   "hardware": {
@@ -32,7 +32,7 @@
   },
   "quant_config": {
     "configs": [
-      "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"
+      "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"
     ],
     "dataset": "clic_professional",
     "mode": "w_only",
@@ -47,5 +47,5 @@
       7
     ]
   },
-  "quant_config_sha256": "5e1c55b49dd8fdd3a1be4f4bb7a848120b148e3a30697c0d4bac5236cb339d2c"
+  "quant_config_sha256": "1e5ebcbabb0cd66cb7e27371bf90e50d86841290adf06884849b9f8510d166a6"
 }

@@ -75,8 +75,11 @@ def read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(stream))
 
 
-def find_row(directory: Path, dataset: str, config_stem: str) -> dict:
-    for row in read_csv(directory / f"configs_{dataset}.csv"):
+def find_row(directory: Path, dataset: str, config_stem) -> dict:
+    rows = read_csv(directory / f"configs_{dataset}.csv")
+    if config_stem is None:
+        return rows[0] if rows else {}
+    for row in rows:
         note = Path(row.get("note", "")).stem
         if note == config_stem or config_stem in (row.get("config") or ""):
             return row
@@ -89,7 +92,8 @@ def stage_submission(out: Path) -> dict:
     """Two validated operating points. Everything comes from measured CSVs, nothing is typed in."""
     points = [
         ("champion_1pct", "1% budget champion", WORKSPACE / "results/mixed", "ilp"),
-        ("smaller_2pct", "2% budget variant", WORKSPACE / "results/ilp/b2p0_eval", "assignment_ilp_b2p0"),
+        ("smaller_1p8", "1.8% budget variant", WORKSPACE / "results/night/ilp_b1p8_eval", "assignment_ilp_b1p8"),
+        ("int8_qat", "INT8 tier + QAT 12k", WORKSPACE / "results/night/qat_int8_12k/tier1_more_int8/after", None),
     ]
     rows, table = [], []
     for key, label, directory, stem in points:
@@ -107,8 +111,8 @@ def stage_submission(out: Path) -> dict:
         table.append(entry)
 
     lines = ["# Submission operating points", "",
-             "Two measured points, both evaluated on all three datasets with the same harness, the same",
-             "eight QPs and the same FP32 reference. Nothing here is a prediction.", "",
+             f"{len(table)} measured points, each evaluated on all three datasets with the same harness,",
+             "the same eight QPs and the same FP32 reference. Nothing here is a prediction.", "",
              "| Point | Size | Saving | Kodak | CLIC | Set14 |", "|---|---:|---:|---:|---:|---:|"]
     for entry in table:
         cells = []
@@ -118,9 +122,11 @@ def stage_submission(out: Path) -> dict:
         lines.append(f"| {entry['label']} | {entry.get('size_mb', 0):.3f} MB | "
                      f"-{entry.get('saving_pct', 0):.2f}% | " + " | ".join(cells) + " |")
     lines += ["",
-              "The 2% variant is 3.288 MB smaller than the champion and costs about one extra point of",
-              "worst-QP penalty on every dataset. Both are inside a 2% budget, so the pair reads as a",
-              "size-quality trade rather than a single number.", ""]
+              "These three points trace the size-quality frontier. The 1.8 percent variant beats the",
+              "2 percent assignment it replaced: 0.275 MB larger but better on all three datasets. The",
+              "INT8 tier at 14.401 MB is a quantized model that quantization-aware fine-tuning made",
+              "usable, taking it from 8.61 to 3.36 percent, and it is the smallest model in this table",
+              "worth deploying.", ""]
     (out / "SUBMISSION_POINTS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     with (out / "submission_points.csv").open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
@@ -158,7 +164,15 @@ def stage_qat_negative(out: Path) -> dict:
         history.append({"run": label, "steps_reached": steps, "worst_penalty_pct": worst,
                         "last_d_psnr": validated[-1].get("d_psnr_vs_start") if validated else None})
 
-    attempt = read_csv(out / "qat_attempt" / "summary.csv")
+    attempt = []
+    for label, path in (
+        ("INT8 tier, 2000 steps", WORKSPACE / "results/final_2000steps/qat_attempt/summary.csv"),
+        ("INT8 tier, 12000 steps", WORKSPACE / "results/night/qat_int8_12k/summary.csv"),
+        ("INT4 tier2, 12000 steps", WORKSPACE / "results/final/qat_attempt/summary.csv"),
+        ("ILP 2% assignment + QAT", WORKSPACE / "results/night/qat_ilp2p0/summary.csv"),
+    ):
+        for row in read_csv(path):
+            attempt.append({"run": label, **row})
     lines = ["# QAT: what it recovered, and where", "",
              "Fine-tuning was run on three precision tiers with an augmented-Lagrangian rate",
              "controller: minimise distortion subject to holding the bitrate at its pre-QAT value,",
@@ -225,7 +239,7 @@ def stage_qat_attempt(out: Path, args, log_path: Path) -> dict:
                "--steps", str(args.steps), "--lr", str(args.lr),
                "--accumulate", str(args.accumulate), "--objective", "augmented_lagrangian",
                "--rd-weight", "1.0", "--mu-alpha", "1.0", "--mu-max", "20.0",
-               "--eval-every", str(args.eval_every), "--eval-images", "4",
+               "--eval-every", str(args.eval_every), "--eval-images", str(args.eval_images),
                "--datasets", *(args.smoke_datasets or DATASETS), "--output", str(target)]
     if args.smoke_limit:
         command += ["--max-images", str(args.smoke_limit)]
@@ -246,7 +260,15 @@ def stage_summary(out: Path) -> dict:
         path = out / name
         if path.is_file():
             parts.append(path.read_text(encoding="utf-8").rstrip())
-    attempt = read_csv(out / "qat_attempt" / "summary.csv")
+    attempt = []
+    for label, path in (
+        ("INT8 tier, 2000 steps", WORKSPACE / "results/final_2000steps/qat_attempt/summary.csv"),
+        ("INT8 tier, 12000 steps", WORKSPACE / "results/night/qat_int8_12k/summary.csv"),
+        ("INT4 tier2, 12000 steps", WORKSPACE / "results/final/qat_attempt/summary.csv"),
+        ("ILP 2% assignment + QAT", WORKSPACE / "results/night/qat_ilp2p0/summary.csv"),
+    ):
+        for row in read_csv(path):
+            attempt.append({"run": label, **row})
     if attempt:
         parts.append("# Augmented-Lagrangian attempt\n")
         parts.append("| Tier | Size | Before | After | Recovery |")
@@ -264,11 +286,13 @@ def main():
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--output", default="quantization-pluse-mse/results/final")
     parser.add_argument("--stages", nargs="+",
-                        default=["submission", "qat_negative", "qat_attempt", "summary"])
+                        default=["submission", "qat_attempt", "qat_negative", "summary"])
     parser.add_argument("--steps", type=int, default=2000)
     parser.add_argument("--lr", type=float, default=1e-6)
     parser.add_argument("--accumulate", type=int, default=2)
     parser.add_argument("--eval-every", type=int, default=100)
+    parser.add_argument("--eval-images", type=int, default=4,
+                        help="validation images used for checkpoint selection")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--smoke-datasets", nargs="*", default=None,
                         help="restrict the QAT stage datasets, for wiring checks")
@@ -287,7 +311,7 @@ def main():
     if args.smoke:
         args.steps, args.accumulate, args.eval_every = 3, 1, 2
         args.smoke_datasets, args.smoke_limit = ["kodak"], 2
-        args.stages = ["submission", "qat_negative", "qat_attempt", "summary"]
+        args.stages = ["submission", "qat_attempt", "qat_negative", "summary"]
 
     out = ROOT / args.output
     out.mkdir(parents=True, exist_ok=True)

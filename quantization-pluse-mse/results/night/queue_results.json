@@ -1,0 +1,61 @@
+[
+  {
+    "stage": "ilp_fine",
+    "exit": 0,
+    "solved": [
+      {
+        "budget_pct": 1.2,
+        "size_mb": 21.396,
+        "predicted_pct": 1.1374
+      },
+      {
+        "budget_pct": 1.4,
+        "size_mb": 21.258,
+        "predicted_pct": 1.2851
+      },
+      {
+        "budget_pct": 1.6,
+        "size_mb": 21.151,
+        "predicted_pct": 1.4437
+      },
+      {
+        "budget_pct": 1.8,
+        "size_mb": 18.664,
+        "predicted_pct": 1.7162
+      }
+    ],
+    "measured": {
+      "1.6": {
+        "kodak": 0.973,
+        "clic_professional": 1.35,
+        "set14": 1.247
+      },
+      "1.8": {
+        "kodak": 1.268,
+        "clic_professional": 1.595,
+        "set14": 1.601
+      }
+    }
+  },
+  {
+    "stage": "qat_ilp2p0",
+    "exit": 0,
+    "rows": [
+      {
+        "tier": "ilp_2pct_qat",
+        "label": "ILP 2% + QAT",
+        "size_mb": "18.389",
+        "before_pct": "1.936",
+        "after_pct": "1.936",
+        "recovery_pp": "0.0",
+        "recovery_ratio": "0.0",
+        "steps": "8000",
+        "train_minutes": "64.18"
+      }
+    ]
+  },
+  {
+    "stage": "reports",
+    "exit": 0
+  }
+]

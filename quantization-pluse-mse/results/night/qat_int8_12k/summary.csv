@@ -1,0 +1,2 @@
+tier,label,size_mb,before_pct,after_pct,recovery_pp,recovery_ratio,steps,train_minutes
+tier1_more_int8,More INT8,14.401,8.613,3.363,5.25,0.61,12000,98.65

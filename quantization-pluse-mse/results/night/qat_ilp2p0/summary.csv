@@ -1,0 +1,2 @@
+tier,label,size_mb,before_pct,after_pct,recovery_pp,recovery_ratio,steps,train_minutes
+ilp_2pct_qat,ILP 2% + QAT,18.389,1.936,1.936,0.0,0.0,8000,64.18

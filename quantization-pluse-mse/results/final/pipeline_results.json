@@ -1,13 +1,12 @@
 [
   {
-    "stage": "qat_result",
-    "runs": 4,
-    "tiers": 3,
+    "stage": "submission",
+    "points": 3,
     "seconds": 0.0
   },
   {
     "stage": "summary",
-    "sections": 9,
+    "sections": 13,
     "seconds": 0.0
   }
 ]

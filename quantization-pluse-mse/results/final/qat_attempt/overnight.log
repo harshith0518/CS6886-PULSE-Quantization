@@ -1,310 +1,663 @@
-=== 2026-10-31T14:20:17Z start
+=== 2026-10-31T17:05:13Z start
 
-=== 2026-10-31T14:20:17Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 5.293, "mean_penalty_pct": 2.52}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\before", "rows": 192, "configs": 1}
-=== 2026-10-31T14:21:10Z exit 0
+=== 2026-10-31T17:05:13Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 85.449, "mean_penalty_pct": 61.286}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 192, "configs": 1}
+=== 2026-10-31T17:06:20Z exit 0
 
-=== 2026-10-31T14:21:10Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 8.613, "mean_penalty_pct": 4.362}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\before", "rows": 328, "configs": 1}
-=== 2026-10-31T14:25:38Z exit 0
+=== 2026-10-31T17:06:20Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 119.18, "mean_penalty_pct": 85.748}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 328, "configs": 1}
+=== 2026-10-31T17:12:32Z exit 0
 
-=== 2026-10-31T14:25:38Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 6.176, "mean_penalty_pct": 2.893}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\before", "rows": 112, "configs": 1}
-=== 2026-10-31T14:26:07Z exit 0
+=== 2026-10-31T17:12:32Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 91.891, "mean_penalty_pct": 58.662}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 112, "configs": 1}
+=== 2026-10-31T17:13:07Z exit 0
 
-=== 2026-10-31T14:26:07Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier1_more_int8 --pool datasets/qat_pool/div2k_valid --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt --steps 2000 --lr 1e-06 --accumulate 2 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 100 --eval-images 4 --device cuda
-{"tier": "tier1_more_int8", "events": "start", "steps": 2000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "int8", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "int8", "H2": "int8", "H3": "bf16", "D0": "int8", "D1": "int8", "D2": "int8", "D3": "int8", "D4": "int8", "D5": "bf16", "D6": "int8", "D7": "int8", "D8": "int8"}}
-{"tier": "tier1_more_int8", "events": "baseline_validation", "psnr": 33.7247, "bpp": 0.3185, "slopes": {"0": 2.884, "1": 2.827, "2": 2.788, "3": 2.797, "4": 2.82, "5": 2.796, "6": 2.693, "7": 2.637}}
-{"tier": "tier1_more_int8", "events": "step", "step": 1, "loss": 5.65795, "bpp": 0.8229, "mse": 0.002109, "elapsed_s": 0.8}
-{"tier": "tier1_more_int8", "events": "step", "step": 50, "loss": 4.58703, "bpp": 0.631, "mse": 0.0027, "elapsed_s": 16.1}
-{"tier": "tier1_more_int8", "events": "validated", "step": 100, "psnr": 34.3, "bpp": 0.3916, "d_psnr_vs_start": 0.5753, "penalty_vs_start_pct": 10.848, "mu": 0.232, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 100, "loss": 4.4734, "bpp": 0.7146, "mse": 0.00235, "elapsed_s": 41.0}
-{"tier": "tier1_more_int8", "events": "step", "step": 150, "loss": 6.27985, "bpp": 0.9537, "mse": 0.002782, "elapsed_s": 56.1}
-{"tier": "tier1_more_int8", "events": "validated", "step": 200, "psnr": 34.5471, "bpp": 0.4598, "d_psnr_vs_start": 0.8224, "penalty_vs_start_pct": 28.295, "mu": 0.7055, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 200, "loss": 5.77367, "bpp": 0.9252, "mse": 0.00254, "elapsed_s": 82.7}
-{"tier": "tier1_more_int8", "events": "step", "step": 250, "loss": 7.40172, "bpp": 0.9097, "mse": 0.003112, "elapsed_s": 97.7}
-{"tier": "tier1_more_int8", "events": "validated", "step": 300, "psnr": 34.7058, "bpp": 0.508, "d_psnr_vs_start": 0.9811, "penalty_vs_start_pct": 40.579, "mu": 1.3598, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 300, "loss": 6.1304, "bpp": 0.8934, "mse": 0.002204, "elapsed_s": 123.3}
-{"tier": "tier1_more_int8", "events": "step", "step": 350, "loss": 8.61929, "bpp": 0.837, "mse": 0.002945, "elapsed_s": 138.4}
-{"tier": "tier1_more_int8", "events": "validated", "step": 400, "psnr": 34.8063, "bpp": 0.5208, "d_psnr_vs_start": 1.0816, "penalty_vs_start_pct": 38.507, "mu": 2.0407, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 400, "loss": 7.82167, "bpp": 0.8842, "mse": 0.002296, "elapsed_s": 163.0}
-{"tier": "tier1_more_int8", "events": "step", "step": 450, "loss": 8.66249, "bpp": 1.0355, "mse": 0.001786, "elapsed_s": 178.5}
-{"tier": "tier1_more_int8", "events": "validated", "step": 500, "psnr": 34.8353, "bpp": 0.507, "d_psnr_vs_start": 1.1106, "penalty_vs_start_pct": 27.927, "mu": 2.6409, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 500, "loss": 9.50381, "bpp": 0.8676, "mse": 0.002388, "elapsed_s": 203.8}
-{"tier": "tier1_more_int8", "events": "step", "step": 550, "loss": 10.96605, "bpp": 0.9432, "mse": 0.002344, "elapsed_s": 219.3}
-{"tier": "tier1_more_int8", "events": "validated", "step": 600, "psnr": 34.7937, "bpp": 0.4798, "d_psnr_vs_start": 1.069, "penalty_vs_start_pct": 18.223, "mu": 3.1285, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 600, "loss": 10.29336, "bpp": 0.9008, "mse": 0.002193, "elapsed_s": 244.2}
-{"tier": "tier1_more_int8", "events": "step", "step": 650, "loss": 12.29074, "bpp": 0.9836, "mse": 0.002517, "elapsed_s": 260.2}
-{"tier": "tier1_more_int8", "events": "validated", "step": 700, "psnr": 34.7097, "bpp": 0.4457, "d_psnr_vs_start": 0.985, "penalty_vs_start_pct": 10.837, "mu": 3.5005, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 700, "loss": 11.20299, "bpp": 0.8357, "mse": 0.002417, "elapsed_s": 288.1}
-{"tier": "tier1_more_int8", "events": "step", "step": 750, "loss": 11.08945, "bpp": 0.9797, "mse": 0.001911, "elapsed_s": 303.4}
-{"tier": "tier1_more_int8", "events": "validated", "step": 800, "psnr": 34.5925, "bpp": 0.415, "d_psnr_vs_start": 0.8678, "penalty_vs_start_pct": 4.93, "mu": 3.7755, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 800, "loss": 12.21375, "bpp": 0.8114, "mse": 0.002475, "elapsed_s": 328.2}
-{"tier": "tier1_more_int8", "events": "step", "step": 850, "loss": 13.87661, "bpp": 0.8516, "mse": 0.002873, "elapsed_s": 343.6}
-{"tier": "tier1_more_int8", "events": "validated", "step": 900, "psnr": 34.4657, "bpp": 0.3914, "d_psnr_vs_start": 0.741, "penalty_vs_start_pct": 2.285, "mu": 3.9805, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 900, "loss": 13.17542, "bpp": 0.966, "mse": 0.002511, "elapsed_s": 368.3}
-{"tier": "tier1_more_int8", "events": "step", "step": 950, "loss": 14.81839, "bpp": 0.839, "mse": 0.003149, "elapsed_s": 383.2}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1000, "psnr": 34.2913, "bpp": 0.3683, "d_psnr_vs_start": 0.5666, "penalty_vs_start_pct": 0.874, "mu": 4.1166, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1000, "loss": 14.52311, "bpp": 0.8437, "mse": 0.003123, "elapsed_s": 408.1}
-{"tier": "tier1_more_int8", "events": "step", "step": 1050, "loss": 14.25853, "bpp": 0.7589, "mse": 0.003325, "elapsed_s": 423.0}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1100, "psnr": 34.1792, "bpp": 0.3555, "d_psnr_vs_start": 0.4545, "penalty_vs_start_pct": 0.577, "mu": 4.2174, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1100, "loss": 12.29275, "bpp": 0.7757, "mse": 0.002591, "elapsed_s": 447.7}
-{"tier": "tier1_more_int8", "events": "step", "step": 1150, "loss": 14.18207, "bpp": 0.8634, "mse": 0.00274, "elapsed_s": 462.8}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1200, "psnr": 34.0873, "bpp": 0.3463, "d_psnr_vs_start": 0.3626, "penalty_vs_start_pct": 0.681, "mu": 4.293, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1200, "loss": 13.90666, "bpp": 0.8133, "mse": 0.00281, "elapsed_s": 487.7}
-{"tier": "tier1_more_int8", "events": "step", "step": 1250, "loss": 13.79198, "bpp": 0.8988, "mse": 0.002738, "elapsed_s": 503.0}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1300, "psnr": 34.02, "bpp": 0.3389, "d_psnr_vs_start": 0.2953, "penalty_vs_start_pct": 0.419, "mu": 4.3487, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1300, "loss": 13.36491, "bpp": 0.7575, "mse": 0.002811, "elapsed_s": 527.9}
-{"tier": "tier1_more_int8", "events": "step", "step": 1350, "loss": 14.75736, "bpp": 0.7944, "mse": 0.003227, "elapsed_s": 543.2}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1400, "psnr": 33.9589, "bpp": 0.334, "d_psnr_vs_start": 0.2342, "penalty_vs_start_pct": 0.462, "mu": 4.3908, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1400, "loss": 13.71921, "bpp": 0.8021, "mse": 0.003133, "elapsed_s": 568.1}
-{"tier": "tier1_more_int8", "events": "step", "step": 1450, "loss": 11.70999, "bpp": 0.7485, "mse": 0.002607, "elapsed_s": 583.6}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1500, "psnr": 33.9285, "bpp": 0.3307, "d_psnr_vs_start": 0.2038, "penalty_vs_start_pct": 0.637, "mu": 4.425, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1500, "loss": 11.78319, "bpp": 0.7468, "mse": 0.002452, "elapsed_s": 608.5}
-{"tier": "tier1_more_int8", "events": "step", "step": 1550, "loss": 15.40136, "bpp": 0.7771, "mse": 0.003359, "elapsed_s": 624.6}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1600, "psnr": 33.8913, "bpp": 0.3274, "d_psnr_vs_start": 0.1666, "penalty_vs_start_pct": 0.457, "mu": 4.4503, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1600, "loss": 12.21601, "bpp": 0.6886, "mse": 0.002614, "elapsed_s": 649.5}
-{"tier": "tier1_more_int8", "events": "step", "step": 1650, "loss": 12.02587, "bpp": 0.6596, "mse": 0.002603, "elapsed_s": 664.9}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1700, "psnr": 33.8507, "bpp": 0.3242, "d_psnr_vs_start": 0.126, "penalty_vs_start_pct": 0.381, "mu": 4.4673, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1700, "loss": 15.53256, "bpp": 0.7528, "mse": 0.003638, "elapsed_s": 689.7}
-{"tier": "tier1_more_int8", "events": "step", "step": 1750, "loss": 12.61159, "bpp": 0.6698, "mse": 0.002876, "elapsed_s": 704.9}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1800, "psnr": 33.8336, "bpp": 0.3222, "d_psnr_vs_start": 0.1089, "penalty_vs_start_pct": 0.383, "mu": 4.4796, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1800, "loss": 15.76582, "bpp": 0.8744, "mse": 0.003311, "elapsed_s": 729.4}
-{"tier": "tier1_more_int8", "events": "step", "step": 1850, "loss": 13.75565, "bpp": 0.7614, "mse": 0.002938, "elapsed_s": 744.4}
-{"tier": "tier1_more_int8", "events": "validated", "step": 1900, "psnr": 33.7963, "bpp": 0.3199, "d_psnr_vs_start": 0.0716, "penalty_vs_start_pct": 0.6, "mu": 4.4855, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 1900, "loss": 10.81778, "bpp": 0.7496, "mse": 0.002215, "elapsed_s": 769.4}
-{"tier": "tier1_more_int8", "events": "step", "step": 1950, "loss": 15.42405, "bpp": 0.8088, "mse": 0.003563, "elapsed_s": 784.7}
-{"tier": "tier1_more_int8", "events": "validated", "step": 2000, "psnr": 33.7639, "bpp": 0.3178, "d_psnr_vs_start": 0.0392, "penalty_vs_start_pct": 0.937, "mu": 4.4869, "best": false}
-{"tier": "tier1_more_int8", "events": "step", "step": 2000, "loss": 14.87184, "bpp": 0.8, "mse": 0.003448, "elapsed_s": 809.6}
-{"tier": "tier1_more_int8", "events": "finish", "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier1_more_int8", "steps": 2000, "train_minutes": 13.5, "final_loss": 14.87184, "final_bpp": 0.8, "baseline_val_psnr": 33.7247, "best_penalty_vs_start_pct": 0.0, "best_step": 0, "kept_best_checkpoint": true, "assignment": {"E0": "int8", "E1": "int8", "E2": "int8", "E3": "int8", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "int8", "H2": "int8", "H3": "bf16", "D0": "int8", "D1": "int8", "D2": "int8", "D3": "int8", "D4": "int8", "D5": "bf16", "D6": "int8", "D7": "int8", "D8": "int8"}}
-=== 2026-10-31T14:40:09Z exit 0
+=== 2026-10-31T17:13:07Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier2_moderate_int4 --pool datasets/qat_pool/div2k_valid --output quantization-pluse-mse\results\final\qat_attempt --steps 12000 --lr 1e-06 --accumulate 1 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 250 --eval-images 6 --device cuda
+{"tier": "tier2_moderate_int4", "events": "start", "steps": 12000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "bf16", "E1": "int8", "E2": "int4g32", "E3": "int4g32", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "fp16", "H2": "bf16", "H3": "bf16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
+{"tier": "tier2_moderate_int4", "events": "baseline_validation", "psnr": 32.1103, "bpp": 0.4175, "slopes": {"0": 2.758, "1": 2.681, "2": 2.626, "3": 2.55, "4": 2.288, "5": 2.028, "6": 1.714, "7": 1.478}}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1, "loss": 5.81046, "bpp": 1.1868, "mse": 0.002553, "elapsed_s": 0.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 50, "loss": 5.09687, "bpp": 0.8689, "mse": 0.003506, "elapsed_s": 23.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 100, "loss": 3.57246, "bpp": 0.7144, "mse": 0.002947, "elapsed_s": 46.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 150, "loss": 4.97284, "bpp": 1.0057, "mse": 0.003496, "elapsed_s": 70.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 200, "loss": 3.45308, "bpp": 0.816, "mse": 0.002522, "elapsed_s": 94.1}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 250, "psnr": 33.4018, "bpp": 0.5372, "d_psnr_vs_start": 1.2915, "penalty_vs_start_pct": 4.501, "mu": 0.3513, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 250, "loss": 4.18834, "bpp": 0.9304, "mse": 0.002789, "elapsed_s": 143.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 300, "loss": 5.15312, "bpp": 1.09, "mse": 0.003048, "elapsed_s": 167.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 350, "loss": 4.78273, "bpp": 1.0301, "mse": 0.002916, "elapsed_s": 191.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 400, "loss": 4.71457, "bpp": 1.0633, "mse": 0.002738, "elapsed_s": 215.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 450, "loss": 4.54667, "bpp": 1.0491, "mse": 0.002566, "elapsed_s": 239.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 500, "psnr": 33.6645, "bpp": 0.6347, "d_psnr_vs_start": 1.5543, "penalty_vs_start_pct": 26.724, "mu": 1.0368, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 500, "loss": 5.0319, "bpp": 1.0565, "mse": 0.003277, "elapsed_s": 288.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 550, "loss": 5.05305, "bpp": 1.0686, "mse": 0.002098, "elapsed_s": 312.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 600, "loss": 5.41793, "bpp": 1.0063, "mse": 0.002338, "elapsed_s": 335.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 650, "loss": 5.80036, "bpp": 1.0856, "mse": 0.002561, "elapsed_s": 359.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 700, "loss": 5.97078, "bpp": 0.9225, "mse": 0.003072, "elapsed_s": 383.5}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 750, "psnr": 33.9567, "bpp": 0.6301, "d_psnr_vs_start": 1.8464, "penalty_vs_start_pct": 12.849, "mu": 1.6314, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 750, "loss": 4.80477, "bpp": 1.0976, "mse": 0.002079, "elapsed_s": 430.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 800, "loss": 6.49268, "bpp": 0.9579, "mse": 0.00242, "elapsed_s": 455.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 850, "loss": 6.41265, "bpp": 1.1276, "mse": 0.00216, "elapsed_s": 479.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 900, "loss": 5.75002, "bpp": 1.1019, "mse": 0.001936, "elapsed_s": 503.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 950, "loss": 6.1763, "bpp": 0.9216, "mse": 0.0024, "elapsed_s": 527.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 1000, "psnr": 34.062, "bpp": 0.5924, "d_psnr_vs_start": 1.9518, "penalty_vs_start_pct": -3.961, "mu": 2.0744, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1000, "loss": 6.34897, "bpp": 0.9229, "mse": 0.002495, "elapsed_s": 576.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1050, "loss": 7.05943, "bpp": 1.0748, "mse": 0.002262, "elapsed_s": 600.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1100, "loss": 7.25129, "bpp": 0.9958, "mse": 0.002526, "elapsed_s": 623.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1150, "loss": 6.66577, "bpp": 1.0708, "mse": 0.002161, "elapsed_s": 647.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1200, "loss": 6.75506, "bpp": 0.9488, "mse": 0.00235, "elapsed_s": 671.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 1250, "psnr": 34.0855, "bpp": 0.5446, "d_psnr_vs_start": 1.9752, "penalty_vs_start_pct": -15.534, "mu": 2.3702, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1250, "loss": 7.50611, "bpp": 0.9856, "mse": 0.002748, "elapsed_s": 716.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1300, "loss": 7.65175, "bpp": 1.032, "mse": 0.00262, "elapsed_s": 740.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1350, "loss": 7.3263, "bpp": 0.903, "mse": 0.002622, "elapsed_s": 766.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1400, "loss": 7.05444, "bpp": 0.8866, "mse": 0.002518, "elapsed_s": 791.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1450, "loss": 6.94235, "bpp": 0.9509, "mse": 0.002311, "elapsed_s": 816.8}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 1500, "psnr": 34.0485, "bpp": 0.5114, "d_psnr_vs_start": 1.9383, "penalty_vs_start_pct": -20.866, "mu": 2.5787, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1500, "loss": 6.44196, "bpp": 1.0418, "mse": 0.002007, "elapsed_s": 862.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1550, "loss": 6.88752, "bpp": 0.83, "mse": 0.002605, "elapsed_s": 887.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1600, "loss": 7.39716, "bpp": 0.862, "mse": 0.002503, "elapsed_s": 911.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1650, "loss": 6.66496, "bpp": 1.0217, "mse": 0.001956, "elapsed_s": 936.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1700, "loss": 8.12184, "bpp": 0.9073, "mse": 0.002896, "elapsed_s": 959.5}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 1750, "psnr": 33.9947, "bpp": 0.4839, "d_psnr_vs_start": 1.8844, "penalty_vs_start_pct": -24.298, "mu": 2.7186, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1750, "loss": 6.44757, "bpp": 0.8113, "mse": 0.002257, "elapsed_s": 1007.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1800, "loss": 7.92063, "bpp": 1.027, "mse": 0.002548, "elapsed_s": 1032.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1850, "loss": 7.46157, "bpp": 0.8034, "mse": 0.002626, "elapsed_s": 1056.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1900, "loss": 8.71421, "bpp": 0.9012, "mse": 0.00308, "elapsed_s": 1080.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 1950, "loss": 8.10129, "bpp": 0.853, "mse": 0.003037, "elapsed_s": 1103.2}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 2000, "psnr": 33.9302, "bpp": 0.4629, "d_psnr_vs_start": 1.82, "penalty_vs_start_pct": -26.135, "mu": 2.8102, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2000, "loss": 8.57488, "bpp": 0.9139, "mse": 0.003069, "elapsed_s": 1147.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2050, "loss": 7.52372, "bpp": 0.8098, "mse": 0.002868, "elapsed_s": 1171.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2100, "loss": 8.37499, "bpp": 0.8217, "mse": 0.003204, "elapsed_s": 1194.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2150, "loss": 7.50182, "bpp": 0.8034, "mse": 0.002628, "elapsed_s": 1217.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2200, "loss": 7.06857, "bpp": 0.8394, "mse": 0.002481, "elapsed_s": 1240.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 2250, "psnr": 33.8881, "bpp": 0.4506, "d_psnr_vs_start": 1.7779, "penalty_vs_start_pct": -27.087, "mu": 2.8736, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2250, "loss": 8.47076, "bpp": 0.8526, "mse": 0.00312, "elapsed_s": 1286.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2300, "loss": 8.22956, "bpp": 0.9313, "mse": 0.002642, "elapsed_s": 1309.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2350, "loss": 7.78429, "bpp": 0.9628, "mse": 0.00258, "elapsed_s": 1334.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2400, "loss": 8.01655, "bpp": 0.8757, "mse": 0.002693, "elapsed_s": 1358.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2450, "loss": 8.87016, "bpp": 0.8758, "mse": 0.003285, "elapsed_s": 1381.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 2500, "psnr": 33.8503, "bpp": 0.4427, "d_psnr_vs_start": 1.7401, "penalty_vs_start_pct": -27.452, "mu": 2.9188, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2500, "loss": 7.81697, "bpp": 0.9756, "mse": 0.002583, "elapsed_s": 1428.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2550, "loss": 7.29414, "bpp": 0.799, "mse": 0.002629, "elapsed_s": 1453.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2600, "loss": 7.63612, "bpp": 0.8215, "mse": 0.002628, "elapsed_s": 1476.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2650, "loss": 7.76995, "bpp": 0.8057, "mse": 0.002874, "elapsed_s": 1499.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2700, "loss": 8.45432, "bpp": 0.8671, "mse": 0.002944, "elapsed_s": 1522.7}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 2750, "psnr": 33.8423, "bpp": 0.4364, "d_psnr_vs_start": 1.7321, "penalty_vs_start_pct": -28.036, "mu": 2.9515, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2750, "loss": 7.67998, "bpp": 0.8168, "mse": 0.002799, "elapsed_s": 1566.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2800, "loss": 7.99307, "bpp": 0.8816, "mse": 0.002934, "elapsed_s": 1589.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2850, "loss": 8.20704, "bpp": 0.8213, "mse": 0.003003, "elapsed_s": 1612.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2900, "loss": 6.49408, "bpp": 0.8184, "mse": 0.002369, "elapsed_s": 1636.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 2950, "loss": 7.03736, "bpp": 0.8274, "mse": 0.002333, "elapsed_s": 1659.4}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 3000, "psnr": 33.8087, "bpp": 0.4291, "d_psnr_vs_start": 1.6984, "penalty_vs_start_pct": -28.188, "mu": 2.9699, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3000, "loss": 6.63121, "bpp": 0.8154, "mse": 0.002291, "elapsed_s": 1703.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3050, "loss": 7.25274, "bpp": 0.9111, "mse": 0.002239, "elapsed_s": 1726.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3100, "loss": 8.78758, "bpp": 0.8436, "mse": 0.003118, "elapsed_s": 1750.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3150, "loss": 7.91407, "bpp": 0.9251, "mse": 0.002646, "elapsed_s": 1775.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3200, "loss": 6.81553, "bpp": 0.7569, "mse": 0.00237, "elapsed_s": 1797.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 3250, "psnr": 33.8077, "bpp": 0.4258, "d_psnr_vs_start": 1.6975, "penalty_vs_start_pct": -28.713, "mu": 2.982, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3250, "loss": 7.6898, "bpp": 0.7169, "mse": 0.003218, "elapsed_s": 1842.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3300, "loss": 6.72068, "bpp": 0.7188, "mse": 0.002366, "elapsed_s": 1864.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3350, "loss": 6.94758, "bpp": 0.8518, "mse": 0.002161, "elapsed_s": 1887.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3400, "loss": 8.81443, "bpp": 0.8219, "mse": 0.003252, "elapsed_s": 1910.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3450, "loss": 6.5835, "bpp": 0.8337, "mse": 0.002277, "elapsed_s": 1933.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 3500, "psnr": 33.749, "bpp": 0.4178, "d_psnr_vs_start": 1.6387, "penalty_vs_start_pct": -28.934, "mu": 2.9761, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3500, "loss": 7.04294, "bpp": 0.729, "mse": 0.002614, "elapsed_s": 1976.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3550, "loss": 6.61565, "bpp": 0.7233, "mse": 0.002561, "elapsed_s": 1999.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3600, "loss": 8.89122, "bpp": 0.9465, "mse": 0.003029, "elapsed_s": 2022.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3650, "loss": 7.48944, "bpp": 0.8371, "mse": 0.002496, "elapsed_s": 2046.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3700, "loss": 7.68029, "bpp": 0.8278, "mse": 0.002668, "elapsed_s": 2069.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 3750, "psnr": 33.7782, "bpp": 0.4191, "d_psnr_vs_start": 1.6679, "penalty_vs_start_pct": -28.983, "mu": 2.9749, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3750, "loss": 8.02667, "bpp": 0.7938, "mse": 0.003019, "elapsed_s": 2114.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3800, "loss": 5.82127, "bpp": 0.8226, "mse": 0.001991, "elapsed_s": 2137.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3850, "loss": 8.51764, "bpp": 0.9206, "mse": 0.0031, "elapsed_s": 2159.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3900, "loss": 8.59963, "bpp": 0.8855, "mse": 0.003139, "elapsed_s": 2181.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 3950, "loss": 6.98112, "bpp": 0.8654, "mse": 0.002321, "elapsed_s": 2206.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 4000, "psnr": 33.758, "bpp": 0.4142, "d_psnr_vs_start": 1.6477, "penalty_vs_start_pct": -29.055, "mu": 2.9643, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4000, "loss": 8.28009, "bpp": 0.8706, "mse": 0.003063, "elapsed_s": 2242.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4050, "loss": 6.71735, "bpp": 0.7077, "mse": 0.002606, "elapsed_s": 2265.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4100, "loss": 6.43235, "bpp": 0.7193, "mse": 0.002318, "elapsed_s": 2289.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4150, "loss": 8.13192, "bpp": 0.832, "mse": 0.002972, "elapsed_s": 2312.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4200, "loss": 8.96878, "bpp": 0.869, "mse": 0.003431, "elapsed_s": 2335.2}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 4250, "psnr": 33.7451, "bpp": 0.4127, "d_psnr_vs_start": 1.6348, "penalty_vs_start_pct": -29.09, "mu": 2.9495, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4250, "loss": 6.51711, "bpp": 0.807, "mse": 0.002331, "elapsed_s": 2380.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4300, "loss": 7.0078, "bpp": 0.8155, "mse": 0.002449, "elapsed_s": 2403.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4350, "loss": 8.46624, "bpp": 0.7349, "mse": 0.003411, "elapsed_s": 2428.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4400, "loss": 7.30514, "bpp": 0.8201, "mse": 0.002747, "elapsed_s": 2451.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4450, "loss": 7.86963, "bpp": 0.7807, "mse": 0.002809, "elapsed_s": 2475.1}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 4500, "psnr": 33.7535, "bpp": 0.4134, "d_psnr_vs_start": 1.6433, "penalty_vs_start_pct": -28.99, "mu": 2.9382, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4500, "loss": 7.05698, "bpp": 0.9418, "mse": 0.002351, "elapsed_s": 2520.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4550, "loss": 7.36479, "bpp": 0.8444, "mse": 0.002543, "elapsed_s": 2544.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4600, "loss": 7.27166, "bpp": 0.8408, "mse": 0.002524, "elapsed_s": 2567.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4650, "loss": 6.9849, "bpp": 0.8262, "mse": 0.002386, "elapsed_s": 2590.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4700, "loss": 8.13479, "bpp": 0.8713, "mse": 0.003036, "elapsed_s": 2613.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 4750, "psnr": 33.7807, "bpp": 0.4149, "d_psnr_vs_start": 1.6705, "penalty_vs_start_pct": -29.143, "mu": 2.9315, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4750, "loss": 7.79086, "bpp": 0.7883, "mse": 0.002782, "elapsed_s": 2656.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4800, "loss": 7.95105, "bpp": 0.9734, "mse": 0.002633, "elapsed_s": 2680.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4850, "loss": 7.72182, "bpp": 0.908, "mse": 0.00265, "elapsed_s": 2703.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4900, "loss": 8.29297, "bpp": 0.8818, "mse": 0.002978, "elapsed_s": 2726.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 4950, "loss": 7.689, "bpp": 0.8472, "mse": 0.002629, "elapsed_s": 2750.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 5000, "psnr": 33.7651, "bpp": 0.4125, "d_psnr_vs_start": 1.6548, "penalty_vs_start_pct": -29.233, "mu": 2.9198, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5000, "loss": 8.01341, "bpp": 0.9649, "mse": 0.002653, "elapsed_s": 2793.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5050, "loss": 6.91325, "bpp": 0.891, "mse": 0.002272, "elapsed_s": 2818.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5100, "loss": 9.2825, "bpp": 0.8346, "mse": 0.00358, "elapsed_s": 2843.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5150, "loss": 7.4505, "bpp": 0.7477, "mse": 0.002839, "elapsed_s": 2867.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5200, "loss": 6.99131, "bpp": 0.8491, "mse": 0.002501, "elapsed_s": 2892.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 5250, "psnr": 33.7814, "bpp": 0.4136, "d_psnr_vs_start": 1.6712, "penalty_vs_start_pct": -29.414, "mu": 2.9105, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5250, "loss": 8.68226, "bpp": 0.9296, "mse": 0.002991, "elapsed_s": 2938.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5300, "loss": 6.97405, "bpp": 0.7564, "mse": 0.002517, "elapsed_s": 2961.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5350, "loss": 8.91993, "bpp": 0.9413, "mse": 0.003135, "elapsed_s": 2984.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5400, "loss": 7.08517, "bpp": 0.7301, "mse": 0.002862, "elapsed_s": 3007.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5450, "loss": 8.1832, "bpp": 0.8348, "mse": 0.002985, "elapsed_s": 3031.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 5500, "psnr": 33.8068, "bpp": 0.4158, "d_psnr_vs_start": 1.6965, "penalty_vs_start_pct": -29.164, "mu": 2.9074, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5500, "loss": 6.57184, "bpp": 0.681, "mse": 0.00255, "elapsed_s": 3075.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5550, "loss": 7.90657, "bpp": 0.8263, "mse": 0.002911, "elapsed_s": 3098.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5600, "loss": 7.60257, "bpp": 0.7726, "mse": 0.002714, "elapsed_s": 3122.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5650, "loss": 7.39969, "bpp": 0.7896, "mse": 0.0027, "elapsed_s": 3145.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5700, "loss": 7.227, "bpp": 0.7637, "mse": 0.002615, "elapsed_s": 3168.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 5750, "psnr": 33.8079, "bpp": 0.4155, "d_psnr_vs_start": 1.6977, "penalty_vs_start_pct": -29.226, "mu": 2.9034, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5750, "loss": 7.14944, "bpp": 0.801, "mse": 0.002604, "elapsed_s": 3220.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5800, "loss": 8.25996, "bpp": 0.9231, "mse": 0.003323, "elapsed_s": 3250.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5850, "loss": 7.80793, "bpp": 0.7735, "mse": 0.003102, "elapsed_s": 3279.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5900, "loss": 7.09702, "bpp": 0.8492, "mse": 0.002471, "elapsed_s": 3309.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 5950, "loss": 6.07573, "bpp": 0.7627, "mse": 0.002067, "elapsed_s": 3336.8}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 6000, "psnr": 33.7939, "bpp": 0.4136, "d_psnr_vs_start": 1.6837, "penalty_vs_start_pct": -29.409, "mu": 2.8943, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6000, "loss": 6.9901, "bpp": 0.9033, "mse": 0.002423, "elapsed_s": 3382.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6050, "loss": 7.79206, "bpp": 0.87, "mse": 0.002789, "elapsed_s": 3405.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6100, "loss": 6.36181, "bpp": 0.8531, "mse": 0.002, "elapsed_s": 3429.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6150, "loss": 7.03691, "bpp": 0.8112, "mse": 0.002494, "elapsed_s": 3452.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6200, "loss": 7.55019, "bpp": 0.8071, "mse": 0.002972, "elapsed_s": 3475.7}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 6250, "psnr": 33.8224, "bpp": 0.417, "d_psnr_vs_start": 1.7121, "penalty_vs_start_pct": -29.098, "mu": 2.8948, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6250, "loss": 7.28533, "bpp": 0.8139, "mse": 0.002742, "elapsed_s": 3522.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6300, "loss": 6.40913, "bpp": 0.8539, "mse": 0.002221, "elapsed_s": 3545.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6350, "loss": 6.69577, "bpp": 0.8095, "mse": 0.002272, "elapsed_s": 3568.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6400, "loss": 6.88729, "bpp": 0.8435, "mse": 0.002334, "elapsed_s": 3592.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6450, "loss": 9.56781, "bpp": 0.9418, "mse": 0.003503, "elapsed_s": 3615.8}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 6500, "psnr": 33.8013, "bpp": 0.4147, "d_psnr_vs_start": 1.6911, "penalty_vs_start_pct": -29.082, "mu": 2.89, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6500, "loss": 7.74651, "bpp": 0.8067, "mse": 0.002875, "elapsed_s": 3659.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6550, "loss": 7.17872, "bpp": 0.9093, "mse": 0.002474, "elapsed_s": 3682.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6600, "loss": 7.08542, "bpp": 0.8791, "mse": 0.00239, "elapsed_s": 3707.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6650, "loss": 7.79504, "bpp": 0.7537, "mse": 0.002804, "elapsed_s": 3730.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6700, "loss": 7.6954, "bpp": 0.7827, "mse": 0.00275, "elapsed_s": 3755.8}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 6750, "psnr": 33.8031, "bpp": 0.4146, "d_psnr_vs_start": 1.6928, "penalty_vs_start_pct": -28.861, "mu": 2.8854, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6750, "loss": 7.35678, "bpp": 0.8624, "mse": 0.002634, "elapsed_s": 3801.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6800, "loss": 8.03952, "bpp": 0.9838, "mse": 0.002684, "elapsed_s": 3824.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6850, "loss": 8.98274, "bpp": 0.8833, "mse": 0.003212, "elapsed_s": 3847.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6900, "loss": 7.52505, "bpp": 0.7732, "mse": 0.002863, "elapsed_s": 3870.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 6950, "loss": 6.96375, "bpp": 0.852, "mse": 0.002354, "elapsed_s": 3893.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 7000, "psnr": 33.8048, "bpp": 0.4138, "d_psnr_vs_start": 1.6945, "penalty_vs_start_pct": -29.358, "mu": 2.879, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7000, "loss": 7.80403, "bpp": 0.8081, "mse": 0.002864, "elapsed_s": 3942.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7050, "loss": 7.24301, "bpp": 0.8501, "mse": 0.002439, "elapsed_s": 3961.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7100, "loss": 8.01269, "bpp": 0.7603, "mse": 0.003244, "elapsed_s": 3980.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7150, "loss": 7.45931, "bpp": 0.8851, "mse": 0.002543, "elapsed_s": 3998.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7200, "loss": 8.73366, "bpp": 0.9028, "mse": 0.003268, "elapsed_s": 4017.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 7250, "psnr": 33.7849, "bpp": 0.411, "d_psnr_vs_start": 1.6746, "penalty_vs_start_pct": -29.492, "mu": 2.8658, "best": true}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7250, "loss": 7.9312, "bpp": 0.8383, "mse": 0.002878, "elapsed_s": 4050.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7300, "loss": 8.52603, "bpp": 0.8915, "mse": 0.003017, "elapsed_s": 4069.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7350, "loss": 7.40129, "bpp": 0.8756, "mse": 0.002626, "elapsed_s": 4087.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7400, "loss": 7.1216, "bpp": 0.8679, "mse": 0.002346, "elapsed_s": 4106.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7450, "loss": 6.3685, "bpp": 0.7319, "mse": 0.002366, "elapsed_s": 4124.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 7500, "psnr": 33.8231, "bpp": 0.4156, "d_psnr_vs_start": 1.7129, "penalty_vs_start_pct": -28.83, "mu": 2.8657, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7500, "loss": 7.60275, "bpp": 0.7794, "mse": 0.002743, "elapsed_s": 4161.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7550, "loss": 7.66827, "bpp": 0.8489, "mse": 0.002673, "elapsed_s": 4180.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7600, "loss": 7.22311, "bpp": 0.8308, "mse": 0.002536, "elapsed_s": 4199.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7650, "loss": 6.82643, "bpp": 0.8048, "mse": 0.002567, "elapsed_s": 4218.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7700, "loss": 6.82783, "bpp": 0.7968, "mse": 0.002597, "elapsed_s": 4236.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 7750, "psnr": 33.8292, "bpp": 0.4148, "d_psnr_vs_start": 1.7189, "penalty_vs_start_pct": -29.307, "mu": 2.8637, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7750, "loss": 8.27046, "bpp": 0.871, "mse": 0.003151, "elapsed_s": 4270.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7800, "loss": 5.48599, "bpp": 0.8362, "mse": 0.001786, "elapsed_s": 4289.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7850, "loss": 7.47433, "bpp": 0.8893, "mse": 0.002713, "elapsed_s": 4307.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7900, "loss": 9.32366, "bpp": 0.9169, "mse": 0.003347, "elapsed_s": 4326.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 7950, "loss": 8.50869, "bpp": 0.8437, "mse": 0.003196, "elapsed_s": 4345.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 8000, "psnr": 33.8197, "bpp": 0.4148, "d_psnr_vs_start": 1.7094, "penalty_vs_start_pct": -29.212, "mu": 2.8606, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8000, "loss": 7.45244, "bpp": 0.9268, "mse": 0.002361, "elapsed_s": 4378.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8050, "loss": 7.20918, "bpp": 0.8235, "mse": 0.002707, "elapsed_s": 4397.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8100, "loss": 7.5611, "bpp": 0.8748, "mse": 0.002598, "elapsed_s": 4416.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8150, "loss": 6.56949, "bpp": 0.7257, "mse": 0.002398, "elapsed_s": 4435.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8200, "loss": 7.92428, "bpp": 0.7785, "mse": 0.003119, "elapsed_s": 4453.7}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 8250, "psnr": 33.8276, "bpp": 0.4154, "d_psnr_vs_start": 1.7174, "penalty_vs_start_pct": -29.337, "mu": 2.8578, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8250, "loss": 7.96393, "bpp": 0.7424, "mse": 0.003113, "elapsed_s": 4491.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8300, "loss": 7.40983, "bpp": 0.8597, "mse": 0.002597, "elapsed_s": 4510.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8350, "loss": 6.77114, "bpp": 0.8589, "mse": 0.002282, "elapsed_s": 4529.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8400, "loss": 6.59838, "bpp": 0.806, "mse": 0.002426, "elapsed_s": 4547.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8450, "loss": 7.63435, "bpp": 0.7514, "mse": 0.00297, "elapsed_s": 4566.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 8500, "psnr": 33.8289, "bpp": 0.4156, "d_psnr_vs_start": 1.7187, "penalty_vs_start_pct": -28.853, "mu": 2.8569, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8500, "loss": 7.83754, "bpp": 0.8277, "mse": 0.002887, "elapsed_s": 4601.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8550, "loss": 8.23649, "bpp": 0.8334, "mse": 0.00319, "elapsed_s": 4619.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8600, "loss": 6.65094, "bpp": 0.8536, "mse": 0.002209, "elapsed_s": 4638.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8650, "loss": 7.01284, "bpp": 0.7582, "mse": 0.002941, "elapsed_s": 4656.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8700, "loss": 6.24615, "bpp": 0.8484, "mse": 0.002059, "elapsed_s": 4674.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 8750, "psnr": 33.8497, "bpp": 0.4176, "d_psnr_vs_start": 1.7394, "penalty_vs_start_pct": -29.316, "mu": 2.8609, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8750, "loss": 6.92489, "bpp": 0.7676, "mse": 0.002612, "elapsed_s": 4708.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8800, "loss": 7.66571, "bpp": 0.791, "mse": 0.003062, "elapsed_s": 4726.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8850, "loss": 7.47113, "bpp": 0.876, "mse": 0.002702, "elapsed_s": 4744.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8900, "loss": 8.2458, "bpp": 0.8954, "mse": 0.002913, "elapsed_s": 4763.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 8950, "loss": 8.91872, "bpp": 0.8769, "mse": 0.003578, "elapsed_s": 4781.2}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 9000, "psnr": 33.8556, "bpp": 0.4177, "d_psnr_vs_start": 1.7454, "penalty_vs_start_pct": -29.321, "mu": 2.8654, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9000, "loss": 7.49587, "bpp": 0.744, "mse": 0.002857, "elapsed_s": 4814.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9050, "loss": 8.12402, "bpp": 0.8654, "mse": 0.003024, "elapsed_s": 4832.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9100, "loss": 6.95977, "bpp": 0.8719, "mse": 0.002319, "elapsed_s": 4850.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9150, "loss": 7.96743, "bpp": 0.8756, "mse": 0.002913, "elapsed_s": 4869.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9200, "loss": 8.61234, "bpp": 0.8643, "mse": 0.003024, "elapsed_s": 4887.4}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 9250, "psnr": 33.8281, "bpp": 0.4142, "d_psnr_vs_start": 1.7178, "penalty_vs_start_pct": -29.287, "mu": 2.8616, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9250, "loss": 6.93262, "bpp": 0.8271, "mse": 0.002648, "elapsed_s": 4920.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9300, "loss": 8.63119, "bpp": 0.9259, "mse": 0.003005, "elapsed_s": 4938.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9350, "loss": 8.04592, "bpp": 0.944, "mse": 0.002879, "elapsed_s": 4956.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9400, "loss": 7.59835, "bpp": 0.8942, "mse": 0.002569, "elapsed_s": 4975.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9450, "loss": 7.45279, "bpp": 0.8157, "mse": 0.002892, "elapsed_s": 4993.3}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 9500, "psnr": 33.8224, "bpp": 0.4144, "d_psnr_vs_start": 1.7121, "penalty_vs_start_pct": -29.089, "mu": 2.8583, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9500, "loss": 8.6193, "bpp": 0.8816, "mse": 0.003069, "elapsed_s": 5027.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9550, "loss": 6.63921, "bpp": 0.8126, "mse": 0.002376, "elapsed_s": 5046.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9600, "loss": 7.49172, "bpp": 0.9365, "mse": 0.002429, "elapsed_s": 5064.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9650, "loss": 5.88326, "bpp": 0.7591, "mse": 0.00208, "elapsed_s": 5082.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9700, "loss": 6.82886, "bpp": 0.956, "mse": 0.002265, "elapsed_s": 5100.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 9750, "psnr": 33.8596, "bpp": 0.4175, "d_psnr_vs_start": 1.7493, "penalty_vs_start_pct": -29.283, "mu": 2.8631, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9750, "loss": 7.14806, "bpp": 0.8845, "mse": 0.002429, "elapsed_s": 5134.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9800, "loss": 7.9246, "bpp": 0.8075, "mse": 0.002955, "elapsed_s": 5152.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9850, "loss": 7.35637, "bpp": 0.8666, "mse": 0.002448, "elapsed_s": 5170.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9900, "loss": 7.08707, "bpp": 0.8702, "mse": 0.002352, "elapsed_s": 5188.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 9950, "loss": 6.79445, "bpp": 0.8386, "mse": 0.002414, "elapsed_s": 5207.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 10000, "psnr": 33.8328, "bpp": 0.414, "d_psnr_vs_start": 1.7225, "penalty_vs_start_pct": -29.306, "mu": 2.859, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10000, "loss": 6.63489, "bpp": 0.8335, "mse": 0.002197, "elapsed_s": 5244.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10050, "loss": 5.39489, "bpp": 0.7409, "mse": 0.001971, "elapsed_s": 5262.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10100, "loss": 7.83844, "bpp": 0.8183, "mse": 0.002846, "elapsed_s": 5280.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10150, "loss": 8.13962, "bpp": 0.7848, "mse": 0.003101, "elapsed_s": 5298.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10200, "loss": 6.91244, "bpp": 0.9267, "mse": 0.002367, "elapsed_s": 5317.1}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 10250, "psnr": 33.8446, "bpp": 0.4153, "d_psnr_vs_start": 1.7344, "penalty_vs_start_pct": -29.45, "mu": 2.8576, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10250, "loss": 8.10518, "bpp": 0.8573, "mse": 0.002855, "elapsed_s": 5350.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10300, "loss": 6.86159, "bpp": 0.8529, "mse": 0.002506, "elapsed_s": 5368.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10350, "loss": 7.85747, "bpp": 0.8322, "mse": 0.002956, "elapsed_s": 5386.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10400, "loss": 6.97359, "bpp": 0.7793, "mse": 0.002569, "elapsed_s": 5404.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10450, "loss": 6.49119, "bpp": 0.7327, "mse": 0.002437, "elapsed_s": 5423.1}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 10500, "psnr": 33.8526, "bpp": 0.4174, "d_psnr_vs_start": 1.7423, "penalty_vs_start_pct": -28.967, "mu": 2.8632, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10500, "loss": 7.502, "bpp": 0.7007, "mse": 0.002994, "elapsed_s": 5457.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10550, "loss": 7.46755, "bpp": 0.719, "mse": 0.002901, "elapsed_s": 5475.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10600, "loss": 8.12949, "bpp": 0.8825, "mse": 0.002964, "elapsed_s": 5493.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10650, "loss": 7.62551, "bpp": 0.9369, "mse": 0.002636, "elapsed_s": 5511.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10700, "loss": 7.49039, "bpp": 0.8133, "mse": 0.002696, "elapsed_s": 5530.1}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 10750, "psnr": 33.8578, "bpp": 0.4172, "d_psnr_vs_start": 1.7475, "penalty_vs_start_pct": -29.139, "mu": 2.868, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10750, "loss": 7.05892, "bpp": 0.7951, "mse": 0.002472, "elapsed_s": 5562.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10800, "loss": 7.4378, "bpp": 0.8943, "mse": 0.002341, "elapsed_s": 5581.0}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10850, "loss": 7.79774, "bpp": 0.7985, "mse": 0.002961, "elapsed_s": 5599.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10900, "loss": 7.3969, "bpp": 0.8391, "mse": 0.002713, "elapsed_s": 5617.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 10950, "loss": 6.80034, "bpp": 0.8098, "mse": 0.002435, "elapsed_s": 5635.6}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 11000, "psnr": 33.8542, "bpp": 0.4169, "d_psnr_vs_start": 1.7439, "penalty_vs_start_pct": -28.816, "mu": 2.8745, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11000, "loss": 7.40678, "bpp": 0.8036, "mse": 0.00279, "elapsed_s": 5672.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11050, "loss": 7.95826, "bpp": 0.8145, "mse": 0.003044, "elapsed_s": 5691.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11100, "loss": 7.32143, "bpp": 0.7835, "mse": 0.002792, "elapsed_s": 5709.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11150, "loss": 7.20514, "bpp": 0.7517, "mse": 0.002729, "elapsed_s": 5727.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11200, "loss": 8.98785, "bpp": 0.9425, "mse": 0.003314, "elapsed_s": 5745.9}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 11250, "psnr": 33.8531, "bpp": 0.4166, "d_psnr_vs_start": 1.7428, "penalty_vs_start_pct": -29.214, "mu": 2.8774, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11250, "loss": 8.30209, "bpp": 0.7874, "mse": 0.003182, "elapsed_s": 5783.2}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11300, "loss": 9.18163, "bpp": 0.8401, "mse": 0.003823, "elapsed_s": 5801.4}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11350, "loss": 6.74576, "bpp": 0.6996, "mse": 0.002525, "elapsed_s": 5819.6}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11400, "loss": 9.08779, "bpp": 0.878, "mse": 0.003529, "elapsed_s": 5837.7}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11450, "loss": 6.44268, "bpp": 0.818, "mse": 0.002386, "elapsed_s": 5856.0}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 11500, "psnr": 33.853, "bpp": 0.4158, "d_psnr_vs_start": 1.7428, "penalty_vs_start_pct": -29.413, "mu": 2.8776, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11500, "loss": 7.78406, "bpp": 0.8252, "mse": 0.002794, "elapsed_s": 5888.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11550, "loss": 8.55137, "bpp": 0.935, "mse": 0.002943, "elapsed_s": 5907.1}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11600, "loss": 8.07973, "bpp": 0.8062, "mse": 0.00316, "elapsed_s": 5925.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11650, "loss": 7.37906, "bpp": 0.7515, "mse": 0.0029, "elapsed_s": 5943.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11700, "loss": 7.71897, "bpp": 0.7971, "mse": 0.00301, "elapsed_s": 5961.8}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 11750, "psnr": 33.8415, "bpp": 0.4152, "d_psnr_vs_start": 1.7312, "penalty_vs_start_pct": -29.359, "mu": 2.8779, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11750, "loss": 6.84116, "bpp": 0.8979, "mse": 0.002315, "elapsed_s": 5995.5}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11800, "loss": 7.05833, "bpp": 0.8307, "mse": 0.002561, "elapsed_s": 6013.8}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11850, "loss": 7.15684, "bpp": 0.8845, "mse": 0.002542, "elapsed_s": 6031.9}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11900, "loss": 6.89915, "bpp": 0.7952, "mse": 0.002598, "elapsed_s": 6050.3}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 11950, "loss": 7.82021, "bpp": 0.8078, "mse": 0.002871, "elapsed_s": 6068.5}
+{"tier": "tier2_moderate_int4", "events": "validated", "step": 12000, "psnr": 33.8375, "bpp": 0.4142, "d_psnr_vs_start": 1.7273, "penalty_vs_start_pct": -28.994, "mu": 2.8773, "best": false}
+{"tier": "tier2_moderate_int4", "events": "step", "step": 12000, "loss": 6.68978, "bpp": 0.7722, "mse": 0.002442, "elapsed_s": 6101.5}
+{"tier": "tier2_moderate_int4", "events": "finish", "bundle": "quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4", "steps": 12000, "train_minutes": 101.7, "final_loss": 6.68978, "final_bpp": 0.7722, "baseline_val_psnr": 32.1103, "best_penalty_vs_start_pct": -29.492, "best_step": 7250, "kept_best_checkpoint": true, "assignment": {"E0": "bf16", "E1": "int8", "E2": "int4g32", "E3": "int4g32", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "fp16", "H2": "bf16", "H3": "bf16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
+=== 2026-10-31T18:55:39Z exit 0
 
-=== 2026-10-31T14:40:09Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier1_more_int8 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 5.293, "mean_penalty_pct": 2.52}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\after", "rows": 192, "configs": 1}
-=== 2026-10-31T14:41:00Z exit 0
+=== 2026-10-31T18:55:39Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 16.634, "mean_penalty_pct": 9.024}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 192, "configs": 1}
+=== 2026-10-31T18:56:31Z exit 0
 
-=== 2026-10-31T14:41:00Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier1_more_int8 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 8.613, "mean_penalty_pct": 4.362}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\after", "rows": 328, "configs": 1}
-=== 2026-10-31T14:45:42Z exit 0
+=== 2026-10-31T18:56:31Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 18.026, "mean_penalty_pct": 9.388}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 328, "configs": 1}
+=== 2026-10-31T19:01:18Z exit 0
 
-=== 2026-10-31T14:45:42Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier1_more_int8 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier1_more_int8\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json"]}
-{"config": "assignment", "config_id": "7ddb3ed8aa83", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 14.401, "saving_pct": 73.67, "effective_bits_per_param": 2.107, "worst_qp_mean_penalty_pct": 6.176, "mean_penalty_pct": 2.893}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier1_more_int8\\after", "rows": 112, "configs": 1}
-=== 2026-10-31T14:46:08Z exit 0
+=== 2026-10-31T19:01:18Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 20.528, "mean_penalty_pct": 10.538}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 112, "configs": 1}
+=== 2026-10-31T19:01:44Z exit 0
 
-=== 2026-10-31T14:46:08Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 85.449, "mean_penalty_pct": 61.286}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 192, "configs": 1}
-=== 2026-10-31T14:47:00Z exit 0
+=== 2026-10-31T19:01:44Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 521.027, "mean_penalty_pct": 325.828}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 192, "configs": 1}
+=== 2026-10-31T19:02:35Z exit 0
 
-=== 2026-10-31T14:47:00Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 119.18, "mean_penalty_pct": 85.748}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 328, "configs": 1}
-=== 2026-10-31T14:51:47Z exit 0
+=== 2026-10-31T19:02:35Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 1771.715, "mean_penalty_pct": 841.422}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 328, "configs": 1}
+=== 2026-10-31T19:07:21Z exit 0
 
-=== 2026-10-31T14:51:47Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 91.891, "mean_penalty_pct": 58.662}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\before", "rows": 112, "configs": 1}
-=== 2026-10-31T14:52:15Z exit 0
+=== 2026-10-31T19:07:21Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 680.168, "mean_penalty_pct": 362.471}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 112, "configs": 1}
+=== 2026-10-31T19:07:49Z exit 0
 
-=== 2026-10-31T14:52:15Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier2_moderate_int4 --pool datasets/qat_pool/div2k_valid --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt --steps 2000 --lr 1e-06 --accumulate 2 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 100 --eval-images 4 --device cuda
-{"tier": "tier2_moderate_int4", "events": "start", "steps": 2000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "bf16", "E1": "int8", "E2": "int4g32", "E3": "int4g32", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "fp16", "H2": "bf16", "H3": "bf16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
-{"tier": "tier2_moderate_int4", "events": "baseline_validation", "psnr": 32.6168, "bpp": 0.3766, "slopes": {"0": 2.996, "1": 2.868, "2": 2.778, "3": 2.706, "4": 2.419, "5": 2.119, "6": 1.78, "7": 1.54}}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1, "loss": 5.87348, "bpp": 0.9126, "mse": 0.002775, "elapsed_s": 1.0}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 50, "loss": 4.16884, "bpp": 0.6999, "mse": 0.00307, "elapsed_s": 15.0}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 100, "psnr": 33.7424, "bpp": 0.416, "d_psnr_vs_start": 1.1256, "penalty_vs_start_pct": -12.289, "mu": 0.1031, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 100, "loss": 4.09426, "bpp": 0.7637, "mse": 0.002672, "elapsed_s": 37.8}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 150, "loss": 5.54221, "bpp": 1.0062, "mse": 0.003236, "elapsed_s": 51.9}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 200, "psnr": 34.0131, "bpp": 0.4902, "d_psnr_vs_start": 1.3963, "penalty_vs_start_pct": 2.018, "mu": 0.4513, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 200, "loss": 5.00463, "bpp": 0.9788, "mse": 0.002912, "elapsed_s": 75.3}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 250, "loss": 6.06062, "bpp": 0.9589, "mse": 0.003518, "elapsed_s": 89.5}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 300, "psnr": 34.2251, "bpp": 0.5369, "d_psnr_vs_start": 1.6083, "penalty_vs_start_pct": 10.512, "mu": 0.9595, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 300, "loss": 4.97135, "bpp": 0.9397, "mse": 0.002488, "elapsed_s": 112.8}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 350, "loss": 6.58112, "bpp": 0.8767, "mse": 0.003272, "elapsed_s": 126.9}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 400, "psnr": 34.373, "bpp": 0.5457, "d_psnr_vs_start": 1.7562, "penalty_vs_start_pct": 7.885, "mu": 1.4758, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 400, "loss": 5.9738, "bpp": 0.9205, "mse": 0.002567, "elapsed_s": 149.9}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 450, "loss": 6.47365, "bpp": 1.0808, "mse": 0.002029, "elapsed_s": 164.0}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 500, "psnr": 34.4578, "bpp": 0.5361, "d_psnr_vs_start": 1.8409, "penalty_vs_start_pct": -0.532, "mu": 1.9227, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 500, "loss": 7.01737, "bpp": 0.9053, "mse": 0.002619, "elapsed_s": 187.0}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 550, "loss": 8.18525, "bpp": 0.9907, "mse": 0.002622, "elapsed_s": 201.1}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 600, "psnr": 34.4807, "bpp": 0.5121, "d_psnr_vs_start": 1.8639, "penalty_vs_start_pct": -7.134, "mu": 2.2811, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 600, "loss": 7.68043, "bpp": 0.9484, "mse": 0.002438, "elapsed_s": 224.5}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 650, "loss": 8.77022, "bpp": 1.0277, "mse": 0.002735, "elapsed_s": 238.3}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 700, "psnr": 34.4961, "bpp": 0.4864, "d_psnr_vs_start": 1.8793, "penalty_vs_start_pct": -13.199, "mu": 2.5595, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 700, "loss": 8.1415, "bpp": 0.8917, "mse": 0.002602, "elapsed_s": 261.3}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 750, "loss": 7.91359, "bpp": 1.0375, "mse": 0.002092, "elapsed_s": 276.4}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 800, "psnr": 34.4709, "bpp": 0.4609, "d_psnr_vs_start": 1.8541, "penalty_vs_start_pct": -17.831, "mu": 2.7606, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 800, "loss": 8.68673, "bpp": 0.8689, "mse": 0.002578, "elapsed_s": 299.5}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 850, "loss": 9.81738, "bpp": 0.9078, "mse": 0.002996, "elapsed_s": 313.8}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 900, "psnr": 34.4299, "bpp": 0.438, "d_psnr_vs_start": 1.8131, "penalty_vs_start_pct": -21.611, "mu": 2.8997, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 900, "loss": 9.3418, "bpp": 1.0206, "mse": 0.002652, "elapsed_s": 337.0}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 950, "loss": 10.43767, "bpp": 0.8931, "mse": 0.003199, "elapsed_s": 351.1}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1000, "psnr": 34.3675, "bpp": 0.4186, "d_psnr_vs_start": 1.7507, "penalty_vs_start_pct": -24.359, "mu": 2.9867, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1000, "loss": 10.24777, "bpp": 0.9034, "mse": 0.003184, "elapsed_s": 374.0}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1050, "loss": 9.95321, "bpp": 0.8126, "mse": 0.003318, "elapsed_s": 387.8}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1100, "psnr": 34.3087, "bpp": 0.4033, "d_psnr_vs_start": 1.6919, "penalty_vs_start_pct": -25.93, "mu": 3.0356, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1100, "loss": 8.48271, "bpp": 0.8278, "mse": 0.002586, "elapsed_s": 410.7}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1150, "loss": 9.83105, "bpp": 0.9145, "mse": 0.002765, "elapsed_s": 424.7}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1200, "psnr": 34.2821, "bpp": 0.3959, "d_psnr_vs_start": 1.6653, "penalty_vs_start_pct": -26.673, "mu": 3.0666, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1200, "loss": 9.5643, "bpp": 0.8605, "mse": 0.002805, "elapsed_s": 447.6}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1250, "loss": 9.37928, "bpp": 0.9548, "mse": 0.002714, "elapsed_s": 461.6}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1300, "psnr": 34.2663, "bpp": 0.3921, "d_psnr_vs_start": 1.6494, "penalty_vs_start_pct": -26.819, "mu": 3.0881, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1300, "loss": 9.08057, "bpp": 0.8072, "mse": 0.002737, "elapsed_s": 484.9}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1350, "loss": 10.0525, "bpp": 0.8499, "mse": 0.003081, "elapsed_s": 498.8}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1400, "psnr": 34.2517, "bpp": 0.3865, "d_psnr_vs_start": 1.6349, "penalty_vs_start_pct": -27.146, "mu": 3.0979, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1400, "loss": 9.45956, "bpp": 0.8676, "mse": 0.003046, "elapsed_s": 521.6}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1450, "loss": 7.77325, "bpp": 0.8044, "mse": 0.002463, "elapsed_s": 535.6}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1500, "psnr": 34.248, "bpp": 0.3835, "d_psnr_vs_start": 1.6312, "penalty_vs_start_pct": -27.463, "mu": 3.1012, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1500, "loss": 7.95248, "bpp": 0.8044, "mse": 0.002372, "elapsed_s": 558.5}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1550, "loss": 10.37982, "bpp": 0.8307, "mse": 0.003225, "elapsed_s": 572.5}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1600, "psnr": 34.2446, "bpp": 0.3818, "d_psnr_vs_start": 1.6278, "penalty_vs_start_pct": -27.727, "mu": 3.1003, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1600, "loss": 8.12316, "bpp": 0.7448, "mse": 0.002463, "elapsed_s": 595.3}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1650, "loss": 8.00277, "bpp": 0.7097, "mse": 0.002444, "elapsed_s": 609.2}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1700, "psnr": 34.2451, "bpp": 0.3812, "d_psnr_vs_start": 1.6283, "penalty_vs_start_pct": -27.708, "mu": 3.0988, "best": false}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1700, "loss": 10.34145, "bpp": 0.8122, "mse": 0.003357, "elapsed_s": 631.9}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1750, "loss": 8.33984, "bpp": 0.7221, "mse": 0.002682, "elapsed_s": 645.8}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1800, "psnr": 34.2357, "bpp": 0.3793, "d_psnr_vs_start": 1.6189, "penalty_vs_start_pct": -27.939, "mu": 3.0931, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1800, "loss": 10.49791, "bpp": 0.9357, "mse": 0.003127, "elapsed_s": 668.6}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1850, "loss": 9.09236, "bpp": 0.818, "mse": 0.002747, "elapsed_s": 682.7}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 1900, "psnr": 34.2374, "bpp": 0.3774, "d_psnr_vs_start": 1.6206, "penalty_vs_start_pct": -28.048, "mu": 3.0836, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1900, "loss": 7.0013, "bpp": 0.817, "mse": 0.002042, "elapsed_s": 705.9}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 1950, "loss": 10.11524, "bpp": 0.8775, "mse": 0.003228, "elapsed_s": 719.8}
-{"tier": "tier2_moderate_int4", "events": "validated", "step": 2000, "psnr": 34.2487, "bpp": 0.3773, "d_psnr_vs_start": 1.6319, "penalty_vs_start_pct": -28.142, "mu": 3.0757, "best": true}
-{"tier": "tier2_moderate_int4", "events": "step", "step": 2000, "loss": 9.73823, "bpp": 0.8643, "mse": 0.003132, "elapsed_s": 742.6}
-{"tier": "tier2_moderate_int4", "events": "finish", "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4", "steps": 2000, "train_minutes": 12.38, "final_loss": 9.73823, "final_bpp": 0.8643, "baseline_val_psnr": 32.6168, "best_penalty_vs_start_pct": -28.142, "best_step": 2000, "kept_best_checkpoint": true, "assignment": {"E0": "bf16", "E1": "int8", "E2": "int4g32", "E3": "int4g32", "E4": "int8", "E5": "int8", "H0": "bf16", "H1": "fp16", "H2": "bf16", "H3": "bf16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
-=== 2026-10-31T15:05:09Z exit 0
+=== 2026-10-31T19:07:49Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier3_more_int4 --pool datasets/qat_pool/div2k_valid --output quantization-pluse-mse\results\final\qat_attempt --steps 12000 --lr 1e-06 --accumulate 1 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 250 --eval-images 6 --device cuda
+{"tier": "tier3_more_int4", "events": "start", "steps": 12000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32", "E5": "int8", "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
+{"tier": "tier3_more_int4", "events": "baseline_validation", "psnr": 28.3984, "bpp": 0.5812, "slopes": {"0": 1.92, "1": 1.89, "2": 1.627, "3": 1.1, "4": 0.514, "5": 0.103, "6": 0.103, "7": 0.232}}
+{"tier": "tier3_more_int4", "events": "step", "step": 1, "loss": 4.28153, "bpp": 1.35, "mse": 0.005291, "elapsed_s": 0.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 50, "loss": 3.45769, "bpp": 1.0896, "mse": 0.005193, "elapsed_s": 19.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 100, "loss": 2.13622, "bpp": 0.9439, "mse": 0.003625, "elapsed_s": 39.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 150, "loss": 2.65628, "bpp": 1.1695, "mse": 0.004215, "elapsed_s": 58.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 200, "loss": 1.88753, "bpp": 0.9808, "mse": 0.002961, "elapsed_s": 77.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 250, "psnr": 32.3017, "bpp": 0.6023, "d_psnr_vs_start": 3.9033, "penalty_vs_start_pct": -54.551, "mu": 0.1471, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 250, "loss": 2.19687, "bpp": 1.0564, "mse": 0.003271, "elapsed_s": 111.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 300, "loss": 2.50121, "bpp": 1.2018, "mse": 0.003535, "elapsed_s": 131.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 350, "loss": 2.34704, "bpp": 1.1167, "mse": 0.003377, "elapsed_s": 150.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 400, "loss": 2.21088, "bpp": 1.1366, "mse": 0.003126, "elapsed_s": 169.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 450, "loss": 2.04773, "bpp": 1.1245, "mse": 0.002916, "elapsed_s": 188.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 500, "psnr": 32.9797, "bpp": 0.6682, "d_psnr_vs_start": 4.5813, "penalty_vs_start_pct": -52.424, "mu": 0.4399, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 500, "loss": 2.49569, "bpp": 1.1161, "mse": 0.003684, "elapsed_s": 225.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 550, "loss": 2.06107, "bpp": 1.1377, "mse": 0.00237, "elapsed_s": 250.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 600, "loss": 2.24222, "bpp": 1.0617, "mse": 0.002579, "elapsed_s": 281.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 650, "loss": 2.33379, "bpp": 1.1569, "mse": 0.002821, "elapsed_s": 307.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 700, "loss": 2.62444, "bpp": 0.9921, "mse": 0.003326, "elapsed_s": 329.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 750, "psnr": 33.4272, "bpp": 0.6793, "d_psnr_vs_start": 5.0289, "penalty_vs_start_pct": -57.83, "mu": 0.6946, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 750, "loss": 1.89875, "bpp": 1.1774, "mse": 0.002285, "elapsed_s": 368.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 800, "loss": 2.56825, "bpp": 1.0343, "mse": 0.002618, "elapsed_s": 390.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 850, "loss": 2.4112, "bpp": 1.2125, "mse": 0.002376, "elapsed_s": 412.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 900, "loss": 2.08536, "bpp": 1.1894, "mse": 0.002118, "elapsed_s": 435.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 950, "loss": 2.44843, "bpp": 1.0097, "mse": 0.002555, "elapsed_s": 457.2}
+{"tier": "tier3_more_int4", "events": "validated", "step": 1000, "psnr": 33.7181, "bpp": 0.669, "d_psnr_vs_start": 5.3198, "penalty_vs_start_pct": -63.533, "mu": 0.8877, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 1000, "loss": 2.53589, "bpp": 1.0138, "mse": 0.002632, "elapsed_s": 498.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 1050, "loss": 2.54275, "bpp": 1.1663, "mse": 0.002446, "elapsed_s": 520.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 1100, "loss": 2.81104, "bpp": 1.1027, "mse": 0.002693, "elapsed_s": 542.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 1150, "loss": 2.37531, "bpp": 1.1724, "mse": 0.002302, "elapsed_s": 564.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 1200, "loss": 2.54078, "bpp": 1.0544, "mse": 0.002477, "elapsed_s": 586.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 1250, "psnr": 33.8798, "bpp": 0.6419, "d_psnr_vs_start": 5.4815, "penalty_vs_start_pct": -67.166, "mu": 1.0126, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 1250, "loss": 2.91017, "bpp": 1.0938, "mse": 0.002874, "elapsed_s": 626.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 1300, "loss": 2.84888, "bpp": 1.1443, "mse": 0.002697, "elapsed_s": 648.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 1350, "loss": 2.82323, "bpp": 1.0224, "mse": 0.002662, "elapsed_s": 670.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 1400, "loss": 2.69111, "bpp": 1.0068, "mse": 0.00257, "elapsed_s": 692.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 1450, "loss": 2.55223, "bpp": 1.0634, "mse": 0.002366, "elapsed_s": 715.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 1500, "psnr": 33.9702, "bpp": 0.6171, "d_psnr_vs_start": 5.5718, "penalty_vs_start_pct": -69.496, "mu": 1.0804, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 1500, "loss": 2.26388, "bpp": 1.1523, "mse": 0.002078, "elapsed_s": 752.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 1550, "loss": 2.60306, "bpp": 0.9535, "mse": 0.002597, "elapsed_s": 775.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 1600, "loss": 2.73969, "bpp": 0.9896, "mse": 0.002481, "elapsed_s": 797.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 1650, "loss": 2.24356, "bpp": 1.1501, "mse": 0.002001, "elapsed_s": 819.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 1700, "loss": 3.05859, "bpp": 1.0365, "mse": 0.002844, "elapsed_s": 841.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 1750, "psnr": 34.0355, "bpp": 0.6078, "d_psnr_vs_start": 5.6372, "penalty_vs_start_pct": -71.14, "mu": 1.1283, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 1750, "loss": 2.37859, "bpp": 0.9491, "mse": 0.002201, "elapsed_s": 879.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 1800, "loss": 2.8091, "bpp": 1.1626, "mse": 0.002526, "elapsed_s": 901.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 1850, "loss": 2.75802, "bpp": 0.9455, "mse": 0.002551, "elapsed_s": 923.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 1900, "loss": 3.2691, "bpp": 1.0451, "mse": 0.002949, "elapsed_s": 945.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 1950, "loss": 3.07944, "bpp": 1.0005, "mse": 0.002853, "elapsed_s": 968.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 2000, "psnr": 34.1221, "bpp": 0.6064, "d_psnr_vs_start": 5.7238, "penalty_vs_start_pct": -71.844, "mu": 1.1735, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 2000, "loss": 3.13065, "bpp": 1.0636, "mse": 0.002962, "elapsed_s": 1005.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 2050, "loss": 2.86162, "bpp": 0.9589, "mse": 0.002704, "elapsed_s": 1028.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 2100, "loss": 3.17834, "bpp": 0.9672, "mse": 0.00302, "elapsed_s": 1050.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 2150, "loss": 2.79348, "bpp": 0.9503, "mse": 0.002464, "elapsed_s": 1072.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 2200, "loss": 2.58073, "bpp": 0.9905, "mse": 0.002341, "elapsed_s": 1094.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 2250, "psnr": 34.1637, "bpp": 0.5952, "d_psnr_vs_start": 5.7653, "penalty_vs_start_pct": -73.211, "mu": 1.1961, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 2250, "loss": 3.1434, "bpp": 0.9962, "mse": 0.002907, "elapsed_s": 1135.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 2300, "loss": 2.94089, "bpp": 1.0769, "mse": 0.002503, "elapsed_s": 1157.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 2350, "loss": 2.70232, "bpp": 1.1109, "mse": 0.002426, "elapsed_s": 1180.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 2400, "loss": 2.8925, "bpp": 1.0182, "mse": 0.002537, "elapsed_s": 1202.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 2450, "loss": 3.29401, "bpp": 1.0211, "mse": 0.003042, "elapsed_s": 1224.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 2500, "psnr": 34.1949, "bpp": 0.5874, "d_psnr_vs_start": 5.7966, "penalty_vs_start_pct": -73.855, "mu": 1.2046, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 2500, "loss": 2.73703, "bpp": 1.1282, "mse": 0.002413, "elapsed_s": 1262.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 2550, "loss": 2.64286, "bpp": 0.9636, "mse": 0.002395, "elapsed_s": 1285.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 2600, "loss": 2.76331, "bpp": 0.9704, "mse": 0.00241, "elapsed_s": 1313.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 2650, "loss": 2.87108, "bpp": 0.9644, "mse": 0.002588, "elapsed_s": 1342.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 2700, "loss": 3.08116, "bpp": 1.0265, "mse": 0.002642, "elapsed_s": 1370.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 2750, "psnr": 34.2462, "bpp": 0.5861, "d_psnr_vs_start": 5.8478, "penalty_vs_start_pct": -74.165, "mu": 1.2114, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 2750, "loss": 2.75642, "bpp": 0.9767, "mse": 0.00255, "elapsed_s": 1420.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 2800, "loss": 2.88631, "bpp": 1.0444, "mse": 0.002712, "elapsed_s": 1447.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 2850, "loss": 2.99534, "bpp": 0.9738, "mse": 0.002695, "elapsed_s": 1474.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 2900, "loss": 2.23173, "bpp": 0.9758, "mse": 0.00212, "elapsed_s": 1500.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 2950, "loss": 2.46372, "bpp": 0.982, "mse": 0.002142, "elapsed_s": 1527.4}
+{"tier": "tier3_more_int4", "events": "validated", "step": 3000, "psnr": 34.2832, "bpp": 0.5782, "d_psnr_vs_start": 5.8849, "penalty_vs_start_pct": -74.779, "mu": 1.2056, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 3000, "loss": 2.32846, "bpp": 0.9832, "mse": 0.002099, "elapsed_s": 1577.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 3050, "loss": 2.45447, "bpp": 1.0582, "mse": 0.002138, "elapsed_s": 1604.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 3100, "loss": 3.12356, "bpp": 0.9928, "mse": 0.002855, "elapsed_s": 1630.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 3150, "loss": 2.72391, "bpp": 1.0765, "mse": 0.00244, "elapsed_s": 1657.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 3200, "loss": 2.42186, "bpp": 0.9163, "mse": 0.002119, "elapsed_s": 1684.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 3250, "psnr": 34.3003, "bpp": 0.5728, "d_psnr_vs_start": 5.9019, "penalty_vs_start_pct": -75.344, "mu": 1.1891, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 3250, "loss": 2.86695, "bpp": 0.8819, "mse": 0.002822, "elapsed_s": 1734.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 3300, "loss": 2.39696, "bpp": 0.8708, "mse": 0.00211, "elapsed_s": 1760.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 3350, "loss": 2.29251, "bpp": 1.0068, "mse": 0.001949, "elapsed_s": 1787.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 3400, "loss": 3.16111, "bpp": 0.9809, "mse": 0.002814, "elapsed_s": 1814.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 3450, "loss": 2.21127, "bpp": 0.985, "mse": 0.002026, "elapsed_s": 1840.9}
+{"tier": "tier3_more_int4", "events": "validated", "step": 3500, "psnr": 34.3288, "bpp": 0.5761, "d_psnr_vs_start": 5.9304, "penalty_vs_start_pct": -75.625, "mu": 1.1779, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 3500, "loss": 2.51302, "bpp": 0.8813, "mse": 0.002282, "elapsed_s": 1888.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 3550, "loss": 2.35646, "bpp": 0.8972, "mse": 0.002183, "elapsed_s": 1915.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 3600, "loss": 3.0715, "bpp": 1.105, "mse": 0.002667, "elapsed_s": 1942.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 3650, "loss": 2.57684, "bpp": 0.9976, "mse": 0.002236, "elapsed_s": 1969.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 3700, "loss": 2.66156, "bpp": 0.9892, "mse": 0.002351, "elapsed_s": 1996.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 3750, "psnr": 34.3601, "bpp": 0.5758, "d_psnr_vs_start": 5.9617, "penalty_vs_start_pct": -76.025, "mu": 1.1653, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 3750, "loss": 2.90834, "bpp": 0.9559, "mse": 0.00271, "elapsed_s": 2043.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 3800, "loss": 1.89367, "bpp": 0.9966, "mse": 0.001735, "elapsed_s": 2070.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 3850, "loss": 2.93695, "bpp": 1.0918, "mse": 0.00268, "elapsed_s": 2097.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 3900, "loss": 2.9914, "bpp": 1.0696, "mse": 0.002676, "elapsed_s": 2124.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 3950, "loss": 2.37129, "bpp": 1.0442, "mse": 0.002093, "elapsed_s": 2150.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 4000, "psnr": 34.397, "bpp": 0.5858, "d_psnr_vs_start": 5.9986, "penalty_vs_start_pct": -75.64, "mu": 1.1737, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 4000, "loss": 2.88199, "bpp": 1.0431, "mse": 0.002621, "elapsed_s": 2203.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 4050, "loss": 2.39263, "bpp": 0.8734, "mse": 0.002214, "elapsed_s": 2230.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 4100, "loss": 2.20811, "bpp": 0.8682, "mse": 0.001959, "elapsed_s": 2256.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 4150, "loss": 2.84619, "bpp": 1.0117, "mse": 0.002498, "elapsed_s": 2283.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 4200, "loss": 3.17202, "bpp": 1.0464, "mse": 0.002876, "elapsed_s": 2310.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 4250, "psnr": 34.4109, "bpp": 0.5778, "d_psnr_vs_start": 6.0126, "penalty_vs_start_pct": -76.191, "mu": 1.1648, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 4250, "loss": 2.17078, "bpp": 0.9731, "mse": 0.001996, "elapsed_s": 2361.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 4300, "loss": 2.3555, "bpp": 0.988, "mse": 0.002128, "elapsed_s": 2387.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 4350, "loss": 3.083, "bpp": 0.901, "mse": 0.002842, "elapsed_s": 2414.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 4400, "loss": 2.48608, "bpp": 0.9804, "mse": 0.002312, "elapsed_s": 2440.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 4450, "loss": 2.7386, "bpp": 0.9417, "mse": 0.002341, "elapsed_s": 2467.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 4500, "psnr": 34.432, "bpp": 0.5838, "d_psnr_vs_start": 6.0336, "penalty_vs_start_pct": -76.142, "mu": 1.1665, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 4500, "loss": 2.29229, "bpp": 1.1085, "mse": 0.00204, "elapsed_s": 2517.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 4550, "loss": 2.51361, "bpp": 1.0162, "mse": 0.00215, "elapsed_s": 2544.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 4600, "loss": 2.49711, "bpp": 1.0276, "mse": 0.002142, "elapsed_s": 2570.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 4650, "loss": 2.38247, "bpp": 0.9846, "mse": 0.002104, "elapsed_s": 2597.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 4700, "loss": 2.8282, "bpp": 1.045, "mse": 0.002546, "elapsed_s": 2624.8}
+{"tier": "tier3_more_int4", "events": "validated", "step": 4750, "psnr": 34.4843, "bpp": 0.5896, "d_psnr_vs_start": 6.0859, "penalty_vs_start_pct": -76.127, "mu": 1.1816, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 4750, "loss": 2.65129, "bpp": 0.9431, "mse": 0.002387, "elapsed_s": 2674.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 4800, "loss": 2.61734, "bpp": 1.1448, "mse": 0.002264, "elapsed_s": 2701.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 4850, "loss": 2.59149, "bpp": 1.0843, "mse": 0.002299, "elapsed_s": 2728.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 4900, "loss": 2.88122, "bpp": 1.0557, "mse": 0.00253, "elapsed_s": 2754.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 4950, "loss": 2.58112, "bpp": 1.0095, "mse": 0.002216, "elapsed_s": 2781.4}
+{"tier": "tier3_more_int4", "events": "validated", "step": 5000, "psnr": 34.456, "bpp": 0.5778, "d_psnr_vs_start": 6.0577, "penalty_vs_start_pct": -76.253, "mu": 1.1771, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 5000, "loss": 2.53632, "bpp": 1.1221, "mse": 0.002329, "elapsed_s": 2832.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 5050, "loss": 2.27593, "bpp": 1.0643, "mse": 0.001942, "elapsed_s": 2859.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 5100, "loss": 3.35824, "bpp": 1.0053, "mse": 0.002999, "elapsed_s": 2885.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 5150, "loss": 2.63808, "bpp": 0.9128, "mse": 0.00233, "elapsed_s": 2912.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 5200, "loss": 2.35949, "bpp": 1.0164, "mse": 0.002057, "elapsed_s": 2939.2}
+{"tier": "tier3_more_int4", "events": "validated", "step": 5250, "psnr": 34.46, "bpp": 0.5883, "d_psnr_vs_start": 6.0616, "penalty_vs_start_pct": -75.962, "mu": 1.1898, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 5250, "loss": 2.98257, "bpp": 1.1213, "mse": 0.002516, "elapsed_s": 2986.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 5300, "loss": 2.44971, "bpp": 0.9257, "mse": 0.002087, "elapsed_s": 3013.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 5350, "loss": 3.05732, "bpp": 1.1338, "mse": 0.002685, "elapsed_s": 3040.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 5400, "loss": 2.53798, "bpp": 0.8938, "mse": 0.002341, "elapsed_s": 3066.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 5450, "loss": 2.86452, "bpp": 1.0009, "mse": 0.002453, "elapsed_s": 3093.8}
+{"tier": "tier3_more_int4", "events": "validated", "step": 5500, "psnr": 34.546, "bpp": 0.5928, "d_psnr_vs_start": 6.1477, "penalty_vs_start_pct": -76.307, "mu": 1.2109, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 5500, "loss": 2.37258, "bpp": 0.8431, "mse": 0.002109, "elapsed_s": 3145.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 5550, "loss": 2.77498, "bpp": 0.9973, "mse": 0.002433, "elapsed_s": 3172.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 5600, "loss": 2.68218, "bpp": 0.9294, "mse": 0.00223, "elapsed_s": 3198.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 5650, "loss": 2.54498, "bpp": 0.9524, "mse": 0.002261, "elapsed_s": 3225.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 5700, "loss": 2.52369, "bpp": 0.9151, "mse": 0.002184, "elapsed_s": 3252.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 5750, "psnr": 34.5122, "bpp": 0.5807, "d_psnr_vs_start": 6.1138, "penalty_vs_start_pct": -76.597, "mu": 1.2108, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 5750, "loss": 2.47076, "bpp": 0.9654, "mse": 0.00218, "elapsed_s": 3302.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 5800, "loss": 2.91711, "bpp": 1.0995, "mse": 0.002775, "elapsed_s": 3329.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 5850, "loss": 2.79589, "bpp": 0.9365, "mse": 0.002617, "elapsed_s": 3356.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 5900, "loss": 2.37776, "bpp": 1.0061, "mse": 0.002055, "elapsed_s": 3382.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 5950, "loss": 2.01523, "bpp": 0.9079, "mse": 0.001758, "elapsed_s": 3409.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 6000, "psnr": 34.4855, "bpp": 0.5753, "d_psnr_vs_start": 6.0871, "penalty_vs_start_pct": -76.82, "mu": 1.1993, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 6000, "loss": 2.29551, "bpp": 1.062, "mse": 0.002058, "elapsed_s": 3459.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 6050, "loss": 2.65819, "bpp": 1.023, "mse": 0.00238, "elapsed_s": 3486.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 6100, "loss": 2.04811, "bpp": 1.0051, "mse": 0.001704, "elapsed_s": 3512.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 6150, "loss": 2.42799, "bpp": 0.9785, "mse": 0.002089, "elapsed_s": 3539.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 6200, "loss": 2.62578, "bpp": 0.975, "mse": 0.002448, "elapsed_s": 3566.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 6250, "psnr": 34.5476, "bpp": 0.5868, "d_psnr_vs_start": 6.1492, "penalty_vs_start_pct": -76.436, "mu": 1.2115, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 6250, "loss": 2.53728, "bpp": 0.9828, "mse": 0.002237, "elapsed_s": 3616.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 6300, "loss": 2.10072, "bpp": 1.021, "mse": 0.001861, "elapsed_s": 3643.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 6350, "loss": 2.22768, "bpp": 0.956, "mse": 0.001897, "elapsed_s": 3670.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 6400, "loss": 2.31247, "bpp": 1.0158, "mse": 0.00194, "elapsed_s": 3696.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 6450, "loss": 3.41334, "bpp": 1.1254, "mse": 0.003, "elapsed_s": 3723.3}
+{"tier": "tier3_more_int4", "events": "validated", "step": 6500, "psnr": 34.5353, "bpp": 0.5793, "d_psnr_vs_start": 6.1369, "penalty_vs_start_pct": -76.565, "mu": 1.2133, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 6500, "loss": 2.69817, "bpp": 0.9744, "mse": 0.002406, "elapsed_s": 3777.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 6550, "loss": 2.34355, "bpp": 1.0794, "mse": 0.002156, "elapsed_s": 3803.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 6600, "loss": 2.35902, "bpp": 1.0385, "mse": 0.00203, "elapsed_s": 3830.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 6650, "loss": 2.78116, "bpp": 0.9114, "mse": 0.002303, "elapsed_s": 3857.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 6700, "loss": 2.7244, "bpp": 0.9506, "mse": 0.002277, "elapsed_s": 3884.2}
+{"tier": "tier3_more_int4", "events": "validated", "step": 6750, "psnr": 34.5652, "bpp": 0.5874, "d_psnr_vs_start": 6.1668, "penalty_vs_start_pct": -76.532, "mu": 1.2267, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 6750, "loss": 2.53044, "bpp": 1.0333, "mse": 0.002164, "elapsed_s": 3938.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 6800, "loss": 2.71891, "bpp": 1.1629, "mse": 0.002264, "elapsed_s": 3965.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 6850, "loss": 3.12131, "bpp": 1.0491, "mse": 0.002686, "elapsed_s": 3991.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 6900, "loss": 2.6842, "bpp": 0.9355, "mse": 0.00231, "elapsed_s": 4018.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 6950, "loss": 2.32241, "bpp": 1.0268, "mse": 0.001912, "elapsed_s": 4045.3}
+{"tier": "tier3_more_int4", "events": "validated", "step": 7000, "psnr": 34.5907, "bpp": 0.5911, "d_psnr_vs_start": 6.1923, "penalty_vs_start_pct": -76.576, "mu": 1.2477, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 7000, "loss": 2.78341, "bpp": 0.9788, "mse": 0.002358, "elapsed_s": 4095.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 7050, "loss": 2.4575, "bpp": 1.0131, "mse": 0.001982, "elapsed_s": 4122.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 7100, "loss": 2.93743, "bpp": 0.9244, "mse": 0.002575, "elapsed_s": 4148.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 7150, "loss": 2.54646, "bpp": 1.0541, "mse": 0.0021, "elapsed_s": 4175.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 7200, "loss": 3.09737, "bpp": 1.0764, "mse": 0.002776, "elapsed_s": 4202.4}
+{"tier": "tier3_more_int4", "events": "validated", "step": 7250, "psnr": 34.5708, "bpp": 0.5766, "d_psnr_vs_start": 6.1725, "penalty_vs_start_pct": -76.971, "mu": 1.243, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 7250, "loss": 2.78251, "bpp": 0.9987, "mse": 0.002393, "elapsed_s": 4254.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 7300, "loss": 2.98773, "bpp": 1.0539, "mse": 0.002476, "elapsed_s": 4281.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 7350, "loss": 2.5413, "bpp": 1.0388, "mse": 0.002139, "elapsed_s": 4308.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 7400, "loss": 2.41292, "bpp": 1.0341, "mse": 0.001957, "elapsed_s": 4334.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 7450, "loss": 2.22149, "bpp": 0.8746, "mse": 0.001971, "elapsed_s": 4361.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 7500, "psnr": 34.6171, "bpp": 0.5869, "d_psnr_vs_start": 6.2187, "penalty_vs_start_pct": -76.664, "mu": 1.2596, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 7500, "loss": 2.73616, "bpp": 0.9404, "mse": 0.002234, "elapsed_s": 4413.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 7550, "loss": 2.67646, "bpp": 1.0184, "mse": 0.002153, "elapsed_s": 4440.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 7600, "loss": 2.54618, "bpp": 0.9894, "mse": 0.002149, "elapsed_s": 4466.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 7650, "loss": 2.40413, "bpp": 0.9617, "mse": 0.002101, "elapsed_s": 4493.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 7700, "loss": 2.35577, "bpp": 0.9509, "mse": 0.002115, "elapsed_s": 4519.8}
+{"tier": "tier3_more_int4", "events": "validated", "step": 7750, "psnr": 34.6151, "bpp": 0.5798, "d_psnr_vs_start": 6.2168, "penalty_vs_start_pct": -76.806, "mu": 1.2663, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 7750, "loss": 2.97389, "bpp": 1.0325, "mse": 0.002689, "elapsed_s": 4569.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 7800, "loss": 1.74759, "bpp": 0.9815, "mse": 0.001502, "elapsed_s": 4596.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 7850, "loss": 2.58229, "bpp": 1.0544, "mse": 0.002233, "elapsed_s": 4623.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 7900, "loss": 3.36957, "bpp": 1.097, "mse": 0.002722, "elapsed_s": 4650.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 7950, "loss": 3.00199, "bpp": 1.0093, "mse": 0.002577, "elapsed_s": 4676.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 8000, "psnr": 34.6218, "bpp": 0.5848, "d_psnr_vs_start": 6.2234, "penalty_vs_start_pct": -76.796, "mu": 1.2796, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 8000, "loss": 2.44372, "bpp": 1.087, "mse": 0.001961, "elapsed_s": 4727.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 8050, "loss": 2.54583, "bpp": 0.9827, "mse": 0.002265, "elapsed_s": 4753.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 8100, "loss": 2.5922, "bpp": 1.0352, "mse": 0.002155, "elapsed_s": 4780.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 8150, "loss": 2.32923, "bpp": 0.8685, "mse": 0.001972, "elapsed_s": 4807.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 8200, "loss": 2.91825, "bpp": 0.9278, "mse": 0.00254, "elapsed_s": 4834.7}
+{"tier": "tier3_more_int4", "events": "validated", "step": 8250, "psnr": 34.6261, "bpp": 0.5832, "d_psnr_vs_start": 6.2277, "penalty_vs_start_pct": -76.967, "mu": 1.2897, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 8250, "loss": 2.94866, "bpp": 0.8963, "mse": 0.00247, "elapsed_s": 4882.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 8300, "loss": 2.53226, "bpp": 1.0242, "mse": 0.002122, "elapsed_s": 4909.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 8350, "loss": 2.26466, "bpp": 0.9984, "mse": 0.002005, "elapsed_s": 4936.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 8400, "loss": 2.27449, "bpp": 0.9494, "mse": 0.001972, "elapsed_s": 4963.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 8450, "loss": 2.7872, "bpp": 0.9018, "mse": 0.002374, "elapsed_s": 4989.8}
+{"tier": "tier3_more_int4", "events": "validated", "step": 8500, "psnr": 34.5961, "bpp": 0.5745, "d_psnr_vs_start": 6.1977, "penalty_vs_start_pct": -76.938, "mu": 1.2862, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 8500, "loss": 2.77706, "bpp": 0.9881, "mse": 0.002355, "elapsed_s": 5040.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 8550, "loss": 2.97901, "bpp": 0.9879, "mse": 0.002521, "elapsed_s": 5066.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 8600, "loss": 2.2537, "bpp": 1.0083, "mse": 0.001906, "elapsed_s": 5093.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 8650, "loss": 2.53453, "bpp": 0.8986, "mse": 0.002382, "elapsed_s": 5120.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 8700, "loss": 2.06935, "bpp": 1.0016, "mse": 0.00171, "elapsed_s": 5147.3}
+{"tier": "tier3_more_int4", "events": "validated", "step": 8750, "psnr": 34.5767, "bpp": 0.563, "d_psnr_vs_start": 6.1783, "penalty_vs_start_pct": -77.343, "mu": 1.2644, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 8750, "loss": 2.44465, "bpp": 0.9136, "mse": 0.002074, "elapsed_s": 5194.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 8800, "loss": 2.72767, "bpp": 0.9274, "mse": 0.00246, "elapsed_s": 5221.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 8850, "loss": 2.53467, "bpp": 1.0307, "mse": 0.002237, "elapsed_s": 5248.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 8900, "loss": 2.90034, "bpp": 1.0531, "mse": 0.002391, "elapsed_s": 5274.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 8950, "loss": 3.20786, "bpp": 1.0476, "mse": 0.002838, "elapsed_s": 5301.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 9000, "psnr": 34.5848, "bpp": 0.572, "d_psnr_vs_start": 6.1864, "penalty_vs_start_pct": -77.108, "mu": 1.2539, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 9000, "loss": 2.66812, "bpp": 0.8855, "mse": 0.002358, "elapsed_s": 5351.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 9050, "loss": 2.856, "bpp": 1.0208, "mse": 0.002629, "elapsed_s": 5378.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 9100, "loss": 2.30253, "bpp": 1.0214, "mse": 0.001969, "elapsed_s": 5405.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 9150, "loss": 2.80433, "bpp": 1.0516, "mse": 0.002334, "elapsed_s": 5432.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 9200, "loss": 3.03341, "bpp": 1.0331, "mse": 0.002419, "elapsed_s": 5459.0}
+{"tier": "tier3_more_int4", "events": "validated", "step": 9250, "psnr": 34.5966, "bpp": 0.5711, "d_psnr_vs_start": 6.1983, "penalty_vs_start_pct": -77.143, "mu": 1.2473, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 9250, "loss": 2.3959, "bpp": 0.9764, "mse": 0.002079, "elapsed_s": 5509.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 9300, "loss": 2.92314, "bpp": 1.0909, "mse": 0.002469, "elapsed_s": 5536.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 9350, "loss": 2.77697, "bpp": 1.1095, "mse": 0.002296, "elapsed_s": 5562.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 9400, "loss": 2.57347, "bpp": 1.056, "mse": 0.002075, "elapsed_s": 5589.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 9450, "loss": 2.63969, "bpp": 0.982, "mse": 0.002267, "elapsed_s": 5616.3}
+{"tier": "tier3_more_int4", "events": "validated", "step": 9500, "psnr": 34.6126, "bpp": 0.5705, "d_psnr_vs_start": 6.2142, "penalty_vs_start_pct": -77.081, "mu": 1.2407, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 9500, "loss": 3.02153, "bpp": 1.0434, "mse": 0.002445, "elapsed_s": 5664.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 9550, "loss": 2.20646, "bpp": 0.9691, "mse": 0.001938, "elapsed_s": 5691.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 9600, "loss": 2.46967, "bpp": 1.1135, "mse": 0.001971, "elapsed_s": 5717.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 9650, "loss": 1.94234, "bpp": 0.8972, "mse": 0.001725, "elapsed_s": 5744.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 9700, "loss": 2.19586, "bpp": 1.1156, "mse": 0.001884, "elapsed_s": 5771.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 9750, "psnr": 34.6091, "bpp": 0.5715, "d_psnr_vs_start": 6.2107, "penalty_vs_start_pct": -77.208, "mu": 1.2345, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 9750, "loss": 2.38654, "bpp": 1.0461, "mse": 0.001958, "elapsed_s": 5822.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 9800, "loss": 2.79608, "bpp": 0.9627, "mse": 0.002388, "elapsed_s": 5848.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 9850, "loss": 2.42621, "bpp": 1.0072, "mse": 0.002063, "elapsed_s": 5875.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 9900, "loss": 2.34918, "bpp": 1.0329, "mse": 0.00189, "elapsed_s": 5902.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 9950, "loss": 2.24668, "bpp": 0.9853, "mse": 0.001936, "elapsed_s": 5928.6}
+{"tier": "tier3_more_int4", "events": "validated", "step": 10000, "psnr": 34.6517, "bpp": 0.5787, "d_psnr_vs_start": 6.2533, "penalty_vs_start_pct": -77.098, "mu": 1.2414, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 10000, "loss": 2.20881, "bpp": 0.9884, "mse": 0.001807, "elapsed_s": 5979.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 10050, "loss": 1.76015, "bpp": 0.8807, "mse": 0.001572, "elapsed_s": 6006.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 10100, "loss": 2.78653, "bpp": 0.9733, "mse": 0.002331, "elapsed_s": 6033.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 10150, "loss": 2.93923, "bpp": 0.9473, "mse": 0.002443, "elapsed_s": 6059.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 10200, "loss": 2.23648, "bpp": 1.0896, "mse": 0.001925, "elapsed_s": 6086.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 10250, "psnr": 34.6753, "bpp": 0.5843, "d_psnr_vs_start": 6.2769, "penalty_vs_start_pct": -77.201, "mu": 1.2542, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 10250, "loss": 2.8031, "bpp": 1.0159, "mse": 0.002288, "elapsed_s": 6137.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 10300, "loss": 2.35828, "bpp": 1.0184, "mse": 0.001991, "elapsed_s": 6163.8}
+{"tier": "tier3_more_int4", "events": "step", "step": 10350, "loss": 2.75161, "bpp": 0.9853, "mse": 0.002396, "elapsed_s": 6190.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 10400, "loss": 2.43277, "bpp": 0.9317, "mse": 0.002065, "elapsed_s": 6217.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 10450, "loss": 2.24888, "bpp": 0.8808, "mse": 0.001904, "elapsed_s": 6244.0}
+{"tier": "tier3_more_int4", "events": "validated", "step": 10500, "psnr": 34.6718, "bpp": 0.5836, "d_psnr_vs_start": 6.2734, "penalty_vs_start_pct": -77.17, "mu": 1.2696, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 10500, "loss": 2.72917, "bpp": 0.8459, "mse": 0.00231, "elapsed_s": 6291.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 10550, "loss": 2.7193, "bpp": 0.8641, "mse": 0.002281, "elapsed_s": 6318.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 10600, "loss": 2.89726, "bpp": 1.0568, "mse": 0.002353, "elapsed_s": 6345.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 10650, "loss": 2.56956, "bpp": 1.1033, "mse": 0.002122, "elapsed_s": 6371.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 10700, "loss": 2.61702, "bpp": 0.9698, "mse": 0.002112, "elapsed_s": 6398.5}
+{"tier": "tier3_more_int4", "events": "validated", "step": 10750, "psnr": 34.6916, "bpp": 0.5792, "d_psnr_vs_start": 6.2932, "penalty_vs_start_pct": -77.322, "mu": 1.2789, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 10750, "loss": 2.43784, "bpp": 0.9556, "mse": 0.001985, "elapsed_s": 6449.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 10800, "loss": 2.46365, "bpp": 1.0517, "mse": 0.00193, "elapsed_s": 6476.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 10850, "loss": 2.80042, "bpp": 0.9596, "mse": 0.002331, "elapsed_s": 6502.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 10900, "loss": 2.55596, "bpp": 0.9927, "mse": 0.002198, "elapsed_s": 6529.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 10950, "loss": 2.31911, "bpp": 0.9539, "mse": 0.001954, "elapsed_s": 6556.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 11000, "psnr": 34.6644, "bpp": 0.572, "d_psnr_vs_start": 6.266, "penalty_vs_start_pct": -77.353, "mu": 1.2781, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 11000, "loss": 2.57691, "bpp": 0.9587, "mse": 0.002208, "elapsed_s": 6606.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 11050, "loss": 2.85492, "bpp": 0.9768, "mse": 0.002391, "elapsed_s": 6633.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 11100, "loss": 2.60371, "bpp": 0.9431, "mse": 0.002207, "elapsed_s": 6660.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 11150, "loss": 2.54419, "bpp": 0.8951, "mse": 0.002165, "elapsed_s": 6687.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 11200, "loss": 3.18686, "bpp": 1.1113, "mse": 0.002642, "elapsed_s": 6714.2}
+{"tier": "tier3_more_int4", "events": "validated", "step": 11250, "psnr": 34.657, "bpp": 0.5743, "d_psnr_vs_start": 6.2586, "penalty_vs_start_pct": -77.269, "mu": 1.2781, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 11250, "loss": 2.99306, "bpp": 0.9402, "mse": 0.0025, "elapsed_s": 6764.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 11300, "loss": 3.38924, "bpp": 1.014, "mse": 0.002935, "elapsed_s": 6791.0}
+{"tier": "tier3_more_int4", "events": "step", "step": 11350, "loss": 2.4117, "bpp": 0.8445, "mse": 0.002007, "elapsed_s": 6817.6}
+{"tier": "tier3_more_int4", "events": "step", "step": 11400, "loss": 3.26283, "bpp": 1.0401, "mse": 0.002783, "elapsed_s": 6844.2}
+{"tier": "tier3_more_int4", "events": "step", "step": 11450, "loss": 2.18612, "bpp": 0.962, "mse": 0.001924, "elapsed_s": 6870.9}
+{"tier": "tier3_more_int4", "events": "validated", "step": 11500, "psnr": 34.6549, "bpp": 0.5667, "d_psnr_vs_start": 6.2566, "penalty_vs_start_pct": -77.619, "mu": 1.2651, "best": true}
+{"tier": "tier3_more_int4", "events": "step", "step": 11500, "loss": 2.74409, "bpp": 0.9888, "mse": 0.002196, "elapsed_s": 6921.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 11550, "loss": 2.93666, "bpp": 1.0996, "mse": 0.002408, "elapsed_s": 6947.9}
+{"tier": "tier3_more_int4", "events": "step", "step": 11600, "loss": 2.92174, "bpp": 0.9684, "mse": 0.002489, "elapsed_s": 6974.7}
+{"tier": "tier3_more_int4", "events": "step", "step": 11650, "loss": 2.60691, "bpp": 0.8998, "mse": 0.002276, "elapsed_s": 7001.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 11700, "loss": 2.7061, "bpp": 0.9463, "mse": 0.002446, "elapsed_s": 7028.1}
+{"tier": "tier3_more_int4", "events": "validated", "step": 11750, "psnr": 34.6302, "bpp": 0.5733, "d_psnr_vs_start": 6.2319, "penalty_vs_start_pct": -77.449, "mu": 1.2641, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 11750, "loss": 2.21664, "bpp": 1.0461, "mse": 0.001844, "elapsed_s": 7075.4}
+{"tier": "tier3_more_int4", "events": "step", "step": 11800, "loss": 2.38423, "bpp": 0.9735, "mse": 0.002005, "elapsed_s": 7102.1}
+{"tier": "tier3_more_int4", "events": "step", "step": 11850, "loss": 2.40415, "bpp": 1.0408, "mse": 0.002036, "elapsed_s": 7128.5}
+{"tier": "tier3_more_int4", "events": "step", "step": 11900, "loss": 2.37472, "bpp": 0.9463, "mse": 0.002066, "elapsed_s": 7155.3}
+{"tier": "tier3_more_int4", "events": "step", "step": 11950, "loss": 2.76308, "bpp": 0.9767, "mse": 0.002226, "elapsed_s": 7181.9}
+{"tier": "tier3_more_int4", "events": "validated", "step": 12000, "psnr": 34.6948, "bpp": 0.5788, "d_psnr_vs_start": 6.2965, "penalty_vs_start_pct": -77.266, "mu": 1.2756, "best": false}
+{"tier": "tier3_more_int4", "events": "step", "step": 12000, "loss": 2.29704, "bpp": 0.9182, "mse": 0.001947, "elapsed_s": 7229.0}
+{"tier": "tier3_more_int4", "events": "finish", "bundle": "quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier3_more_int4", "steps": 12000, "train_minutes": 120.49, "final_loss": 2.29704, "final_bpp": 0.9182, "baseline_val_psnr": 28.3984, "best_penalty_vs_start_pct": -77.619, "best_step": 11500, "kept_best_checkpoint": true, "assignment": {"E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32", "E5": "int8", "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
+=== 2026-10-31T21:08:55Z exit 0
 
-=== 2026-10-31T15:05:09Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 21.36, "mean_penalty_pct": 11.274}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 192, "configs": 1}
-=== 2026-10-31T15:06:02Z exit 0
+=== 2026-10-31T21:08:55Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset kodak
+{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 30.115, "mean_penalty_pct": 22.026}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 192, "configs": 1}
+=== 2026-10-31T21:09:56Z exit 0
 
-=== 2026-10-31T15:06:02Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 23.399, "mean_penalty_pct": 12.086}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 328, "configs": 1}
-=== 2026-10-31T15:10:36Z exit 0
+=== 2026-10-31T21:09:56Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset clic_professional
+{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 34.683, "mean_penalty_pct": 25.588}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 328, "configs": 1}
+=== 2026-10-31T21:15:32Z exit 0
 
-=== 2026-10-31T15:10:36Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier2_moderate_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier2_moderate_int4\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "7b6b7256c5c9", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 13.572, "saving_pct": 75.18, "effective_bits_per_param": 1.985, "worst_qp_mean_penalty_pct": 25.273, "mean_penalty_pct": 12.764}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after", "rows": 112, "configs": 1}
-=== 2026-10-31T15:11:02Z exit 0
-
-=== 2026-10-31T15:11:02Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 521.027, "mean_penalty_pct": 325.828}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 192, "configs": 1}
-=== 2026-10-31T15:11:54Z exit 0
-
-=== 2026-10-31T15:11:54Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 1771.715, "mean_penalty_pct": 841.422}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 328, "configs": 1}
-=== 2026-10-31T15:16:36Z exit 0
-
-=== 2026-10-31T15:16:36Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model checkpoints/pulse-mse --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\before --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 680.168, "mean_penalty_pct": 362.471}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\before", "rows": 112, "configs": 1}
-=== 2026-10-31T15:17:03Z exit 0
-
-=== 2026-10-31T15:17:03Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe quantization-pluse-mse/scripts/qat_run.py --model checkpoints/pulse-mse --tier quantization-pluse-mse/configs/qat_tiers.json --tier-name tier3_more_int4 --pool datasets/qat_pool/div2k_valid --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt --steps 2000 --lr 1e-06 --accumulate 2 --crop 512 --scope backbone --rd-weight 1.0 --rate-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --objective augmented_lagrangian --eval-every 100 --eval-images 4 --device cuda
-{"tier": "tier3_more_int4", "events": "start", "steps": 2000, "crop": 512, "scope": "backbone", "lr": 1e-06, "wrapped_modules": 98, "trainable_params": 12842200, "frozen_params": 1381256, "pool_images": 100, "assignment": {"E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32", "E5": "int8", "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
-{"tier": "tier3_more_int4", "events": "baseline_validation", "psnr": 28.8967, "bpp": 0.5469, "slopes": {"0": 1.956, "1": 1.923, "2": 1.681, "3": 1.193, "4": 0.611, "5": 0.168, "6": 0.128, "7": 0.226}}
-{"tier": "tier3_more_int4", "events": "step", "step": 1, "loss": 5.52074, "bpp": 1.0739, "mse": 0.006394, "elapsed_s": 0.6}
-{"tier": "tier3_more_int4", "events": "step", "step": 50, "loss": 2.69897, "bpp": 0.9459, "mse": 0.00406, "elapsed_s": 14.6}
-{"tier": "tier3_more_int4", "events": "validated", "step": 100, "psnr": 32.3806, "bpp": 0.5367, "d_psnr_vs_start": 3.4839, "penalty_vs_start_pct": -56.545, "mu": 0.0422, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 100, "loss": 2.30564, "bpp": 0.9605, "mse": 0.003228, "elapsed_s": 37.8}
-{"tier": "tier3_more_int4", "events": "step", "step": 150, "loss": 2.87611, "bpp": 1.172, "mse": 0.003834, "elapsed_s": 52.1}
-{"tier": "tier3_more_int4", "events": "validated", "step": 200, "psnr": 32.8867, "bpp": 0.5607, "d_psnr_vs_start": 3.99, "penalty_vs_start_pct": -55.423, "mu": 0.1682, "best": false}
-{"tier": "tier3_more_int4", "events": "step", "step": 200, "loss": 2.51608, "bpp": 1.1016, "mse": 0.003385, "elapsed_s": 75.0}
-{"tier": "tier3_more_int4", "events": "step", "step": 250, "loss": 2.99066, "bpp": 1.0586, "mse": 0.003991, "elapsed_s": 89.2}
-{"tier": "tier3_more_int4", "events": "validated", "step": 300, "psnr": 33.4386, "bpp": 0.5861, "d_psnr_vs_start": 4.542, "penalty_vs_start_pct": -58.724, "mu": 0.3079, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 300, "loss": 2.29044, "bpp": 1.0245, "mse": 0.002799, "elapsed_s": 112.5}
-{"tier": "tier3_more_int4", "events": "step", "step": 350, "loss": 2.85005, "bpp": 0.964, "mse": 0.003626, "elapsed_s": 126.8}
-{"tier": "tier3_more_int4", "events": "validated", "step": 400, "psnr": 33.6662, "bpp": 0.6111, "d_psnr_vs_start": 4.7695, "penalty_vs_start_pct": -57.522, "mu": 0.5062, "best": false}
-{"tier": "tier3_more_int4", "events": "step", "step": 400, "loss": 2.46418, "bpp": 1.0157, "mse": 0.002847, "elapsed_s": 150.3}
-{"tier": "tier3_more_int4", "events": "step", "step": 450, "loss": 2.29196, "bpp": 1.1924, "mse": 0.002279, "elapsed_s": 164.4}
-{"tier": "tier3_more_int4", "events": "validated", "step": 500, "psnr": 33.9468, "bpp": 0.6143, "d_psnr_vs_start": 5.0502, "penalty_vs_start_pct": -60.593, "mu": 0.679, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 500, "loss": 2.69492, "bpp": 1.0087, "mse": 0.002834, "elapsed_s": 188.1}
-{"tier": "tier3_more_int4", "events": "step", "step": 550, "loss": 3.03047, "bpp": 1.1121, "mse": 0.002868, "elapsed_s": 202.4}
-{"tier": "tier3_more_int4", "events": "validated", "step": 600, "psnr": 34.0934, "bpp": 0.6026, "d_psnr_vs_start": 5.1968, "penalty_vs_start_pct": -63.247, "mu": 0.8115, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 600, "loss": 2.74588, "bpp": 1.0669, "mse": 0.002636, "elapsed_s": 225.8}
-{"tier": "tier3_more_int4", "events": "step", "step": 650, "loss": 3.07793, "bpp": 1.1583, "mse": 0.002885, "elapsed_s": 239.9}
-{"tier": "tier3_more_int4", "events": "validated", "step": 700, "psnr": 34.2106, "bpp": 0.5985, "d_psnr_vs_start": 5.3139, "penalty_vs_start_pct": -64.651, "mu": 0.9271, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 700, "loss": 2.92782, "bpp": 1.0263, "mse": 0.002734, "elapsed_s": 263.6}
-{"tier": "tier3_more_int4", "events": "step", "step": 750, "loss": 2.60737, "bpp": 1.1758, "mse": 0.002211, "elapsed_s": 277.6}
-{"tier": "tier3_more_int4", "events": "validated", "step": 800, "psnr": 34.2964, "bpp": 0.5844, "d_psnr_vs_start": 5.3997, "penalty_vs_start_pct": -66.717, "mu": 1.0019, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 800, "loss": 3.02315, "bpp": 1.0058, "mse": 0.002626, "elapsed_s": 301.2}
-{"tier": "tier3_more_int4", "events": "step", "step": 850, "loss": 3.4503, "bpp": 1.048, "mse": 0.003025, "elapsed_s": 315.4}
-{"tier": "tier3_more_int4", "events": "validated", "step": 900, "psnr": 34.3995, "bpp": 0.5769, "d_psnr_vs_start": 5.5028, "penalty_vs_start_pct": -68.496, "mu": 1.0558, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 900, "loss": 3.13211, "bpp": 1.1743, "mse": 0.002681, "elapsed_s": 338.6}
-{"tier": "tier3_more_int4", "events": "step", "step": 950, "loss": 3.665, "bpp": 1.0498, "mse": 0.003125, "elapsed_s": 352.8}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1000, "psnr": 34.4682, "bpp": 0.5753, "d_psnr_vs_start": 5.5716, "penalty_vs_start_pct": -69.366, "mu": 1.1045, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1000, "loss": 3.53591, "bpp": 1.072, "mse": 0.003125, "elapsed_s": 376.2}
-{"tier": "tier3_more_int4", "events": "step", "step": 1050, "loss": 3.57694, "bpp": 0.9776, "mse": 0.003184, "elapsed_s": 390.4}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1100, "psnr": 34.5243, "bpp": 0.5632, "d_psnr_vs_start": 5.6276, "penalty_vs_start_pct": -70.761, "mu": 1.1243, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1100, "loss": 2.92154, "bpp": 0.9967, "mse": 0.002478, "elapsed_s": 414.4}
-{"tier": "tier3_more_int4", "events": "step", "step": 1150, "loss": 3.31794, "bpp": 1.0813, "mse": 0.002653, "elapsed_s": 429.0}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1200, "psnr": 34.5683, "bpp": 0.5631, "d_psnr_vs_start": 5.6716, "penalty_vs_start_pct": -71.072, "mu": 1.1445, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1200, "loss": 3.26787, "bpp": 1.0251, "mse": 0.002675, "elapsed_s": 452.4}
-{"tier": "tier3_more_int4", "events": "step", "step": 1250, "loss": 3.12271, "bpp": 1.1343, "mse": 0.002564, "elapsed_s": 467.0}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1300, "psnr": 34.6029, "bpp": 0.559, "d_psnr_vs_start": 5.7062, "penalty_vs_start_pct": -71.701, "mu": 1.1549, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1300, "loss": 3.11587, "bpp": 0.9731, "mse": 0.002551, "elapsed_s": 490.0}
-{"tier": "tier3_more_int4", "events": "step", "step": 1350, "loss": 3.46557, "bpp": 1.0273, "mse": 0.002797, "elapsed_s": 504.6}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1400, "psnr": 34.6654, "bpp": 0.5601, "d_psnr_vs_start": 5.7687, "penalty_vs_start_pct": -71.978, "mu": 1.1705, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1400, "loss": 3.29386, "bpp": 1.0578, "mse": 0.002864, "elapsed_s": 528.1}
-{"tier": "tier3_more_int4", "events": "step", "step": 1450, "loss": 2.58695, "bpp": 0.992, "mse": 0.002226, "elapsed_s": 542.2}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1500, "psnr": 34.7063, "bpp": 0.5592, "d_psnr_vs_start": 5.8096, "penalty_vs_start_pct": -72.286, "mu": 1.1828, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1500, "loss": 2.68617, "bpp": 0.9967, "mse": 0.002203, "elapsed_s": 565.6}
-{"tier": "tier3_more_int4", "events": "step", "step": 1550, "loss": 3.57468, "bpp": 1.0004, "mse": 0.002994, "elapsed_s": 579.6}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1600, "psnr": 34.7524, "bpp": 0.5627, "d_psnr_vs_start": 5.8558, "penalty_vs_start_pct": -72.387, "mu": 1.2023, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1600, "loss": 2.79718, "bpp": 0.9284, "mse": 0.002235, "elapsed_s": 602.8}
-{"tier": "tier3_more_int4", "events": "step", "step": 1650, "loss": 2.81225, "bpp": 0.885, "mse": 0.00221, "elapsed_s": 617.0}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1700, "psnr": 34.7709, "bpp": 0.5622, "d_psnr_vs_start": 5.8742, "penalty_vs_start_pct": -72.78, "mu": 1.2199, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1700, "loss": 3.65083, "bpp": 0.9871, "mse": 0.002968, "elapsed_s": 640.3}
-{"tier": "tier3_more_int4", "events": "step", "step": 1750, "loss": 2.93823, "bpp": 0.8901, "mse": 0.002393, "elapsed_s": 654.5}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1800, "psnr": 34.8024, "bpp": 0.5577, "d_psnr_vs_start": 5.9057, "penalty_vs_start_pct": -73.562, "mu": 1.2278, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1800, "loss": 3.58513, "bpp": 1.1087, "mse": 0.002813, "elapsed_s": 677.5}
-{"tier": "tier3_more_int4", "events": "step", "step": 1850, "loss": 3.12806, "bpp": 0.994, "mse": 0.002471, "elapsed_s": 692.0}
-{"tier": "tier3_more_int4", "events": "validated", "step": 1900, "psnr": 34.8047, "bpp": 0.5505, "d_psnr_vs_start": 5.908, "penalty_vs_start_pct": -74.029, "mu": 1.2219, "best": true}
-{"tier": "tier3_more_int4", "events": "step", "step": 1900, "loss": 2.27305, "bpp": 1.0069, "mse": 0.001824, "elapsed_s": 716.1}
-{"tier": "tier3_more_int4", "events": "step", "step": 1950, "loss": 3.48131, "bpp": 1.0649, "mse": 0.002839, "elapsed_s": 730.4}
-{"tier": "tier3_more_int4", "events": "validated", "step": 2000, "psnr": 34.8603, "bpp": 0.558, "d_psnr_vs_start": 5.9636, "penalty_vs_start_pct": -73.629, "mu": 1.2342, "best": false}
-{"tier": "tier3_more_int4", "events": "step", "step": 2000, "loss": 3.37228, "bpp": 1.0433, "mse": 0.002759, "elapsed_s": 753.4}
-{"tier": "tier3_more_int4", "events": "finish", "bundle": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier3_more_int4", "steps": 2000, "train_minutes": 12.56, "final_loss": 3.37228, "final_bpp": 1.0433, "baseline_val_psnr": 28.8967, "best_penalty_vs_start_pct": -74.029, "best_step": 1900, "kept_best_checkpoint": true, "assignment": {"E0": "bf16", "E1": "int4g32", "E2": "int4g32", "E3": "int4g32", "E4": "int4g32", "E5": "int8", "H0": "fp16", "H1": "fp16", "H2": "bf16", "H3": "fp16", "D0": "bf16", "D1": "fp16", "D2": "bf16", "D3": "fp16", "D4": "bf16", "D5": "fp16", "D6": "fp16", "D7": "fp16", "D8": "fp16"}}
-=== 2026-10-31T15:30:07Z exit 0
-
-=== 2026-10-31T15:30:07Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset kodak
-{"dataset": "kodak", "images": 24, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 58.225, "mean_penalty_pct": 42.141}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 192, "configs": 1}
-=== 2026-10-31T15:30:58Z exit 0
-
-=== 2026-10-31T15:30:58Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset clic_professional
-{"dataset": "clic_professional", "images": 41, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 84.217, "mean_penalty_pct": 61.367}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 328, "configs": 1}
-=== 2026-10-31T15:35:49Z exit 0
-
-=== 2026-10-31T15:35:49Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset set14
-{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
-{"config": "assignment", "config_id": "1419bf8259da", "note": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 70.608, "mean_penalty_pct": 49.384}
-{"output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 112, "configs": 1}
-=== 2026-10-31T15:36:18Z exit 0
+=== 2026-10-31T21:15:32Z C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\eval_assignment.py --model quantization-pluse-mse\results\final\qat_attempt\bundles\tier3_more_int4 --output quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\after --configs quantization-pluse-mse\results\final\qat_attempt\tier3_more_int4\assignment.json --dataset set14
+{"dataset": "set14", "images": 14, "qps": [0, 1, 2, 3, 4, 5, 6, 7], "configs": ["quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json"]}
+{"config": "assignment", "config_id": "1419bf8259da", "note": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\assignment.json", "components_quantized": 19, "fp32_mb": 54.688, "quant_mb": 11.369, "saving_pct": 79.21, "effective_bits_per_param": 1.663, "worst_qp_mean_penalty_pct": 41.842, "mean_penalty_pct": 30.795}
+{"output": "quantization-pluse-mse\\results\\final\\qat_attempt\\tier3_more_int4\\after", "rows": 112, "configs": 1}
+=== 2026-10-31T21:16:05Z exit 0

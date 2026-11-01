@@ -1,9 +1,0 @@
-config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
-assignment,7ddb3ed8aa83,clic_professional,0,41,0.113013,30.367052,-0.05347,-0.130093,1.072158,2.68975,6.212556,felix-russell-saw-140699.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,1,41,0.152152,31.362518,-0.076651,-0.141114,0.609698,2.863575,5.441801,jason-briscoe-149782.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,2,41,0.203111,32.376536,-0.093833,-0.205854,0.475587,3.09523,6.924264,jason-briscoe-149782.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,3,41,0.265504,33.37004,-0.118229,-0.197379,-0.057577,3.066287,6.072636,jason-briscoe-149782.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,4,41,0.343197,34.35671,-0.137916,-0.249393,0.117512,3.583239,6.84128,jason-briscoe-149782.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,5,41,0.442232,35.371709,-0.175854,-0.311897,0.368042,4.666327,8.880053,jason-briscoe-149782.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,6,41,0.562454,36.327056,-0.214518,-0.374597,1.064247,6.31656,10.964624,dogancan-ozturan-395.png,0.0,0.0
-assignment,7ddb3ed8aa83,clic_professional,7,41,0.70549,37.2026,-0.279065,-0.483044,1.70045,8.612738,14.85942,dogancan-ozturan-395.png,0.0,0.0

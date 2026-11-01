@@ -1,0 +1,25 @@
+{
+  "name": "ilp_2pct_qat",
+  "note": "fine-tune the measured 18.389 MB assignment to recover its 1.94% penalty",
+  "assignment": {
+    "D0": "fp16",
+    "D1": "int8",
+    "D2": "int8",
+    "D3": "fp16",
+    "D4": "bf16",
+    "D5": "fp16",
+    "D6": "fp16",
+    "D7": "fp16",
+    "D8": "fp16",
+    "E0": "bf16",
+    "E1": "fp16",
+    "E2": "int8",
+    "E3": "int8",
+    "E4": "int8",
+    "E5": "fp16",
+    "H0": "fp16",
+    "H1": "int8",
+    "H2": "fp16",
+    "H3": "fp16"
+  }
+}

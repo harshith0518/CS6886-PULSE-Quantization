@@ -1,0 +1,67 @@
+{
+  "stage": "qat_int8_12k",
+  "exit": 0,
+  "rows": [
+    {
+      "tier": "tier1_more_int8",
+      "label": "More INT8",
+      "size_mb": "14.401",
+      "before_pct": "8.613",
+      "after_pct": "3.363",
+      "recovery_pp": "5.25",
+      "recovery_ratio": "0.61",
+      "steps": "12000",
+      "train_minutes": "98.65"
+    }
+  ],
+  "merged": [
+    {
+      "group": "INT8 tier 2k",
+      "tier": "tier1_more_int8",
+      "label": "More INT8",
+      "size_mb": "14.401",
+      "before_pct": "8.613",
+      "after_pct": "8.613",
+      "recovery_pp": "0.0",
+      "recovery_ratio": "0.0",
+      "steps": "2000",
+      "train_minutes": "13.5"
+    },
+    {
+      "group": "INT4 tier2 2k",
+      "tier": "tier2_moderate_int4",
+      "label": "Moderate INT4 + few INT8",
+      "size_mb": "13.572",
+      "before_pct": "119.18",
+      "after_pct": "25.273",
+      "recovery_pp": "93.907",
+      "recovery_ratio": "0.788",
+      "steps": "2000",
+      "train_minutes": "12.38"
+    },
+    {
+      "group": "INT8 tier 12k",
+      "tier": "tier1_more_int8",
+      "label": "More INT8",
+      "size_mb": "14.401",
+      "before_pct": "8.613",
+      "after_pct": "3.363",
+      "recovery_pp": "5.25",
+      "recovery_ratio": "0.61",
+      "steps": "12000",
+      "train_minutes": "98.65"
+    },
+    {
+      "group": "INT4 tier2 12k",
+      "tier": "tier2_moderate_int4",
+      "label": "Moderate INT4 + few INT8",
+      "size_mb": "13.572",
+      "before_pct": "119.18",
+      "after_pct": "20.528",
+      "recovery_pp": "98.652",
+      "recovery_ratio": "0.828",
+      "steps": "12000",
+      "train_minutes": "101.7"
+    }
+  ]
+}

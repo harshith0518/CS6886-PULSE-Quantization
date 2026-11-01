@@ -1,0 +1,19 @@
+=== 2026-10-31T19:21:51Z int8 stage start (sleep_guard=True)
+=== 2026-10-31T22:52:51Z upstream queue finished, starting INT8 tier
+
+=== 2026-10-31T22:52:51Z [qat_int8_12k] C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\qat_overnight.py --tier tier1_more_int8 --steps 12000 --lr 1e-6 --accumulate 1 --objective augmented_lagrangian --rd-weight 1.0 --mu-alpha 1.0 --mu-max 20.0 --eval-every 250 --eval-images 6 --datasets kodak clic_professional set14 --output C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\results\night\qat_int8_12k
+{"events": "start", "sleep_guard": "True"}
+{"tier": "tier1_more_int8", "events": "measure_before"}
+{"tier": "tier1_more_int8", "events": "qat", "steps": 12000}
+{"tier": "tier1_more_int8", "events": "measure_after"}
+{"tier": "tier1_more_int8", "before": {"worst_qp_penalty_pct": 8.613, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 5.293, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 8.613, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 6.176, "size_mb": 14.401, "saving_pct": 73.67}}}, "after": {"worst_qp_penalty_pct": 3.363, "per_dataset": {"kodak": {"worst_qp_penalty_pct": 1.848, "size_mb": 14.401, "saving_pct": 73.67}, "clic_professional": {"worst_qp_penalty_pct": 2.874, "size_mb": 14.401, "saving_pct": 73.67}, "set14": {"worst_qp_penalty_pct": 3.363, "size_mb": 14.401, "saving_pct": 73.67}}}, "recovery_pct_points": 5.25}
+{"events": "done", "output": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\night\\qat_int8_12k", "tiers": 1, "kept_awake": true}
+=== 2026-11-01T00:46:19Z [qat_int8_12k] exit 0
+
+=== 2026-11-01T00:46:19Z [reports] C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\venv\Scripts\python.exe C:\Users\ASUS\Desktop\my_files\Courses\SEM-7\SE for DL\Course Project\GenCodec\PULSE\quantization-pluse-mse\scripts\run_all_stages.py --stages qat_negative summary --force
+{"at": "2026-11-01T00:46:19Z", "stage": "pipeline", "event": "start", "stages": ["qat_negative", "summary"], "sleep_guard": true}
+{"at": "2026-11-01T00:46:19Z", "stage": "qat_result", "runs": 4, "tiers": 2, "seconds": 0.0}
+{"at": "2026-11-01T00:46:19Z", "stage": "summary", "sections": 8, "seconds": 0.0}
+{"at": "2026-11-01T00:46:19Z", "stage": "pipeline", "event": "done", "results": [{"stage": "qat_result", "runs": 4, "tiers": 2, "seconds": 0.0}, {"stage": "summary", "sections": 8, "seconds": 0.0}]}
+=== 2026-11-01T00:46:19Z [reports] exit 0
+=== 2026-11-01T00:46:19Z int8 stage done

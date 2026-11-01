@@ -1,7 +1,7 @@
 {
-  "command": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\eval_assignment.py --model C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4 --output C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after --configs C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json --dataset set14",
+  "command": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\scripts\\eval_assignment.py --model quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4 --output quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\after --configs quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json --dataset set14",
   "config_sha256": "815bf450eaf26568097fa6a5ca3d57596462c7527050971debeaf990ef1276c1",
-  "entropy_control_sha256": "4add9175d4c9d89af022030b14ca45e6d80d96341649beb3cb8b67683d5e30c3",
+  "entropy_control_sha256": "fcc5302410b0b025146f010f0436b2b42e511f0d748fe61b21b80bde5667f115",
   "eval_flags": {
     "cudnn_allow_tf32": false,
     "cudnn_benchmark": false,
@@ -12,7 +12,7 @@
     "threads": 1
   },
   "git": {
-    "commit": "5f57aa5ac267c9836a2feafb3bd24beb79ab22d3",
+    "commit": "d5f158dcd32b2377720f58c3982d1a90df9198ba",
     "dirty": true
   },
   "hardware": {
@@ -21,8 +21,8 @@
     "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
     "total_memory_mb": 4095.5
   },
-  "model_path": "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4",
-  "model_sha256": "eddf6423336942d3200f2a6921de5fbd13a37825035d9b2471a16ee9e58419f4",
+  "model_path": "quantization-pluse-mse\\results\\final\\qat_attempt\\bundles\\tier2_moderate_int4",
+  "model_sha256": "131a30da43b384aef20ae32bcbe32bf2aae419b972bea6587e19e12057d4d94b",
   "packages": {
     "cuda": "12.4",
     "numpy": "2.5.2",
@@ -32,7 +32,7 @@
   },
   "quant_config": {
     "configs": [
-      "C:\\Users\\ASUS\\Desktop\\my_files\\Courses\\SEM-7\\SE for DL\\Course Project\\GenCodec\\PULSE\\quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"
+      "quantization-pluse-mse\\results\\final\\qat_attempt\\tier2_moderate_int4\\assignment.json"
     ],
     "dataset": "set14",
     "mode": "w_only",
@@ -47,5 +47,5 @@
       7
     ]
   },
-  "quant_config_sha256": "d4564f3144e83fa294781b19d15056aa1d2e02882847e8f5e8fdefe91f4106c5"
+  "quant_config_sha256": "c5804f973f03a04911c3149f8e88550a45cfc7ade28a436fcd0927c02788becc"
 }

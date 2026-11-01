@@ -1,0 +1,5 @@
+group,tier,label,size_mb,before_pct,after_pct,recovery_pp,recovery_ratio,steps,train_minutes
+INT8 tier 2k,tier1_more_int8,More INT8,14.401,8.613,8.613,0.0,0.0,2000,13.5
+INT4 tier2 2k,tier2_moderate_int4,Moderate INT4 + few INT8,13.572,119.18,25.273,93.907,0.788,2000,12.38
+INT8 tier 12k,tier1_more_int8,More INT8,14.401,8.613,3.363,5.25,0.61,12000,98.65
+INT4 tier2 12k,tier2_moderate_int4,Moderate INT4 + few INT8,13.572,119.18,20.528,98.652,0.828,12000,101.7

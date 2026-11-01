@@ -1,0 +1,7 @@
+{
+  "baseline_keys": 232,
+  "replaced_with_finetuned": 229,
+  "entropy_tensors_changed": 0,
+  "entropy_hash_rebound": true,
+  "previous_checkpoint_sha256": "c6026ee7eb1e1a6718095c251d2bb93bfa79e5b117802503b79873cd930ce5ce"
+}

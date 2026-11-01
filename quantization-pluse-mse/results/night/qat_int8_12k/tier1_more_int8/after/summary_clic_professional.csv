@@ -1,0 +1,9 @@
+config,config_id,dataset,qp,rows,mean_bpp,mean_psnr,mean_d_psnr,worst_d_psnr,mean_d_bpp_pct,mean_penalty_pct,max_penalty_pct,worst_image,stream_match_rate,recon_match_rate
+assignment,7ddb3ed8aa83,clic_professional,0,41,0.114959,30.448648,0.028127,-0.025012,2.290631,1.440195,2.72581,juskteez-vu-1041.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,1,41,0.156578,31.486123,0.046954,-0.006962,2.880447,1.49563,4.343539,schicka-307.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,2,41,0.21091,32.55069,0.080321,-0.000707,3.612981,1.360601,5.287774,alberto-montalesi-176097.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,3,41,0.277317,33.594045,0.105775,0.002449,3.79773,0.980675,3.347154,alberto-montalesi-176097.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,4,41,0.360878,34.638931,0.144306,0.01927,4.881243,1.219698,5.024449,alberto-montalesi-176097.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,5,41,0.467285,35.717972,0.170409,0.036817,5.846108,1.64511,10.336739,alberto-montalesi-176097.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,6,41,0.59654,36.740407,0.198834,0.046791,7.354335,2.42983,15.958461,alberto-montalesi-176097.png,0.0,0.0
+assignment,7ddb3ed8aa83,clic_professional,7,41,0.747129,37.686615,0.20495,-0.03447,7.959961,2.873914,14.094089,jason-briscoe-149782.png,0.0,0.0
