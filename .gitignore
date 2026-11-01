@@ -48,3 +48,6 @@ quantization-pluse-mse/logs/
 
 # Renderer scratch directories.dsh-office-*
 .scratch/
+
+# Superseded 13-page report; replaced by supplementary-notes.*
+submission/supplementary-report.*
